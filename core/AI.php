@@ -1,4 +1,5 @@
-<?php 
+<?php
+namespace Core;
 date_default_timezone_set("Asia/Jakarta");
 /**
 * @author Ammar F. <ammarfaizi2@gmail.com> https://www.facebook.com/ammarfaizi2
