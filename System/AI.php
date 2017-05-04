@@ -92,7 +92,7 @@ class AI extends Crayner_System
                 case 'translate':
                         $t = explode(' ', $this->absmsg,3);
                         $n = new Google_Translate();
-                        $st = $n->prepare($t[3]);
+                        $st = $n->prepare($t[2]);
                         $st->execute();
                         if ($err = $st->error()) {
                             $this->reply = $err;
