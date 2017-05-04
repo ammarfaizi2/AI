@@ -11,16 +11,16 @@ use System\CM_Curl;
 
 class ChitChat
 {
-    const data = '/chitchat/';
+
     private $ai_name;
     private $msg;
     private $cur;
     private $reply;
     public function __construct($ai_name='Carik')
     {
-        is_dir(data.self::data) or mkdir(data.self::data);
+        is_dir(data.'/chitchat') or mkdir(data.'/chitchat');
         $this->ai_name    = strtolower($ai_name);
-        $this->cur_file = data.self::data.'currentchat';
+        $this->cur_file = data.'/chitchat/currentchat';
         $this->cur        = file_exists($this->cur_file) ? (int) file_get_contents($this->cur_file) : 1;
     }
     public function prepare($text)
