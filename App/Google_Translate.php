@@ -2,10 +2,12 @@
 namespace App;
 
 defined('data') or die('Error : data not defined !');
+
 use System\CM_Curl;
 
 /**
 * @author Ammar Faizi <ammarfaizi2@gmail.com> https://www.facebook.com/ammarfaizi2
+* @package Google_Translate
 * @license RedAngel PHP Concept
 */
 
