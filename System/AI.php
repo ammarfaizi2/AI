@@ -58,17 +58,18 @@ class AI extends Crayner_System
     *   @param string
     *   @return boolean
     */
-    private function command($msg)
+    private function command($cmd)
     {
+        PRINT $msg;
         $command_list = array(
                 'ctranslate' => 3,
                 'translate'  => 2,
             );
-        if (isset($command_list[$msg])) {
+        if (isset($command_list[$cmd])) {
             $rt = false;
             $msg = explode(' ', $this->absmsg,2);
             unset($msg[0]);
-            switch ($msg) {
+            switch ($cmd) {
                 case 'ctranslate':
                     $t = explode(' ', $this->msg,4);
                     $n = new Google_Translate();

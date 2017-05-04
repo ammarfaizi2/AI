@@ -18,6 +18,7 @@ class Google_Translate
 	private $result;
 	public function __construct()
 	{	
+		is_dir(data.'/google/') or mkdir(data.'/google/');
 		is_dir(data.'/google/cookies/') or mkdir(data.'/google/cookies/');
 		$this->list_lang = array(
 			'jw' => 'Jawa',
@@ -145,7 +146,7 @@ class Google_Translate
 		$lang = $lang===null ? 'auto_id' : strtolower($lang);
 		$lang = explode("_", $lang);
 		$check1 = $this->check_lang($lang[0]);
-		$check2 = $thos->check_lang($lang[1]);
+		$check2 = $this->check_lang($lang[1]);
 		if (!$check1 and $check2) {
 			$this->err = 'err_lang_1';
 		} else
