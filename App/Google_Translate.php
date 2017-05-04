@@ -188,7 +188,7 @@ class Google_Translate
 	*/
 	public function error()
 	{
-		return isset($this->err) and !empty($this->err) ? $this->err : false;
+		return (isset($this->err)) ? $this->err : false;
 	}
 
 	/**

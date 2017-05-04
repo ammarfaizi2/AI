@@ -22,9 +22,11 @@ class AI extends Crayner_System
     public function __construct()
     {
         is_dir(data.self::data) or mkdir(data.self::data);
-        is_dir(data.self::data.'/status') or mkdir(data.self::data.'/status');
         is_dir(data.self::data.'/logs') or mkdir(data.self::data.'/logs');
+        is_dir(data.self::data.'/status') or mkdir(data.self::data.'/status');
         is_dir(data.self::data.'/chat_logs') or mkdir(data.self::data.'/chat_logs');
+
+
         $this->chitchat = file_exists(data.self::data.'/status/chit_chat_on');
     }
 
@@ -60,7 +62,6 @@ class AI extends Crayner_System
     */
     private function command($cmd)
     {
-        PRINT $msg;
         $command_list = array(
                 'ctranslate' => 3,
                 'translate'  => 2,
@@ -70,20 +71,41 @@ class AI extends Crayner_System
             $msg = explode(' ', $this->absmsg,2);
             unset($msg[0]);
             switch ($cmd) {
+                /**
+                *   Untuk translate berbagai bahasa
+                */
                 case 'ctranslate':
-                    $t = explode(' ', $this->msg,4);
-                    $n = new Google_Translate();
-                    $st = $n->prepare($t[3],($t[1].'_'.$t[2]));
-                    $st->execute();
-                    if ($err = $st->error()) {
-                        $this->reply = $err;
-                    } else {
-                        $this->reply = $st->fetch_result();
-                    }
+                        $t = explode(' ', $this->absmsg,4);
+                        $n = new Google_Translate();
+                        $st = $n->prepare($t[3],($t[1].'_'.$t[2]));
+                        $st->execute();
+                        if ($err = $st->error()) {
+                            $this->reply = $err;
+                        } else {
+                            $this->reply = $st->fetch_result();
+                        }
                     break;
-                
+
+                /**
+                *   Untuk translate bahasa asing ke indonesia
+                */
+                case 'translate':
+                        $t = explode(' ', $this->absmsg,3);
+                        $n = new Google_Translate();
+                        $st = $n->prepare($t[3]);
+                        $st->execute();
+                        if ($err = $st->error()) {
+                            $this->reply = $err;
+                        } else {
+                            $this->reply = $st->fetch_result();
+                        }
+                    break;
+
+                /**
+                *   Command not found !
+                */
                 default:
-                    # code...
+                        
                     break;
             }
             return isset($this->reply) ? true : false;
@@ -113,7 +135,6 @@ class AI extends Crayner_System
             $rt = true;
         } else
         if ($this->command($cmd)) {
-            print 'command';
             $rt = true;
         } else
         if ($this->chitchat) {
