@@ -65,6 +65,7 @@ class AI extends Crayner_System
                 'translate'  => 2,
             );
         if (isset($command_list[$msg])) {
+            $rt = false;
             $msg = explode(' ', $this->absmsg,2);
             unset($msg[0]);
             switch ($msg) {
@@ -73,12 +74,18 @@ class AI extends Crayner_System
                     $n = new Google_Translate();
                     $st = $n->prepare($t[3],($t[1].'_'.$t[2]));
                     $st->execute();
+                    if ($err = $st->error()) {
+                        $this->reply = $err;
+                    } else {
+                        $this->reply = $st->fetch_result();
+                    }
                     break;
                 
                 default:
                     # code...
                     break;
             }
+            return isset($this->reply) ? true : false;
         }
     }
 
@@ -99,7 +106,16 @@ class AI extends Crayner_System
     */
     public function execute()
     {
+        $cmd = explode(' ', $this->msg,2);
+        $cmd = $cmd[0];
+        if ($this->root_command($cmd)) {
+            $rt = true;
+        } else
+        if ($this->command($cmd)) {
+            $rt = true;
+        } else
         if ($this->chitchat) {
+
             $st = new ChitChat('Carik');
             if($st->prepare($this->msg)->execute()){
                 $this->reply = $st->fetch_reply();
