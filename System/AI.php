@@ -76,12 +76,12 @@ class AI extends Crayner_System
             switch ($cmd) {
                 case 'ask':
                         $n = new Brainly();
-                        $n->prepare(implode(' ', $msg));
+                        $n->prepare($msg = implode(' ', $msg));
                         if ($n->execute()) {
                             $result = $n->fetch_result();
                             $this->reply = "Hasil pencarian dari pertanyaan ".($this->actor)."\n\nPertanyaan yang mirip :\n".($result[0])."\n\nJawaban : \n".($result[1])."\n";
                         } else {
-                            
+                            $this->reply = "Mohon maaf, saya tidak bisa menjawab pertanyaan \"".($msg)."\".";
                         }
                     break;
 
