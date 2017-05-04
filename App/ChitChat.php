@@ -1,7 +1,8 @@
 <?php
 namespace App;
+defined('data') or die('Error : data not defined !');
 use System\CM_Curl;
-defined('data') or die('data Constant is not defined !');
+
 
 /**
 * @author Ammar Faizi <ammarfaizi2@gmail.com> https://www.facebook.com/ammarfaizi2
@@ -16,9 +17,9 @@ class ChitChat
 	private $cur;
 	private $reply;
 	public function __construct($ai_name='Carik')
-	{
-		$this->ai_name 	= strtolower($ai_name);
+	{	
 		is_dir(data.self::data) or mkdir(data.self::data);
+		$this->ai_name 	= strtolower($ai_name);
 		$this->cur_file = data.self::data.'currentchat';
 		$this->cur 		= file_exists($this->cur_file) ? (int) file_get_contents($this->cur_file) : 1;
 	}

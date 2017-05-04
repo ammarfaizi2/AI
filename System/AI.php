@@ -1,5 +1,6 @@
 <?php
 namespace System;
+defined('data') or die('Error : data not defined !');
 use System\Crayner_System;
 
 /**
@@ -9,12 +10,13 @@ use System\Crayner_System;
 
 class AI extends Crayner_System
 {
+    const data = '/ai/';
     private $msg;
     private $absmsg;
     private $actor;
     public function __construct()
     {
-        
+        is_dir(data.self::data) or mkdir(data.self::data);
     }
     /**
     *   @param string,string
