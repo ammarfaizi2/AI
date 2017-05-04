@@ -12,6 +12,8 @@ class Brainly
 {
 	private $text;
 	private $limit;
+	private $data;
+	private $hash;
 	private $file;
 	public function __construct()
 	{
@@ -24,8 +26,11 @@ class Brainly
 	{
 		$this->text = urlencode($text);
 		$this->limit = (int) $limit;
-		$this->data = data.'/brainly/data.txt';
-		$this->file = data.'/brainly/query/'.md5($text).'.txt';
+		$this->data = file_exists(data.'/brainly/data.txt') ? json_decode(data.'/brainly/data.txt') : array();
+		$this->data = $this->data===null ? array() : $this->data;
+		$this->hash = md5($text);
+		$this->file = data.'/brainly/query/'.($this->hash).'.txt';
+		in_array($this->hash, $this->data) or $this->data[] = $this->hash;
 	}
 	
 	public function execute()
@@ -59,6 +64,8 @@ class Brainly
 		if ($return) {
 			$this->result = array(trim(strip_tags(html_entity_decode($result['task']['content'],ENT_QUOTES,'UTF-8'))),trim(strip_tags(html_entity_decode($ans))));
 		}
+		file_put_contents(data.'/brainly/data.txt', json_encode($this->data,128));
+		unset($this->data);
 		return $return;
 	}
 	
