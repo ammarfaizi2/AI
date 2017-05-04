@@ -24,18 +24,19 @@ class Brainly
 	{
 		$this->text = urlencode($text);
 		$this->limit = (int) $limit;
+		$this->data = data.'/brainly/data.txt';
 		$this->file = data.'/brainly/query/'.md5($text).'.txt';
 	}
 	
 	public function execute()
 	{
 		if (file_exists($this->file)) {
-			$a = file_get_contents($this->file);
+			$a = json_decode(file_get_contents($this->file),true);
 		}
 			$ch = new CM_Curl('https://brainly.co.id/api/28/api_tasks/suggester?limit='.($this->limit).'&query='.$this->text);
-			$a = $ch->execute();
+			$a = json_decode($ch->execute(),true);
+			file_put_contents($this->file, json_encode($a,128));
 		}
-		$a = json_decode($a,true);
 		foreach ($a['data']['tasks']['items'] as $key => $val) {
 			$que = trim(strip_tags(html_entity_decode($val['task']['content'],ENT_QUOTES,'UTF-8')));
 			similar_text($que, $input, $percent);
@@ -56,13 +57,13 @@ class Brainly
 			$return = true;
 		}
 		if ($return) {
-			$result = array(trim(strip_tags(html_entity_decode($result['task']['content'],ENT_QUOTES,'UTF-8'))),trim(strip_tags(html_entity_decode($ans))));
+			$this->result = array(trim(strip_tags(html_entity_decode($result['task']['content'],ENT_QUOTES,'UTF-8'))),trim(strip_tags(html_entity_decode($ans))));
 		}
 		return $return;
 	}
 	
 	public function fetch_result()
 	{
-
+		return isset($this->result) ? $this->result : null;
 	}
 }

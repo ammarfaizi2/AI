@@ -1,9 +1,11 @@
 <?php
 namespace System;
 defined('data') or die('Error : data not defined !');
-use System\Crayner_System;
+
+use App\Brainly;
 use App\ChitChat;
 use App\Google_Translate;
+use System\Crayner_System;
 
 /**
 * @author Ammar Faizi <ammarfaizi2@gmail.com> https://www.facebook.com/ammarfaizi2
@@ -63,6 +65,7 @@ class AI extends Crayner_System
     private function command($cmd)
     {
         $command_list = array(
+                'ask'        => 2,
                 'ctranslate' => 3,
                 'translate'  => 2,
             );
@@ -71,6 +74,18 @@ class AI extends Crayner_System
             $msg = explode(' ', $this->absmsg,2);
             unset($msg[0]);
             switch ($cmd) {
+                case 'ask':
+                        $n = new Brainly();
+                        $n->prepare(implode(' ', $msg));
+                        if ($n->execute()) {
+                            $result = $n->fetch_result();
+                            $this->reply = "Hasil pencarian dari pertanyaan ".($this->actor)."\n\nPertanyaan yang mirip :\n".($result[0])."\n\nJawaban : \n".($result[1])."\n";
+                        } else {
+                            
+                        }
+                    break;
+
+
                 /**
                 *   Untuk translate berbagai bahasa
                 */

@@ -172,7 +172,7 @@ class Google_Translate
 			return false;
 		}
 		$ch = new CM_Curl("https://translate.google.com/m?hl=id&sl=".$this->from."&tl=".$this->to."&ie=UTF-8&q=".$this->text);
-		$ch->set_cookie(data.'/google/cookies/');
+		$ch->set_cookie(data.'/google/cookies/google.txt');
 		$a = explode('<div dir="ltr" class="t0">', $ch->execute(), 2);
 		if (!isset($a[1])) {
 			$this->err = "Error data !";
