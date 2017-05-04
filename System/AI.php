@@ -45,6 +45,32 @@ class AI extends Crayner_System
     }
 
     /**
+    *   @param string
+    *   @return boolean
+    */
+    private function root_command($msg)
+    {
+
+    }
+
+    /**
+    *   @param string
+    *   @return boolean
+    */
+    private function command($msg)
+    {
+        $command_list = array(
+                'ctranslate' => 3,
+                'translate'  => 2,
+            );
+        if (isset($command_list[$msg])) {
+            $msg = explode(' ', $this->absmsg,2);
+            unset($msg[0]);
+
+        }
+    }
+
+    /**
     *   @param string,string
     *   @return instance
     */
