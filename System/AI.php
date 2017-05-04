@@ -21,8 +21,27 @@ class AI extends Crayner_System
     public function __construct()
     {
         is_dir(data.self::data) or mkdir(data.self::data);
-        $this->data = data.self::data;
-        $this->chitchat = file_exists($this->data.'chit_chat_on');
+        is_dir(data.self::data.'/status') or mkdir(data.self::data.'/status');
+        is_dir(data.self::data.'/logs') or mkdir(data.self::data.'/logs');
+        is_dir(data.self::data.'/chat_logs') or mkdir(data.self::data.'/chat_logs');
+        $this->chitchat = file_exists(data.self::data.'/status/chit_chat_on');
+    }
+
+    /**
+    * void
+    */
+    private function clog()
+    {
+        $file = data.self::data.'/chat_logs/'.date('Y-m-d').'.txt';
+        $data = file_exists($file) ? json_decode(file_get_contents($file),true) : array();
+        $data = $data===null ? array() : $data;
+        $data[] = array(
+                'time'  => (date('Y-m-d H:i:s')),
+                'actor' => $this->actor,
+                'msg'   => $this->absmsg,
+                'reply' => $this->reply,
+            );
+        file_put_contents($file, json_encode($data,128));
     }
 
     /**
@@ -38,14 +57,6 @@ class AI extends Crayner_System
     }
 
     /**
-    *
-    */
-    public function status()
-    {
-
-    }
-
-    /**
     *   @return boolean
     */
     public function execute()
@@ -54,14 +65,20 @@ class AI extends Crayner_System
             $st = new ChitChat('Carik');
             if($st->prepare($this->msg)->execute()){
                 $this->reply = $st->fetch_reply();
-                return $this->reply===null ? false : true;
+                $rt = $this->reply===null ? false : true;
             } else {
-                return false;
+                $rt = false;
             }
         } else {
-            return false;
+            $rt = false;
         }
+        $this->clog();
+        return $rt;
     }
+
+    /**
+    *   @return mixed
+    */
     public function fetch_reply()
     {
         return $this->reply;
