@@ -86,6 +86,7 @@ class AI extends Crayner_System
                         }
                     break;
 
+
                 /**
                 *   Untuk translate bahasa asing ke indonesia
                 */
@@ -100,6 +101,7 @@ class AI extends Crayner_System
                             $this->reply = $st->fetch_result();
                         }
                     break;
+
 
                 /**
                 *   Command not found !
