@@ -1,5 +1,6 @@
 <?php
 namespace System;
+
 defined('data') or die('Error : data not defined !');
 
 use App\Brainly;
@@ -38,7 +39,7 @@ class AI extends Crayner_System
     private function clog()
     {
         $file = data.self::data.'/chat_logs/'.date('Y-m-d').'.txt';
-        $data = file_exists($file) ? json_decode(file_get_contents($file),true) : array();
+        $data = file_exists($file) ? json_decode(file_get_contents($file), true) : array();
         $data = $data===null ? array() : $data;
         $data[] = array(
                 'time'  => (date('Y-m-d H:i:s')),
@@ -46,7 +47,7 @@ class AI extends Crayner_System
                 'msg'   => $this->absmsg,
                 'reply' => $this->reply,
             );
-        file_put_contents($file, json_encode($data,128));
+        file_put_contents($file, json_encode($data, 128));
     }
 
     /**
@@ -55,7 +56,6 @@ class AI extends Crayner_System
     */
     private function root_command($msg)
     {
-
     }
 
     /**
@@ -71,7 +71,7 @@ class AI extends Crayner_System
             );
         if (isset($command_list[$cmd])) {
             $rt = false;
-            $msg = explode(' ', $this->absmsg,2);
+            $msg = explode(' ', $this->absmsg, 2);
             unset($msg[0]);
             switch ($cmd) {
                 /**
@@ -93,9 +93,9 @@ class AI extends Crayner_System
                 *   Untuk translate berbagai bahasa
                 */
                 case 'ctranslate':
-                        $t = explode(' ', $this->absmsg,4);
+                        $t = explode(' ', $this->absmsg, 4);
                         $n = new Google_Translate();
-                        $st = $n->prepare($t[3],($t[1].'_'.$t[2]));
+                        $st = $n->prepare($t[3], ($t[1].'_'.$t[2]));
                         $st->execute();
                         if ($err = $st->error()) {
                             $this->reply = $err;
@@ -109,7 +109,7 @@ class AI extends Crayner_System
                 *   Untuk translate bahasa asing ke indonesia
                 */
                 case 'translate':
-                        $t = explode(' ', $this->absmsg,3);
+                        $t = explode(' ', $this->absmsg, 3);
                         $n = new Google_Translate();
                         $st = $n->prepare($t[2]);
                         $st->execute();
@@ -136,7 +136,7 @@ class AI extends Crayner_System
     *   @param string,string
     *   @return instance
     */
-    public function prepare($text,$actor=null)
+    public function prepare($text, $actor=null)
     {
         $this->msg      = trim(strtolower($text));
         $this->absmsg   = $text;
@@ -149,18 +149,15 @@ class AI extends Crayner_System
     */
     public function execute()
     {
-        $cmd = explode(' ', $this->msg,2);
+        $cmd = explode(' ', $this->msg, 2);
         $cmd = $cmd[0];
         if ($this->root_command($cmd)) {
             $rt = true;
-        } else
-        if ($this->command($cmd)) {
+        } elseif ($this->command($cmd)) {
             $rt = true;
-        } else
-        if ($this->chitchat) {
-
+        } elseif ($this->chitchat) {
             $st = new ChitChat('Carik');
-            if($st->prepare($this->msg)->execute()){
+            if ($st->prepare($this->msg)->execute()) {
                 $this->reply = $st->fetch_reply();
                 $rt = $this->reply===null ? false : true;
             } else {

@@ -8,9 +8,7 @@ namespace System;
 
 class Crayner_System
 {
-	
-	public function __construct()
-	{
-		
-	}
+    public function __construct()
+    {
+    }
 }
