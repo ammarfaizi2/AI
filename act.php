@@ -2,7 +2,7 @@
 require __DIR__ . '/loader.php';
 use System\AI;
 $ai = new AI();
-$msg = "ctranslate id en apa kabar?";
+$msg = "translate how are you?";
 $act = "Ammar Faizi";
 $st = $ai->prepare($msg,$act);
 $st->execute();
