@@ -1,6 +1,6 @@
 <?php
 require __DIR__ . '/loader.php';
-use System/AI;
+use System\AI;
 $ai = new AI();
 $msg = "halo carik";
 $act = "Ammar Faizi";
