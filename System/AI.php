@@ -54,7 +54,7 @@ class AI extends Crayner_System
             $st = new ChitChat('Carik');
             if($st->prepare($this->msg)->execute()){
                 $this->reply = $st->fetch_reply();
-                return $this->fetch_reply===null ? false : true;
+                return $this->reply===null ? false : true;
             } else {
                 return false;
             }
@@ -64,6 +64,6 @@ class AI extends Crayner_System
     }
     public function fetch_reply()
     {
-        return $this->fetch_reply;
+        return $this->reply;
     }
 }

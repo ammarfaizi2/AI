@@ -6,3 +6,4 @@ $msg = "halo carik";
 $act = "Ammar Faizi";
 $st = $ai->prepare($msg,$act);
 $st->execute();
+var_dump($st->fetch_reply());
