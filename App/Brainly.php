@@ -47,7 +47,7 @@ class Brainly
 			similar_text($que, $this->text, $percent);
 			$sim[$key] = $percent;
 		}
-		$result = $a[array_search(max($sim),$sim)];
+		$result = $a['data']['tasks']['items'][array_search(max($sim),$sim)];
 		if (isset($result['presence']['solved'][0]['id'])) {
 			foreach ($result['responses'] as $val) {
 				if ($val['user_id']==$result['presence']['solved'][0]['id']) {
