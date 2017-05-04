@@ -74,6 +74,9 @@ class AI extends Crayner_System
             $msg = explode(' ', $this->absmsg,2);
             unset($msg[0]);
             switch ($cmd) {
+                /**
+                *   Untuk pertanyaan
+                */
                 case 'ask':
                         $n = new Brainly();
                         $n->prepare($msg = implode(' ', $msg));
@@ -122,7 +125,7 @@ class AI extends Crayner_System
                 *   Command not found !
                 */
                 default:
-                        
+                        $this->reply = "Error System !";
                     break;
             }
             return isset($this->reply) ? true : false;
