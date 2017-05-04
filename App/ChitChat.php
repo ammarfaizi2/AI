@@ -11,7 +11,6 @@ use System\CM_Curl;
 
 class ChitChat
 {
-
     private $ai_name;
     private $msg;
     private $cur;
