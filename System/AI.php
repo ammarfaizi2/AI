@@ -112,6 +112,7 @@ class AI extends Crayner_System
             $rt = true;
         } else
         if ($this->command($cmd)) {
+            print 'command';
             $rt = true;
         } else
         if ($this->chitchat) {
