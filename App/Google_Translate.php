@@ -11,7 +11,11 @@ use System\CM_Curl;
 class Google_Translate
 {
 	public $list_lang;
+	private $err;
+	private $from;
+	private $to;
 	private $text;
+	private $result;
 	public function __construct()
 	{	
 		is_dir(data.'/google/cookies/') or mkdir(data.'/google/cookies/');
@@ -122,13 +126,23 @@ class Google_Translate
 			'zu' => 'Zulu',
 		);
 	}
+
+	/**
+	*	@param string
+	*	@return boolean
+	*/
 	private function check_lang($lang)
 	{
 		return isset($this->list_lang[$lang]);
 	}
+
+	/**
+	*	@param string,string
+	*	@return instance
+	*/
 	public function prepare($text,$lang='auto_id')
 	{
-		$lang = $lang===null ? 'auto_id' : $lang;
+		$lang = $lang===null ? 'auto_id' : strtolower($lang);
 		$lang = explode("_", $lang);
 		$check1 = $this->check_lang($lang[0]);
 		$check2 = $thos->check_lang($lang[1]);
@@ -147,6 +161,10 @@ class Google_Translate
 		}
 		return $this;
 	}
+
+	/**
+	*	@return boolean
+	*/
 	public function execute()
 	{
 		if (!isset($this->text)) {
@@ -156,6 +174,18 @@ class Google_Translate
 		$ch->set_cookie(data.'/google/cookies/');
 		$src = $ch->execute();
 	}
+
+	/**
+	*	@return string
+	*/
+	public function error()
+	{
+		return isset($this->err) and !empty($this->err) ? $this->err : false;
+	}
+
+	/**
+	*	@return mixed
+	*/
 	public function fetch_result()
 	{
 		return $this->result;

@@ -3,6 +3,7 @@ namespace System;
 defined('data') or die('Error : data not defined !');
 use System\Crayner_System;
 use App\ChitChat;
+use App\Google_Translate;
 
 /**
 * @author Ammar Faizi <ammarfaizi2@gmail.com> https://www.facebook.com/ammarfaizi2
@@ -66,7 +67,18 @@ class AI extends Crayner_System
         if (isset($command_list[$msg])) {
             $msg = explode(' ', $this->absmsg,2);
             unset($msg[0]);
-
+            switch ($msg) {
+                case 'ctranslate':
+                    $t = explode(' ', $this->msg,4);
+                    $n = new Google_Translate();
+                    $st = $n->prepare($t[3],($t[1].'_'.$t[2]));
+                    $st->execute();
+                    break;
+                
+                default:
+                    # code...
+                    break;
+            }
         }
     }
 
