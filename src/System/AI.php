@@ -6,6 +6,7 @@ use App\Brainly;
 use App\ChitChat;
 use App\GoogleTranslate;
 use System\CraynerSystem;
+
 /**
 * @author Ammar Faizi <ammarfaizi2@gmail.com> https://www.facebook.com/ammarfaizi2
 * @license RedAngel PHP Concept
@@ -63,7 +64,7 @@ class AI extends CraynerSystem
                 'Ammar F'
             );
         if (isset($root_command_list[$msg]) and ((is_array($superuser) and in_array($this->actor, $superuser)) or ($superuser=='all'))) {
-            $msg = explode(' ', $this->absmsg,2);
+            $msg = explode(' ', $this->absmsg, 2);
             switch ($msg[0]) {
                 case 'shell_exec': case 'shexec':
                     $this->reply = shell_exec(trim($msg[1]));

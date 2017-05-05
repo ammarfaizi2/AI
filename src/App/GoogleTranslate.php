@@ -5,7 +5,6 @@ defined('data') or die('Error : data not defined !');
 
 use Curl\CMCurl;
 
-
 class GoogleTranslate
 {
     public $list_lang;
