@@ -2,6 +2,9 @@
     "name": "ammarfaizi2/ai",
     "description": "AI",
     "type": "Project",
+    "require": {
+        "ammarfaizi2/ratools": "dev-master"
+    },
     "license": "RedAngel PHP Concept",
     "authors": [
         {
@@ -10,9 +13,6 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {
-        "php": ">=5.3.0"
-    },
     "autoload": {
         "psr-0": {
             "App": "src/",

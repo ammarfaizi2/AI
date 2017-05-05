@@ -3,7 +3,7 @@ namespace App;
 
 defined('data') or die('Error : data not defined !');
 
-use System\CMCurl;
+use Curl\CMCurl;
 
 
 class GoogleTranslate
