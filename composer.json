@@ -9,5 +9,7 @@
             "email": "ammarfaizi2@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "system/events": "^1.0"
+    }
 }
