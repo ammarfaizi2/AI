@@ -1,5 +1,5 @@
 {
-    "name": "ai/system",
+    "name": "root/ai",
     "description": "AI",
     "type": "Project",
     "license": "RedAngel PHP Concept",
