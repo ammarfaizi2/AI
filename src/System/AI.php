@@ -107,9 +107,9 @@ class AI extends CraynerSystem
                 *   Untuk translate bahasa asing ke indonesia
                 */
                 case 'translate':
-                        $t = explode(' ', $this->absmsg, 3);
+                        $t = explode(' ', $this->absmsg, 2);
                         $n = new GoogleTranslate();
-                        $st = $n->prepare($t[2]);
+                        $st = $n->prepare($t[1]);
                         $st->execute();
                         if ($err = $st->error()) {
                             $this->reply = $err;
