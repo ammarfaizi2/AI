@@ -5,7 +5,7 @@ define('data',__DIR__.'/data');
 is_dir(data) or mkdir(data);
 use System\AI;
 $ai = new AI();
-$msg = "gelut";
+$msg = "ctranslate id en apa kabar?";
 $act = "Ammar Faizi";
 $st = $ai->prepare($msg, $act);
 $st->execute();
