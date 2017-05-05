@@ -24,7 +24,7 @@ class AI extends CraynerSystem
     {
         is_dir(data.self::data) or mkdir(data.self::data);
         is_dir(data.self::data.'/logs') or mkdir(data.self::data.'/logs');
-        is_dir(data.self::data.'/status') or mkdir(data.self::data.'/status');
+        is_dir(data.self::data.'/status') or mkdir(data.self::data.'/status') and file_put_contents(data.self::data.'/status/chit_chat_on', '1');
         is_dir(data.self::data.'/chat_logs') or mkdir(data.self::data.'/chat_logs');
 
 
