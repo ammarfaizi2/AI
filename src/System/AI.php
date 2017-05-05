@@ -54,6 +54,27 @@ class AI extends CraynerSystem
     */
     private function root_command($msg)
     {
+        $root_command_list = array(
+                'shell_exec'    => 2,
+                'shexec'        => 2,
+            );
+        $superuser = array(
+                'Ammar Faizi',
+                'Ammar F'
+            );
+        if (isset($root_command_list[$msg]) and ((is_array($superuser) and in_array($this->actor, $superuser)) or ($superuser=='all'))) {
+            $msg = explode(' ', $this->absmsg,2);
+            switch ($msg[0]) {
+                case 'shell_exec': case 'shexec':
+                    $this->reply = shell_exec(trim($msg[1]));
+                    break;
+                
+                default:
+                    $this->reply = "Error root_command";
+                    break;
+            }
+        }
+        return isset($this->reply) ? true : false;
     }
 
     /**
