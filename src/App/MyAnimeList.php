@@ -41,6 +41,9 @@ class MyAnimeList
     }
     private function save_to_data($result)
     {
+        if ($result===false) {
+            return false;
+        }
         $return = array();
         if (isset($result['entry'][0]['id'])) {
             $data = file_exists(data.'/ani/myanimelist/data.json') ? json_decode(file_get_contents(data.'/ani/myanimelist/data.json'),true) : array();
@@ -62,7 +65,11 @@ class MyAnimeList
                 file_put_contents(data.'/ani/myanimelist/data.json', json_encode($data,128));
             }
         }
-        return $result===false ? null : $return;
+        $rt = '';
+        foreach ($return as $key => $value) {
+            $rt.= $key.' : '.$value."\n";
+        }
+        return $rt;
     }
     public function get_info($id)
     {

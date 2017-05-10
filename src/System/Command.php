@@ -57,7 +57,8 @@ trait Command
                 *   Mencari ID Anime 
                 */
                 case 'q_anime': case 'q_manga':
-                        $this->reply = (new MyAnimeList('ammarfaizi2', 'triosemut123'))->search($msg[1],$cmd);
+                        $search = (new MyAnimeList('ammarfaizi2', 'triosemut123'))->search($msg[1],$cmd);
+                        $this->reply = $search ? $search : "Mohon maaf anime \"".$msg[1]."\" tidak ditemukan !";
                     break;
 
                 /**
