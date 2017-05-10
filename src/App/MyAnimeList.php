@@ -39,9 +39,9 @@ class MyAnimeList
     }
     private function save_to_data($result)
     {
-        $data = file_exists(data.'/ani/myanimelist/data.json') ? file_get_contents(data.'/ani/myanimelist/data.json') : array();
+        $data = file_exists(data.'/ani/myanimelist/data.json') ? json_decode(file_get_contents(data.'/ani/myanimelist/data.json'),true) : array();
         foreach ($result['entry'] as $val) {
-            $_r['hash_table'][$this->hash][] = $val['id'];
+            $data['hash_table'][$this->hash][] = $val['id'];
         }
         file_put_contents(data.'/ani/myanimelist/data.json',json_encode($_r,128));
         return $result;
