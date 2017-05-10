@@ -77,6 +77,9 @@ class MyAnimeList
                     break;
                 }
             }
+            if (!isset($file)) {
+                return false;
+            }
             $info = json_decode(file_get_contents(data.'/ani/myanimelist/results/'.$file),true);
             if (isset($info['entry'][0]['id'])) {
                 foreach ($info['entry'] as $key => $val) {
@@ -88,7 +91,12 @@ class MyAnimeList
             } else {
                 $val = $info['entry'];
             }
+            $return = '';
+            $image = $val['image']; unset($val['image']);
+            foreach ($val as $key => $value) {
+                $return .= ucwords(str_replace("_"," ",$key))." : ".str_replace("<br />","\n",html_entity_decode($value,ENT_QUOTES,'UTF-8'))."\n";
+            }
         }
-        return $val;
+        return isset($return) ? array($image,$return) : false;
     }
 }

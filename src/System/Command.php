@@ -53,13 +53,24 @@ trait Command
                         $this->reply = "Menu : \n1. ask[spasi]pertanyaan : Untuk bertanya\n2. menu : Untuk menampilkan menu ini\n3. ctranslate[spasi]from[spasi]to[spasi]kalimat : Untuk translate dari berbagai bahasa\n4. translate[spasi]kalimat : Untuk translate dari bahasa apapun ke bahasa Indonesia\n5. whatanime[spasi]url_gambar : Untuk mencari judul anime berdasarkan gambar";
                     break;
 
-
+                /**
+                *   Mencari ID Anime 
+                */
                 case 'q_anime': case 'q_manga':
                         $this->reply = (new MyAnimeList('ammarfaizi2', 'triosemut123'))->search($msg[1],$cmd);
                     break;
 
+                /**
+                *   Untuk mencari info anime
+                */
                 case 'i_anime': case 'i_manga':
-                        $this->reply = (new MyAnimeList('ammarfaizi2', 'triosemut123'))->get_info($msg[1],$cmd);
+                        $msg[1] = trim($msg[1]);
+                        if (is_numeric($msg[1])) {
+                            $search = (new MyAnimeList('ammarfaizi2', 'triosemut123'))->get_info($msg[1],$cmd);
+                            $this->reply = $search ? $search : "Mohon maaf, anime dengan id ".$msg[1]." tidak ditemukan !";
+                        } else {
+                            $this->reply = "Mohon maaf, pencarian info anime hanya bisa dilakukan dengan ID anime !";
+                        }
                     break;
 
                 /**
