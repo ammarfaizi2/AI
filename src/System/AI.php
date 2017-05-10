@@ -6,7 +6,6 @@ use App\Brainly;
 use App\ChitChat;
 use App\GoogleTranslate;
 use System\CraynerSystem;
-
 /**
 * @author Ammar Faizi <ammarfaizi2@gmail.com> https://www.facebook.com/ammarfaizi2
 * @license RedAngel PHP Concept
@@ -53,29 +52,44 @@ class AI extends CraynerSystem
     *   @param string
     *   @return boolean
     */
-    private function root_command($msg)
+    private function root_command($cmd)
     {
-        $root_command_list = array(
-                'shell_exec'    => 2,
-                'shexec'        => 2,
+        $command_list = array(
+                'shell_exec' => 2,
+                'shexec'     => 2,
+                'ps'         => 2,
             );
-        $superuser = array(
-                'Ammar Faizi',
-                'Ammar F'
-            );
-        if (isset($root_command_list[$msg]) and ((is_array($superuser) and in_array($this->actor, $superuser)) or ($superuser=='all'))) {
+        if (isset($command_list[$cmd])) {
+            $rt = false;
             $msg = explode(' ', $this->absmsg, 2);
-            switch ($msg[0]) {
-                case 'shell_exec': case 'shexec':
-                    $this->reply = shell_exec(trim($msg[1]));
+            unset($msg[0]);
+            switch ($cmd) {
+                /**
+                *   Shell Exec
+                */
+                case 'shexec': case 'shell_exec':
+                        $sh = shell_exec($msg[1]);
+                        $this->reply = empty($sh) ? "~" : $sh;
                     break;
-                
+
+                /**
+                *
+                */
+                case 'ps':
+                        $sh = shell_exec('ps '.$msg[1]);
+                        $this->reply = empty($sh) ? "~" : $sh;
+                    break;
+
+
+                /**
+                *   Command not found !
+                */
                 default:
-                    $this->reply = "Error root_command";
+                        $this->reply = "Error System !";
                     break;
             }
+            return isset($this->reply) ? true : false;
         }
-        return isset($this->reply) ? true : false;
     }
 
     /**
@@ -177,8 +191,10 @@ class AI extends CraynerSystem
             $rt = true;
         } elseif ($this->chitchat) {
             $st = new ChitChat('Carik');
-            if ($st->prepare($this->msg)->execute()) {
+            $st->prepare($this->msg)->execute();
+            if (true) {
                 $this->reply = $st->fetch_reply();
+                var_dump($st);
                 $rt = $this->reply===null ? false : true;
             } else {
                 $rt = false;
