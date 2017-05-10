@@ -18,7 +18,6 @@ class AI extends CraynerSystem
     private $data;
     private $chitchat;
     private $reply;
-    use RootCommand, Command;
     public function __construct()
     {
         is_dir(data.self::data) or mkdir(data.self::data);
@@ -30,6 +29,8 @@ class AI extends CraynerSystem
         $this->chitchat = file_exists(data.self::data.'/status/chit_chat_on');
     }
 
+    use RootCommand, Command;
+    
     /**
     * void
     */

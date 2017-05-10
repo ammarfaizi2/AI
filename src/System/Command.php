@@ -75,7 +75,12 @@ trait Command
                 case 'whatanime':
                         $t = new WhatAnime(trim($msg[1]));
                         $t->execute();
-                        $this->reply = $t->fetch_result();
+                        $result = $t->fetch_result();
+                        $reply = '';
+                        foreach ($result['docs'][0] as $key => $value) {
+                            $reply .= ucwords(str_replace("_", " ", $key))." : ".$value."\n";
+                        }
+                        $this->reply = $reply;
                     break;
                 /**
                 *   Command not found !
