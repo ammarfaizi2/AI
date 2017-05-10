@@ -13,27 +13,44 @@ class WhatAnime
     {
         is_dir(data.'/ani') or mkdir(data.'/ani');
         is_dir(data.'/ani/wa') or mkdir(data.'/ani/wa');
-        $hash = $in;
-        if (file_exists(data.'/ani/wa/'.$hash)) {
-            $this->result = json_decode(file_get_contents(data.'/ani/wa/'.$hash));
-        }
-        if (!isset($this->result)) {
-            if ((substr($in, 0, 8)=="https://" or substr($in, 0, 7)=="http://")) {
-                $st = new CMCurl($in);
-                $dt = $st->execute();
-                $st->close();
-                file_put_contents('/ani/wa/'.md5($in), $dt);
-                $in = base64_encode($dt);
+        is_dir(data.'/ani/wa/results') or mkdir(data.'/ani/wa/results');
+        is_dir(data.'/ani/wa/history') or mkdir(data.'/ani/wa/history');
+        $this->hash = md5($in);
+        $this->input = $in;
+    }
+    public function execute()
+    {
+        if (file_exists(data.'/ani/wa/results/'.$this->hash)) {
+            $this->result = file_get_contents(data.'/ani/wa/results/'.$this->hash);
+            return true;
+        } else {
+            if (file_exists(data.'/ani/wa/history/'.$this->hash)) {
+                $this->file = base64_encode(file_get_contents(data.'/ani/wa/history/'.$this->hash));
+            } else {
+                $ch = new CMCurl($this->input);
+                $ch->set_useragent();
+                $file = $ch->execute();
+                file_put_contents(data.'/ani/wa/history/'.$this->hash, $file);
+                $this->file = base64_encode($file);
             }
-            $post = 'data=data%3Aimage%2Fjpeg%3Bbase64%2C'.urlencode($in);
-            $ch = new CMCurl("https://whatanime.ga/search");
-            $ch->set_header(array("Content-Type: application/x-www-form-urlencoded; charset=UTF-8","X-Requested-With: XMLHttpRequest"));
-            $ch->set_useragent("Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:46.0) Gecko/20100101 Firefox/46.0");
-            $ch->set_optional(array(
-                    CURLOPT_REFERER=>'https://whatanime.ga/'
-                ));
-            $this->result = $ch->execute();
-            $ch->close();
         }
+        $ch = new CMCurl("https://whatanime.ga/search");
+        $ch->set_useragent();
+        $ch->set_optional(array(
+                    CURLOPT_REFERER=>"https://whatanime.ga/?url=".urlencode($this->input)
+                ));
+        $ch->set_header(array(
+            "X-Requested-With: XMLHttpRequest",
+            "Content-Type: application/x-www-form-urlencoded; charset=UTF-8"
+        ));
+        $ch->set_post("data=data%3Aimage%2Fjpeg%3Bbase64%2C".urlencode($this->file));
+        $this->result = $ch->execute();
+        file_put_contents(data.'/ani/wa/results/'.$this->hash, json_encode(json_decode($this->result),128));
+        $ch->close();
+        return true;
+    }
+    public function fetch_result()
+    {
+        return $this->result;
     }
 }
