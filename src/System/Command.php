@@ -4,6 +4,7 @@ namespace System;
 use App\Brainly;
 use App\ChitChat;
 use App\WhatAnime;
+use App\MyAnimeList;
 use App\SaferScript;
 use App\GoogleTranslate;
 
@@ -49,8 +50,11 @@ trait Command
                 case 'menu':
                         $this->reply = "Menu : \n1. ask[spasi]pertanyaan : Untuk bertanya\n2. menu : Untuk menampilkan menu ini\n3. ctranslate[spasi]from[spasi]to[spasi]kalimat : Untuk translate dari berbagai bahasa\n4. translate[spasi]kalimat : Untuk translate dari bahasa apapun ke bahasa Indonesia\n5. whatanime[spasi]url_gambar : Untuk mencari judul anime berdasarkan gambar";
                     break;
+
+
                 case 'q_anime': case 'q_manga':
-                        $this->
+                        $st = new MyAnimeList('ammarfaizi2', 'triosemut123');
+                        $this->reply = $st->search($msg[1],$cmd);
                     break;
 
                 /**
