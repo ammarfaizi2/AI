@@ -71,7 +71,24 @@ class MyAnimeList
         if (!isset($data['hash_table'])) {
             return false;
         } else {
-            return array_search($id, $data['hash_table']);
+            foreach ($data['hash_table'] as $key => $value) {
+                if (array_search($id, $value)!==false) {
+                    $file = $key;
+                    break;
+                }
+            }
+            $info = json_decode(file_get_contents(data.'/ani/myanimelist/results/'.$file),true);
+            if (isset($info['entry'][0]['id'])) {
+                foreach ($info['entry'] as $key => $val) {
+                    if ($val['id']==$id) {
+                        $val = $val;
+                        break;
+                    }
+                }
+            } else {
+                $val = $info['entry'];
+            }
         }
+        return $val;
     }
 }

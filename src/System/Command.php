@@ -59,7 +59,7 @@ trait Command
                     break;
 
                 case 'i_anime': case 'i_manga':
-                        $this->reply = (new MyAnimeList('ammarfaizi2', 'triosemut123'))->search($msg[1],$cmd);
+                        $this->reply = (new MyAnimeList('ammarfaizi2', 'triosemut123'))->get_info($msg[1],$cmd);
                     break;
 
                 /**
