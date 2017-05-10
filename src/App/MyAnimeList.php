@@ -20,10 +20,11 @@ class MyAnimeList
     }
     public function search($query, $type=null)
     {
+        $type = $type=='q_anime' ? 'anime' : 'manga';
         if (file_exists(data.'/ani/myanimelist/results/'.md5($query.$type))) {
             $result = file_get_contents(data.'/ani/myanimelist/results/'.md5($query.$type));
         } else {
-            $ch = new CMCurl("https://myanimelist.net/api/".($type===null?"anime":$type)."/search.xml?q=".urlencode($query));
+            $ch = new CMCurl("https://myanimelist.net/api/{$type}/search.xml?q=".urlencode($query));
             $ch->set_option($this->option);
             $result = $ch->execute();
             $ch->close();

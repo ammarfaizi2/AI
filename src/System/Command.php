@@ -18,6 +18,8 @@ trait Command
         $command_list = array(
                 'ask'        => 2,
                 'menu'       => 2,
+                'q_anime'    => 2,
+                'q_manga'    => 2,
                 'ctranslate' => 3,
                 'translate'  => 2,
                 'whatanime'  => 2,
@@ -44,10 +46,12 @@ trait Command
                 /**
                 *   Show menu
                 */
-                case "menu":
+                case 'menu':
                         $this->reply = "Menu : \n1. ask[spasi]pertanyaan : Untuk bertanya\n2. menu : Untuk menampilkan menu ini\n3. ctranslate[spasi]from[spasi]to[spasi]kalimat : Untuk translate dari berbagai bahasa\n4. translate[spasi]kalimat : Untuk translate dari bahasa apapun ke bahasa Indonesia\n5. whatanime[spasi]url_gambar : Untuk mencari judul anime berdasarkan gambar";
                     break;
-
+                case 'q_anime': case 'q_manga':
+                        $this->
+                    break;
 
                 /**
                 *   Untuk translate berbagai bahasa
