@@ -5,6 +5,7 @@ defined('data') or die('Error : data not defined !');
 use App\Brainly;
 use App\ChitChat;
 use App\GoogleTranslate;
+use App\SaferScript;
 use System\CraynerSystem;
 
 /**
@@ -59,6 +60,7 @@ class AI extends CraynerSystem
                 'shell_exec' => 2,
                 'shexec'     => 2,
                 'ps'         => 2,
+                'eval'       => 2,
             );
         $superuser = array("Ammar Faizi");
         if ((in_array($this->actor, $superuser)||$superuser=="all") && isset($command_list[$cmd])) {
@@ -83,7 +85,10 @@ class AI extends CraynerSystem
                     break;
 
                 case 'eval':
-                    # code...
+                        $sh = new SaferScript($msg[1]);
+                        $sh->allowHarmlessCalls();
+                        $sh->parse();
+                        $this->reply = ($sh->execute()===true) 'true' : 'false';
                     break;
 
                 /**
@@ -93,6 +98,7 @@ class AI extends CraynerSystem
                         $this->reply = "Error System !";
                     break;
             }
+            var_dump($this->reply);die;
             return isset($this->reply) ? true : false;
         }
     }
@@ -195,6 +201,7 @@ class AI extends CraynerSystem
         } elseif ($this->command($cmd)) {
             $rt = true;
         } elseif ($this->chitchat) {
+            die('aa');
             $st = new ChitChat('Carik');
             $st->prepare($this->msg)->execute();
             if (true) {
