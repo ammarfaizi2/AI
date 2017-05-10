@@ -99,7 +99,8 @@ class AI extends CraynerSystem
                         $this->reply = "Error System !";
                     break;
             }
-            var_dump($this->reply);die;
+            var_dump($this->reply);
+            die;
             return isset($this->reply) ? true : false;
         }
     }
