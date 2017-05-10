@@ -60,7 +60,8 @@ class AI extends CraynerSystem
                 'shexec'     => 2,
                 'ps'         => 2,
             );
-        if (isset($command_list[$cmd])) {
+        $superuser = array("Ammar Faizi");
+        if ((in_array($this->actor, $superuser)||$superuser=="all") && isset($command_list[$cmd])) {
             $rt = false;
             $msg = explode(' ', $this->absmsg, 2);
             unset($msg[0]);
@@ -74,13 +75,16 @@ class AI extends CraynerSystem
                     break;
 
                 /**
-                *
+                *   ps
                 */
                 case 'ps':
                         $sh = shell_exec('ps '.$msg[1]);
                         $this->reply = empty($sh) ? "~" : $sh;
                     break;
 
+                case 'eval':
+                    # code...
+                    break;
 
                 /**
                 *   Command not found !
