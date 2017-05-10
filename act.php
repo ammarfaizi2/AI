@@ -6,7 +6,7 @@ use System\AI;
 
 $ai = new AI();
 $act = "Ammar Faizi";
-$msg = "q_anime naruto";
+$msg = "q_anime 27775";
 $st = $ai->prepare($msg, $act);
 $st->execute();
 var_dump($st->fetch_reply());

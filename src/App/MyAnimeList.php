@@ -62,6 +62,16 @@ class MyAnimeList
                 file_put_contents(data.'/ani/myanimelist/data.json', json_encode($data,128));
             }
         }
-        return $return;
+        return $result===false ? null : $return;
+    }
+    public function get_info($id)
+    {
+        $data = json_decode(file_get_contents(data.'/ani/myanimelist/data.json'),true);
+        $data = is_array($data) ? $data : array();
+        if (!isset($data['hash_table'])) {
+            return false;
+        } else {
+            
+        }
     }
 }
