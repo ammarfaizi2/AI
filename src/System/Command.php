@@ -17,6 +17,7 @@ trait Command
     {
         $command_list = array(
                 'ask'        => 2,
+                'menu'       => 2,
                 'ctranslate' => 3,
                 'translate'  => 2,
                 'whatanime'  => 2,
@@ -38,6 +39,13 @@ trait Command
                         } else {
                             $this->reply = "Mohon maaf, saya tidak bisa menjawab pertanyaan \"".($msg)."\".";
                         }
+                    break;
+                
+                /**
+                *   Show menu
+                */
+                case "menu":
+                        $this->reply = "Menu : \n1. ask[spasi]pertanyaan : Untuk bertanya\n2. menu : Untuk menampilkan menu ini\n3. ctranslate[spasi]from[spasi]to[spasi]kalimat : Untuk translate dari berbagai bahasa\n4. translate[spasi]kalimat : Untuk translate dari bahasa apapun ke bahasa Indonesia\n5. whatanime[spasi]url_gambar : Untuk mencari judul anime berdasarkan gambar";
                     break;
 
 
@@ -72,6 +80,9 @@ trait Command
                         }
                     break;
 
+                /**
+                *   Mencari judul anime dengan URL gambar
+                */
                 case 'whatanime':
                         $t = new WhatAnime(trim($msg[1]));
                         $t->execute();
