@@ -49,14 +49,18 @@ class MyAnimeList
                 $data['hash_table'][$this->hash][] = $val['id'];
                 $return[$val['id']] = $val['title'];
             }
-            file_put_contents(data.'/ani/myanimelist/data.json', json_encode($data,128));
+            if (!isset($data['hash_table'][$this->hash])) {                
+                file_put_contents(data.'/ani/myanimelist/data.json', json_encode($data,128));
+            }
         } else
         if (isset($result['entry']['id'])) {
             $data = file_exists(data.'/ani/myanimelist/data.json') ? json_decode(file_get_contents(data.'/ani/myanimelist/data.json'),true) : array();
             $data = is_array($data) ? $data : array();
-            $data['hash_table'][$this->hash][] = $result['entry']['id'];
-            file_put_contents(data.'/ani/myanimelist/data.json', json_encode($data,128));
-            $return[$result['entry']['id']] = $result['entry']['title'];
+                $data['hash_table'][$this->hash][] = $result['entry']['id'];
+                $return[$result['entry']['id']] = $result['entry']['title'];
+            if (!isset($data['hash_table'][$this->hash])) {
+                file_put_contents(data.'/ani/myanimelist/data.json', json_encode($data,128));
+            }
         }
         return $return;
     }
