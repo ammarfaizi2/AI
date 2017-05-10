@@ -17,7 +17,8 @@ class SaferScript
                 array("echo","print","include","include_once","require","require_once"),
                 json_decode($this->allowed_functions, true),
                 json_decode($this->allowed_class, true),
-                json_decode($this->allowed_constants, true)
+                json_decode($this->allowed_constants, true),
+                json_decode($this->allowed_intefaces, true)
             );
     }
     public function parse($auth=null)
@@ -62,10 +63,9 @@ class SaferScript
             }
             return isset($q) ? $q : "success !";
         } else {
-            print('cannot execute, script contains errors');
+            return 'cannot execute, script contains errors';
         }
     }
-   
     private $allowed_functions = '[
     "zend_version",
     "func_num_args",
@@ -3224,5 +3224,25 @@ class SaferScript
     "STDIN",
     "STDOUT",
     "STDERR"
+]';
+    private $allowed_intefaces = '[
+    "Traversable",
+    "IteratorAggregate",
+    "Iterator",
+    "ArrayAccess",
+    "Serializable",
+    "Throwable",
+    "DateTimeInterface",
+    "Reflector",
+    "RecursiveIterator",
+    "OuterIterator",
+    "Countable",
+    "SeekableIterator",
+    "SplObserver",
+    "SplSubject",
+    "SessionHandlerInterface",
+    "SessionIdInterface",
+    "SessionUpdateTimestampHandlerInterface",
+    "JsonSerializable"
 ]';
 }
