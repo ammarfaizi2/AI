@@ -19,6 +19,8 @@ trait Command
         $command_list = array(
                 'ask'        => 2,
                 'menu'       => 2,
+                'i_anime'    => 2,
+                'i_manga'    => 2,
                 'q_anime'    => 2,
                 'q_manga'    => 2,
                 'ctranslate' => 3,
@@ -53,8 +55,11 @@ trait Command
 
 
                 case 'q_anime': case 'q_manga':
-                        $st = new MyAnimeList('ammarfaizi2', 'triosemut123');
-                        $this->reply = $st->search($msg[1],$cmd);
+                        $this->reply = (new MyAnimeList('ammarfaizi2', 'triosemut123'))->search($msg[1],$cmd);
+                    break;
+
+                case 'i_anime': case 'i_manga':
+                        $this->reply = (new MyAnimeList('ammarfaizi2', 'triosemut123'))->search($msg[1],$cmd);
                     break;
 
                 /**
