@@ -71,8 +71,7 @@ class AI extends CraynerSystem
             $rt = true;
         } elseif ($this->command($cmd)) {
             $rt = true;
-        } elseif ($this->chitchat) {
-            die('aa');
+        } /*elseif ($this->chitchat) {
             $st = new ChitChat('Carik');
             $st->prepare($this->msg)->execute();
             if (true) {
@@ -82,7 +81,7 @@ class AI extends CraynerSystem
             } else {
                 $rt = false;
             }
-        } else {
+        }*/ else {
             $rt = false;
         }
         $this->clog();

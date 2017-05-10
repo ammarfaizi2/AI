@@ -18,6 +18,7 @@ class MyAnimeList
     private $history;
     public function __construct($user, $pass)
     {
+        is_dir(data.'/ani') or mkdir(data.'/ani');
         is_dir(data.'/ani/myanimelist') or mkdir(data.'/ani/myanimelist');
         is_dir(data.'/ani/myanimelist/results') or mkdir(data.'/ani/myanimelist/results');
         is_dir(data.'/ani/myanimelist/image') or mkdir(data.'/ani/myanimelist/image');
@@ -46,22 +47,22 @@ class MyAnimeList
         }
         $return = array();
         if (isset($result['entry'][0]['id'])) {
-            $data = file_exists(data.'/ani/myanimelist/data.json') ? json_decode(file_get_contents(data.'/ani/myanimelist/data.json'),true) : array();
-            $data = is_array($data) ? $data : array();
+            $_data = file_exists(data.'/ani/myanimelist/data.json') ? json_decode(file_get_contents(data.'/ani/myanimelist/data.json'),true) : array();
+            $data = is_array($_data) ? $_data : array();
             foreach ($result['entry'] as $val) {
                 $data['hash_table'][$this->hash][] = $val['id'];
                 $return[$val['id']] = $val['title'];
             }
-            if (!isset($data['hash_table'][$this->hash])) {                
+            if (!isset($_data['hash_table'][$this->hash])) {                
                 file_put_contents(data.'/ani/myanimelist/data.json', json_encode($data,128));
             }
         } else
         if (isset($result['entry']['id'])) {
-            $data = file_exists(data.'/ani/myanimelist/data.json') ? json_decode(file_get_contents(data.'/ani/myanimelist/data.json'),true) : array();
-            $data = is_array($data) ? $data : array();
-                $data['hash_table'][$this->hash][] = $result['entry']['id'];
-                $return[$result['entry']['id']] = $result['entry']['title'];
-            if (!isset($data['hash_table'][$this->hash])) {
+            $_data = file_exists(data.'/ani/myanimelist/data.json') ? json_decode(file_get_contents(data.'/ani/myanimelist/data.json'),true) : array();
+            $data = is_array($_data) ? $_data : array();
+            $data['hash_table'][$this->hash][] = $result['entry']['id'];
+            $return[$result['entry']['id']] = $result['entry']['title'];
+            if (!isset($_data['hash_table'][$this->hash])) {
                 file_put_contents(data.'/ani/myanimelist/data.json', json_encode($data,128));
             }
         }
