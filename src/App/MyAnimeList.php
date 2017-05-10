@@ -34,7 +34,7 @@ class MyAnimeList
             $ch = new CMCurl("https://myanimelist.net/api/{$type}/search.xml?q=".urlencode($query));
             $ch->set_optional($this->option);
             $result = json_encode(simplexml_load_string($ch->execute()),128);
-            file_put_contents(data.'/ani/myanimelist/results/'.$this->hash, $result);
+            $result=='false' or file_put_contents(data.'/ani/myanimelist/results/'.$this->hash, $result);
         }
 
         return $this->save_to_data(json_decode($result,true));
@@ -71,7 +71,7 @@ class MyAnimeList
         if (!isset($data['hash_table'])) {
             return false;
         } else {
-            
+            return array_search($id, $data['hash_table']);
         }
     }
 }
