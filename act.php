@@ -4,11 +4,8 @@ define('data', __DIR__.'/data');
 is_dir(data) or mkdir(data);
 use System\AI;
 
-
-
-
 $ai = new AI();
-$msg = "eval file_put_contents('test',1);";
+$msg = "eval ;";
 $act = "Ammar Faizi";
 $st = $ai->prepare($msg, $act);
 $st->execute();

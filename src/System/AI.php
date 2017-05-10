@@ -88,7 +88,8 @@ class AI extends CraynerSystem
                         $sh = new SaferScript($msg[1]);
                         $sh->allowHarmlessCalls();
                         $sh->parse();
-                        $this->reply = ($sh->execute()===true) 'true' : 'false';
+                        $ex = $sh->execute();
+                        $this->reply = (empty($ex)) ? '~' : $ex;
                     break;
 
                 /**
