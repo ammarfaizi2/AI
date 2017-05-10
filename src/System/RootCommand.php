@@ -3,7 +3,8 @@ namespace System;
 
 use App\SaferScript;
 
-trait RootCommand{
+trait RootCommand
+{
     
     /**
     *   @param string

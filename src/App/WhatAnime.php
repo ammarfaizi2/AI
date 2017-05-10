@@ -45,12 +45,16 @@ class WhatAnime
         ));
         $ch->set_post("data=data%3Aimage%2Fjpeg%3Bbase64%2C".urlencode($this->file));
         $this->result = $ch->execute();
-        file_put_contents(data.'/ani/wa/results/'.$this->hash, json_encode(json_decode($this->result),128));
+        file_put_contents(data.'/ani/wa/results/'.$this->hash, json_encode(json_decode($this->result), 128));
         $ch->close();
         return true;
     }
-    public function fetch_result()
+
+    /**
+    *   @return array
+    */
+    public function fetch_result($array=true)
     {
-        return $this->result;
+        return json_decode($this->result, $array);
     }
 }
