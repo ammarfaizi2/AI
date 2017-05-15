@@ -67,7 +67,16 @@ trait Chat
 		}
 
 		if ($timetr===true) {
-			$this->ttreply($msg,)
+			/**
+			*	Reply with time
+			*/
+		} else {
+			foreach ($haystack as $word) {
+				if ($input==$word) {
+					$this->reply = $this->tmp_word[rand(0,count($this->tmp_word)-1)];
+					return true;
+				}
+			}
 		}
 	}
 	
@@ -76,8 +85,9 @@ trait Chat
 		foreach ($this->word_list as $key => $val) {
 			$this->tmp_word = $val[0];
 			if($r=$this->check($msg,$key,$val[1],$val[2],$val[3],$val[4])){
-				return $r;
+				return true;
 			}		
 		}
+		return false;
 	}
 }
