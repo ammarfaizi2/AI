@@ -23,7 +23,7 @@ class MyAnimeList
         is_dir(data.'/ani/myanimelist/results') or mkdir(data.'/ani/myanimelist/results');
         is_dir(data.'/ani/myanimelist/image') or mkdir(data.'/ani/myanimelist/image');
         $this->option = array(CURLOPT_USERPWD=>"{$user}:{$pass}",CURLOPT_CONNECTTIMEOUT=>30);
-        $this->history = file_exists(data.'/ani/myanimelist/history.json') ? json_decode(data.'/ani/myanimelist/history.json',true) : array();
+        $this->history = file_exists(data.'/ani/myanimelist/history.json') ? json_decode(data.'/ani/myanimelist/history.json', true) : array();
     }
     public function search($query, $type=null)
     {
@@ -34,11 +34,11 @@ class MyAnimeList
         } else {
             $ch = new CMCurl("https://myanimelist.net/api/{$type}/search.xml?q=".urlencode($query));
             $ch->set_optional($this->option);
-            $result = json_encode(simplexml_load_string($ch->execute()),128);
+            $result = json_encode(simplexml_load_string($ch->execute()), 128);
             $result=='false' or file_put_contents(data.'/ani/myanimelist/results/'.$this->hash, $result);
         }
 
-        return $this->save_to_data(json_decode($result,true));
+        return $this->save_to_data(json_decode($result, true));
     }
     private function save_to_data($result)
     {
@@ -47,23 +47,22 @@ class MyAnimeList
         }
         $return = array();
         if (isset($result['entry'][0]['id'])) {
-            $_data = file_exists(data.'/ani/myanimelist/data.json') ? json_decode(file_get_contents(data.'/ani/myanimelist/data.json'),true) : array();
+            $_data = file_exists(data.'/ani/myanimelist/data.json') ? json_decode(file_get_contents(data.'/ani/myanimelist/data.json'), true) : array();
             $data = is_array($_data) ? $_data : array();
             foreach ($result['entry'] as $val) {
                 $data['hash_table'][$this->hash][] = $val['id'];
                 $return[$val['id']] = $val['title'];
             }
-            if (!isset($_data['hash_table'][$this->hash])) {                
-                file_put_contents(data.'/ani/myanimelist/data.json', json_encode($data,128));
+            if (!isset($_data['hash_table'][$this->hash])) {
+                file_put_contents(data.'/ani/myanimelist/data.json', json_encode($data, 128));
             }
-        } else
-        if (isset($result['entry']['id'])) {
-            $_data = file_exists(data.'/ani/myanimelist/data.json') ? json_decode(file_get_contents(data.'/ani/myanimelist/data.json'),true) : array();
+        } elseif (isset($result['entry']['id'])) {
+            $_data = file_exists(data.'/ani/myanimelist/data.json') ? json_decode(file_get_contents(data.'/ani/myanimelist/data.json'), true) : array();
             $data = is_array($_data) ? $_data : array();
             $data['hash_table'][$this->hash][] = $result['entry']['id'];
             $return[$result['entry']['id']] = $result['entry']['title'];
             if (!isset($_data['hash_table'][$this->hash])) {
-                file_put_contents(data.'/ani/myanimelist/data.json', json_encode($data,128));
+                file_put_contents(data.'/ani/myanimelist/data.json', json_encode($data, 128));
             }
         }
         $rt = '';
@@ -74,7 +73,7 @@ class MyAnimeList
     }
     public function get_info($id)
     {
-        $data = json_decode(file_get_contents(data.'/ani/myanimelist/data.json'),true);
+        $data = json_decode(file_get_contents(data.'/ani/myanimelist/data.json'), true);
         $data = is_array($data) ? $data : array();
         if (!isset($data['hash_table'])) {
             return false;
@@ -88,7 +87,7 @@ class MyAnimeList
             if (!isset($file)) {
                 return false;
             }
-            $info = json_decode(file_get_contents(data.'/ani/myanimelist/results/'.$file),true);
+            $info = json_decode(file_get_contents(data.'/ani/myanimelist/results/'.$file), true);
             if (isset($info['entry'][0]['id'])) {
                 foreach ($info['entry'] as $key => $val) {
                     if ($val['id']==$id) {
@@ -100,9 +99,10 @@ class MyAnimeList
                 $val = $info['entry'];
             }
             $return = '';
-            $image = $val['image']; unset($val['image']);
+            $image = $val['image'];
+            unset($val['image']);
             foreach ($val as $key => $value) {
-                $return .= ucwords(str_replace("_"," ",$key))." : ".str_replace("<br />","\n",html_entity_decode($value,ENT_QUOTES,'UTF-8'))."\n";
+                $return .= ucwords(str_replace("_", " ", $key))." : ".str_replace("<br />", "\n", html_entity_decode($value, ENT_QUOTES, 'UTF-8'))."\n";
             }
         }
         return isset($return) ? array($image,$return) : false;

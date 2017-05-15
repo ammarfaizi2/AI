@@ -54,10 +54,10 @@ trait Command
                     break;
 
                 /**
-                *   Mencari ID Anime 
+                *   Mencari ID Anime
                 */
                 case 'q_anime': case 'q_manga':
-                        $search = (new MyAnimeList('ammarfaizi2', 'triosemut123'))->search($msg[1],$cmd);
+                        $search = (new MyAnimeList('ammarfaizi2', 'triosemut123'))->search($msg[1], $cmd);
                         $this->reply = $search ? ($search)."\n\nUntuk mencari info anime ketik \"i_anime[spasi]id_anime\"\nContoh :\ni_anime 100" : "Mohon maaf anime \"".$msg[1]."\" tidak ditemukan !";
                     break;
 
@@ -67,7 +67,7 @@ trait Command
                 case 'i_anime': case 'i_manga':
                         $msg[1] = trim($msg[1]);
                         if (is_numeric($msg[1])) {
-                            $search = (new MyAnimeList('ammarfaizi2', 'triosemut123'))->get_info($msg[1],$cmd);
+                            $search = (new MyAnimeList('ammarfaizi2', 'triosemut123'))->get_info($msg[1], $cmd);
                             $this->reply = $search ? $search : "Mohon maaf, anime dengan id ".$msg[1]." tidak ditemukan !";
                         } else {
                             $this->reply = "Mohon maaf, pencarian info anime hanya bisa dilakukan dengan ID anime !";
