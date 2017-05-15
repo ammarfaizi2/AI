@@ -23,11 +23,10 @@ trait Chat
 					),true,false,25,null),
 				"apa+kabar,pa+kabar,apa+kbr,kabar" => array(
 					array(
-
-					),),
-
-
-
+						"kabar baik disini...",
+						"alhamdulilah sehat...",
+						"baik baik saja...",
+					),true,false,25,null),
 			);
 	}
 	
