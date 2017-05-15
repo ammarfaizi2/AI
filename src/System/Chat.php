@@ -73,25 +73,20 @@ trait Chat
 			*	Reply with time
 			*/
 		} else {
-			/* Jumlah kata yang masuk */
-			$count_intoword		= count($intoword);
-			$similar_sentence	= array();
+
+			/* Jumlah kata haystack */
+			$count_haystack = count($haystack);
+
+			/* Siapkan penampungan untuk hasil perhitungan kemiripan kalimat */
+			$similar_sentence = array();
+
+			/* Memulai perhitungan disini */
 			foreach ($haystack as $word) {
-				if ($input==$word) {
-					$this->reply = $this->tmp_word[rand(0,count($this->tmp_word)-1)];
-					return true;
-				}
-				/* kemiripan kata */
-				$similar_word = array();
-				foreach ($intoword as $inword) {
-					similar_text($inword, $word, $n);
-					$similar_word[] = $n;
-				}
-				/* kemiripan kata paling tinggi */
-				$similar_sentence[] = max($similar_word);
+				
 			}
-			/* rata-rata */
-			$average = round(array_sum($similar_sentence)/$count_intoword);
+
+
+
 			if ($average>=$this->similar_value) {
 				$this->reply = $this->tmp_word[rand(0,count($this->tmp_word)-1)];
 				return true;
