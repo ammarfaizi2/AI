@@ -130,6 +130,7 @@ trait Chat
 	private function chat($msg)
 	{
 		$wordlist = $this->word_list();
+
 		foreach ($wordlist as $key => $val) {
 			$this->tmp_word = $val[0];
 			if($r=$this->check($msg,$key,$val[1],$val[2],$val[3],$val[4])){
@@ -139,10 +140,14 @@ trait Chat
 				}
 			}		
 		}
+
 		/* Buang yang tidak terpakai */
 		unset($this->tmp_word,$r);
 
+		/* Ambil rata-rata tertinggi */
 		$max_similar		= max($this->average);
+
+		/* Ambil index dari rata-rata tertinggi */
 		$max_similar_key	= array_search($max_similar, $this->average);
 
 		/* jika property this.reply belum ada */
@@ -150,6 +155,7 @@ trait Chat
 			$this->reply = $wordlist[$max_similar_key][0];
 			return true;
 		}
+
 		return false;
 	}
 
