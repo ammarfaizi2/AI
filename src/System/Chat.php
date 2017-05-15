@@ -38,14 +38,32 @@ trait Chat
 	*	@param	identic		= word identical (bool)
 	*	@param	timetr		= time to reply (bool)
 	*	@param	max_words	= input max words to reply (int)
-	*	@param	word_excp	= word exception (array) (string) `numeric array`
+	*	@param	word_excp	= word exception (string)
 	*	@return mixed null|(string)
 	*/
 	private function check($input,$haystack,$identic=false,$timetr=false,$max_words=null,$word_excp=null)
 	{
-		$haystack = explode(",", $haystack);
-		foreach ($haystack as $word) {
-			
+		$intoword	= explode(" ",$input);
+		$haystack	= explode(",", $haystack);
+		$countin	= count($intoword);
+
+		/**
+		* Check max words
+		*/
+		if (($countin>(int)$max_words)) {
+			return false;
+		}
+
+		/**
+		*	Check word_excp
+		*/
+		if ($word_excp!==null) {
+			$word_excp = explode(",", $word_excp);
+			foreach ($intoword as $word) {
+				if(in_array(trim($word), $word_excp)){
+					return false;
+				}
+			}
 		}
 	}
 	
