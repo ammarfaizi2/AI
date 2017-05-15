@@ -14,6 +14,11 @@ trait Chat
 	private $similar_value = 80;
 
 	/**
+	*	$similar_minimal
+	*/
+	private $similar_minimal = 60;
+
+	/**
 	*	@return (array) word_list
 	*/
 	private function word_list()
@@ -122,16 +127,26 @@ trait Chat
 		foreach ($wordlist as $key => $val) {
 			$this->tmp_word = $val[0];
 			if($r=$this->check($msg,$key,$val[1],$val[2],$val[3],$val[4])){
-				/* jika property this.reply belum ada */
-				if (!isset($this->reply)) {
-
+				if (isset($this->reply)) {
+					$this->give_name();
+					return true;
 				}
-				$actor = explode(" ", $this->actor,2);
-				$this->reply = str_replace("^@", $actor[0], $this->reply);
-				$this->reply = str_replace("@", $this->actor, $this->reply);
-				return true;
 			}		
 		}
+
+		$
+		/* jika property this.reply belum ada */
+		if (!isset($this->reply) && ) {
+					
+		}
 		return false;
+	}
+
+	private function give_name()
+	{
+		/* Memberikan nama actor pada reply */
+		$actor = explode(" ", $this->actor,2);
+		$this->reply = str_replace("^@", $actor[0], $this->reply);
+		$this->reply = str_replace("@", $this->actor, $this->reply);
 	}
 }
