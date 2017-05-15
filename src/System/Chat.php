@@ -73,15 +73,14 @@ trait Chat
 			*	Reply with time
 			*/
 		} else {
-			if ($input==$word) {
-				$this->reply = $this->tmp_word[rand(0,count($this->tmp_word)-1)];
-				return true;
-			}
-
 			/* Jumlah kata yang masuk */
 			$count_intoword		= count($intoword);
 			$similar_sentence	= array();
 			foreach ($haystack as $word) {
+				if ($input==$word) {
+					$this->reply = $this->tmp_word[rand(0,count($this->tmp_word)-1)];
+					return true;
+				}
 				/* kemiripan kata */
 				$similar_word = array();
 				foreach ($intoword as $inword) {
