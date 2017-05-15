@@ -77,6 +77,9 @@ trait Chat
 			/* Jumlah kata haystack */
 			$count_haystack = count($haystack);
 
+			/* Jumlah kata yang masuk */
+			$count_inword = count($intoword);
+
 			/* Siapkan penampungan untuk hasil perhitungan kemiripan kalimat */
 			$similar_sentence = array();
 
@@ -87,7 +90,6 @@ trait Chat
 					$this->reply = $this->tmp_word[rand(0,count($this->tmp_word)-1)];
 					return true;
 				}
-
 				/* Siapkan penampungan untuk hasil perhitungan kemiripan kata */
 				$similar_word = array();
 				foreach ($intoword as $inword) {
@@ -97,8 +99,10 @@ trait Chat
 					/* Simpan hasil perhitungan */
 					$similar_word[] = $percent;
 				}
-				$similar_sentence[] = array_sum($similar_word)/$count_haystack;
+				$similar_sentence[] = array_sum($similar_word)/$count_inword;
 			}
+
+			/* Rata rata total */
 			$this->average[$_haystack] = $similar_sentence/$count_haystack;
 			if ($average>=100) {
 				$this->reply = $this->tmp_word[rand(0,count($this->tmp_word)-1)];
