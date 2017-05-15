@@ -104,7 +104,8 @@ trait Chat
 
 			/* Rata rata total */
 			$this->average[$_haystack] = $similar_sentence/$count_haystack;
-			if ($average>=100) {
+			
+			if ($this->average[$_haystack]>=100) {
 				$this->reply = $this->tmp_word[rand(0,count($this->tmp_word)-1)];
 			}
 			return true;
