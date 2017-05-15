@@ -11,7 +11,7 @@ trait Chat
 	/**
 	*	$similar percent
 	*/
-	private $similar_value = 50;
+	private $similar_value = 80;
 
 	/**
 	*	@return (array) word_list
@@ -36,17 +36,17 @@ trait Chat
 	/**
 	*	Sorry penjelasan agak ngawur, harap maklum, inggris berantakan :v
 	*	@param	input 		= input pesan (string)
-	*	@param	haystack	= wordlist (string)		
+	*	@param	_haystack	= wordlist (string)		
 	*	@param	identic		= word identical (bool)
 	*	@param	timetr		= time to reply (bool)
 	*	@param	max_words	= input max words to reply (int)
 	*	@param	word_excp	= word exception (string)
 	*	@return bool
 	*/
-	private function check($input,$haystack,$identic=false,$timetr=false,$max_words=null,$word_excp=null)
+	private function check($input,$_haystack,$identic=false,$timetr=false,$max_words=null,$word_excp=null)
 	{
 		$intoword	= explode(" ",$input);
-		$haystack	= explode(",", $haystack);
+		$haystack	= explode(",", $_haystack);
 		$countin	= count($intoword);
 
 		/**
@@ -90,9 +90,16 @@ trait Chat
 
 				/* Siapkan penampungan untuk hasil perhitungan kemiripan kata */
 				$similar_word = array();
+				foreach ($intoword as $inword) {
+					/* Hitung kemiripan kata */
+					similar_text($word, $intoword, $percent);
 
+					/* Simpan hasil perhitungan */
+					$similar_word[] = $percent;
+				}
+				$similar_sentence[] = array_sum($similar_word);
 			}
-
+			$this->average[$_haystack] = 
 
 
 			if ($average>=$this->similar_value) {
