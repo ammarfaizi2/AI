@@ -139,12 +139,15 @@ trait Chat
 				}
 			}		
 		}
-		unset($this->tmp_word);
+		/* Buang yang tidak terpakai */
+		unset($this->tmp_word,$r);
 
-		$max_similar = max($this->average);
+		$max_similar		= max($this->average);
+		$max_similar_key	= array_search($max_similar, $this->average);
+
 		/* jika property this.reply belum ada */
 		if (!isset($this->reply) && $max_similar>=$this->similar_minimal) {
-			$this->reply = $wordlist
+			$this->reply = $wordlist[$max_similar_key][0];
 			return true;
 		}
 		return false;
