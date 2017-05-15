@@ -13,6 +13,9 @@ trait Chat
 	*/
 	private $similar = 50;
 
+	/**
+	*	@return (array) word_list
+	*/
 	private function word_list()
 	{
 		return array(
@@ -38,7 +41,7 @@ trait Chat
 	*	@param	timetr		= time to reply (bool)
 	*	@param	max_words	= input max words to reply (int)
 	*	@param	word_excp	= word exception (string)
-	*	@return mixed null|(string)
+	*	@return bool
 	*/
 	private function check($input,$haystack,$identic=false,$timetr=false,$max_words=null,$word_excp=null)
 	{
@@ -79,6 +82,10 @@ trait Chat
 		}
 	}
 	
+	/**
+	*	@param 	string msg
+	*	@return	bool
+	*/	
 	private function chat($msg)
 	{
 		foreach ($this->word_list() as $key => $val) {
