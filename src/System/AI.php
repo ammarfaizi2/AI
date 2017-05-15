@@ -29,7 +29,7 @@ class AI extends CraynerSystem
         $this->chitchat = file_exists(data.self::data.'/status/chit_chat_on');
     }
 
-    use RootCommand, Command;
+    use RootCommand, Command, Chat;
     
     /**
     * void
