@@ -34,7 +34,7 @@ trait Chat
 	}
 	
 	/**
-	*	Sorry penjelasan agak ngawur, harap maklum, gak bisa inggris :v
+	*	Sorry penjelasan agak ngawur, harap maklum, inggris berantakan :v
 	*	@param	input 		= input pesan (string)
 	*	@param	haystack	= wordlist (string)		
 	*	@param	identic		= word identical (bool)
