@@ -1,6 +1,9 @@
 <?php
 namespace System;
 
+/**
+*	@author Ammar Faizi <ammarfaizi2@gmail.com>
+*/
 trait Chat
 {
 	private $tmp_word;
@@ -29,6 +32,7 @@ trait Chat
 	}
 	
 	/**
+	*	Sorry penjelasan agak ngawur, harap maklum, gak bisa inggris :v
 	*	@param	input 		= input pesan (string)
 	*	@param	haystack	= wordlist (string)		
 	*	@param	identic		= word identical (bool)
@@ -39,7 +43,10 @@ trait Chat
 	*/
 	private function check($input,$haystack,$identic=false,$timetr=false,$max_words=null,$word_excp=null)
 	{
-
+		$haystack = explode(",", $haystack);
+		foreach ($haystack as $word) {
+			
+		}
 	}
 	
 	private function chat($msg)
