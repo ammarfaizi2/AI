@@ -118,12 +118,13 @@ trait Chat
 	*/	
 	private function chat($msg)
 	{
-		foreach ($this->word_list() as $key => $val) {
+		$wordlist = $this->word_list();
+		foreach ($wordlist as $key => $val) {
 			$this->tmp_word = $val[0];
 			if($r=$this->check($msg,$key,$val[1],$val[2],$val[3],$val[4])){
 				/* jika property this.reply belum ada */
 				if (!isset($this->reply)) {
-					
+
 				}
 				$actor = explode(" ", $this->actor,2);
 				$this->reply = str_replace("^@", $actor[0], $this->reply);
