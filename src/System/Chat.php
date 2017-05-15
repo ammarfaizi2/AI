@@ -4,6 +4,12 @@ namespace System;
 trait Chat
 {
 	private $tmp_word;
+
+	/**
+	*	$similar percent
+	*/
+	private $similar = 50;
+
 	private function word_list($text)
 	{
 		return array(
@@ -11,8 +17,8 @@ trait Chat
 					array(
 						"hai juga ^@",
 						"hay juga ^@",
-					),true,true)
-				,
+					),true,false,25,null),
+				"apa+kabar,pa+kabar,apa+kbr,kabar"
 
 
 
@@ -23,12 +29,13 @@ trait Chat
 	*	@param	input 		= input pesan (string)
 	*	@param	haystack	= wordlist (string)		
 	*	@param	identic		= word identical (bool)
+	*	@param	alsim		= allow similar 
 	*	@param	timetr		= time to reply (bool)
 	*	@param	max_words	= input max words to reply (int)
 	*	@param	word_excp	= word exception (array) (string) `numeric array`
 	*	@return mixed null|(string)
 	*/
-	private function check($input,$haystack,$identic=false,$timetr=false,$max_words=null,$word_excp=null)
+	private function check($input,$haystack,$identic=false,$alsim=false,$timetr=false,$max_words=null,$word_excp=null)
 	{
 
 	}
