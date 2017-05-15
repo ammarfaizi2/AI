@@ -97,15 +97,13 @@ trait Chat
 					/* Simpan hasil perhitungan */
 					$similar_word[] = $percent;
 				}
-				$similar_sentence[] = array_sum($similar_word);
+				$similar_sentence[] = array_sum($similar_word)/$count_haystack;
 			}
-			$this->average[$_haystack] = 
-
-
-			if ($average>=$this->similar_value) {
+			$this->average[$_haystack] = $similar_sentence/$count_haystack;
+			if ($average>=100) {
 				$this->reply = $this->tmp_word[rand(0,count($this->tmp_word)-1)];
-				return true;
 			}
+			return true;
 		}
 	}
 	
