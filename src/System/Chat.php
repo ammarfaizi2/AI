@@ -65,6 +65,10 @@ trait Chat
 				}
 			}
 		}
+
+		if ($timetr===true) {
+			$this->ttreply($msg,)
+		}
 	}
 	
 	private function chat($msg)
