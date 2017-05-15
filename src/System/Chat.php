@@ -82,7 +82,15 @@ trait Chat
 
 			/* Memulai perhitungan disini */
 			foreach ($haystack as $word) {
-				
+				/* Input sama persis, status OK */
+				if ($input==$word) {
+					$this->reply = $this->tmp_word[rand(0,count($this->tmp_word)-1)];
+					return true;
+				}
+
+				/* Siapkan penampungan untuk hasil perhitungan kemiripan kata */
+				$similar_word = array();
+
 			}
 
 
@@ -103,6 +111,10 @@ trait Chat
 		foreach ($this->word_list() as $key => $val) {
 			$this->tmp_word = $val[0];
 			if($r=$this->check($msg,$key,$val[1],$val[2],$val[3],$val[4])){
+				/* jika property this.reply belum ada */
+				if (!isset($this->reply)) {
+					
+				}
 				$actor = explode(" ", $this->actor,2);
 				$this->reply = str_replace("^@", $actor[0], $this->reply);
 				$this->reply = str_replace("@", $this->actor, $this->reply);
