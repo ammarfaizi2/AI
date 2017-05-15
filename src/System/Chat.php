@@ -13,7 +13,7 @@ trait Chat
 	*/
 	private $similar = 50;
 
-	private function word_list($text)
+	private function word_list()
 	{
 		return array(
 				"hai,hi,hy,hay" => array(
@@ -82,9 +82,12 @@ trait Chat
 	
 	private function chat($msg)
 	{
-		foreach ($this->word_list as $key => $val) {
+		foreach ($this->word_list() as $key => $val) {
 			$this->tmp_word = $val[0];
 			if($r=$this->check($msg,$key,$val[1],$val[2],$val[3],$val[4])){
+				$actor = explode(" ", $this->actor,2);
+				$this->reply = str_replace("^@", $actor[0], $this->reply);
+				$this->reply = str_replace("@", $this->actor, $this->reply);
 				return true;
 			}		
 		}
