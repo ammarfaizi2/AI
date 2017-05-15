@@ -5,7 +5,11 @@ namespace System;
 *	@author Ammar Faizi <ammarfaizi2@gmail.com>
 */
 trait Chat
-{
+{	
+	/**
+	*	$tmp_word
+	*	Untuk menyimpan sementara :v
+	*/
 	private $tmp_word;
 
 	/**
@@ -17,6 +21,8 @@ trait Chat
 	*	$similar_minimal
 	*/
 	private $similar_minimal = 60;
+
+	
 
 	/**
 	*	@return (array) word_list
@@ -133,15 +139,20 @@ trait Chat
 				}
 			}		
 		}
+		unset($this->tmp_word);
 
-		$
+		$max_similar = max($this->average);
 		/* jika property this.reply belum ada */
-		if (!isset($this->reply) && ) {
-					
+		if (!isset($this->reply) && $max_similar>=$this->similar_minimal) {
+			$this->reply = $wordlist
+			return true;
 		}
 		return false;
 	}
 
+	/**
+	*	void
+	*/
 	private function give_name()
 	{
 		/* Memberikan nama actor pada reply */
