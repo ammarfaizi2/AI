@@ -70,7 +70,7 @@ trait Chat
 				if(count($a)>1){
 					$notwr = true;
 					foreach($a as $qw2){
-						if(!in_array($qw2,$this->exms){
+						if(!in_array($qw2,$this->exms)){
 							$notwr = false;
 							break;
 						}
