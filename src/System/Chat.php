@@ -10,7 +10,7 @@ trait Chat
 		*
 		*/
 		private $wl;
-		private function word_list()
+		private function load_wordlist()
 		{
 			/**
 			*
@@ -32,11 +32,12 @@ trait Chat
 		}
 		private function chat()
 		{
+			$this->load_wordlist();
 			$this->exms = explode(' ',$this->msg);
 			$this->cword = count($this->exms);
 			$this->mslg = strlen($this->msg);
 			foreach($this->wl as $key => $val){
-				if($r=$this->{'check'.$val[0]}($val[1],$val[2],$val[3])){
+				if($r=$this->{'check'.$val[0]}($val[1],$val[2],$val[3],$val[4],$val)){
 					
 				}
 			}
@@ -45,13 +46,15 @@ trait Chat
 		/**
 		*		@param wordlist
 		*/
-		private function check1($wordlist,$wordcheck,$maxwords,$maxlength)
+		private function check1($replylist,$wordcheck,$maxwords,$maxlength)
 		{
 			if(self::max_($this->mslg,$maxlength) or self::max_($this->cword,$maxwords)){
 				return false;
 			}
+			$this->reply = $replylist[rand(0,count($replylist)-1)];
+			return true;
 		}
-		private static function max_(int $n,int $max)
+		private static function max_($n,$max)
 		{
 			return $n>$max;
 		}
