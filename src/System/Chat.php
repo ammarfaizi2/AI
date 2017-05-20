@@ -51,6 +51,13 @@ trait Chat
 			if(($maxlength!==null and $this->mslg>$maxlength) or ($maxwords!==null and $this->cword>$maxwords)){
 				return false;
 			}
+			if(is_array($wordexception)){
+				foreach($wordexception as $qw){
+					if(in_array($qw,$this->exms)){
+						return false;
+					}
+				}
+			}
 			$this->reply = $replylist[rand(0,count($replylist)-1)];
 			return true;
 		}
