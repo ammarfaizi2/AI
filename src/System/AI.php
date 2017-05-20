@@ -82,7 +82,7 @@ class AI extends CraynerSystem
                 $rt = false;
             }
         }*/ else {
-            $rt = $this->chat($this->msg);
+            $rt = $this->chat();
         }
         $this->clog();
         return $rt;
