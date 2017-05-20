@@ -24,6 +24,12 @@ trait Chat
 						"hay juga ^@"
 					),true,5,25,null,false
 				),
+				"apa+kabar"=>array(
+				1,array(
+					"kabar baik disini...",
+					"kabar baik, ^@ apa kabar?"
+					),true,8,35,null,false
+				),
 			
 			
 			
