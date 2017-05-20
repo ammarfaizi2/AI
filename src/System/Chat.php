@@ -39,8 +39,12 @@ trait Chat
 		/**
 		*		@param wordlist
 		*/
-		private function check1($wordlist)
+		private function check1($wordlist,$wordcheck,$maxwords,$maxlength)
 		{
 			
+		}
+		private static function max_(int $n,int $max)
+		{
+			return $n>$max;
 		}
 }
