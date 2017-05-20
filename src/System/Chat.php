@@ -63,27 +63,28 @@ trait Chat
 			}
 			
 			$ex = explode(',',$key);
-			if($wordcheck){
+		if($wordcheck){
 			$stop = false;
 			foreach($ex as $qw){
 				$a = explode('+',$qw);
 				if(count($a)>1){
+					$notwr = true;
 					foreach($a as $qw2){
 						if(!in_array($qw2,$this->exms){
+							$notwr = false;
 							break;
 						}
 					}
+					if($notwr){
+						return true;
+					}
 				}
 				
-			/**
-			*		Pick a reply :v
-			*/
 				if($stop){
-					$this->reply = $replylist[rand(0,count($replylist)-1)];
 					return true;
 				}
 			}
-			}
+		}
 			
 			return true;
 		}
