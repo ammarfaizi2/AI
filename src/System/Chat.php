@@ -28,7 +28,7 @@ trait Chat
 				1,array(
 					"kabar baik disini...",
 					"kabar baik, ^@ apa kabar?"
-					),true,8,35,null,false
+					),false,8,35,null,false
 				),
 			
 			
@@ -91,11 +91,12 @@ trait Chat
 			}
 		}
 	} else {
+		$stop = false;
 		foreach($ex as $qw){
 				$a = explode('+',$qw);
 				$notwr = true;
 				foreach($a as $qw2){
-					if(strpos($qw2,$this->exms)===false){
+					if(strpos($qw2,$this->msg)===false){
 						$notwr = false;
 						break;
 					}
