@@ -90,6 +90,24 @@ trait Chat
 				return true;
 			}
 		}
+	} else {
+		foreach($ex as $qw){
+				$a = explode('+',$qw);
+				$notwr = true;
+				foreach($a as $qw2){
+					if(strpos($qw2,$this->exms)===false){
+						$notwr = false;
+						break;
+					}
+				}
+			if($notwr){
+				return true;
+			}
+				
+			if($stop){
+				return true;
+			}
+		}
 	}
 			
 			return false;
