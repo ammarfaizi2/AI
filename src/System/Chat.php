@@ -48,6 +48,9 @@ trait Chat
 		*/
 		private function check1($replylist,$wordcheck=false,$maxwords=null,$maxlength=null,$wordexception=null,$time=false)
 		{
+			/**
+			*		Cek kelayakan :v
+			*/
 			if(($maxlength!==null and $this->mslg>$maxlength) or ($maxwords!==null and $this->cword>$maxwords)){
 				return false;
 			}
@@ -58,6 +61,7 @@ trait Chat
 					}
 				}
 			}
+			
 			$this->reply = $replylist[rand(0,count($replylist)-1)];
 			return true;
 		}
