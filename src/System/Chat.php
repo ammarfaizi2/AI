@@ -48,7 +48,7 @@ trait Chat
 		*/
 		private function check1($replylist,$wordcheck,$maxwords,$maxlength)
 		{
-			if(self::max_($this->mslg,$maxlength) or self::max_($this->cword,$maxwords)){
+			if($this->mslg>$maxlength or $this->cword>$maxwords){
 				return false;
 			}
 			$this->reply = $replylist[rand(0,count($replylist)-1)];
