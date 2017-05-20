@@ -62,7 +62,17 @@ trait Chat
 				}
 			}
 			
-			$ex = explode
+			$ex = explode(',',$key);
+			foreach($ex as $qw){
+				$a = explode('+',$qw);
+				if(count($a)>1){
+					foreach($a as $qw2){
+						if(!in_array($qw2,$this->exms){
+							break;
+						}
+					}
+				}
+			}
 			/**
 			*		Pick a reply :v
 			*/
