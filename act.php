@@ -6,7 +6,7 @@ use System\AI;
 
 $ai = new AI();
 $act = "Ammar Faizi";
-$msg = "apa kabar";
+$msg = "apa kabar?";
 $st = $ai->prepare($msg, $act);
 $st->execute();
 var_dump($st->fetch_reply());
