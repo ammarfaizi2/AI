@@ -37,8 +37,8 @@ trait Chat
 			$this->cword = count($this->exms);
 			$this->mslg = strlen($this->msg);
 			foreach($this->wl as $key => $val){
-				if($r=$this->{'check'.$val[0]}($key,$val[1],$val[2],$val[3],$val[4],$val[5],$val[6])){
-					
+				if($this->{'check'.$val[0]}($key,$val[2],$val[3],$val[4],$val[5],$val[6])){
+					$this->reply = $val[1][rand(0,count($val[1])-1)];
 				}
 			}
 		}
@@ -46,7 +46,7 @@ trait Chat
 		/**
 		*		@param wordlist
 		*/
-		private function check1($key,$replylist,$wordcheck=false,$maxwords=null,$maxlength=null,$wordexception=null,$time=false)
+		private function check1($key,$wordcheck=false,$maxwords=null,$maxlength=null,$wordexception=null,$time=false)
 		{
 			/**
 			*		Cek kelayakan :v
