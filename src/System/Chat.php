@@ -15,11 +15,14 @@ trait Chat
 			/**
 			*
 			* hai,hay,hi,hy
-			*		mode,answer,wordcheck
+			*		mode,answer,wordcheck,maxwords,maxlength,wordexception,time
 			*/
 			$this->wl = array(
-				'hai,hay,hi,hy'=>array(
-					1,array(),true,
+				"hai,hay,hi,hy"=>array(
+					1,array(
+						"hai juga ^@",
+						"hay juga ^@"
+					),true,5,25,null,false
 				),
 			
 			
@@ -46,8 +49,7 @@ trait Chat
 		{
 			if(self::max_($this->mslg,$maxlength) or self::max_($this->cword,$maxwords)){
 				return false;
-			} else
-			if(self::max_())
+			}
 		}
 		private static function max_(int $n,int $max)
 		{
