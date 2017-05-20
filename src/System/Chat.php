@@ -54,8 +54,4 @@ trait Chat
 			$this->reply = $replylist[rand(0,count($replylist)-1)];
 			return true;
 		}
-		private static function max_($n,$max)
-		{
-			return $n>$max;
-		}
 }
