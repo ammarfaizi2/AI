@@ -38,7 +38,10 @@ trait Chat
 			$this->mslg = strlen($this->msg);
 			foreach($this->wl as $key => $val){
 				if($this->{'check'.$val[0]}($key,$val[2],$val[3],$val[4],$val[5],$val[6])){
+					$act = explode(" ",$this->actor);
 					$this->reply = $val[1][rand(0,count($val[1])-1)];
+					$this->reply = str_replace("^@",$act[0],$this->reply);
+					return true;
 				}
 			}
 		}
