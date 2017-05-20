@@ -85,10 +85,6 @@ trait Chat
 			if($notwr){
 				return true;
 			}
-				
-			if($stop){
-				return true;
-			}
 		}
 	} else {
 		$stop = false;
@@ -102,10 +98,6 @@ trait Chat
 					}
 				}
 			if($notwr){
-				return true;
-			}
-				
-			if($stop){
 				return true;
 			}
 		}
