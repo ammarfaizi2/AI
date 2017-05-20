@@ -62,30 +62,28 @@ trait Chat
 				}
 			}
 			
-			$ex = explode(',',$key);
+		$ex = explode(',',$key);
 		if($wordcheck){
 			$stop = false;
 			foreach($ex as $qw){
 				$a = explode('+',$qw);
-				if(count($a)>1){
-					$notwr = true;
-					foreach($a as $qw2){
-						if(!in_array($qw2,$this->exms)){
-							$notwr = false;
-							break;
-						}
-					}
-					if($notwr){
-						return true;
+				$notwr = true;
+				foreach($a as $qw2){
+					if(!in_array($qw2,$this->exms)){
+						$notwr = false;
+						break;
 					}
 				}
+			if($notwr){
+				return true;
+			}
 				
-				if($stop){
-					return true;
-				}
+			if($stop){
+				return true;
 			}
 		}
+	}
 			
-			return true;
+			return false;
 		}
 }
