@@ -127,4 +127,8 @@ trait Chat
 			
 			return false;
 		}
+	private function gettimereply($replylist)
+	{
+		return 123;
+	}
 }
