@@ -44,7 +44,7 @@ trait Chat
 					"11-13"=>array(
 						"ini udah siang kang ^@"
 					),
-					"15-18"=>array(
+					"16-18"=>array(
 						"ini udah sore kang ^@"
 					),
 					"19-23,0"=>array(
@@ -157,6 +157,6 @@ trait Chat
 				}
 			}
 		}
-		$this->timereply = array(null);
+		return false;
 	}
 }
