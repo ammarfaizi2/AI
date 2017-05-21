@@ -38,9 +38,18 @@ trait Chat
 				),
 				"pagi"=>array(
 				1,array(
-				"0-10"=>array(
-						"selamat pagi kang ^@, selamat beraktifitas..."
-				)
+					"0-10"=>array(
+							"selamat pagi kang ^@, selamat beraktifitas..."
+					),
+					"11-13"=>array(
+						"ini udah siang kang ^@"
+					),
+					"15-18"=>array(
+						"ini udah sore kang ^@"
+					),
+					"19-23,0"=>array(
+						"ini udah malem kang ^@"
+					),
 				),false,8,35,null,true
 				),
 			
@@ -139,8 +148,12 @@ trait Chat
 				} else {
 					$tr = array_merge($tr,range($c[0],$c[1]));
 				}
+				if(in_array((int)date("H"),$tr)){
+					$this->timereply = $replist;
+					return true;
+				}
 			}
-			var_dump($tr);
 		}
+		$this->timereply = array(null);
 	}
 }
