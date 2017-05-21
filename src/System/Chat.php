@@ -66,8 +66,11 @@ trait Chat
 			foreach($this->wl as $key => $val){
 				if($this->{'check'.$val[0]}($key,$val[2],$val[3],$val[4],$val[5],$val[6])){
 					if($this->timereply){
-						$this->gettimereply($val[1]);
+						if($this->gettimereply($val[1])){
 						$val[1] = $this->timereply;
+						} else {
+							return false;
+						}
 					}
 					$act = explode(" ",$this->actor);
 					$this->reply = str_replace("@",$this->actor,str_replace("^@",$act[0],$val[1][rand(0,count($val[1])-1)]));
