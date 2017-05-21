@@ -26,8 +26,13 @@ trait Chat
 				),
 				"apa+kabar"=>array(
 					1,array(
-					"kabar baik disini...",
-					"kabar baik, ^@ apa kabar?"
+						"kabar baik disini...",
+						"kabar baik, ^@ apa kabar?"
+					),false,8,35,null,false
+				),
+				"jam+ber,jam+brp"=>array(
+					1,array(
+						("sekarang jam ".date("h:i:s"))	
 					),false,8,35,null,false
 				),
 			
