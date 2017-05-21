@@ -10,6 +10,7 @@ trait Chat
 		*
 		*/
 		private $wl;
+		private $timereply;
 		private function load_wordlist()
 		{
 			/**
@@ -35,7 +36,13 @@ trait Chat
 						("sekarang jam ".date("h:i:s"))	
 					),false,8,35,null,false
 				),
-			
+				"pagi"=>array(
+				1,array(
+				"0-10"=>array(
+						"selamat pagi kang ^@, selamat beraktifitas..."
+				)
+				),false,8,35,null,true
+				),
 			
 			
 			
@@ -49,6 +56,10 @@ trait Chat
 			$this->mslg = strlen($this->msg);
 			foreach($this->wl as $key => $val){
 				if($this->{'check'.$val[0]}($key,$val[2],$val[3],$val[4],$val[5],$val[6])){
+					if($this->timereply){
+						$this->gettimereply($val[1]);
+						$val[1] = $this->timereply;
+					}
 					$act = explode(" ",$this->actor);
 					$this->reply = str_replace("@",$this->actor,str_replace("^@",$act[0],$val[1][rand(0,count($val[1])-1)]));
 					return true;
@@ -88,6 +99,9 @@ trait Chat
 					}
 				}
 			if($notwr){
+				if($time){
+					$this->timereply = true;
+				}
 				return true;
 			}
 		}
@@ -103,6 +117,9 @@ trait Chat
 					}
 				}
 			if($notwr){
+				if($time){
+					$this->timereply = true;
+				}
 				return true;
 			}
 		}
