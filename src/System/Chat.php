@@ -10,6 +10,7 @@ trait Chat
 		*
 		*/
 		private $wl;
+		private $timereply;
 		private function load_wordlist()
 		{
 			/**
@@ -25,12 +26,32 @@ trait Chat
 					),true,5,25,null,false
 				),
 				"apa+kabar"=>array(
-				1,array(
-					"kabar baik disini...",
-					"kabar baik, ^@ apa kabar?"
+					1,array(
+						"kabar baik disini...",
+						"kabar baik, ^@ apa kabar?"
 					),false,8,35,null,false
 				),
-			
+				"jam+ber,jam+brp"=>array(
+					1,array(
+						("sekarang jam ".date("h:i:s"))	
+					),false,8,35,null,false
+				),
+				"pagi"=>array(
+				1,array(
+					"1-10"=>array(
+							"selamat pagi kang ^@, selamat beraktifitas..."
+					),
+					"11-14"=>array(
+						"ini udah siang kang ^@"
+					),
+					"15-18"=>array(
+						"ini udah sore kang ^@"
+					),
+					"19-23,0"=>array(
+						"ini udah malem kang ^@"
+					),
+				),false,8,35,null,true
+				),
 			
 			
 			
@@ -44,6 +65,13 @@ trait Chat
 			$this->mslg = strlen($this->msg);
 			foreach($this->wl as $key => $val){
 				if($this->{'check'.$val[0]}($key,$val[2],$val[3],$val[4],$val[5],$val[6])){
+					if($this->timereply){
+						if($this->gettimereply($val[1])){
+						$val[1] = $this->timereply;
+						} else {
+							return false;
+						}
+					}
 					$act = explode(" ",$this->actor);
 					$this->reply = str_replace("@",$this->actor,str_replace("^@",$act[0],$val[1][rand(0,count($val[1])-1)]));
 					return true;
@@ -83,6 +111,9 @@ trait Chat
 					}
 				}
 			if($notwr){
+				if($time){
+					$this->timereply = true;
+				}
 				return true;
 			}
 		}
@@ -92,12 +123,15 @@ trait Chat
 				$a = explode('+',$qw);
 				$notwr = true;
 				foreach($a as $qw2){
-					if(strpos($qw2,$this->msg)===false){
+					if(strpos($this->msg,$qw2)===false){
 						$notwr = false;
 						break;
 					}
 				}
 			if($notwr){
+				if($time){
+					$this->timereply = true;
+				}
 				return true;
 			}
 		}
@@ -105,4 +139,24 @@ trait Chat
 			
 			return false;
 		}
+	private function gettimereply($replylist)
+	{
+		foreach($replylist as $time => $replist){
+			$tr = array();
+			$a = explode(",",$time);
+			foreach($a as $b){
+				$c = explode("-",$b);
+				if(count($c)==1){
+					$tr[] = $c[0];
+				} else {
+					$tr = array_merge($tr,range($c[0],$c[1]));
+				}
+				if(in_array((int)date("H"),$tr)){
+					$this->timereply = $replist;
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 }
