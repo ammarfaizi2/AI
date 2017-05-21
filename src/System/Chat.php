@@ -38,13 +38,13 @@ trait Chat
 				),
 				"pagi"=>array(
 				1,array(
-					"0-10"=>array(
+					"1-10"=>array(
 							"selamat pagi kang ^@, selamat beraktifitas..."
 					),
-					"11-13"=>array(
+					"11-14"=>array(
 						"ini udah siang kang ^@"
 					),
-					"16-18"=>array(
+					"15-18"=>array(
 						"ini udah sore kang ^@"
 					),
 					"19-23,0"=>array(
