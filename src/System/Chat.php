@@ -129,6 +129,18 @@ trait Chat
 		}
 	private function gettimereply($replylist)
 	{
-		return 123;
+		foreach($replylist as $time => $replist){
+			$tr = array();
+			$a = explode(",",$time);
+			foreach($a as $b){
+				$c = explode("-",$b);
+				if(count($c)==1){
+					$tr[] = $c[0];
+				} else {
+					$tr = array_merge($tr,range($c[0],$c[1]));
+				}
+			}
+			var_dump($tr);
+		}
 	}
 }
