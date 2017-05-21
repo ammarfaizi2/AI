@@ -92,7 +92,7 @@ trait Chat
 				$a = explode('+',$qw);
 				$notwr = true;
 				foreach($a as $qw2){
-					if(strpos($qw2,$this->msg)===false){
+					if(strpos($this->msg,$qw2)===false){
 						$notwr = false;
 						break;
 					}
