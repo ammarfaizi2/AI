@@ -27,6 +27,7 @@ trait Chat
 						"mangap mangap itu gak sehat kang ^@"
 					),true,2,8,null,false
 				),
+				/**/
 				"laper,lapar,lavar"=>array(
 					1,array(
 						"0-3"=>array(
