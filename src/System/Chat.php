@@ -56,7 +56,7 @@ trait Chat
 					),true,5,25,null,false
 				),
 				/**/
-				"apa+kabar"=>array(
+				"pa+kabar,pa+kbr,pa+kbar"=>array(
 					1,array(
 						"kabar baik disini...",
 						"kabar baik, ^@ apa kabar?"
@@ -83,9 +83,15 @@ trait Chat
 					"19-23,0"=>array(
 						"ini udah malem kang ^@"
 					),
-				),false,8,35,null,true
+					),false,8,35,null,true
 				),
-			
+				"haha,hihi,wkwk,wkeke,hhh"=>array(
+				1,array(
+					"dilarang ketawa !",
+					"dilarang ketawa coeg :v",
+					"dilarang ketawa 😠😡"
+					),false,10,65,null,false
+				),
 			
 			
 			);
