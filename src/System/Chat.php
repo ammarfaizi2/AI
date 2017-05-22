@@ -19,6 +19,36 @@ trait Chat
 			*		mode,answer,wordcheck,maxwords,maxlength,wordexception,time
 			*/
 			$this->wl = array(
+				":v,:'v,:\"v,v:,v':,v\":"=>array(
+					1,array(
+						"lu laper sampe mangap mangap gitu? 😎",
+						"kenapa ^@, laper banget tha?",
+						"dilarang mangap 😒",
+						"mangap mangap itu gak sehat kang ^@"
+					),true,2,8,null,false
+				),
+				/**/
+				"laper,lapar,lavar"=>array(
+					1,array(
+						"0-3"=>array(
+							"segera sahur kang ^@",
+							"sahur dulu kang ^@ 😊"
+						),
+						"4-15"=>array(
+							"sabar kang ^@, belum waktunya berbuka 😇",
+							"yang sabar ya kang ^@, kita tunggu sampai waktunya berbuka..."
+						),
+						"16-17"=>array(
+							"sabar kang ^@, bentar lagi magrib kok 😏",
+							"sabar aja ya kang ^@, sebentar lagi udah magrib 😋😏"
+						),
+						"18-24"=>array(
+							"kalo laper ya makan 😜",
+							"makan gamping 😋",
+							"makan aeeh :v"
+						)
+					),false,6,45,null,true
+				),
 				"hai,hay,hi,hy"=>array(
 					1,array(
 						"hai juga ^@",
@@ -26,7 +56,7 @@ trait Chat
 					),true,5,25,null,false
 				),
 				/**/
-				"apa+kabar"=>array(
+				"pa+kabar,pa+kbr,pa+kbar"=>array(
 					1,array(
 						"kabar baik disini...",
 						"kabar baik, ^@ apa kabar?"
@@ -53,9 +83,15 @@ trait Chat
 					"19-23,0"=>array(
 						"ini udah malem kang ^@"
 					),
-				),false,8,35,null,true
+					),false,8,35,null,true
 				),
-			
+				"haha,hihi,wkwk,wkeke,hhh"=>array(
+				1,array(
+					"dilarang ketawa !",
+					"dilarang ketawa coeg :v",
+					"dilarang ketawa 😠😡"
+					),false,10,65,null,false
+				),
 			
 			
 			);
