@@ -27,6 +27,27 @@ trait Chat
 						"mangap mangap itu gak sehat kang ^@"
 					),true,2,8,null,false
 				),
+				"laper,lapar,lavar"=>array(
+					1,array(
+						"0-3"=>array(
+							"segera sahur kang ^@",
+							"sahur dulu kang ^@ 😊"
+						),
+						"4-15"=>array(
+							"sabar kang ^@, belum waktunya berbuka 😇",
+							"yang sabar ya kang ^@, kita tunggu sampai waktunya berbuka..."
+						),
+						"16-17"=>array(
+							"sabar kang ^@, bentar lagi magrib kok 😏",
+							"sabar aja ya kang ^@, sebentar lagi udah magrib 😋😏"
+						),
+						"18-24"=>array(
+							"kalo laper ya makan 😜",
+							"makan gamping 😋",
+							"makan aeeh :v"
+						)
+					),false,6,45,null,true
+				),
 				"hai,hay,hi,hy"=>array(
 					1,array(
 						"hai juga ^@",
