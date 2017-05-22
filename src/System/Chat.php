@@ -19,6 +19,14 @@ trait Chat
 			*		mode,answer,wordcheck,maxwords,maxlength,wordexception,time
 			*/
 			$this->wl = array(
+				":v,:'v,:\"v,v:,v':,v\":"=>array(
+					1,array(
+						"lu laper sampe mangap mangap gitu? 😎",
+						"kenapa ^@, laper banget tha?",
+						"dilarang mangap 😒",
+						"mangap mangap itu gak sehat kang ^@"
+					),true,2,8,null,false
+				),
 				"hai,hay,hi,hy"=>array(
 					1,array(
 						"hai juga ^@",
