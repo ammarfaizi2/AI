@@ -113,6 +113,8 @@ trait Chat
 						"V:",
 						":'V",
 						"V':"
+						"Asiknya mangap bersama kang ^@ :v",
+						":v :v :v"
 					),true,3,25,null,false
 				),
 			);
