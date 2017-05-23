@@ -19,6 +19,7 @@ trait Chat
 			* hai,hay,hi,hy
 			*		mode,answer,wordcheck,maxwords,maxlength,wordexception,time
 			*/
+			$this->msg = strip_tags($this->msg);
 			$this->wl = array(
 				"larang"=>array(
 				1,array(
