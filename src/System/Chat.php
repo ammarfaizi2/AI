@@ -13,87 +13,111 @@ trait Chat
 		private $timereply;
 		private function load_wordlist()
 		{
+			date_default_timezone_set("Asia/Jakarta");
 			/**
 			*
 			* hai,hay,hi,hy
 			*		mode,answer,wordcheck,maxwords,maxlength,wordexception,time
 			*/
+			$this->msg = strip_tags($this->msg);
 			$this->wl = array(
-				":v,:'v,:\"v,v:,v':,v\":"=>array(
-					1,array(
-						"lu laper sampe mangap mangap gitu? 😎",
-						"kenapa ^@, laper banget tha?",
-						"dilarang mangap 😒",
-						"mangap mangap itu gak sehat kang ^@"
-					),true,2,8,null,false
-				),
+				"larang"=>array(
+				1,array(
+					"Wah ngelarang larang 😏"
+				),false,7,45,null,false),
 				/**/
 				"laper,lapar,lavar"=>array(
 					1,array(
 						"0-3"=>array(
-							"segera sahur kang ^@",
-							"sahur dulu kang ^@ 😊"
+							"Segera sahur kang ^@",
+							"Sahur dulu kang ^@ 😊"
 						),
 						"4-15"=>array(
-							"sabar kang ^@, belum waktunya berbuka 😇",
-							"yang sabar ya kang ^@, kita tunggu sampai waktunya berbuka..."
+							"Sabar kang ^@, belum waktunya berbuka 😇",
+							"Sabar ya kang ^@, kita tunggu sampai waktunya berbuka."
 						),
 						"16-17"=>array(
-							"sabar kang ^@, bentar lagi magrib kok 😏",
-							"sabar aja ya kang ^@, sebentar lagi udah magrib 😋😏"
+							"Sabar kang ^@, bentar lagi magrib kok 😏",
+							"Sabar aja ya kang ^@, sebentar lagi udah magrib 😋😏"
 						),
 						"18-24"=>array(
-							"kalo laper ya makan 😜",
-							"makan gamping 😋",
-							"makan aeeh :v"
+							"Kalau laper ya makan 😊",
+							"Makan gamping 😋",
+							"Makan aeeh :v"
 						)
-					),false,6,45,null,true
+					),false,10,75,null,true
 				),
 				"hai,hay,hi,hy"=>array(
 					1,array(
-						"hai juga ^@",
-						"hay juga ^@"
+						"Hai juga ^@",
+						"Hay juga ^@"
 					),true,5,25,null,false
+				),
+				"halo,allo,hello,alo,hola"=>array(
+				1,array(
+					"Halo juga kang ^@ :)",
+					"Halo juga kang ^@, apa kabar?",
+					"Halo juga kak ^@"
+				),false,8,65,null,false		
 				),
 				/**/
 				"pa+kabar,pa+kbr,pa+kbar"=>array(
 					1,array(
-						"kabar baik disini...",
-						"kabar baik, ^@ apa kabar?"
+						"Kabar baik disini.",
+						"Kabar baik, kang ^@ apa kabar?"
 					),false,8,35,null,false
 				),
 				/**/
 				"jam+ber,jam+brp"=>array(
 					1,array(
-						("sekarang jam ".date("h:i:s"))	
+						("Sekarang jam ".date("h:i:s"))	
 					),false,8,35,null,false
 				),
 				/**/
 				"pagi"=>array(
 				1,array(
 					"1-10"=>array(
-							"selamat pagi kang ^@, selamat beraktifitas..."
+							"Selamat pagi kang ^@. Selamat beraktifitas."
 					),
 					"11-14"=>array(
-						"ini udah siang kang ^@"
+						"Ini udah siang kang ^@ 😌"
 					),
 					"15-18"=>array(
-						"ini udah sore kang ^@"
+						"Ini udah sore kang ^@ 😌"
 					),
 					"19-23,0"=>array(
-						"ini udah malem kang ^@"
+						"Ini sudah malem kang ^@ 😌"
 					),
 					),false,8,35,null,true
 				),
 				"haha,hihi,wkwk,wkeke,hhh"=>array(
 				1,array(
-					"dilarang ketawa !",
-					"dilarang ketawa coeg :v",
-					"dilarang ketawa 😠😡"
-					),false,10,65,null,false
+					"Dilarang ketawa !\nhahaha",
+					"Hahaha ketawa",
+					"Sadess :v"
+					),false,10,75,null,false
 				),
-			
-			
+			"bot"=>array(
+				1,array(
+					"Hmm...",
+					"Siap...",
+					"Ya ada apa kang ^@?",
+					"Sepertinya begitu...",
+					"Hey kang ^@, tau nggak?\nKemarin ada lho...",
+					"Iya betul sekali kang ^@"
+				),false,8,65,null,false
+				),
+			":v,:'v,:\"v,v:,v':,v\":,;v,;'v,v;,v';"=>array(
+					1,array(
+						"Mangap :v",
+						":V",
+						"V:",
+						":'V",
+						"V':",
+						"Asiknya mangap bersama kang ^@ :v",
+						":v :v :v"
+					),true,3,25,null,false
+				),
 			);
 		}
 		private function chat()
