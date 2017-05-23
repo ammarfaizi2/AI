@@ -13,19 +13,24 @@ trait Chat
 		private $timereply;
 		private function load_wordlist()
 		{
+			date_default_timezone_set("Asia/Jakarta");
 			/**
 			*
 			* hai,hay,hi,hy
 			*		mode,answer,wordcheck,maxwords,maxlength,wordexception,time
 			*/
 			$this->wl = array(
-				":v,:'v,:\"v,v:,v':,v\":"=>array(
+				"larang"=>array(
+				1,array(
+					"ih ngelarang larang 😒"
+				),false,6,45,null,false),
+				":v,:'v,:\"v,v:,v':,v\":,;v,;'v,v;,v';"=>array(
 					1,array(
-						"lu laper sampe mangap mangap gitu? 😎",
+						"lu laper sampe mangap mangap gitu? 😣",
 						"kenapa ^@, laper banget tha?",
 						"dilarang mangap 😒",
-						"mangap mangap itu gak sehat kang ^@"
-					),true,2,8,null,false
+						"mangap mangap itu gak sehat kang ^@ 😌"
+					),true,3,25,null,false
 				),
 				/**/
 				"laper,lapar,lavar"=>array(
@@ -90,9 +95,15 @@ trait Chat
 					"dilarang ketawa !",
 					"dilarang ketawa coeg :v",
 					"dilarang ketawa 😠😡"
-					),false,10,65,null,false
+					),false,10,75,null,false
 				),
-			
+			"bot"=>array(
+				1,array(
+					"apa sih kang ^@ 😆",
+					"kenapa kang ^@? 😅",
+					"ahh kang ^@ 😂😂"
+				),false,5,35,null,false
+				),
 			
 			);
 		}
