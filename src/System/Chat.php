@@ -160,6 +160,8 @@ trait Chat
 						":'V",
 						"V':",
 						"Asiknya mangap bersama kang ^@ :v",
+						"Mangap bersama dirimu memang menyenangkan ^@",
+						"Efek rumah kaca :v\nRibuan mahasiswa mangap dihadapan dosen :v"
 						":v :v :v"
 					),true,3,25,null,false
 				),
