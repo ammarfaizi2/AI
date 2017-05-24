@@ -169,7 +169,7 @@ trait Chat
 )),false,9,65,null,true),
 
 "koniciwa,konnichiwa,konichiwa,konniciwa"=>array(
-array(
+1,array(
 "0-9,24"=>array(
 	"Ini masih pagi kang ^@"
 ),
