@@ -180,6 +180,15 @@ trait Chat
 	"Ini udah malem kang ^@"
 )),false,9,90,null,false),
 
+"konbawa,konbanwa"=>array(
+1,array(
+"0-9,24"=>array(
+	"ini masih pagi kang ^@"
+),
+"10-23"=>array(
+	"konbanwa kang ^@"
+)),true,8,65,null,true),
+
 "haha,hihi,wkwk,wkeke,hhh"=>array(
 1,array(
 "Dilarang ketawa !\nhahaha",
@@ -260,6 +269,10 @@ trait Chat
 "Mangap bersama dirimu memang menyenangkan ^@",
 "Makin cinta denganmu.",
 "Efek rumah kaca :v\nRibuan mahasiswa mangap dihadapan dosen :v",
+"Efek rumah kaca mengakibatkan ribuan pelajar muntah-muntah karena suhu tubuh yang tidak stabil.",
+"Ratusan dosen mengamuk dan stress lantaran ribuan mahasiswa mangap di kelas 24 jam non stop :v",
+"Penjual bensin eceran diduga membakar rumahnya sendiri karena melihat ribuan pelanggan mangap minta bocoran.\nSampai sekarang polisi masih menyelidiki pelaku pembakaran rumah oleh \"@\" di kepulauan Riau.",
+"Diduga kelaparan, ribuan mahasiswa menjalankan aksi mangap bersama di kampus demi mendapatkan supply makanan dari dosen setempat.",
 ":v :v :v"
 ),true,3,25,null,false),
 
