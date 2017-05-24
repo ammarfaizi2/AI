@@ -196,7 +196,13 @@ trait Chat
 "es+teh,esteh,icetea,ice+tea"=>array(
 1,array(
 "es teh terasa segar ketika masuk ke mulut"
-),false,8,90,null,false),
+),true,8,90,null,false),
+
+"levvat,lewat"=>array(
+1,array(
+"dilarang lewat",
+"mampir sekalian ga usah lewat"
+),true,4,15,null,false),
 
 "sedih,senang"=>array(
 1,array(
