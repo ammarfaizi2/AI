@@ -213,7 +213,7 @@ trait Chat
 
 "bot"=>array(
 1,array(
-"Hey ^@, Ibu kamu jualan es teh ya? pantesan kamu selalu menyegarkan hatiku. **eeeeehhhh...."
+"Hey ^@, Ibu kamu jualan es teh ya? pantesan kamu selalu menyegarkan hatiku. **eeeeehhhh....",
 "Ketika hidup memberiku seratus alasan untuk menangis, kau datang membawa seribu alasan untuk tersenyum @.",
 "Wahai ^@, mengenal mu adalah hal yang terindah dalam hidupku.",
 "Hey ^@ sayangku, kita ke toko bunga yuk.\nBeli bibit cinta buat ditanam di hatimu.",
