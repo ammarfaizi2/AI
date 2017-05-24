@@ -28,6 +28,13 @@ trait Chat
 					"Selamat move on.\n\nUdah itu aja."
 					),true,8,75,null,false
 				),
+				"jomblo"=>array(
+				1,array(
+					"Ciyaah... @ jomblo nih 😂😂",
+					"Ciye jomblo :v",
+					"Ciye ^@ jomblo 😏"
+					),false,9,90,null,false		
+				),
 				"larang"=>array(
 				1,array(
 					"Wah ngelarang larang 😏"
