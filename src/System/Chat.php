@@ -153,7 +153,7 @@ trait Chat
 "ohayo"=>array(
 1,array(
 "0-9,24"=>array(
-	"ohayou kang ^@, selamat beraktiftas"
+	"Ohayou kang ^@, selamat beraktiftas 😙"
 ),
 "10-11"=>array(
 "Selamat pagi menjelang siang ^@"
@@ -167,6 +167,18 @@ trait Chat
 "19-23"=>array(
 "Ini udah malem kang ^@"
 )),false,9,65,null,true),
+
+"koniciwa,konnichiwa,konichiwa,konniciwa"=>array(
+array(
+"0-9,24"=>array(
+	"Ini masih pagi kang ^@"
+),
+"10-18"=>array(
+	"Konnichiwa kang ^@, selamat beraktifitas"
+),
+"19-23"=>array(
+	"Ini udah malem kang ^@"
+)),false,9,90,null,false),
 
 "haha,hihi,wkwk,wkeke,hhh"=>array(
 1,array(
