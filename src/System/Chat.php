@@ -102,7 +102,7 @@ trait Chat
 	"Ini sudah malem kang ^@ 😌"
 )),false,8,35,null,true),
 
-"siang"=>array(
+"siang,ciang,siank"=>array(
 1,array(
 "0-10"=>array(
 	"Ini masih pagi lho kang ^@ 😌"
@@ -192,6 +192,11 @@ trait Chat
 "Ada kamu di hatiku.",
 "Jadi gini ^@...\nAdik kamu jualan parfum ya? pantesan kamu wangi terus sehingga membuatku semakin cinta sama kamu. **eeeehhh :v"
 ),true,6,35,null,false),
+
+"es+teh,esteh,icetea,ice+tea"=>array(
+1,array(
+"es teh terasa segar ketika masuk ke mulut"
+),false,8,90,null,false),
 
 "sedih,senang"=>array(
 1,array(
