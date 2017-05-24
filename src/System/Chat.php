@@ -154,6 +154,7 @@ trait Chat
 				),
 			"love+u,lopyou"=>array(
 			1,array(
+			"Love you too ^@ 😚",
 				"Oh inikah cinta...",
 				"Btw kang ^@, bapak kamu maling ya?",
 				"Hey ^@, kamu tau nggak?\nYang kuharap malam ini hanya tenangmu.\nYang kuinginkan saat ini hanya damaimu.\nYang kupinta detik ini hanya bahagiamu.",
