@@ -132,6 +132,29 @@ trait Chat
 	"Ini udah malem kang ^@ 😌"
 )),true,8,35,null,true),
 
+
+
+
+"ohayo"=>array(
+1,array(
+"0-9,24"=>array(
+	"ohayou kang ^@, selamat beraktiftas"
+),
+"10-11"=>array(
+"Selamat pagi menjelang siang ^@"
+),
+"12-14"=>array(
+"Ini udah siang kang ^@ :v"
+),
+"15-18"=>array(
+"Ini udah sore kang ^@"
+),
+"19-23"=>array(
+"Ini udah malem kang ^@"
+)),false,9,65,null,false),
+
+
+
 "haha,hihi,wkwk,wkeke,hhh"=>array(
 1,array(
 	"Dilarang ketawa !\nhahaha",
