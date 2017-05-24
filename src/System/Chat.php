@@ -237,7 +237,7 @@ trait Chat
 "Motor adalah benda mati yang tidak dibawa ke akhirat kelak, maka dari itu silahkan dibuang saja !"
 ),true,9,90,null,false),
 
-"love+u,lopyou,lupyou,cinta+kamu"=>array(
+"love+u,lopyou,lupyou,cinta+kamu,lopyu"=>array(
 1,array(
 "Love you too ^@ 😚",
 "Oh inikah cinta...",
