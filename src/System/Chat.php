@@ -198,6 +198,8 @@ trait Chat
 
 ":v,:'v,:\"v,v:,v':,v\":,;v,;'v,v;,v';,:''v"=>array(
 1,array(
+"Kenapa ^@ ?\nApakah perutmu terasa lapar sampai kau mangap mangap gitu? :v",
+"^@, makan makan yuk, kayaknya lu laper deh sampai mangap mangap gitu :v",
 "Hey @,\nKamu jomblo, Aku jomblo. Jadi tunggu apa lagi?",
 "Mangap :v",
 ":V",
