@@ -37,7 +37,8 @@ trait Chat
 				),
 				"larang"=>array(
 				1,array(
-					"Wah ngelarang larang 😏"
+					"Wah ngelarang larang nih kang ^@ 😏",
+					"Kang ^@, mau dilarang?"
 				),false,7,45,null,false),
 				/**/
 				"laper,lapar,lavar"=>array(
