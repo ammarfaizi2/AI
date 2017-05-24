@@ -21,181 +21,174 @@ trait Chat
 			*/
 			$this->msg = strip_tags($this->msg);
 			$this->wl = array(
-				"move+on"=>array(
-				1,array(
-					"Move on adalah jalan terbaik kak ^@, kamu harus kuat :)",
-					"Jangan mudah percaya dengan orang lain, move on itu susah.",
-					"Selamat move on.\n\nUdah itu aja."
-					),true,8,75,null,false
-				),
-				"jomblo"=>array(
-				1,array(
-					"Ciyaah... @ jomblo nih 😂😂",
-					"Ciye jomblo :v",
-					"Ciye ^@ jomblo 😏",
-					"Hey @,\nKamu jomblo, Aku jomblo. Jadi tunggu apa lagi?"
-					),false,9,90,null,false		
-				),
-				"larang"=>array(
-				1,array(
-					"Wah ngelarang larang nih kang ^@ 😏",
-					"Kang ^@, mau dilarang?"
-				),false,7,45,null,false),
-				/**/
-				"laper,lapar,lavar"=>array(
-					1,array(
-						"0-3"=>array(
-							"Segera sahur kang ^@",
-							"Sahur dulu kang ^@ 😊"
-						),
-						"4-15"=>array(
-							"Sabar kang ^@, belum waktunya berbuka 😇",
-							"Sabar ya kang ^@, kita tunggu sampai waktunya berbuka."
-						),
-						"16-17"=>array(
-							"Sabar kang ^@, bentar lagi magrib kok 😏",
-							"Sabar aja ya kang ^@, sebentar lagi udah magrib 😋😏"
-						),
-						"18-24"=>array(
-							"Kalau laper ya makan 😊",
-							"Makan gamping dong. *eeehhhh",
-							"Makan tanah dong. *eeeehhh",
-							"Makan aeeh :v"
-						)
-					),false,10,75,null,true
-				),
-				"hai,hay,hi,hy"=>array(
-					1,array(
-						"Hai juga ^@",
-						"Hay juga ^@"
-					),true,5,25,null,false
-				),
-				"halo,allo,hello,alo,hola"=>array(
-				1,array(
-					"Halo juga kang ^@ :)",
-					"Halo juga kang ^@, apa kabar?",
-					"Halo juga kak ^@"
-				),true,8,65,null,false		
-				),
-				/**/
-				"pa+kabar,pa+kbr,pa+kbar"=>array(
-					1,array(
-						"Kabar baik disini.",
-						"Kabar baik, kang ^@ apa kabar?"
-					),false,8,35,null,false
-				),
-				/**/
-				"jam+ber,jam+brp"=>array(
-					1,array(
-						("Sekarang jam ".date("h:i:s"))	
-					),false,8,35,null,false
-				),
-				/**/
-				"pagi"=>array(
-				1,array(
-					"1-10"=>array(
-							"Selamat pagi kang ^@. Selamat beraktifitas."
-					),
-					"11-14"=>array(
-						"Ini udah siang kang ^@ 😌"
-					),
-					"15-18"=>array(
-						"Ini udah sore kang ^@ 😌"
-					),
-					"19-23,0"=>array(
-						"Ini sudah malem kang ^@ 😌"
-					),
-					),false,8,35,null,true
-				),
-				"siang"=>array(
-				1,array(
-					"0-10"=>array(
-						"Ini masih pagi lho kang ^@ 😌"),
-					"11-14"=>array("Selamat siang kang ^@, selamat beraktifitas."
-					),
-					"15-18"=>array(
-						"Ini udah sore kang ^@ 😌"
-					),
-					"19-24"=>array(
-						"Ini udah malem kang ^@ 😌"
-					)
-				),false,8,35,null,true),
-				"sore"=>array(
-				1,array(
-					"0-10"=>array(
-						"Ini masih pagi lho kang ^@ 😌"
-					),
-					"11-13"=>array(
-						"Ini masih siang lho kang ^@"
-					),
-					"14-18"=>array(
-						"Selamat sore kang ^@, selamat beristirahat."
-					),
-					"19-24"=>array(
-						"Ini udah malem kang ^@ 😌"
-					)
-				),true,8,35,null,true
-				),
-				"haha,hihi,wkwk,wkeke,hhh"=>array(
-				1,array(
-					"Dilarang ketawa !\nhahaha",
-					"Hahaha ketawa",
-					"Sadess :v"
-					),false,10,75,null,false
-				),
-			"ada+apa"=>array(
-			1,array(
-				"Ada kamu di hatiku.",
-				"Jadi gini ^@...\nAdik kamu jualan parfum ya? pantesan kamu wangi terus sehingga membuatku semakin cinta sama kamu. **eeeehhh :v"
-				),true,6,35,null,false
-			),
-			"sedih,senang"=>array(
-			1,array(
-			 "@, bila kau menangis. .hatiku pun bersedih, bila kau senang. .hatiku pun berbunga, bila kau gelisah. .hatiku pun bergejolak, ini semua karena. . .. kita SEHATI. . .",
-			 "Aku bersedia menjadi lilin, Membakar diriku untuk menerangi dirimu @.",
-			 
-			
-			
-			),false,9,95,null,false
-			),
-			"love+u,lopyou,lupyou,cinta+kamu"=>array(
-			1,array(
-			"Love you too ^@ 😚",
-				"Oh inikah cinta...",
-				"Btw kang ^@, bapak kamu maling ya?",
-				"Hey ^@, kamu tau nggak?\nYang kuharap malam ini hanya tenangmu.\nYang kuinginkan saat ini hanya damaimu.\nYang kupinta detik ini hanya bahagiamu.",
-				"Eh, kang ^@,\nMau jadi TTMku gak? Teman Tapi Menikah *upss :v"
-				),false,9,90,null,false),
-			":v,:'v,:\"v,v:,v':,v\":,;v,;'v,v;,v';,:''v"=>array(
-					1,array(
-						"Hey @,\nKamu jomblo, Aku jomblo. Jadi tunggu apa lagi?",
-						"Mangap :v",
-						":V",
-						"V:",
-						":'V",
-						"V':",
-						"Asiknya mangap bersama kang ^@ :v",
-						"Mangap bersama dirimu memang menyenangkan ^@",
-						"Makin cinta denganmu.",
-						"Efek rumah kaca :v\nRibuan mahasiswa mangap dihadapan dosen :v",
-						":v :v :v"
-					),true,3,25,null,false
-				),
-				"bot"=>array(
-				1,array(
-					"Hey ^@, Ibu kamu jualan es teh ya? pantesan kamu selalu menyegarkan hatiku. **eeeeehhhh...."
-					"Ketika hidup memberiku seratus alasan untuk menangis, kau datang membawa seribu alasan untuk tersenyum @.",
-					"Wahai ^@, mengenal mu adalah hal yang terindah dalam hidupku.",
-					"Hey ^@ sayangku, kita ke toko bunga yuk.\nBeli bibit cinta buat ditanam di hatimu.",
-					"Hey @, \nKamu tahu nggak, Aku kemarin nggak bisa bangun dari tidur karena terus memimpikanmu.",
-					"Hmm...",
-					"Siap...",
-					"Ya ada apa kang ^@?",
-					"Sepertinya begitu...",
-					"Hey kang ^@, tau nggak?\nKemarin ada lho...",
-					"Iya betul sekali kang ^@"
-					),false,8,65,null,false
-				),
+"move+on"=>array(
+1,array(
+	"Move on adalah jalan terbaik kak ^@, kamu harus kuat :)",
+	"Jangan mudah percaya dengan orang lain, move on itu susah.",
+	"Selamat move on.\n\nUdah itu aja."
+),true,8,75,null,false),
+
+"jomblo"=>array(
+1,array(
+"Ciyaah... @ jomblo nih 😂😂",
+"Ciye jomblo :v",
+"Ciye ^@ jomblo 😏",
+"Hey @,\nKamu jomblo, Aku jomblo. Jadi tunggu apa lagi?"
+),false,9,90,null,false		),
+
+"larang"=>array(
+1,array(
+	"Wah ngelarang larang nih kang ^@ 😏",
+	"Kang ^@, mau dilarang?"
+),false,7,45,null,false),
+
+"laper,lapar,lavar"=>array(
+1,array(
+"0-3"=>array(
+	"Segera sahur kang ^@",
+	"Sahur dulu kang ^@ 😊"
+),
+"4-15"=>array(
+	"Sabar kang ^@, belum waktunya berbuka 😇",
+	"Sabar ya kang ^@, kita tunggu sampai waktunya berbuka."
+),
+"16-17"=>array(
+	"Sabar kang ^@, bentar lagi magrib kok 😏",
+	"Sabar aja ya kang ^@, sebentar lagi udah magrib 😋😏"
+),
+"18-24"=>array(
+	"Kalau laper ya makan 😊",
+	"Makan gamping dong. *eeehhhh",
+	"Makan tanah dong. *eeeehhh",
+	"Makan aeeh :v"
+)),false,10,75,null,true),
+
+"hai,hay,hi,hy"=>array(
+1,array(
+"Hai juga ^@",
+"Hay juga ^@"
+),true,5,25,null,false),
+
+"halo,hallo,allo,helo,hola,alo,ello"=>array(
+1,array(
+	"Halo juga kang ^@ :)",
+	"Halo juga kang ^@, apa kabar?",
+	"Halo juga kak ^@"
+),true,8,65,null,false		),
+
+"pa+kabar,pa+kbr,pa+kbar"=>array(
+1,array(
+	"Kabar baik disini.",
+	"Kabar baik, kang ^@ apa kabar?"
+),false,8,35,null,false),
+		
+"jam+ber,jam+brp"=>array(
+1,array(
+("Sekarang jam ".date("h:i:s"))	
+),false,8,35,null,false),
+
+"pagi"=>array(
+1,array(
+"1-10"=>array(
+	"Selamat pagi kang ^@. Selamat beraktifitas."
+),
+"11-14"=>array(
+	"Ini udah siang kang ^@ 😌"
+),
+"15-18"=>array(
+	"Ini udah sore kang ^@ 😌"
+),
+"19-23,0"=>array(
+	"Ini sudah malem kang ^@ 😌"
+)),false,8,35,null,true),
+
+"siang"=>array(
+1,array(
+"0-10"=>array(
+	"Ini masih pagi lho kang ^@ 😌"
+),
+"11-14"=>array(
+	"Selamat siang kang ^@, selamat beraktifitas."
+),
+"15-18"=>array(
+	"Ini udah sore kang ^@ 😌"
+),
+"19-24"=>array(
+	"Ini udah malem kang ^@ 😌"
+)),false,8,35,null,true),
+
+"sore"=>array(
+1,array(
+"0-10"=>array(
+	"Ini masih pagi lho kang ^@ 😌"
+),
+"11-13"=>array(
+	"Ini masih siang lho kang ^@"
+),
+"14-18"=>array(
+	"Selamat sore kang ^@, selamat beristirahat."
+),
+"19-24"=>array(
+	"Ini udah malem kang ^@ 😌"
+)),true,8,35,null,true),
+
+"haha,hihi,wkwk,wkeke,hhh"=>array(
+1,array(
+	"Dilarang ketawa !\nhahaha",
+	"Hahaha ketawa",
+	"Sadess :v"
+),false,10,75,null,false),
+
+"ada+apa"=>array(
+1,array(
+"Ada kamu di hatiku.",
+"Jadi gini ^@...\nAdik kamu jualan parfum ya? pantesan kamu wangi terus sehingga membuatku semakin cinta sama kamu. **eeeehhh :v"
+),true,6,35,null,false),
+
+"sedih,senang"=>array(
+1,array(
+"@, bila kau menangis. .hatiku pun bersedih, bila kau senang. .hatiku pun berbunga, bila kau gelisah. .hatiku pun bergejolak, ini semua karena. . .. kita SEHATI. . .",
+"Aku bersedia menjadi lilin, Membakar diriku untuk menerangi dirimu @.",
+),false,9,95,null,false),
+
+"love+u,lopyou,lupyou,cinta+kamu"=>array(
+1,array(
+"Love you too ^@ 😚",
+"Oh inikah cinta...",
+"Btw kang ^@, bapak kamu maling ya?",
+"Hey ^@, kamu tau nggak?\nYang kuharap malam ini hanya tenangmu.\nYang kuinginkan saat ini hanya damaimu.\nYang kupinta detik ini hanya bahagiamu.",
+"Eh, kang ^@,\nMau jadi TTMku gak? Teman Tapi Menikah *upss :v"
+),false,9,90,null,false),
+
+":v,:'v,:\"v,v:,v':,v\":,;v,;'v,v;,v';,:''v"=>array(
+1,array(
+"Hey @,\nKamu jomblo, Aku jomblo. Jadi tunggu apa lagi?",
+"Mangap :v",
+":V",
+"V:",
+":'V",
+"V':",
+"Asiknya mangap bersama kang ^@ :v",
+"Mangap bersama dirimu memang menyenangkan ^@",
+"Makin cinta denganmu.",
+"Efek rumah kaca :v\nRibuan mahasiswa mangap dihadapan dosen :v",
+":v :v :v"
+),true,3,25,null,false),
+
+"bot"=>array(
+1,array(
+"Hey ^@, Ibu kamu jualan es teh ya? pantesan kamu selalu menyegarkan hatiku. **eeeeehhhh...."
+"Ketika hidup memberiku seratus alasan untuk menangis, kau datang membawa seribu alasan untuk tersenyum @.",
+"Wahai ^@, mengenal mu adalah hal yang terindah dalam hidupku.",
+"Hey ^@ sayangku, kita ke toko bunga yuk.\nBeli bibit cinta buat ditanam di hatimu.",
+"Hey @, \nKamu tahu nggak, Aku kemarin nggak bisa bangun dari tidur karena terus memimpikanmu.",
+"Hmm...",
+"Siap...",
+"Ya ada apa kang ^@?",
+"Sepertinya begitu...",
+"Hey kang ^@, tau nggak?\nKemarin ada lho...",
+"Iya betul sekali kang ^@"
+),false,8,65,null,false),
 			);
 		}
 		private function chat()
