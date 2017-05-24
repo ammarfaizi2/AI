@@ -23,9 +23,9 @@ trait Chat
 			$this->wl = array(
 "move+on"=>array(
 1,array(
-	"Move on adalah jalan terbaik kak ^@, kamu harus kuat :)",
-	"Jangan mudah percaya dengan orang lain, move on itu susah.",
-	"Selamat move on.\n\nUdah itu aja."
+"Move on adalah jalan terbaik kak ^@, kamu harus kuat :)",
+"Jangan mudah percaya dengan orang lain, move on itu susah.",
+"Selamat move on.\n\nUdah itu aja."
 ),true,8,75,null,false),
 
 "jomblo"=>array(
@@ -38,8 +38,8 @@ trait Chat
 
 "larang"=>array(
 1,array(
-	"Wah ngelarang larang nih kang ^@ 😏",
-	"Kang ^@, mau dilarang?"
+"Wah ngelarang larang nih kang ^@ 😏",
+"Kang ^@, mau dilarang?"
 ),false,7,45,null,false),
 
 "laper,lapar,lavar"=>array(
@@ -65,15 +65,15 @@ trait Chat
 
 "hai,hay,hi,hy"=>array(
 1,array(
-"Hai juga ^@",
-"Hay juga ^@"
+"Hai juga ^@. Apa kabar?",
+"Hay juga ^@. Apa kabar?"
 ),true,5,25,null,false),
 
 "halo,hallo,allo,helo,hola,alo,ello"=>array(
 1,array(
-	"Halo juga kang ^@ :)",
-	"Halo juga kang ^@, apa kabar?",
-	"Halo juga kak ^@"
+"Halo juga kang ^@ :)",
+"Halo juga kang ^@, apa kabar?",
+"Halo juga kak ^@"
 ),true,8,65,null,false		),
 
 "pa+kabar,pa+kbr,pa+kbar"=>array(
@@ -218,6 +218,13 @@ trait Chat
 "Aku bersedia menjadi lilin, Membakar diriku untuk menerangi dirimu @.",
 ),false,9,95,null,false),
 
+"motor"=>array(
+1,array(
+"Apa sih kang ^@? 😉",
+"Beliin motor dong kang ^@.",
+"Motor adalah benda mati yang tidak dibawa ke akhirat kelak, maka dari itu silahkan dibuang saja !"
+),true,9,90,null,false),
+
 "love+u,lopyou,lupyou,cinta+kamu"=>array(
 1,array(
 "Love you too ^@ 😚",
@@ -229,6 +236,8 @@ trait Chat
 
 ":v,:'v,:\"v,v:,v':,v\":,;v,;'v,v;,v';,:''v"=>array(
 1,array(
+"Btw kang ^@, mau makan?",
+"Btw kang ^@, pernah makan?",
 "Kenapa ^@ ?\nApakah perutmu terasa lapar sampai kau mangap mangap gitu? :v",
 "^@, makan makan yuk, kayaknya lu laper deh sampai mangap mangap gitu :v",
 "Hey @,\nKamu jomblo, Aku jomblo. Jadi tunggu apa lagi?",
@@ -241,8 +250,15 @@ trait Chat
 ":v :v :v"
 ),true,3,25,null,false),
 
+"krik"=>array(
+1,array(
+"Jangkrik."
+),true,3,15,null,false),
+
 "bot"=>array(
 1,array(
+"Wahai ^@ tercinta, aku udah pernah jatuh dari jembatan..aku udah pernah jatuh dari tangga..Semuanya gak enak. Tapi ada satu jatuh yang paling enak, yaitu jatuh cinta sama kamu",
+"^@, adakah di hatimu terbesit satu harapan untuk berjanji selamanya bersamaku? Andai dirimu berada disini untuk membuka kembali jalan cinta. Ada rasa rindu disana yang mengisi relung hati. Adakah rindu di hatimu seperti yang kurasakan?",
 "Hey ^@, Ibu kamu jualan es teh ya? pantesan kamu selalu menyegarkan hatiku. **eeeeehhhh....",
 "Ketika hidup memberiku seratus alasan untuk menangis, kau datang membawa seribu alasan untuk tersenyum @.",
 "Wahai ^@, mengenal mu adalah hal yang terindah dalam hidupku.",
@@ -254,7 +270,7 @@ trait Chat
 "Sepertinya begitu...",
 "Hey kang ^@, tau nggak?\nKemarin ada lho...",
 "Iya betul sekali kang ^@"
-),false,8,65,null,false),
+),true,8,65,null,false),
 			);
 		}
 		private function chat()
