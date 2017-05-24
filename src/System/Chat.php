@@ -109,7 +109,14 @@ trait Chat
 					"19-24"=>array(
 						"Ini udah malem kang ^@ 😌"
 					)
-				),false,8,35,null,false),
+				),false,8,35,null,true),
+				"sore"=>array(
+				1,array(
+					"0-10"=>array(
+						"Ini masih pagi lho kang ^@ 😌"
+					)
+				)
+				),
 				"haha,hihi,wkwk,wkeke,hhh"=>array(
 				1,array(
 					"Dilarang ketawa !\nhahaha",
