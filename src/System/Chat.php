@@ -49,7 +49,8 @@ trait Chat
 						),
 						"18-24"=>array(
 							"Kalau laper ya makan 😊",
-							"Makan gamping 😋",
+							"Makan gamping dong. *eeehhhh",
+							"Makan tanah dong. *eeeehhh"
 							"Makan aeeh :v"
 						)
 					),false,10,75,null,true
