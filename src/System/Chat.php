@@ -152,7 +152,14 @@ trait Chat
 					"Iya betul sekali kang ^@"
 				),false,8,65,null,false
 				),
-			":v,:'v,:\"v,v:,v':,v\":,;v,;'v,v;,v';"=>array(
+			"love+u,lopyou"=>array(
+			1,array(
+				"Oh inikah cinta...",
+				"Btw kang ^@, bapak kamu maling ya?",
+				"Hey ^@, kamu tau nggak?\nYang kuharap malam ini hanya tenangmu.\nYang kuinginkan saat ini hanya damaimu.\nYang kupinta detik ini hanya bahagiamu.",
+				"Eh, kang ^@,\nMau jadi TTMku gak? Teman Tapi Menikah *upss :v"
+				),false,9,90,null,false),
+			":v,:'v,:\"v,v:,v':,v\":,;v,;'v,v;,v';,:''v"=>array(
 					1,array(
 						"Mangap :v",
 						":V",
@@ -161,7 +168,8 @@ trait Chat
 						"V':",
 						"Asiknya mangap bersama kang ^@ :v",
 						"Mangap bersama dirimu memang menyenangkan ^@",
-						"Efek rumah kaca :v\nRibuan mahasiswa mangap dihadapan dosen :v"
+						"Makin cinta denganmu.",
+						"Efek rumah kaca :v\nRibuan mahasiswa mangap dihadapan dosen :v",
 						":v :v :v"
 					),true,3,25,null,false
 				),
