@@ -138,13 +138,17 @@ trait Chat
 	"Selamat pagi kang ^@."
 ),
 "5-10"=>array(
-	"Ini sudah pagi kang ^@"
+	"Ini masih pagi kang ^@"
 ),
 "11-14"=>array(
-"Ini udah siang kang ^@"
-)
-
-),true,9,65,null,true),
+	"Ini masih siang kang ^@",
+),
+"15-18"=>array(
+	"Ini masih sore loh kang ^@"
+),
+"19-24"=>array(
+	"Selamat malam kang ^@, selamat beristirahat."
+)),true,9,65,null,true),
 
 "ohayo"=>array(
 1,array(
