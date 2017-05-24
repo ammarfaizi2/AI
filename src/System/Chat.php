@@ -145,7 +145,8 @@ trait Chat
 				),
 			"ada+apa"=>array(
 			1,array(
-				"Ada kamu di hatiku."
+				"Ada kamu di hatiku.",
+				"Jadi gini ^@...\nAdik kamu jualan parfum ya? pantesan kamu wangi terus sehingga membuatku semakin cinta sama kamu. **eeeehhh :v"
 				),true,6,35,null,false
 			),
 			"sedih,senang"=>array(
@@ -157,7 +158,7 @@ trait Chat
 			
 			),false,9,95,null,false
 			),
-			"love+u,lopyou"=>array(
+			"love+u,lopyou,lupyou,cinta+kamu"=>array(
 			1,array(
 			"Love you too ^@ 😚",
 				"Oh inikah cinta...",
@@ -182,6 +183,9 @@ trait Chat
 				),
 				"bot"=>array(
 				1,array(
+					"Hey ^@, Ibu kamu jualan es teh ya? pantesan kamu selalu menyegarkan hatiku. **eeeeehhhh...."
+					"Ketika hidup memberiku seratus alasan untuk menangis, kau datang membawa seribu alasan untuk tersenyum @.",
+					"Wahai ^@, mengenal mu adalah hal yang terindah dalam hidupku.",
 					"Hey ^@ sayangku, kita ke toko bunga yuk.\nBeli bibit cinta buat ditanam di hatimu.",
 					"Hey @, \nKamu tahu nggak, Aku kemarin nggak bisa bangun dari tidur karena terus memimpikanmu.",
 					"Hmm...",
