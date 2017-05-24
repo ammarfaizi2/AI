@@ -32,7 +32,8 @@ trait Chat
 				1,array(
 					"Ciyaah... @ jomblo nih 😂😂",
 					"Ciye jomblo :v",
-					"Ciye ^@ jomblo 😏"
+					"Ciye ^@ jomblo 😏",
+					"Hey @,\nKamu jomblo, Aku jomblo. Jadi tunggu apa lagi?"
 					),false,9,90,null,false		
 				),
 				"larang"=>array(
@@ -142,20 +143,19 @@ trait Chat
 					"Sadess :v"
 					),false,10,75,null,false
 				),
-			"bot"=>array(
-				1,array(
-					"Hmm...",
-					"Siap...",
-					"Ya ada apa kang ^@?",
-					"Sepertinya begitu...",
-					"Hey kang ^@, tau nggak?\nKemarin ada lho...",
-					"Iya betul sekali kang ^@"
-				),false,8,65,null,false
-				),
 			"ada+apa"=>array(
 			1,array(
 				"Ada kamu di hatiku."
 				),true,6,35,null,false
+			),
+			"sedih,senang"=>array(
+			1,array(
+			 "@, bila kau menangis. .hatiku pun bersedih, bila kau senang. .hatiku pun berbunga, bila kau gelisah. .hatiku pun bergejolak, ini semua karena. . .. kita SEHATI. . .",
+			 "Aku bersedia menjadi lilin, Membakar diriku untuk menerangi dirimu @.",
+			 
+			
+			
+			),false,9,95,null,false
 			),
 			"love+u,lopyou"=>array(
 			1,array(
@@ -167,6 +167,7 @@ trait Chat
 				),false,9,90,null,false),
 			":v,:'v,:\"v,v:,v':,v\":,;v,;'v,v;,v';,:''v"=>array(
 					1,array(
+						"Hey @,\nKamu jomblo, Aku jomblo. Jadi tunggu apa lagi?",
 						"Mangap :v",
 						":V",
 						"V:",
@@ -178,6 +179,18 @@ trait Chat
 						"Efek rumah kaca :v\nRibuan mahasiswa mangap dihadapan dosen :v",
 						":v :v :v"
 					),true,3,25,null,false
+				),
+				"bot"=>array(
+				1,array(
+					"Hey ^@ sayangku, kita ke toko bunga yuk.\nBeli bibit cinta buat ditanam di hatimu.",
+					"Hey @, \nKamu tahu nggak, Aku kemarin nggak bisa bangun dari tidur karena terus memimpikanmu.",
+					"Hmm...",
+					"Siap...",
+					"Ya ada apa kang ^@?",
+					"Sepertinya begitu...",
+					"Hey kang ^@, tau nggak?\nKemarin ada lho...",
+					"Iya betul sekali kang ^@"
+					),false,8,65,null,false
 				),
 			);
 		}
