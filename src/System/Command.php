@@ -37,7 +37,7 @@ trait Command
                 */
                 case 'ask':
                 if(!isset($msg[1]) or empty($msg[1])){
-                	$this->reply = "Mohon maaf, untuk bertanya silahkan ketik ask [spasi] pertanyaan";
+                	$this->reply = "Mohon maaf, untuk bertanya silahkan ketik ask [spasi] pertanyaan\n\nKetik \"menu\" untuk melihat daftar perintah";
                 } else {
                         $n = new Brainly();
                         $n->prepare($msg = implode(' ', $msg));
