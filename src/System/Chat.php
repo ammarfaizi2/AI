@@ -114,8 +114,17 @@ trait Chat
 				1,array(
 					"0-10"=>array(
 						"Ini masih pagi lho kang ^@ 😌"
+					),
+					"11-13"=>array(
+						"Ini masih siang lho kang ^@"
+					),
+					"14-18"=>array(
+						"Selamat sore kang ^@, selamat beristirahat."
+					),
+					"19-24"=>array(
+						"Ini udah malem kang ^@ 😌"
 					)
-				)
+				),true,8,35,null,true
 				),
 				"haha,hihi,wkwk,wkeke,hhh"=>array(
 				1,array(
