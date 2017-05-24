@@ -212,6 +212,18 @@ trait Chat
 "mampir sekalian ga usah lewat"
 ),true,4,15,null,false),
 
+"nyimak,minyak"=>array(
+1,array(
+"Hey ^@, daripada kau menyimak lebih baik kau mengisi kegalauan di dalam hatiku ini.",
+"Hey itu yang nyimak, kalo kehujanan bareng kamu, air hujan yang dingin pun terasa seperti air shower yg hangat.",
+"Hey itu yang nyimak, sayangku padamu seperti bulu ketek.. meskipun dicukur berkali-kali tetap tumbuh subur bhkan lbh lebat dr sebelumnya.."
+),true,9,90,null,false),
+
+"cowok,cwo"=>array(
+1,array(
+"Cowok itu akan selalu mengerti walaupun tidak dimengerti"
+),true,8,25,null,false),
+
 "sedih,senang"=>array(
 1,array(
 "@, bila kau menangis. .hatiku pun bersedih, bila kau senang. .hatiku pun berbunga, bila kau gelisah. .hatiku pun bergejolak, ini semua karena. . .. kita SEHATI. . .",
@@ -231,7 +243,8 @@ trait Chat
 "Oh inikah cinta...",
 "Btw kang ^@, bapak kamu maling ya?",
 "Hey ^@, kamu tau nggak?\nYang kuharap malam ini hanya tenangmu.\nYang kuinginkan saat ini hanya damaimu.\nYang kupinta detik ini hanya bahagiamu.",
-"Eh, kang ^@,\nMau jadi TTMku gak? Teman Tapi Menikah *upss :v"
+"Eh, kang ^@,\nMau jadi TTMku gak? Teman Tapi Menikah *upss :v",
+"Cinta tuh gak ada yang murni. Pacaran kelamaan bisa maksiat, LDR kelamaan bisa melarat, jomblo kelamaan bisa sekarat..\n\nCinta itu semu"
 ),false,9,90,null,false),
 
 ":v,:'v,:\"v,v:,v':,v\":,;v,;'v,v;,v';,:''v"=>array(
