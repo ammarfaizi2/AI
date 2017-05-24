@@ -152,6 +152,11 @@ trait Chat
 					"Iya betul sekali kang ^@"
 				),false,8,65,null,false
 				),
+			"ada+apa"=>array(
+			1,array(
+				"Ada kamu di hatiku."
+				),true,6,35,null,false
+			),
 			"love+u,lopyou"=>array(
 			1,array(
 			"Love you too ^@ 😚",
