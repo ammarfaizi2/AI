@@ -182,9 +182,9 @@ trait Chat
 
 "haha,hihi,wkwk,wkeke,hhh"=>array(
 1,array(
-	"Dilarang ketawa !\nhahaha",
-	"Hahaha ketawa",
-	"Sadess :v"
+"Dilarang ketawa !\nhahaha",
+"Hahaha ketawa",
+"Sadess :v"
 ),false,10,75,null,false),
 
 "ada+apa"=>array(
