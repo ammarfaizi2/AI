@@ -21,6 +21,13 @@ trait Chat
 			*/
 			$this->msg = strip_tags($this->msg);
 			$this->wl = array(
+				"move+on"=>array(
+				1,array(
+					"Move on adalah jalan terbaik kak ^@, kamu harus kuat :)",
+					"Jangan mudah percaya dengan orang lain, move on itu susah.",
+					"Selamat move on.\n\nUdah itu aja."
+					),true,8,75,null,false
+				),
 				"larang"=>array(
 				1,array(
 					"Wah ngelarang larang 😏"
@@ -58,7 +65,7 @@ trait Chat
 					"Halo juga kang ^@ :)",
 					"Halo juga kang ^@, apa kabar?",
 					"Halo juga kak ^@"
-				),false,8,65,null,false		
+				),true,8,65,null,false		
 				),
 				/**/
 				"pa+kabar,pa+kbr,pa+kbar"=>array(
@@ -90,6 +97,19 @@ trait Chat
 					),
 					),false,8,35,null,true
 				),
+				"siang"=>array(
+				1,array(
+					"0-10"=>array(
+						"Ini masih pagi lho kang ^@ 😌"),
+					"11-14"=>array("Selamat siang kang ^@, selamat beraktifitas."
+					),
+					"15-18"=>array(
+						"Ini udah sore kang ^@ 😌"
+					),
+					"19-24"=>array(
+						"Ini udah malem kang ^@ 😌"
+					)
+				),false,8,35,null,false),
 				"haha,hihi,wkwk,wkeke,hhh"=>array(
 				1,array(
 					"Dilarang ketawa !\nhahaha",
