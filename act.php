@@ -5,7 +5,7 @@ is_dir(data) or mkdir(data);
 use System\AI;
 $ai = new AI();
 $act = "Ammar Faizi";
-$msg = "jadwal sholat sragen";
+$msg = "jadwal sholat solo";
 $st = $ai->prepare($msg, $act);
 $st->execute();
 var_dump($st->fetch_reply());
