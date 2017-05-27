@@ -65,7 +65,9 @@ trait Command
                         if (!isset($msg[1])) {
                             $this->reply = "Untuk menghitung, ketik 'hitung [spasi] perhitungan'\n\nContoh :\nhitung 100+100";
                         } else {
-                            $st = new SaferScript("\$q = ");
+                            $a = array('x','=');
+                            $b = array('*','')
+                            $st = new SaferScript("\$q = ".str_replace($a, $b, $msg[1]));
                             $st->allowHarmlessCalls(true);
                             if (count($st->parse())) {
                                 $this->reply = "Perhitungan tidak ditemukan !";
