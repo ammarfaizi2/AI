@@ -1,27 +1,80 @@
 <?php
 namespace App;
 
+/**
+*   @author Ammar Faizi <ammarfaizi2@gmail.com>
+*/
+
 class SaferScript
 {
-    public $source;
-    public $allowedCalls;
+    private $source;
+    private $allowedCalls;
     private $parseErrors;
+
     public function __construct($scriptText)
     {
         $this->source = $scriptText;
         $this->allowedCalls = array();
     }
-    public function allowHarmlessCalls()
+
+    public function allowHarmlessCalls($hitung=false)
     {
-        $this->allowedCalls = array_merge(
+        if ($hitung) {
+            $this->allowedCalls = array(
+                "abs",
+                "ceil",
+                "floor",
+                "round",
+                "sin",
+                "cos",
+                "tan",
+                "asin",
+                "acos",
+                "atan",
+                "atanh",
+                "atan2",
+                "sinh",
+                "cosh",
+                "tanh",
+                "asinh",
+                "acosh",
+                "expm1",
+                "log1p",
+                "pi",
+                "is_finite",
+                "is_nan",
+                "is_infinite",
+                "pow",
+                "exp",
+                "log",
+                "log10",
+                "sqrt",
+                "hypot",
+                "deg2rad",
+                "rad2deg",
+                "bindec",
+                "hexdec",
+                "octdec",
+                "decbin",
+                "decoct",
+                "dechex",
+                "base_convert",
+                "number_format",
+                "fmod",
+                "intdiv"
+            );
+        } else {
+            $this->allowedCalls = array_merge(
                 array("echo","print","include","include_once","require","require_once"),
                 json_decode($this->allowed_functions, true),
                 json_decode($this->allowed_class, true),
                 json_decode($this->allowed_constants, true),
                 json_decode($this->allowed_intefaces, true)
             );
+        }
     }
-    public function parse($auth=null)
+
+    public function parse()
     {
         $this->parseErrors = array();
         $tokens = token_get_all('<?'.'php '.$this->source.' ?'.'>');
@@ -57,13 +110,17 @@ class SaferScript
         }
         if (sizeof($this->parseErrors) == 0) {
             try {
-                eval($this->source.";");
+                $eval = eval($this->source.";");
             } catch (Error $e) {
                 $q = "Error";
             }
-            return isset($q) ? $q : "success !";
+            if ($eval === false && $error = error_get_last()) {
+                return $error;
+            } else {
+                return isset($q) ? $q : "success !";
+            }
         } else {
-            return 'cannot execute, script contains errors';
+            return 'error';
         }
     }
     private $allowed_functions = '[

@@ -2,6 +2,7 @@
 namespace App;
 
 defined('data') or die('Error : data not defined !');
+
 use Curl\CMCurl;
 
 /**

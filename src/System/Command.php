@@ -6,6 +6,7 @@ use App\ChitChat;
 use App\WhatAnime;
 use App\MyAnimeList;
 use App\SaferScript;
+use App\JadwalSholat;
 use App\GoogleTranslate;
 
 trait Command
@@ -19,6 +20,8 @@ trait Command
         $command_list = array(
                 'ask'        => 2,
                 'menu'       => 2,
+                'jadwal'     => 2,
+                'hitung'     => 2,
                 'i_anime'    => 2,
                 'i_manga'    => 2,
                 'q_anime'    => 2,
@@ -40,13 +43,13 @@ trait Command
                     $this->reply = "Mohon maaf, untuk bertanya silahkan ketik ask [spasi] pertanyaan\n\nKetik \"menu\" untuk melihat daftar perintah";
                 } else {
                     $n = new Brainly();
-                        $n->prepare($msg = implode(' ', $msg));
-                        if ($n->execute()) {
-                            $result = $n->fetch_result();
-                            $this->reply = "Hasil pencarian dari pertanyaan ".($this->actor)."\n\nPertanyaan yang mirip :\n".($result[0])."\n\nJawaban : \n".($result[1])."\n";
-                        } else {
-                            $this->reply = "Mohon maaf, saya tidak bisa menjawab pertanyaan \"".($msg)."\".";
-                        }
+                    $n->prepare($msg = implode(' ', $msg));
+                    if ($n->execute()) {
+                        $result = $n->fetch_result();
+                        $this->reply = "Hasil pencarian dari pertanyaan ".($this->actor)."\n\nPertanyaan yang mirip :\n".($result[0])."\n\nJawaban : \n".($result[1])."\n";
+                    } else {
+                        $this->reply = "Mohon maaf, saya tidak bisa menjawab pertanyaan \"".($msg)."\".";
+                    }
                 }
                     break;
                 
@@ -54,7 +57,51 @@ trait Command
                 *   Show menu
                 */
                 case 'menu':
-                        $this->reply = "Menu : \n1. ask[spasi]pertanyaan : Untuk bertanya\n2. menu : Untuk menampilkan menu ini\n3. ctranslate[spasi]from[spasi]to[spasi]kalimat : Untuk translate dari berbagai bahasa\n4. translate[spasi]kalimat : Untuk translate dari bahasa apapun ke bahasa Indonesia\n5. whatanime[spasi]url_gambar : Untuk mencari judul anime berdasarkan gambar";
+                        $this->reply = "Menu : \n1. ask [spasi] pertanyaan : Untuk bertanya\n2. menu : Untuk menampilkan menu ini\n3. ctranslate [spasi] from [spasi] to [spasi] kalimat : Untuk translate dari berbagai bahasa\n4. translate[spasi]kalimat : Untuk translate dari bahasa apapun ke bahasa Indonesia\n5. whatanime [spasi] url_gambar : Untuk mencari judul anime berdasarkan gambar";
+                    break;
+
+                /**
+                *   Jadwal
+                */
+                case 'jadwal':
+                    $msg = explode(" ", strtolower($msg[1]));
+                    switch ($msg[0]) {
+                        case 'sholat': case 'solat': case 'shalat': 
+                                $st = new JadwalSholat();
+                                $get_kota = ucfirst(strtolower(trim($msg[1])));
+                                $jadwal = $st->get_jadwal($get_kota);
+                                $ret = "Jadwal Sholat untuk daerah {$get_kota} dan sekitarnya\nTanggal ".(date("d F Y"))."\n\n";
+                                $jadwal = array_merge(array('imsyak'=>(date("h:i",strtotime($jadwal['subuh'])-300))), $jadwal);
+                                foreach ($jadwal as $key => $jam) {
+                                    $ret .= ucfirst($key) . " : " . $jam . "\n";
+                                }
+                                $this->reply = $ret;
+                            break;
+                        
+                        default:
+                            
+                            break;
+                    }
+                    break;
+
+
+                /**
+                *   Hitung
+                */
+                case 'hitung':
+                        if (!isset($msg[1])) {
+                            $this->reply = "Untuk menghitung, ketik 'hitung [spasi] perhitungan'\n\nContoh :\nhitung 100+100";
+                        } else {
+                            $a = array('x','=','?');
+                            $b = array('*','','');
+                            $st = new SaferScript("\$q = ".str_replace($a, $b, $msg[1]));
+                            $st->allowHarmlessCalls(true);
+                            if (count($st->parse())) {
+                                $this->reply = "Perhitungan tidak ditemukan !";
+                            } else {
+                                $this->reply = $st->execute();
+                            }
+                        }
                     break;
 
                 /**
