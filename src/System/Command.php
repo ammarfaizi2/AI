@@ -42,13 +42,13 @@ trait Command
                     $this->reply = "Mohon maaf, untuk bertanya silahkan ketik ask [spasi] pertanyaan\n\nKetik \"menu\" untuk melihat daftar perintah";
                 } else {
                     $n = new Brainly();
-                        $n->prepare($msg = implode(' ', $msg));
-                        if ($n->execute()) {
-                            $result = $n->fetch_result();
-                            $this->reply = "Hasil pencarian dari pertanyaan ".($this->actor)."\n\nPertanyaan yang mirip :\n".($result[0])."\n\nJawaban : \n".($result[1])."\n";
-                        } else {
-                            $this->reply = "Mohon maaf, saya tidak bisa menjawab pertanyaan \"".($msg)."\".";
-                        }
+                    $n->prepare($msg = implode(' ', $msg));
+                    if ($n->execute()) {
+                        $result = $n->fetch_result();
+                        $this->reply = "Hasil pencarian dari pertanyaan ".($this->actor)."\n\nPertanyaan yang mirip :\n".($result[0])."\n\nJawaban : \n".($result[1])."\n";
+                    } else {
+                        $this->reply = "Mohon maaf, saya tidak bisa menjawab pertanyaan \"".($msg)."\".";
+                    }
                 }
                     break;
                 

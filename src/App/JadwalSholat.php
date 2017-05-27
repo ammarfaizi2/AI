@@ -11,28 +11,27 @@ use Curl\CMCurl;
 
 class JadwalSholat
 {
-	/**
-	* @var	string	Bulan sekarang
-	*/
-	private $bulan;
+    /**
+    * @var	string	Bulan sekarang
+    */
+    private $bulan;
 
-	public function __construct()
-	{	
-		$this->bulan = strtolower(date('M'));
-		is_dir(data.'/jadwal_sholat') or mkdir(data.'/jadwal_sholat');
-	}
+    public function __construct()
+    {
+        $this->bulan = strtolower(date('M'));
+        is_dir(data.'/jadwal_sholat') or mkdir(data.'/jadwal_sholat');
+    }
 
-	/**
-	* @param	string		$kota	Pilih kota
-	* @return	array|bool
-	*/
-	public function get_jadwal($kota)
-	{
+    /**
+    * @param	string		$kota	Pilih kota
+    * @return	array|bool
+    */
+    public function get_jadwal($kota)
+    {
+    }
 
-	}
 
-
-private $list_kota = array(
+    private $list_kota = array(
 1 => "Ambarawa",
 2 => "Ambon",
 3 => "Amlapura",
@@ -344,4 +343,3 @@ private $list_kota = array(
 308 => "Yogyakarta",
 );
 }
-

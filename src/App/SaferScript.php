@@ -1,7 +1,6 @@
 <?php
 namespace App;
 
-
 /**
 *   @author Ammar Faizi <ammarfaizi2@gmail.com>
 */
