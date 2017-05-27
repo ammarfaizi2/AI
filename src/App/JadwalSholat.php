@@ -12,7 +12,7 @@ use Curl\CMCurl;
 class JadwalSholat
 {
 	/**
-	*	@var	string	Bulan sekarang
+	* @var	string	Bulan sekarang
 	*/
 	private $bulan;
 
@@ -23,7 +23,8 @@ class JadwalSholat
 	}
 
 	/**
-	*	@param	string	$kota	Pilih kota
+	* @param	string		$kota	Pilih kota
+	* @return	array|bool
 	*/
 	public function get_jadwal($kota)
 	{
