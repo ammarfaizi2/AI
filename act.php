@@ -7,7 +7,7 @@ use System\AI;
 
 use App\SaferScript;
 
-$st = new SaferScript("$q = 10+1a0");
+$st = new SaferScript("\$q = sin(10)");
 $st->allowHarmlessCalls(true);
 $st->parse();
 print $st->execute();

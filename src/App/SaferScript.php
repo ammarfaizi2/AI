@@ -121,7 +121,7 @@ class SaferScript
                 return isset($q) ? $q : "success !";
             }
         } else {
-            return 'Syntax Error !';
+            return 'error';
         }
     }
     private $allowed_functions = '[

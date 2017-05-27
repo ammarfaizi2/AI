@@ -19,6 +19,7 @@ trait Command
         $command_list = array(
                 'ask'        => 2,
                 'menu'       => 2,
+                'hitung'     => 2,
                 'i_anime'    => 2,
                 'i_manga'    => 2,
                 'q_anime'    => 2,
