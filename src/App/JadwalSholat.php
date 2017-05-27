@@ -34,6 +34,7 @@ class JadwalSholat
             $ch = new CMCurl('https://www.jadwalsholat.pkpu.or.id/monthly.php?id='.$this->list_kota[$kota]);
             $ch->set_useraget();
             $source = $ch->execute();
+            file_put_contents('a.tmp', $source);
         }
     }
 
