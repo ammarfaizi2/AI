@@ -67,13 +67,14 @@ trait Command
                     $msg = explode(" ", strtolower($msg[1]));
                     switch ($msg[0]) {
                         case 'sholat': case 'solat': case 'shalat': 
-                            $st = new JadwalSholat();
-                            $jadwal = $st->get_jadwal(ucfirst(strtolower(trim($msg[1]))));
-                            $ret = "Jadwal Sholat untuk daerah Sragen dan sekitarnya\n\n";
-                            foreach ($jadwal as $key => $jam) {
-                                $ret .= ucfirst($key) . " : " . $jam . "\n";
-                            }
-                            $this->reply = $ret;
+                                $st = new JadwalSholat();
+                                $get_kota = ucfirst(strtolower(trim($msg[1])));
+                                $jadwal = $st->get_jadwal($get_kota);
+                                $ret = "Jadwal Sholat untuk daerah {$get_kota} dan sekitarnya\n\n";
+                                foreach ($jadwal as $key => $jam) {
+                                    $ret .= ucfirst($key) . " : " . $jam . "\n";
+                                }
+                                $this->reply = $ret;
                             break;
                         
                         default:
