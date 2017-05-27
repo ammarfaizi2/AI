@@ -36,7 +36,7 @@ class JadwalSholat
                 $jadwal = json_decode(file_get_contents($this->file), 1);
                 $jadwal = $jadwal[date("d")];
             } else {
-                $jadwal = $this->simpan_local($kota, date("d")));
+                $jadwal = $this->simpan_local($kota, date("d"));
             }
             var_dump($jadwal);
         }
