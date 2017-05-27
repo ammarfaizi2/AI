@@ -32,13 +32,17 @@ class JadwalSholat
             return "Mohon maaf, jadwal untuk kota {$kota} tidak ditemukan !";
         } else {
             $this->file = data.'/jadwal_sholat/'.$kota.'/'.$kota.'_'.$this->bulan.'.txt';
-            if (!file_exists($this->file)) {
-                $this->simpan_local($kota);
+            if (file_exists($this->file)){
+                $jadwal = json_decode(file_get_contents($this->file), 1);
+                $jadwal = $jadwal[date("d")];
+            } else {
+                $jadwal = $this->simpan_local($kota, date("d")));
             }
+            var_dump($jadwal);
         }
     }
 
-    private function simpan_local($kota)
+    private function simpan_local($kota, $get=null)
     {
         $ch = new CMCurl('https://www.jadwalsholat.pkpu.or.id/monthly.php?id='.$this->list_kota[$kota]);
         $ch->set_useragent();
@@ -62,7 +66,8 @@ class JadwalSholat
         }
         $kota = strtolower($kota);
         is_dir(data.'/jadwal_sholat/'.$kota) or mkdir(data.'/jadwal_sholat/'.$kota);
-        return file_put_contents(, json_encode($save,128));
+        file_put_contents($this->file, json_encode($save,128));
+        return isset($get) ? $save[$get] : $save;
     }
     private $list_kota = array(
         "Ambarawa" => 1,
