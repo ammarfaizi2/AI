@@ -68,7 +68,7 @@ trait Command
                     switch ($msg[0]) {
                         case 'sholat': case 'solat': case 'shalat': 
                             $st = new JadwalSholat();
-                            $st->get_jadwal(ucfirst(strtolower(trim($msg[1]))));
+                            $jadwal = $st->get_jadwal(ucfirst(strtolower(trim($msg[1]))));
                             break;
                         
                         default:

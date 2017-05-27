@@ -38,7 +38,7 @@ class JadwalSholat
             } else {
                 $jadwal = $this->simpan_local($kota, date("d"));
             }
-            var_dump($jadwal);
+            return $jadwal;
         }
     }
 
@@ -47,24 +47,25 @@ class JadwalSholat
         $ch = new CMCurl('https://www.jadwalsholat.pkpu.or.id/monthly.php?id='.$this->list_kota[$kota]);
         $ch->set_useragent();
         $source = $ch->execute();
-        $a = explode('<tr class="table_header" align="center">', $a, 2);
+        $a = explode('<tr class="table_header" align="center">', $source, 2);
         $a = explode('<tr class="table_block_title">', $a[1], 2);
         $a = explode("\n", $a[0]);
         $save = array();
-        $z = 0;
         foreach ($a as $val) {
             preg_match("#align=\"center\"><td><b>(.*)</b>#", $val, $n);
-            $val = explode("<td>", $val);
-            if (count($val)==8) {
-                $checkpoint = array();
-                $ket = array(2=>'subuh','terbit','dzuhur','ashar','maghrib','isya');
-                for ($i=2; $i < 8; $i++) { 
-                    $checkpoint[$ket[$i]] = strip_tags($val[$i]);
+            if (isset($n[1]) and !empty($n[1])) {
+                $val = explode("<td>", $val);
+                if (count($val)==8) {
+                    $checkpoint = array();
+                    $ket = array(2=>'subuh','terbit','dzuhur','ashar','maghrib','isya');
+                    for ($i=2; $i < 8; $i++) { 
+                        $checkpoint[$ket[$i]] = strip_tags($val[$i]);
+                    }
                 }
+                $save[(substr($n[1], 0, 1) == "0" ? substr($n[1], 1) : $n[1])] = $checkpoint; 
             }
-            $save[(substr($n[1], 0, 1) == "0" ? substr($n[1], 1) : $n[1])] = $checkpoint; 
         }
-        $kota = strtolower($kota);
+        $kota = $kota;
         is_dir(data.'/jadwal_sholat/'.$kota) or mkdir(data.'/jadwal_sholat/'.$kota);
         file_put_contents($this->file, json_encode($save,128));
         return isset($get) ? $save[$get] : $save;
