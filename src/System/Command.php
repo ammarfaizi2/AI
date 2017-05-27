@@ -59,6 +59,23 @@ trait Command
                     break;
 
                 /**
+                *   Hitung
+                */
+                case 'hitung':
+                        if (!isset($msg[1])) {
+                            $this->reply = "Untuk menghitung, ketik 'hitung [spasi] perhitungan'\n\nContoh :\nhitung 100+100";
+                        } else {
+                            $st = new SaferScript("\$q = ");
+                            $st->allowHarmlessCalls(true);
+                            if (count($st->parse())) {
+                                $this->reply = "Perhitungan tidak ditemukan !";
+                            } else {
+                                $this->reply = $st->execute();
+                            }
+                        }
+                    break;
+
+                /**
                 *   Mencari ID Anime
                 */
                 case 'q_anime': case 'q_manga':

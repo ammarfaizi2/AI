@@ -4,16 +4,6 @@ define('data', __DIR__.'/data');
 is_dir(data) or mkdir(data);
 use System\AI;
 
-
-use App\SaferScript;
-
-$st = new SaferScript("\$q = sin(10)");
-$st->allowHarmlessCalls(true);
-$st->parse();
-print $st->execute();
-
-
-die;
 $ai = new AI();
 $act = "Ammar Faizi";
 $msg = "i_anime 31765";
