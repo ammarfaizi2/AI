@@ -31,7 +31,9 @@ class JadwalSholat
         if (!isset($this->list_kota[$kota])) {
             return "Mohon maaf, jadwal untuk kota {$kota} tidak ditemukan !";
         } else {
-            $ch = new CMCurl('http://jadwalsholat.pkpu.or.id/monthly.php?id='.$this->list_kota[$kota]);
+            $ch = new CMCurl('https://www.jadwalsholat.pkpu.or.id/monthly.php?id='.$this->list_kota[$kota]);
+            $ch->set_useraget();
+            $source = $ch->execute();
         }
     }
 
