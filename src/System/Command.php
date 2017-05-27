@@ -70,7 +70,7 @@ trait Command
                                 $st = new JadwalSholat();
                                 $get_kota = ucfirst(strtolower(trim($msg[1])));
                                 $jadwal = $st->get_jadwal($get_kota);
-                                $ret = "Jadwal Sholat untuk daerah {$get_kota} dan sekitarnya\n\n";
+                                $ret = "Jadwal Sholat untuk daerah {$get_kota} dan sekitarnya\nTanggal ".(date("d F Y"))."\n\n";
                                 foreach ($jadwal as $key => $jam) {
                                     $ret .= ucfirst($key) . " : " . $jam . "\n";
                                 }
