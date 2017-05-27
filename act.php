@@ -7,7 +7,7 @@ use System\AI;
 new \App\JadwalSholat;
 $ai = new AI();
 $act = "Ammar Faizi";
-$msg = "hitung";
+$msg = "jadwal sholat sragen";
 $st = $ai->prepare($msg, $act);
 $st->execute();
 var_dump($st->fetch_reply());

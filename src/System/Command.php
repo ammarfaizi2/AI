@@ -61,6 +61,24 @@ trait Command
                     break;
 
                 /**
+                *   Jadwal
+                */
+                case 'jadwal':
+                    $msg = explode(" ", strtolower($msg[1]));
+                    switch ($msg[0]) {
+                        case 'sholat': case 'solat': case 'shalat': 
+                            $st = new JadwalSholat();
+                            $st->get_jadwal(ucfirst(strtolower(trim($msg[1]))));
+                            break;
+                        
+                        default:
+                            # code...
+                            break;
+                    }
+                    break;
+
+
+                /**
                 *   Hitung
                 */
                 case 'hitung':
