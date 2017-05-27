@@ -42,6 +42,10 @@ class JadwalSholat
         }
     }
 
+    /**
+    * @param    string  $kota   Nama kota
+    * @return   array
+    */
     private function simpan_local($kota, $get=null)
     {
         $ch = new CMCurl('https://www.jadwalsholat.pkpu.or.id/monthly.php?id='.$this->list_kota[$kota]);
