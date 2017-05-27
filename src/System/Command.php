@@ -69,10 +69,15 @@ trait Command
                         case 'sholat': case 'solat': case 'shalat': 
                             $st = new JadwalSholat();
                             $jadwal = $st->get_jadwal(ucfirst(strtolower(trim($msg[1]))));
+                            $ret = "Jadwal Sholat untuk daerah Sragen dan sekitarnya\n\n";
+                            foreach ($jadwal as $key => $jam) {
+                                $ret .= ucfirst($key) . " : " . $jam . "\n";
+                            }
+                            $this->reply = $ret;
                             break;
                         
                         default:
-                            # code...
+                            
                             break;
                     }
                     break;
