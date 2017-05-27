@@ -4,6 +4,11 @@ define('data', __DIR__.'/data');
 is_dir(data) or mkdir(data);
 use System\AI;
 
+
+
+
+
+die;
 $ai = new AI();
 $act = "Ammar Faizi";
 $msg = "i_anime 31765";
