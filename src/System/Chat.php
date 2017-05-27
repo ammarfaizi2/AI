@@ -82,10 +82,13 @@ trait Chat
     "Kabar baik, kang ^@ apa kabar?"
 ),false,8,35,null,false),
         
-"jam+ber,jam+brp"=>array(
+"jam+ber,jam+brp,jam+pro,jam+piro"=>array(
 1,array(
-("Sekarang jam ".date("h:i:s"))
-),false,8,35,null,false),
+"0-11"=>("Sekarang jam ".date("h:i:s").' pagi'),
+"11-14"=>("Sekarang jam ".date("h:i:s").' siang'),
+"14-18"=>("Sekarang jam ".date("h:i:s").' sore'),
+"18-24"=>("Sekarang jam ".date("h:i:s").' malam'),
+),false,8,35,null,true),
 
 "pagi"=>array(
 1,array(
