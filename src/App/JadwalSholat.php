@@ -31,14 +31,39 @@ class JadwalSholat
         if (!isset($this->list_kota[$kota])) {
             return "Mohon maaf, jadwal untuk kota {$kota} tidak ditemukan !";
         } else {
-            $ch = new CMCurl('https://www.jadwalsholat.pkpu.or.id/monthly.php?id='.$this->list_kota[$kota]);
-            $ch->set_useraget();
-            $source = $ch->execute();
-            file_put_contents('a.tmp', $source);
+            $this->file = data.'/jadwal_sholat/'.$kota.'/'.$kota.'_'.$this->bulan.'.txt';
+            if (!file_exists($this->file)) {
+                $this->simpan_local($kota);
+            }
         }
     }
 
-
+    private function simpan_local($kota)
+    {
+        $ch = new CMCurl('https://www.jadwalsholat.pkpu.or.id/monthly.php?id='.$this->list_kota[$kota]);
+        $ch->set_useragent();
+        $source = $ch->execute();
+        $a = explode('<tr class="table_header" align="center">', $a, 2);
+        $a = explode('<tr class="table_block_title">', $a[1], 2);
+        $a = explode("\n", $a[0]);
+        $save = array();
+        $z = 0;
+        foreach ($a as $val) {
+            preg_match("#align=\"center\"><td><b>(.*)</b>#", $val, $n);
+            $val = explode("<td>", $val);
+            if (count($val)==8) {
+                $checkpoint = array();
+                $ket = array(2=>'subuh','terbit','dzuhur','ashar','maghrib','isya');
+                for ($i=2; $i < 8; $i++) { 
+                    $checkpoint[$ket[$i]] = strip_tags($val[$i]);
+                }
+            }
+            $save[(substr($n[1], 0, 1) == "0" ? substr($n[1], 1) : $n[1])] = $checkpoint; 
+        }
+        $kota = strtolower($kota);
+        is_dir(data.'/jadwal_sholat/'.$kota) or mkdir(data.'/jadwal_sholat/'.$kota);
+        return file_put_contents(, json_encode($save,128));
+    }
     private $list_kota = array(
         "Ambarawa" => 1,
         "Ambon" => 2,
