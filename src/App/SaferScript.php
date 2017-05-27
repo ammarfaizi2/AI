@@ -111,13 +111,17 @@ class SaferScript
         }
         if (sizeof($this->parseErrors) == 0) {
             try {
-                eval($this->source.";");
+                $eval = eval($this->source.";");
             } catch (Error $e) {
                 $q = "Error";
             }
-            return isset($q) ? $q : "success !";
+            if ($eval === false && $error = error_get_last()) {
+                return $error;
+            } else {
+                return isset($q) ? $q : "success !";
+            }
         } else {
-            return 'cannot execute, script contains errors';
+            return 'Syntax Error !';
         }
     }
     private $allowed_functions = '[
