@@ -7,7 +7,9 @@ use App\WhatAnime;
 use App\MyAnimeList;
 use App\SaferScript;
 use App\JadwalSholat;
+use Teacrypt\Teacrypt;
 use App\GoogleTranslate;
+
 
 /**
  *   @author Ammar Faizi <ammarfaizi2@gmail.com>
@@ -30,9 +32,10 @@ trait Command
                 'i_manga'    => 2,
                 'q_anime'    => 2,
                 'q_manga'    => 2,
-                'ctranslate' => 3,
+                'teacrypt'   => 2,
                 'translate'  => 2,
                 'whatanime'  => 2,
+                'ctranslate' => 3,
             );
         if (isset($command_list[$cmd])) {
             $rt = false;
@@ -144,6 +147,28 @@ trait Command
                         }
                     break;
 
+                /**
+                 *
+                 *  Enkripsi dan Dekripsi Teacrypt
+                 */
+                case 'teacrypt':
+                    $msg = explode(" ", $this->absmsg);
+                    if (strtolower($msg[1]) == "enc") {
+                        if (!isset($msg[3]) or empty($msg[3])) {
+                            $this->reply = "Key harus diisi !";
+                        } else {
+                            $this->reply = Teacrypt::encrypt($msg[2], $msg[3]);
+                        }
+                    } else if(strtolower($msg[1]) == "dec"){
+                        if (!isset($msg[3]) or empty($msg[3])) {
+                            $this->reply = "Key harus diisi !";
+                        } else {
+                            $this->reply = Teacrypt::decrypt($msg[2], $msg[3]);
+                        }
+                    } else {
+                        $this->reply = "Perintah tidak dikenal !";
+                    }
+                    break;
 
                 /**
                 *   Untuk translate bahasa asing ke indonesia
