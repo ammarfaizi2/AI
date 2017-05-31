@@ -16,149 +16,365 @@ $msg   = "assalamulaikum asdf qmwekfm qkwemfr kqwmer mqweorm";
 	#$ai->execute();	
 
 
-$a = 'Asia/Aden
+$a = 'Africa/Asmera
 
-Asia/Almaty
+Africa/Timbuktu
 
-Asia/Amman
+America/Argentina/ComodRivadavia
 
-Asia/Anadyr
-Asia/Aqtau
+America/Atka
+America/Buenos_Aires
 
-Asia/Aqtobe
+America/Catamarca
 
-Asia/Ashgabat
+America/Coral_Harbour
 
-Asia/Atyrau
-Asia/Baghdad
+America/Cordoba
+America/Ensenada
 
-Asia/Bahrain
+America/Fort_Wayne
 
-Asia/Baku
+America/Indianapolis
 
-Asia/Bangkok
-Asia/Barnaul
+America/Jujuy
+America/Knox_IN
 
-Asia/Beirut
+America/Louisville
 
-Asia/Bishkek
+America/Mendoza
 
-Asia/Brunei
-Asia/Chita
+America/Montreal
+America/Porto_Acre
 
-Asia/Choibalsan
+America/Rosario
 
-Asia/Colombo
+America/Santa_Isabel
 
-Asia/Damascus
-Asia/Dhaka
+America/Shiprock
+America/Virgin
 
-Asia/Dili
+Antarctica/South_Pole
 
-Asia/Dubai
+Asia/Ashkhabad
 
-Asia/Dushanbe
-Asia/Famagusta
+Asia/Calcutta
+Asia/Chongqing
 
-Asia/Gaza
+Asia/Chungking
 
-Asia/Hebron
+Asia/Dacca
 
-Asia/Ho_Chi_Minh
-Asia/Hong_Kong
+Asia/Harbin
+Asia/Istanbul
 
-Asia/Hovd
+Asia/Kashgar
 
-Asia/Irkutsk
+Asia/Katmandu
 
-Asia/Jakarta
-Asia/Jayapura
+Asia/Macao
+Asia/Rangoon
 
-Asia/Jerusalem
+Asia/Saigon
 
-Asia/Kabul
+Asia/Tel_Aviv
 
-Asia/Kamchatka
-Asia/Karachi
+Asia/Thimbu
+Asia/Ujung_Pandang
 
-Asia/Kathmandu
+Asia/Ulan_Bator
 
-Asia/Khandyga
+Atlantic/Faeroe
 
-Asia/Kolkata
-Asia/Krasnoyarsk
+Atlantic/Jan_Mayen
+Australia/ACT
 
-Asia/Kuala_Lumpur
+Australia/Canberra
 
-Asia/Kuching
+Australia/LHI
 
-Asia/Kuwait
-Asia/Macau
+Australia/North
+Australia/NSW
 
-Asia/Magadan
+Australia/Queensland
 
-Asia/Makassar
+Australia/South
 
-Asia/Manila
-Asia/Muscat
+Australia/Tasmania
+Australia/Victoria
 
-Asia/Nicosia
+Australia/West
 
-Asia/Novokuznetsk
+Australia/Yancowinna
 
-Asia/Novosibirsk
-Asia/Omsk
+Brazil/Acre
+Brazil/DeNoronha
 
-Asia/Oral
+Brazil/East
 
-Asia/Phnom_Penh
+Brazil/West
 
-Asia/Pontianak
-Asia/Pyongyang
+Canada/Atlantic
+Canada/Central
 
-Asia/Qatar
+Canada/East-Saskatchewan
 
-Asia/Qyzylorda
+Canada/Eastern
 
-Asia/Riyadh
-Asia/Sakhalin
+Canada/Mountain
+Canada/Newfoundland
 
-Asia/Samarkand
+Canada/Pacific
 
-Asia/Seoul
+Canada/Saskatchewan
 
-Asia/Shanghai
-Asia/Singapore
+Canada/Yukon
+CET
 
-Asia/Srednekolymsk
+Chile/Continental
 
-Asia/Taipei
+Chile/EasterIsland
 
-Asia/Tashkent
-Asia/Tbilisi
+CST
+CDT
+Cuba
 
-Asia/Tehran
+EET
 
-Asia/Thimphu
+Egypt
 
-Asia/Tokyo
-Asia/Tomsk
+Eire
+EST
 
-Asia/Ulaanbaatar
+EST
+EDT
 
-Asia/Urumqi
+Etc/GMT
 
-Asia/Ust-Nera
-Asia/Vientiane
+Etc/GMT
 
-Asia/Vladivostok
 
-Asia/Yakutsk
+Etc/GMT
 
-Asia/Yangon
-Asia/Yekaterinburg
 
-Asia/Yerevan
+
+Etc/GMT
+
+
+
+
+Etc/GMT
+
+
+
+
+Etc/GMT
+
+
+
+Etc/GMT
+
+
+
+Etc/GMT
+
+
+
+Etc/GMT
+
+
+
+Etc/GMT
+
+
+Etc/GMT
+
+
+
+Etc/GMT
+
+
+
+Etc/GMT
+
+
+
+Etc/GMT
+
+
+Etc/GMT-
+
+
+Etc/GMT-
+
+
+Etc/GMT-
+
+
+
+Etc/GMT-
+
+
+Etc/GMT-
+
+
+
+Etc/GMT-
+
+
+
+Etc/GMT-
+
+
+
+Etc/GMT-
+
+Etc/GMT-
+
+
+Etc/GMT-
+
+
+Etc/GMT-
+
+
+Etc/GMT-
+
+Etc/GMT-
+
+
+Etc/GMT-
+
+
+Etc/GMT-
+
+
+Etc/GMT
+
+Etc/Greenwich
+
+Etc/UCT
+
+Etc/Universal
+
+Etc/UTC
+Etc/Zulu
+
+Europe/Belfast
+
+Europe/Nicosia
+
+Europe/Tiraspol
+Factory
+
+GB
+
+GB-Eire
+
+GMT
+GMT
+
+
+
+GMT-
+
+
+GMT
+
+
+Greenwich
+Hongkong
+
+HST
+
+Iceland
+
+Iran
+Israel
+
+Jamaica
+
+Japan
+
+Kwajalein
+Libya
+
+MET
+
+Mexico/BajaNorte
+
+Mexico/BajaSur
+Mexico/General
+
+MST
+
+MST
+MDT
+
+Navajo
+NZ
+
+NZ-CHAT
+
+Pacific/Johnston
+
+Pacific/Ponape
+Pacific/Samoa
+
+Pacific/Truk
+
+Pacific/Yap
+
+Poland
+Portugal
+
+PRC
+
+PST
+PDT
+
+ROC
+ROK
+
+Singapore
+
+Turkey
+
+UCT
+Universal
+
+US/Alaska
+
+US/Aleutian
+
+US/Arizona
+US/Central
+
+US/East-Indiana
+
+US/Eastern
+
+US/Hawaii
+US/Indiana-Starke
+
+US/Michigan
+
+US/Mountain
+
+US/Pacific
+US/Pacific-New
+
+US/Samoa
+
+UTC
+
+W-SU
+WET
+
+Zulu
+
+
+
+
 
 
 ';
