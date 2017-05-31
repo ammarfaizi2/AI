@@ -413,7 +413,8 @@ trait Chat
         $this->cword = count($this->exms);
         $this->mslg = strlen($this->msg);
         foreach ($this->wl as $key => $val) {
-            if ($this->{'check'.$val[0]}($key, $val[2], $val[3], $val[4], $val[5], $val[6])) {
+
+            if ($this->{"check{$val[0]}"}($key, $val[2], $val[3], $val[4], $val[5], $val[6])) {
                 if ($this->timereply) {
                     if ($this->gettimereply($val[1])) {
                         $val[1] = $this->timereply;
@@ -426,6 +427,11 @@ trait Chat
                 return true;
             }
         }
+        if (count($this->similar_word_temporary)) {
+            $max_key = array_search(max($this->similar_word_temporary), $this->similar_word_temporary);
+            $this->reply = $this->wl[$max_key][1][rand(0, count($this->wl[$max_key][1])-1)];
+        }
+        return true;
     }
         
     /**
@@ -527,9 +533,17 @@ trait Chat
             }
         }
         $ex = explode(',', $key);
-        foreach ($ex as $key => $value) {
-            # code...
+        $_similar_1 = array();
+        foreach ($ex as $wlist) {
+            $similar_0 = array();
+            foreach ($this->exms as $in) {
+                similar_text($wlist, $in, $percent);
+                $similar_0[] = $percent;
+            }
+            $_similar_1[] = max($similar_0);
         }
+        $this->similar_word_temporary[$key] = array_sum($_similar_1) / count($ex);
+        return false;
     }
 
 
