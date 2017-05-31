@@ -295,66 +295,82 @@ trait Chat
         }
     }
         
+    /**
+     *
+     * Check chat
+     *
+     * @param    string  $key
+     * @param    bool    $wordcheck
+     * @param    int     $maxwords
+     * @param    int     $maxlength
+     * @param    array   $wordexception
+     * @param    bool    $time
+     * @return   bool
+     */
+    private function check1($key, $wordcheck=false, $maxwords=null, $maxlength=null, $wordexception=null, $time=false)
+    {
         /**
-        *		@param wordlist
+        *		Cek kelayakan :v
         */
-        private function check1($key, $wordcheck=false, $maxwords=null, $maxlength=null, $wordexception=null, $time=false)
-        {
-            /**
-            *		Cek kelayakan :v
-            */
-            if (($maxlength!==null and $this->mslg>$maxlength) or ($maxwords!==null and $this->cword>$maxwords)) {
-                return false;
-            }
-            if (is_array($wordexception)) {
-                foreach ($wordexception as $qw) {
-                    if (in_array($qw, $this->exms)) {
-                        return false;
-                    }
-                }
-            }
-            
-            $ex = explode(',', $key);
-            if ($wordcheck) {
-                $stop = false;
-                foreach ($ex as $qw) {
-                    $a = explode('+', $qw);
-                    $notwr = true;
-                    foreach ($a as $qw2) {
-                        if (!in_array($qw2, $this->exms)) {
-                            $notwr = false;
-                            break;
-                        }
-                    }
-                    if ($notwr) {
-                        if ($time) {
-                            $this->timereply = true;
-                        }
-                        return true;
-                    }
-                }
-            } else {
-                $stop = false;
-                foreach ($ex as $qw) {
-                    $a = explode('+', $qw);
-                    $notwr = true;
-                    foreach ($a as $qw2) {
-                        if (strpos($this->msg, $qw2)===false) {
-                            $notwr = false;
-                            break;
-                        }
-                    }
-                    if ($notwr) {
-                        if ($time) {
-                            $this->timereply = true;
-                        }
-                        return true;
-                    }
-                }
-            }
-            
+        if (($maxlength!==null and $this->mslg>$maxlength) or ($maxwords!==null and $this->cword>$maxwords)) {
             return false;
         }
+        if (is_array($wordexception)) {
+            foreach ($wordexception as $qw) {
+                if (in_array($qw, $this->exms)) {
+                    return false;
+                }
+            }
+        }
+        
+        $ex = explode(',', $key);
+        if ($wordcheck) {
+            $stop = false;
+            foreach ($ex as $qw) {
+                $a = explode('+', $qw);
+                $notwr = true;
+                foreach ($a as $qw2) {
+                    if (!in_array($qw2, $this->exms)) {
+                        $notwr = false;
+                        break;
+                    }
+                }
+                if ($notwr) {
+                    if ($time) {
+                        $this->timereply = true;
+                    }
+                    return true;
+                }
+            }
+        } else {
+            $stop = false;
+            foreach ($ex as $qw) {
+                $a = explode('+', $qw);
+                $notwr = true;
+                foreach ($a as $qw2) {
+                    if (strpos($this->msg, $qw2)===false) {
+                        $notwr = false;
+                        break;
+                    }
+                }
+                if ($notwr) {
+                    if ($time) {
+                        $this->timereply = true;
+                    }
+                    return true;
+                }
+            }
+        }
+        
+        return false;
+    }
+
+    /**
+     * Get time reply
+     *
+     * @param   array   $replylist
+     * @return  bool
+     */
     private function gettimereply($replylist)
     {
         foreach ($replylist as $time => $replist) {
@@ -375,6 +391,13 @@ trait Chat
         }
         return false;
     }
+
+    /**
+     * Convert time character to absolute time
+     *
+     * @param   string  $string
+     * @return  string  $string
+     */
     private function fdate($string)
     {
         $pure = $string;
