@@ -11,7 +11,8 @@ use AI\AI;
 
 $ai = new AI();
 $actor = "Ammar Faizi";
-$msg   = "assalamulaikum asdf qmwekfm qkwemfr kqwmer mqweorm";
+$msg   = "assalamulaikum";
 $st = $ai->prepare($msg, $actor);
+$st->set_timezone("Asia/Jakarta");
 $ai->execute();	
 var_dump($st->fetch_reply());

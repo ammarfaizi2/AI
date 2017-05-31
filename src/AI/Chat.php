@@ -411,7 +411,7 @@ trait Chat
             2,array(
                         "Waalaikumsalam"
                 ),
-            80,10,75,null,false)
+            80,10,75,null,false),
         );
     }
 
