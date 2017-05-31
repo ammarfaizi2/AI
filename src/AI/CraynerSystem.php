@@ -30,5 +30,4 @@ abstract class CraynerSystem
     abstract public function prepare(string $text);
     abstract public function execute();
     abstract public function fetch_reply();
-
 }

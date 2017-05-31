@@ -14,5 +14,5 @@ $actor = "Ammar Faizi";
 $msg   = "assalamulaikum";
 $st = $ai->prepare($msg, $actor);
 $st->set_timezone("Asia/Jakarta");
-$ai->execute();	
+$ai->execute();
 var_dump($st->fetch_reply());

@@ -66,7 +66,7 @@ class AI extends CraynerSystem implements AIFace, AIProp
     /**
      * Timezone
      *
-     * @var string 
+     * @var string
      */
     private $timezone;
 
@@ -754,15 +754,14 @@ class AI extends CraynerSystem implements AIFace, AIProp
          *
          * Create directory for AI data
          */
-        (is_dir(data . self::DATA) or mkdir(data . self::DATA)) xor 
-        (is_dir(data . self::DATA.'/logs') or mkdir(data . self::DATA . '/logs')) xor 
-        (is_dir(data . self::DATA.'/status') or (mkdir(data . self::DATA . '/status') and 
-        (file_put_contents(data.self::DATA . '/status/chit_chat_on', '1')))) xor 
+        (is_dir(data . self::DATA) or mkdir(data . self::DATA)) xor
+        (is_dir(data . self::DATA.'/logs') or mkdir(data . self::DATA . '/logs')) xor
+        (is_dir(data . self::DATA.'/status') or (mkdir(data . self::DATA . '/status') and
+        (file_put_contents(data.self::DATA . '/status/chit_chat_on', '1')))) xor
         (is_dir(data . self::DATA . '/chat_logs') or mkdir(data . self::DATA . '/chat_logs'));
 
         if (!is_dir(data . self::DATA)) {
             throw new AIException("Cannot create data folder", self::ERROR_EXCEPTION);
-            
         }
 
         /**
