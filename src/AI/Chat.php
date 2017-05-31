@@ -83,10 +83,10 @@ trait Chat
         
 "jam+ber,jam+brp,jam+pro,jam+piro"=>array(
 1,array(
-"0-11"=>("Sekarang jam ".date("h:i:s").' pagi'),
-"11-14"=>("Sekarang jam ".date("h:i:s").' siang'),
-"14-18"=>("Sekarang jam ".date("h:i:s").' sore'),
-"18-24"=>("Sekarang jam ".date("h:i:s").' malam'),
+"0-11"=>array("Sekarang jam #d(jam) pagi"),
+"11-14"=>array("Sekarang jam #d(jam) siang"),
+"14-18"=>array("Sekarang jam #d(jam) sore"),
+"18-24"=>array("Sekarang jam #d(jam) malam")
 ),false,8,35,null,true),
 
 "pagi"=>array(
@@ -216,7 +216,7 @@ trait Chat
                     }
                 }
                 $act = explode(" ", $this->actor);
-                $this->reply = str_replace("@", $this->actor, str_replace("^@", $act[0], $val[1][rand(0, count($val[1])-1)]));
+                $this->reply = $this->fdate(str_replace("@", $this->actor, str_replace("^@", $act[0], $val[1][rand(0, count($val[1])-1)])));
                 return true;
             }
         }
