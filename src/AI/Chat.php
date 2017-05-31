@@ -6,10 +6,16 @@ namespace AI;
 */
 trait Chat
 {
-    /**
-        *
-        */
-        private $wl;
+    private $hari = array(
+            "Senin",
+            "Selasa",
+            "Rabu",
+            "Kamis",
+            "Jum'at",
+            "Sabtu",
+            "Minggu"
+        );
+    private $wl;
     private $timereply;
     private function load_wordlist()
     {
@@ -88,6 +94,7 @@ trait Chat
 "14-18"=>array("Sekarang jam #d(jam) sore"),
 "18-24"=>array("Sekarang jam #d(jam) malam")
 ),false,8,35,null,true),
+
 
 "pagi"=>array(
 1,array(
