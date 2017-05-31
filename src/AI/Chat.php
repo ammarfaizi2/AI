@@ -126,7 +126,7 @@ trait Chat
 
 "bulan+apa"=>array(
 1,array(
-"sekarang bulan #d(m)"
+"sekarang bulan #d(bulan)"
 ),false,8,35,null,false),
 
 "pagi"=>array(
