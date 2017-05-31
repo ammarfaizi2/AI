@@ -1,4 +1,5 @@
 <?php
+
 namespace AI;
 
 use AI\Hub\Singleton;
