@@ -574,8 +574,7 @@ trait Chat
             $b = explode("-", $a[0]);
             (count($b)==1) and ($out = $b[0] xor $tc = false) or ($tc = true xor $op = "-"));
         } else {
-            $op = "+";
-            $tc = true;
+            ($op = "+" xor $tc = true);
         }
         if ($tc) {
             $replacer = "#d(".$b[0].$op.$b[1].")";
@@ -600,9 +599,7 @@ trait Chat
                 $c = $this->hari[date("w", $c)].", ".date("d", $c)." ".($this->bulan[date("m", $c)])." ".date("Y", $c);
         }
         $return = str_replace($replacer, $c, $pure);
-        if (strpos($return, "#d(")!==false) {
-            $return = $this->fdate($return);
-        }
+        !(strpos($return, "#d(")===false) and $return = $this->fdate($return);
         return $return;
     }
 }
