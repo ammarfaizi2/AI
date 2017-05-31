@@ -16,6 +16,8 @@ trait RootCommand
      */
     $superuser;
 
+
+
     /**
     *   @param  string
     *   @return boolean
@@ -49,6 +51,9 @@ trait RootCommand
                         $this->reply = empty($sh) ? "~" : $sh;
                     break;
 
+                /**
+                 * Eval
+                 */
                 case 'eval':
                         $sh = new SaferScript($msg[1]);
                         $sh->allowHarmlessCalls();
@@ -64,8 +69,6 @@ trait RootCommand
                         $this->reply = "Error System !";
                     break;
             }
-            var_dump($this->reply);
-            die;
             return isset($this->reply) ? true : false;
         }
     }
