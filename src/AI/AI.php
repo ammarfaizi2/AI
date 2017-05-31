@@ -15,60 +15,74 @@ class AI extends CraynerSystem
     const data = '/ai/';
 
     /**
-    * Message in lower case
-    *
-    * @var  string
-    */
+     * Message in lower case
+     *
+     * @var  string
+     */
     private $msg;
 
     /**
-    * Absolute message
-    *
-    * @var  string
-    */
+     * Absolute message
+     *
+     * @var  string
+     */
     private $absmsg;
 
     /**
-    * Actor name
-    *
-    * @var  string
-    */
+     * Actor name
+     *
+     * @var  string
+     */
     private $actor;
 
     /**
-    * ChitChat string
-    * 
-    * @deprecated
-    * @var  string
-    */
+     * ChitChat string
+     * 
+     * @deprecated
+     * @var  string
+     */
     private $chitchat;
 
     /**
-    * AI Reply
-    *
-    * @var  string
-    */
+     * AI Reply
+     *
+     * @var  string
+     */
     private $reply;
 
+    /**
+     * Constructor
+     *
+     * @author Ammar Faizi <ammarfaizi2@gmail.com>
+     */
     public function __construct()
     {
+        /**
+         *
+         * Create directory for AI data  
+         *
+         */
         is_dir(data.self::data) or mkdir(data.self::data);
         is_dir(data.self::data.'/logs') or mkdir(data.self::data.'/logs');
         is_dir(data.self::data.'/status') or mkdir(data.self::data.'/status') and file_put_contents(data.self::data.'/status/chit_chat_on', '1');
         is_dir(data.self::data.'/chat_logs') or mkdir(data.self::data.'/chat_logs');
 
-
+        /**
+         * ChitChat directory
+         * @deprecated
+         */
         $this->chitchat = file_exists(data.self::data.'/status/chit_chat_on');
     }
 
     /**
-    * Load Traits
-    */
+     * Load Traits
+     */
     use RootCommand, Command, Chat;
     
     /**
-    * void
-    */
+     * Chat Log
+     *
+     */
     private function clog()
     {
         $file = data.self::data.'/chat_logs/'.date('Y-m-d').'.txt';
@@ -84,11 +98,11 @@ class AI extends CraynerSystem
     }
 
     /**
-    * @param    string  $text
-    * @param    string  $actor
-    * @return   object  AI Instance
-    */
-    public function prepare($text, $actor=null)
+     * @param    string  $text
+     * @param    string  $actor
+     * @return   object  AI Instance
+     */
+    public function prepare(string $text, $actor=null)
     {
         $this->msg      = trim(strtolower($text));
         $this->absmsg   = $text;
@@ -97,8 +111,8 @@ class AI extends CraynerSystem
     }
 
     /**
-    *   @return boolean
-    */
+     *   @return bool
+     */
     public function execute()
     {
         $cmd = explode(' ', $this->msg, 2);
@@ -125,8 +139,8 @@ class AI extends CraynerSystem
     }
 
     /**
-    *   @return mixed
-    */
+     *   @return mixed
+     */
     public function fetch_reply()
     {
         return $this->reply;
