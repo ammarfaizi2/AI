@@ -500,12 +500,17 @@ trait Chat
 
     /**
      *
+     * Check chat 2
      *
-     * @param   string  $key
-     * @param   string  $time
-     * @return  bool
+     * @param    string   $key
+     * @param    int|null $minimal
+     * @param    int      $maxwords
+     * @param    int      $maxlength
+     * @param    array    $wordexception
+     * @param    bool     $time
+     * @return   bool
      */
-    private function check2(string $key, bool $time)
+    private function check2(string $key, $a, int $maxwords=null, int $maxlength=null, array $wordexception=null, bool $time=false)
     {
     }
 
