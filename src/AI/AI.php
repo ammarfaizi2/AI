@@ -21,7 +21,7 @@ use AI\Exceptions\AIException;
 class AI extends CraynerSystem implements AIFace, AIProp
 {
     const DATA              = '/ai/';
-    const VERSION           = "1.3";
+    const VERSION           = "1.8";
     const ERROR_INFO        = 4;
     const ERROR_EXCEPTION   = 402;
     const DEFAULT_TIMEZONE  = "Asia/Jakarta";
