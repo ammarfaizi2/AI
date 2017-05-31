@@ -15,8 +15,8 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-0": {
-            "App": "src/",
-            "System": "src/"
+            "AI": "src/",
+            "App": "src/"
         }
     }
 }

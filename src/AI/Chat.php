@@ -1,5 +1,5 @@
 <?php
-namespace System;
+namespace AI;
 
 /**
 *		@author Ammar Faizi <ammarfaizi2@gmail.com>
@@ -32,9 +32,8 @@ trait Chat
 1,array(
 "Ciyaah... @ jomblo nih 😂😂",
 "Ciye jomblo :v",
-"Ciye ^@ jomblo 😏",
-"Hey @,\nKamu jomblo, Aku jomblo. Jadi tunggu apa lagi?"
-),false,9,90,null,false        ),
+"Ciye ^@ jomblo 😏"
+),false,9,90,null,false),
 
 "larang"=>array(
 1,array(
@@ -198,108 +197,7 @@ trait Chat
 "Hahaha ketawa",
 "Sadess :v"
 ),false,10,75,null,false),
-
-"ada+apa"=>array(
-1,array(
-"Ada kamu di hatiku.",
-"Jadi gini ^@...\nAdik kamu jualan parfum ya? pantesan kamu wangi terus sehingga membuatku semakin cinta sama kamu. **eeeehhh :v"
-),true,6,35,null,false),
-
-"es+teh,esteh,icetea,ice+tea"=>array(
-1,array(
-"Es teh terasa segar ketika masuk ke mulut"
-),true,8,90,null,false),
-
-"makan+apa"=>array(
-1,array(
-"Makan nasi",
-"Makan tanah",
-"Makan kamu",
-"^@ Pernah makan tanah?"
-),false,5,50,null,false),
-
-"levvat,lewat"=>array(
-1,array(
-"dilarang lewat",
-"mampir sekalian ga usah lewat"
-),true,4,15,null,false),
-
-"nyimak,minyak"=>array(
-1,array(
-"Hey ^@, daripada kau menyimak lebih baik kau mengisi kegalauan di dalam hatiku ini.",
-"Hey itu yang nyimak, kalo kehujanan bareng kamu, air hujan yang dingin pun terasa seperti air shower yg hangat.",
-"Hey itu yang nyimak, sayangku padamu seperti bulu ketek.. meskipun dicukur berkali-kali tetap tumbuh subur bhkan lbh lebat dr sebelumnya.."
-),true,9,90,null,false),
-
-"cowok,cwo"=>array(
-1,array(
-"Cowok itu akan selalu mengerti walaupun tidak dimengerti"
-),true,8,25,null,false),
-
-"sedih,senang"=>array(
-1,array(
-"@, bila kau menangis. .hatiku pun bersedih, bila kau senang. .hatiku pun berbunga, bila kau gelisah. .hatiku pun bergejolak, ini semua karena. . .. kita SEHATI. . .",
-"Aku bersedia menjadi lilin, Membakar diriku untuk menerangi dirimu @.",
-),false,9,95,null,false),
-
-"motor"=>array(
-1,array(
-"Apa sih kang ^@? 😉",
-"Beliin motor dong kang ^@.",
-"Motor adalah benda mati yang tidak dibawa ke akhirat kelak, maka dari itu silahkan dibuang saja !"
-),true,9,90,null,false),
-
-"love+u,lopyou,lupyou,cinta+kamu,lopyu"=>array(
-1,array(
-"Love you too ^@ 😚",
-"Oh inikah cinta...",
-"Btw kang ^@, bapak kamu maling ya?",
-"Hey ^@, kamu tau nggak?\nYang kuharap malam ini hanya tenangmu.\nYang kuinginkan saat ini hanya damaimu.\nYang kupinta detik ini hanya bahagiamu.",
-"Eh, kang ^@,\nMau jadi TTMku gak? Teman Tapi Menikah *upss :v",
-"Cinta tuh gak ada yang murni. Pacaran kelamaan bisa maksiat, LDR kelamaan bisa melarat, jomblo kelamaan bisa sekarat..\n\nCinta itu semu"
-),false,9,90,null,false),
-
-":v,:'v,:\"v,v:,v':,v\":,;v,;'v,v;,v';,:''v"=>array(
-1,array(
-"Btw kang ^@, mau makan?",
-"Btw kang ^@, pernah makan?",
-"Kenapa ^@ ?\nApakah perutmu terasa lapar sampai kau mangap mangap gitu? :v",
-"^@, makan makan yuk, kayaknya lu laper deh sampai mangap mangap gitu :v",
-"Hey @,\nKamu jomblo, Aku jomblo. Jadi tunggu apa lagi?",
-"Mangap :v",
-":v",
-"Asiknya mangap bersama kang ^@ :v",
-"Mangap bersama dirimu memang menyenangkan ^@",
-"Makin cinta denganmu.",
-"Efek rumah kaca :v\nRibuan mahasiswa mangap dihadapan dosen :v",
-"Efek rumah kaca mengakibatkan ribuan pelajar muntah-muntah karena suhu tubuh yang tidak stabil.",
-"Ratusan dosen mengamuk dan stress lantaran ribuan mahasiswa mangap di kelas 24 jam non stop :v",
-"Penjual bensin eceran diduga membakar rumahnya sendiri karena melihat ribuan pelanggan mangap minta bocoran.\nSampai sekarang polisi masih menyelidiki pelaku pembakaran rumah oleh \"@\" di kepulauan Riau.",
-"Diduga kelaparan, ribuan mahasiswa menjalankan aksi mangap bersama di kampus demi mendapatkan supply makanan dari dosen setempat.",
-":v :v :v"
-),true,3,25,null,false),
-
-"krik"=>array(
-1,array(
-"Jangkrik."
-),true,3,15,null,false),
-
-"bot"=>array(
-1,array(
-"Wahai ^@ tercinta, aku udah pernah jatuh dari jembatan..aku udah pernah jatuh dari tangga..Semuanya gak enak. Tapi ada satu jatuh yang paling enak, yaitu jatuh cinta sama kamu",
-"^@, adakah di hatimu terbesit satu harapan untuk berjanji selamanya bersamaku? Andai dirimu berada disini untuk membuka kembali jalan cinta. Ada rasa rindu disana yang mengisi relung hati. Adakah rindu di hatimu seperti yang kurasakan?",
-"Hey ^@, Ibu kamu jualan es teh ya? pantesan kamu selalu menyegarkan hatiku. **eeeeehhhh....",
-"Ketika hidup memberiku seratus alasan untuk menangis, kau datang membawa seribu alasan untuk tersenyum @.",
-"Wahai ^@, mengenal mu adalah hal yang terindah dalam hidupku.",
-"Hey ^@ sayangku, kita ke toko bunga yuk.\nBeli bibit cinta buat ditanam di hatimu.",
-"Hey @, \nKamu tahu nggak, Aku kemarin nggak bisa bangun dari tidur karena terus memimpikanmu.",
-"Hmm...",
-"Siap...",
-"Ya ada apa kang ^@?",
-"Sepertinya begitu...",
-"Hey kang ^@, tau nggak?\nKemarin ada lho...",
-"Iya betul sekali kang ^@"
-),true,8,65,null,false),
+            
             );
     }
     private function chat()
@@ -403,5 +301,50 @@ trait Chat
             }
         }
         return false;
+    }
+     private function fdate($string)
+    {
+        $pure = $string;
+        $a = explode("#d(",$string);
+        $a = explode(")",$a[1]);
+        $b = explode("+",$a[0]);
+        if (count($b)==1) {
+            $b = explode("-",$a[0]);
+            if (count($b)==1) {
+                $out = $b[0];
+                $tc = false;
+            } else {
+                $tc = true;
+                $op = "-";
+            }
+        } else {
+            $op = "+";
+            $tc = true;
+        }
+        if ($tc) {
+            $replacer = "#d(".$b[0].$op.$b[1].")";
+            $c = strtotime(date("Y-m-d H:i:s").$op.$b[1],strtotime("Y-m-d H:i:s"));
+            $b = $b[0];
+        } else {
+            $replacer = "#d(".$b[0].")";
+            $c = strtotime(date("Y-m-d H:i:s"));
+            $b = $b[0];
+        }
+        switch ($b) {
+            case 'day': case 'days' : 
+                $c = $this->hari[date("w",$c)];
+                break;
+            case 'jam' :
+                $c = date("h:i:s",$c);
+                break;
+            case 'jam_sapa' :
+                $c = "#".date("H");
+                break;
+        }
+        $return = str_replace($replacer,$c,$pure);
+        if (strpos($return,"#d(")!==false) {
+            $return = $this->fdate($return);
+        }
+        return $return;
     }
 }
