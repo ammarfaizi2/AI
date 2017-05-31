@@ -31,5 +31,4 @@ abstract class CraynerSystem
     abstract public function execute();
     abstract public function fetch_reply();
 
-    private function 
 }
