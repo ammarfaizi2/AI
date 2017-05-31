@@ -39,6 +39,11 @@ class Brainly
     {
         if (file_exists($this->file)) {
             $a = json_decode(file_get_contents($this->file), true);
+            if (!is_array($a)) {
+                $ch = new CMCurl('https://brainly.co.id/api/28/api_tasks/suggester?limit='.($this->limit).'&query='.urlencode($this->text));
+                $a = json_decode($ch->execute(), true);
+                file_put_contents($this->file, json_encode($a, 128));
+            }
         } else {
             $ch = new CMCurl('https://brainly.co.id/api/28/api_tasks/suggester?limit='.($this->limit).'&query='.urlencode($this->text));
             $a = json_decode($ch->execute(), true);
