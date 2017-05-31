@@ -443,8 +443,8 @@ trait Chat
     private function check1(string $key, bool $wordcheck=false, int $maxwords=null, int $maxlength=null, array $wordexception=null, bool $time=false)
     {
         /**
-        *		Cek kelayakan :v
-        */
+         *		Cek kelayakan :v
+         */
         if (($maxlength!==null and $this->mslg>$maxlength) or ($maxwords!==null and $this->cword>$maxwords)) {
             return false;
         }
@@ -502,16 +502,30 @@ trait Chat
      *
      * Check chat 2
      *
-     * @param    string   $key
-     * @param    int|null $minimal
-     * @param    int      $maxwords
-     * @param    int      $maxlength
-     * @param    array    $wordexception
-     * @param    bool     $time
+     * @param    string $key
+     * @param    int    $minimal
+     * @param    int    $maxwords
+     * @param    int    $maxlength
+     * @param    array  $wordexception
+     * @param    bool   $time
      * @return   bool
      */
     private function check2(string $key, $a, int $maxwords=null, int $maxlength=null, array $wordexception=null, bool $time=false)
     {
+        /**
+         *  Cek kelayakan :v
+         */
+        if (($maxlength!==null and $this->mslg>$maxlength) or ($maxwords!==null and $this->cword>$maxwords)) {
+            return false;
+        }
+        if (is_array($wordexception)) {
+            foreach ($wordexception as $qw) {
+                if (in_array($qw, $this->exms)) {
+                    return false;
+                }
+            }
+        }
+        $ex = explode(',', $key);
     }
 
 
