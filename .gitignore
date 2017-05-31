@@ -1,4 +1,5 @@
 /vendor/
 /data/
-phpinfo.php
+/phpinfo.php
 *.tmp
+*.lock
