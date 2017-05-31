@@ -1,5 +1,15 @@
 # AI by Ammar Faizi
 
 
-### Cara Install
-`composer install`
+### Installation
+
+Add `composer.json`
+
+```json
+{
+    "require": {
+        "ammarfaizi2/ai": "1.0"
+    }
+}
+
+```
