@@ -19,9 +19,11 @@ use AI\CraynerSystem;
 
 class AI extends CraynerSystem implements AIFace, AIProp
 {
-    const VERSION = "1.3";
-    const data = '/ai/';
-    const DEFAULT_TIMEZONE = "Asia/Jakarta";
+    const DATA              = '/ai/';
+    const VERSION           = "1.3";
+    const ERROR_INFO        = 4;
+    const DEFAULT_TIMEZONE  = "Asia/Jakarta";
+
 
     /**
      * Message in lower case
@@ -77,24 +79,28 @@ class AI extends CraynerSystem implements AIFace, AIProp
         /**
          *
          * Create directory for AI data
-         *
          */
-        (is_dir(data.self::data) or mkdir(data.self::data)) xor (is_dir(data.self::data.'/logs') or mkdir(data.self::data.'/logs')) xor (is_dir(data.self::data.'/status') or (mkdir(data.self::data.'/status') and file_put_contents(data.self::data.'/status/chit_chat_on', '1'))) xor (is_dir(data.self::data.'/chat_logs') or mkdir(data.self::data.'/chat_logs'));
+        (is_dir(data . self::DATA) or mkdir(data . self::DATA)) xor 
+        (is_dir(data . self::DATA.'/logs') or mkdir(data . self::DATA . '/logs')) xor 
+        (is_dir(data . self::DATA.'/status') or (mkdir(data . self::DATA . '/status') and 
+        (file_put_contents(data.self::DATA . '/status/chit_chat_on', '1')))) xor 
+        (is_dir(data . self::DATA . '/chat_logs') or mkdir(data . self::DATA . '/chat_logs'));
 
         /**
          * ChitChat directory
          * @deprecated
          */
-        $this->chitchat = file_exists(data.self::data.'/status/chit_chat_on');
+        $this->chitchat = file_exists(data.self::DATA.'/status/chit_chat_on');
     }
     
+
     /**
      * Chat Log
      *
      */
     private function clog()
     {
-        $file = data.self::data.'/chat_logs/'.date('Y-m-d').'.txt';
+        $file = data.self::DATA.'/chat_logs/'.date('Y-m-d').'.txt';
         $data = file_exists($file) ? json_decode(file_get_contents($file), true) : array();
         $data = $data===null ? array() : $data;
         $data[] = array(
