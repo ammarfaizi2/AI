@@ -124,6 +124,11 @@ trait Chat
 "sekarang hari #d(day)"
 ),false,8,35,null,false),
 
+"bulan+apa"=>array(
+1,array(
+"sekarang bulan #d(m)"
+),false,8,35,null,false).
+
 "pagi"=>array(
 1,array(
 "1-10"=>array(
