@@ -10,7 +10,7 @@ use App\SaferScript;
 trait RootCommand
 {
     /**
-     * Super User 
+     * Super User
      *
      * @var array|string
      */

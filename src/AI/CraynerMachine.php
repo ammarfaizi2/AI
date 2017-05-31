@@ -10,7 +10,7 @@ use AI\Hub\Singleton;
 
 class CraynerMachine extends CraynerSystem
 {
-	use Singleton;
+    use Singleton;
     public function __construct()
     {
     }

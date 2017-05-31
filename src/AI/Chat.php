@@ -61,8 +61,14 @@ trait Chat
      *
      * @var float
      */
-    private $similarity;
+    private $similarity_minimal;
 
+    /**
+     *
+     *
+     * @var array
+     */
+    private $similar_word_temporary;
 
     /**
     *   Wordlist loader
@@ -82,7 +88,7 @@ trait Chat
             ),
 
             /**
-             *  
+             *
              *  Say hello.
              */
             "halo,hallo,allo,helo,hola,alo,ello"=>array(
@@ -94,7 +100,7 @@ trait Chat
             false,10,50,null,false),
 
             /**
-             *  
+             *
              *  Tanya kabar.
              */
             "pa+kabar,pa+kbr,pa+kbar"=>array(
@@ -106,7 +112,7 @@ trait Chat
 
 
             /**
-             *  
+             *
              *  Menanyakan jam (Bahasa Inggris)
              */
             "what+time"=>array(
@@ -116,7 +122,7 @@ trait Chat
             false,10,50,null,false),
 
             /**
-             *  
+             *
              *  Menanyakan jam (Bahasa Indonesia)
              */
             "jam+ber,jam+brp,jam+pro,jam+piro"=>array(
@@ -129,7 +135,7 @@ trait Chat
             false,10,50,null,false),
 
             /**
-             *  
+             *
              *  Menanyakan hari besok.
              */
             "besok+hari+apa"=>array(
@@ -139,7 +145,7 @@ trait Chat
             false,10,50,null,false),
 
             /**
-             *  
+             *
              *  Menanyakan hari kemarin.
              */
             "kemarin+hari+apa"=>array(
@@ -149,7 +155,7 @@ trait Chat
             false,10,50,null,false),
 
             /**
-             *  
+             *
              *  Menanyakan hari sekarang.
              */
             "hari+apa"=>array(
@@ -159,7 +165,7 @@ trait Chat
             false,10,50,null,false),
 
             /**
-             *  
+             *
              *  Menanyakan bulan sekarang.
              */
             "bulan+apa"=>array(
@@ -182,7 +188,7 @@ trait Chat
 
 
             /**
-             *  
+             *
              *  Sapaan di pagi hari.
              */
             "pagi"=>array(
@@ -495,10 +501,12 @@ trait Chat
     /**
      *
      *
+     * @param   string  $key
+     * @param   string  $time
+     * @return  bool
      */
     private function check2(string $key, bool $time)
     {
-
     }
 
 
