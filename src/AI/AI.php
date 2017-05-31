@@ -23,6 +23,7 @@ class AI extends CraynerSystem implements AIFace, AIProp
     const DATA              = '/ai/';
     const VERSION           = "1.3";
     const ERROR_INFO        = 4;
+    const ERROR_EXCEPTION   = 402;
     const DEFAULT_TIMEZONE  = "Asia/Jakarta";
 
 
@@ -62,6 +63,12 @@ class AI extends CraynerSystem implements AIFace, AIProp
      */
     private $reply;
 
+    /**
+     * Timezone
+     *
+     * @var string 
+     */
+    private $timezone;
 
     /**
      * Load Traits
@@ -86,6 +93,11 @@ class AI extends CraynerSystem implements AIFace, AIProp
         (is_dir(data . self::DATA.'/status') or (mkdir(data . self::DATA . '/status') and 
         (file_put_contents(data.self::DATA . '/status/chit_chat_on', '1')))) xor 
         (is_dir(data . self::DATA . '/chat_logs') or mkdir(data . self::DATA . '/chat_logs'));
+
+        if (!is_dir(data . self::DATA)) {
+            throw new AIException("Cannot create data folder", self::ERROR_EXCEPTION);
+            
+        }
 
         /**
          * ChitChat directory
@@ -118,12 +130,11 @@ class AI extends CraynerSystem implements AIFace, AIProp
      *
      * @param   string  $timezone
      */
-    public function set_timezone(string $timezone=null)
+    public function set_timezone(string $timezone)
     {
         if ($timezone) {
+            $this->timezone = $timezone;
             date_default_timezone_set($timezone);
-        } else {
-            date_default_timezone_set(self::DEFAULT_TIMEZONE);
         }
     }
 
@@ -147,8 +158,11 @@ class AI extends CraynerSystem implements AIFace, AIProp
     public function execute()
     {
         if (!isset($this->absmsg)) {
-            throw new AIException("Cannot access execute method directly, you must prepare a message first", 1);
-            
+            throw new AIException("Cannot access execute method directly, you must prepare a message first", );
+        }
+
+        if (!isset($this->timezone)) {
+            $this->set_timezone(self::DEFAULT_TIMEZONE);
         }
         $cmd = explode(' ', $this->msg, 2);
         $cmd = $cmd[0];
