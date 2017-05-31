@@ -11,7 +11,7 @@ use AI\AI;
 
 $ai = new AI();
 $actor = "Ammar Faizi";
-$msg   = "ask siapa penemu lampu?";
+$msg   = "ask massa gaya";
 $st = $ai->prepare($msg, $actor);
 $st->execute();
 var_dump($st->fetch_reply());
