@@ -6,7 +6,7 @@ interface AIFace
 {
     public function set_timezone(string $timezone);
 
-    public function prepare(string $text, $actor=null);
+    public function prepare(string $text, string $actor = null);
 
     public function execute();
 

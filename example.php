@@ -12,6 +12,10 @@ use AI\AI;
 $ai = new AI();
 $actor = "Ammar Faizi";
 $msg   = "assalamulaikum asdf qmwekfm qkwemfr kqwmer mqweorm";
-$st = $ai->prepare($msg, $actor);
-$st->execute();
+#$st = $ai->prepare(array(), $actor);
+	$ai->execute();	
+
+
+echo "oke";
+die;
 var_dump($st->fetch_reply());

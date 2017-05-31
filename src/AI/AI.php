@@ -11,6 +11,7 @@ use AI\RootCommand;
 use AI\Hub\ChatFace;
 use AI\Hub\Singleton;
 use AI\CraynerSystem;
+use AI\Exceptions\AIException;
 
 /**
  * @package  AI
@@ -132,7 +133,7 @@ class AI extends CraynerSystem implements AIFace, AIProp
      * @param    string  $actor
      * @return   object  AI Instance
      */
-    public function prepare(string $text, $actor=null)
+    public function prepare(string $text, string $actor=null)
     {
         $this->msg      = trim(strtolower($text));
         $this->absmsg   = $text;
@@ -145,6 +146,10 @@ class AI extends CraynerSystem implements AIFace, AIProp
      */
     public function execute()
     {
+        if (!isset($this->absmsg)) {
+            throw new AIException("Cannot access execute method directly, you must prepare a message first", 1);
+            
+        }
         $cmd = explode(' ', $this->msg, 2);
         $cmd = $cmd[0];
         if ($this->root_command($cmd)) {

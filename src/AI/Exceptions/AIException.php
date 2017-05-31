@@ -1,5 +1,5 @@
 <?php
-namespace System\Exceptions;
+namespace AI\Exceptions;
 
 use AI\AI;
 use Exception;
@@ -20,7 +20,7 @@ class AIException extends Exception
     public function __toString()
     {
     	$msg = __CLASS__ .": [{$this->code}]: {$this->message}";
-    	file_put_contents($this->error_log, "\n[".date("Y m d h:i:s A")."]\t{$msg}", FILE_APPEND | LOCK_EX);
+    	file_put_contents($this->error_log, "\n[".date("Y m d h:i:s A")."]\t{$msg} in {$this->file} on line {$this->line}\n", FILE_APPEND | LOCK_EX);
         return $msg;
     }
 
