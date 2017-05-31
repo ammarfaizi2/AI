@@ -5,7 +5,7 @@
     "require": {
         "ammarfaizi2/ratools": "dev-master"
     },
-    "license": "BSD 3-Clause",
+    "license": "BSD",
     "authors": [
         {
             "name": "Ammar Faizi",
