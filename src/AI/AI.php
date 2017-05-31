@@ -30,6 +30,9 @@ class AI extends CraynerSystem
         $this->chitchat = file_exists(data.self::data.'/status/chit_chat_on');
     }
 
+    /**
+    * Load Traits
+    */
     use RootCommand, Command, Chat;
     
     /**
@@ -50,8 +53,9 @@ class AI extends CraynerSystem
     }
 
     /**
-    *   @param string,string
-    *   @return instance
+    * @param    string  $text
+    * @param    string  $actor
+    * @return   object  AI Instance
     */
     public function prepare($text, $actor=null)
     {
