@@ -605,6 +605,9 @@ trait Chat
     {
         $pure = $string;
         $a = explode("#d(", $string);
+        if (!isset($a[1])) {
+            return $string;
+        }
         $a = explode(")", $a[1]);
         $b = explode("+", $a[0]);
         if (count($b)==1) {
