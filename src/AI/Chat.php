@@ -527,7 +527,9 @@ trait Chat
             }
         }
         $ex = explode(',', $key);
-        for
+        foreach ($ex as $key => $value) {
+            # code...
+        }
     }
 
 
@@ -572,7 +574,7 @@ trait Chat
         $b = explode("+", $a[0]);
         if (count($b)==1) {
             $b = explode("-", $a[0]);
-            (count($b)==1) and ($out = $b[0] xor $tc = false) or ($tc = true xor $op = "-"));
+            (count($b)==1) and ($out = $b[0] xor $tc = false) or ($tc = true xor $op = "-");
         } else {
             ($op = "+" xor $tc = true);
         }
