@@ -6,7 +6,7 @@ use AI\AI;
 
 $ai = new AI();
 $act = "Ammar Faizi";
-$msg = "bulan apa sekarang?";
+$msg = "sekarang bulan apa?";
 $st = $ai->prepare($msg, $act);
 $st->execute();
 var_dump($st->fetch_reply());
