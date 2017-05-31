@@ -5,20 +5,51 @@ defined('data') or die('Error : data not defined !');
 use AI\CraynerSystem;
 
 /**
+* @package  AI
 * @author Ammar Faizi <ammarfaizi2@gmail.com> https://www.facebook.com/ammarfaizi2
-* @license RedAngel PHP Concept
 */
 
 class AI extends CraynerSystem
 {
     const VERSION = "1.0";
     const data = '/ai/';
+
+    /**
+    * Message in lower case
+    *
+    * @var  string
+    */
     private $msg;
+
+    /**
+    * Absolute message
+    *
+    * @var  string
+    */
     private $absmsg;
+
+    /**
+    * Actor name
+    *
+    * @var  string
+    */
     private $actor;
-    private $data;
+
+    /**
+    * ChitChat string
+    * 
+    * @deprecated
+    * @var  string
+    */
     private $chitchat;
+
+    /**
+    * AI Reply
+    *
+    * @var  string
+    */
     private $reply;
+
     public function __construct()
     {
         is_dir(data.self::data) or mkdir(data.self::data);
