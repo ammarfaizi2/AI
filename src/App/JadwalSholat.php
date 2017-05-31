@@ -6,14 +6,16 @@ defined('data') or die('Error : data not defined !');
 use Curl\CMCurl;
 
 /**
-* @author Ammar Faizi <ammarfaizi2@gmail.com>
-*/
+ * @author Ammar Faizi <ammarfaizi2@gmail.com>
+ */
 
 class JadwalSholat
 {
     /**
-    * @var	string	Bulan sekarang
-    */
+     * Bulan sekarang.
+     *
+     * @var	string
+     */
     private $bulan;
 
     public function __construct()
@@ -23,9 +25,9 @@ class JadwalSholat
     }
 
     /**
-    * @param	string		$kota	Pilih kota
-    * @return	array|bool
-    */
+     * @param	string		$kota	Pilih kota
+     * @return	array|bool
+     */
     public function get_jadwal($kota)
     {
         if (!isset($this->list_kota[$kota])) {
@@ -43,9 +45,9 @@ class JadwalSholat
     }
 
     /**
-    * @param    string  $kota   Nama kota
-    * @return   array
-    */
+     * @param    string  $kota   Nama kota
+     * @return   array
+     */
     private function simpan_local($kota, $get=null)
     {
         $ch = new CMCurl('https://www.jadwalsholat.pkpu.or.id/monthly.php?id='.$this->list_kota[$kota]);
@@ -74,6 +76,7 @@ class JadwalSholat
         file_put_contents($this->file, json_encode($save, 128));
         return isset($get) ? $save[$get] : $save;
     }
+
     private $list_kota = array(
         "Ambarawa" => 1,
         "Ambon" => 2,

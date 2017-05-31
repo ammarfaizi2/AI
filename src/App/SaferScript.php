@@ -2,8 +2,8 @@
 namespace App;
 
 /**
-*   @author Ammar Faizi <ammarfaizi2@gmail.com>
-*/
+ * @author Ammar Faizi <ammarfaizi2@gmail.com>
+ */
 
 class SaferScript
 {
