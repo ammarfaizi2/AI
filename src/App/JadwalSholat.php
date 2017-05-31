@@ -32,7 +32,7 @@ class JadwalSholat
             return "Mohon maaf, jadwal untuk kota {$kota} tidak ditemukan !";
         } else {
             $this->file = data.'/jadwal_sholat/'.$kota.'/'.$kota.'_'.$this->bulan.'.txt';
-            if (file_exists($this->file)){
+            if (file_exists($this->file)) {
                 $jadwal = json_decode(file_get_contents($this->file), 1);
                 $jadwal = $jadwal[date("d")];
             } else {
@@ -62,16 +62,16 @@ class JadwalSholat
                 if (count($val)==8) {
                     $checkpoint = array();
                     $ket = array(2=>'subuh','terbit','dzuhur','ashar','maghrib','isya');
-                    for ($i=2; $i < 8; $i++) { 
+                    for ($i=2; $i < 8; $i++) {
                         $checkpoint[$ket[$i]] = strip_tags($val[$i]);
                     }
                 }
-                $save[(substr($n[1], 0, 1) == "0" ? substr($n[1], 1) : $n[1])] = $checkpoint; 
+                $save[(substr($n[1], 0, 1) == "0" ? substr($n[1], 1) : $n[1])] = $checkpoint;
             }
         }
         $kota = $kota;
         is_dir(data.'/jadwal_sholat/'.$kota) or mkdir(data.'/jadwal_sholat/'.$kota);
-        file_put_contents($this->file, json_encode($save,128));
+        file_put_contents($this->file, json_encode($save, 128));
         return isset($get) ? $save[$get] : $save;
     }
     private $list_kota = array(

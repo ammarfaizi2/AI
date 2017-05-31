@@ -268,6 +268,11 @@ trait Chat
                 ),false,10,75,null,false),
             );
     }
+
+    /**
+     *  Chat action
+     *
+     */
     private function chat()
     {
         $this->load_wordlist();
@@ -370,14 +375,14 @@ trait Chat
         }
         return false;
     }
-     private function fdate($string)
+    private function fdate($string)
     {
         $pure = $string;
-        $a = explode("#d(",$string);
-        $a = explode(")",$a[1]);
-        $b = explode("+",$a[0]);
+        $a = explode("#d(", $string);
+        $a = explode(")", $a[1]);
+        $b = explode("+", $a[0]);
         if (count($b)==1) {
-            $b = explode("-",$a[0]);
+            $b = explode("-", $a[0]);
             if (count($b)==1) {
                 $out = $b[0];
                 $tc = false;
@@ -391,7 +396,7 @@ trait Chat
         }
         if ($tc) {
             $replacer = "#d(".$b[0].$op.$b[1].")";
-            $c = strtotime(date("Y-m-d H:i:s").$op.$b[1],strtotime("Y-m-d H:i:s"));
+            $c = strtotime(date("Y-m-d H:i:s").$op.$b[1], strtotime("Y-m-d H:i:s"));
             $b = $b[0];
         } else {
             $replacer = "#d(".$b[0].")";
@@ -399,18 +404,18 @@ trait Chat
             $b = $b[0];
         }
         switch ($b) {
-            case 'day': case 'days' : 
-                $c = $this->hari[date("w",$c)];
+            case 'day': case 'days':
+                $c = $this->hari[date("w", $c)];
                 break;
-            case 'jam' :
-                $c = date("h:i:s",$c);
+            case 'jam':
+                $c = date("h:i:s", $c);
                 break;
-            case 'bulan': case 'month' :
-                $c = $this->bulan[(int)date("m",$c)];
+            case 'bulan': case 'month':
+                $c = $this->bulan[(int)date("m", $c)];
                 break;
         }
-        $return = str_replace($replacer,$c,$pure);
-        if (strpos($return,"#d(")!==false) {
+        $return = str_replace($replacer, $c, $pure);
+        if (strpos($return, "#d(")!==false) {
             $return = $this->fdate($return);
         }
         return $return;

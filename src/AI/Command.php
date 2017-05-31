@@ -66,12 +66,12 @@ trait Command
                 case 'jadwal':
                     $msg = explode(" ", strtolower($msg[1]));
                     switch ($msg[0]) {
-                        case 'sholat': case 'solat': case 'shalat': 
+                        case 'sholat': case 'solat': case 'shalat':
                                 $st = new JadwalSholat();
                                 $get_kota = ucfirst(strtolower(trim($msg[1])));
                                 $jadwal = $st->get_jadwal($get_kota);
                                 $ret = "Jadwal Sholat untuk daerah {$get_kota} dan sekitarnya\nTanggal ".(date("d F Y"))."\n\n";
-                                $jadwal = array_merge(array('imsyak'=>(date("h:i",strtotime($jadwal['subuh'])-300))), $jadwal);
+                                $jadwal = array_merge(array('imsyak'=>(date("h:i", strtotime($jadwal['subuh'])-300))), $jadwal);
                                 foreach ($jadwal as $key => $jam) {
                                     $ret .= ucfirst($key) . " : " . $jam . "\n";
                                 }

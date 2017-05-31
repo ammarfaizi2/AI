@@ -38,7 +38,7 @@ class AI extends CraynerSystem
 
     /**
      * ChitChat string
-     * 
+     *
      * @deprecated
      * @var  string
      */
@@ -60,7 +60,7 @@ class AI extends CraynerSystem
     {
         /**
          *
-         * Create directory for AI data  
+         * Create directory for AI data
          *
          */
         is_dir(data.self::data) or mkdir(data.self::data);
