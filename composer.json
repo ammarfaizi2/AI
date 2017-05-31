@@ -5,7 +5,7 @@
     "require": {
         "ammarfaizi2/ratools": "dev-master"
     },
-    "license": "RedAngel PHP Concept",
+    "license": "BSD 3-Clause",
     "authors": [
         {
             "name": "Ammar Faizi",
