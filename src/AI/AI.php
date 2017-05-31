@@ -2,6 +2,12 @@
 namespace AI;
 
 defined('data') or die('Error : data not defined !');
+
+use AI\Chat;
+use AI\Command;
+use AI\Hub\AIFace;
+use AI\RootCommand;
+use AI\Hub\Singleton;
 use AI\CraynerSystem;
 
 /**
@@ -9,7 +15,7 @@ use AI\CraynerSystem;
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
  */
 
-class AI extends CraynerSystem
+class AI extends CraynerSystem implements AIFace
 {
     const VERSION = "1.0";
     const data = '/ai/';
@@ -51,6 +57,14 @@ class AI extends CraynerSystem
      */
     private $reply;
 
+
+    /**
+     * Load Traits
+     */
+    use RootCommand, Command, Chat, Singleton;
+
+
+
     /**
      * Constructor
      *
@@ -74,11 +88,6 @@ class AI extends CraynerSystem
          */
         $this->chitchat = file_exists(data.self::data.'/status/chit_chat_on');
     }
-
-    /**
-     * Load Traits
-     */
-    use RootCommand, Command, Chat;
     
     /**
      * Chat Log
@@ -103,7 +112,7 @@ class AI extends CraynerSystem
      *
      * @param   string  $timezone
      */
-    public function set_timezone($timezone=null)
+    public function set_timezone(string $timezone=null)
     {
         if ($timezone) {
             date_default_timezone_set($timezone);
