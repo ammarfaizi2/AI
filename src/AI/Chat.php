@@ -57,6 +57,14 @@ trait Chat
     private $timereply;
 
     /**
+     *
+     *
+     * @var float
+     */
+    private $similarity;
+
+
+    /**
     *   Wordlist loader
     *
     *
@@ -483,6 +491,11 @@ trait Chat
         
         return false;
     }
+
+    private function check2($key, )
+    {
+    }
+
 
     /**
      * Get time reply

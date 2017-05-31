@@ -14,7 +14,7 @@ trait RootCommand
      *
      * @var array|string
      */
-    private $superuser = array();
+    private $superuser;
 
 
 
@@ -24,6 +24,7 @@ trait RootCommand
     */
     private function root_command($cmd)
     {
+        $this->superuser === null and $this->superuser = "all";
         $command_list = array(
                 'shell_exec' => 2,
                 'shexec'     => 2,
