@@ -11,6 +11,7 @@ use AI\CraynerSystem;
 
 class AI extends CraynerSystem
 {
+    const VERSION = "1.0";
     const data = '/ai/';
     private $msg;
     private $absmsg;

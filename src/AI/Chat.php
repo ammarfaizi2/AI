@@ -4,6 +4,7 @@ namespace AI;
 /**
 *		@author Ammar Faizi <ammarfaizi2@gmail.com>
 */
+
 trait Chat
 {
     private $hari = array(
@@ -100,7 +101,12 @@ trait Chat
     "Kabar baik disini.",
     "Kabar baik, kang ^@ apa kabar?"
 ),false,8,35,null,false),
-        
+
+"what+time"=>array(
+1,array(
+
+),false,8,35,null,false),
+
 "jam+ber,jam+brp,jam+pro,jam+piro"=>array(
 1,array(
 "0-11"=>array("Sekarang jam #d(jam) pagi"),
