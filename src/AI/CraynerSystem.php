@@ -1,13 +1,17 @@
 <?php
 namespace AI;
 
+use AI\Hub\Singleton;
+
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
  */
 
-class CraynerSystem
+abstract class CraynerSystem
 {
-    public function __construct()
+    private function clog()
     {
     }
+
+    abstract public function set_timezone();
 }

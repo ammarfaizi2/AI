@@ -7,6 +7,8 @@ use AI\Chat;
 use AI\Command;
 use AI\Hub\AIFace;
 use AI\RootCommand;
+use AI\Hub\ChatFace;
+use AI\Hub\AIProp;
 use AI\Hub\Singleton;
 use AI\CraynerSystem;
 
@@ -15,7 +17,7 @@ use AI\CraynerSystem;
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
  */
 
-class AI extends CraynerSystem implements AIFace
+class AI extends CraynerSystem implements AIFace, AIProp
 {
     const VERSION = "1.0";
     const data = '/ai/';

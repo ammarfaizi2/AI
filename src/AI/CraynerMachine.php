@@ -1,7 +1,7 @@
 <?php
 namespace AI;
 
-use System\CraynerSystem;
+use AI\CraynerSystem;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
