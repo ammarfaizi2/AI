@@ -168,8 +168,9 @@ trait Chat
             1,array(
                     "sekarang tanggal #d(date_c)"
                 ),
-            false,10,50,null,false),
+            false,10,50,null,false
             ),
+            
 
 
             /**
@@ -554,6 +555,8 @@ trait Chat
             case 'bulan': case 'month':
                 $c = $this->bulan[(int)date("m", $c)];
                 break;
+            case 'date_c':
+                $c = $this->hari[date("w", $c)].", ".date("d", $c)." ".($this->bulan[date("m", $c)])." ".date("Y", $c);
         }
         $return = str_replace($replacer, $c, $pure);
         if (strpos($return, "#d(")!==false) {
