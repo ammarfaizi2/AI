@@ -588,17 +588,41 @@ trait Chat
             $b = $b[0];
         }
         switch ($b) {
+
+            /**
+             *  Untuk hari.
+             */
             case 'day': case 'days':
                 $c = $this->hari[date("w", $c)];
                 break;
+
+            /**
+             *  Untuk jam.
+             */
             case 'jam':
                 $c = date("h:i:s", $c);
                 break;
+
+            /**
+             *  Untuk bulan.
+             */
             case 'bulan': case 'month':
                 $c = $this->bulan[(int)date("m", $c)];
                 break;
+
+            /**
+             *  Untuk tanggal.
+             */
             case 'date_c':
                 $c = $this->hari[date("w", $c)].", ".date("d", $c)." ".($this->bulan[date("m", $c)])." ".date("Y", $c);
+                break;
+
+            /**
+             *  Tidak dikenal.
+             */
+            default:
+                $c = "unknown_param({$c})";
+                break;
         }
         $return = str_replace($replacer, $c, $pure);
         !(strpos($return, "#d(")===false) and $return = $this->fdate($return);
