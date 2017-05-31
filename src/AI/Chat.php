@@ -2,11 +2,16 @@
 namespace AI;
 
 /**
-*		@author Ammar Faizi <ammarfaizi2@gmail.com>
-*/
+ *   @author Ammar Faizi <ammarfaizi2@gmail.com>
+ */
 
 trait Chat
 {
+    /**
+     * Nama hari dalam bahasa indonesia
+     *
+     * @var  array
+     */
     private $hari = array(
             "Minggu",
             "Senin",
@@ -16,6 +21,12 @@ trait Chat
             "Jum'at",
             "Sabtu"
         );
+
+    /**
+     * Nama bulan dalam bahasa indonesia
+     *
+     * @var  array
+     */
     private $bulan = array(
             "Januari",
             "Februari",
@@ -30,17 +41,29 @@ trait Chat
             "November",
             "Desember"
         );
-    private $wl;
+
+    /**
+     * Wordlist
+     *
+     * @var array
+     */
+    private $wl = array();
+
+    /**
+     * Timereply memory
+     *
+     * @var array
+     */
     private $timereply;
+
+    /**
+    *
+    *
+    *
+    */
     private function load_wordlist()
     {
-        date_default_timezone_set("Asia/Jakarta");
-            /**
-            *
-            * hai,hay,hi,hy
-            *		mode,answer,wordcheck,maxwords,maxlength,wordexception,time
-            */
-            $this->msg = strip_tags($this->msg);
+        $this->msg = strip_tags($this->msg);
         $this->wl = array(
 "move+on"=>array(
 1,array(

@@ -13,6 +13,7 @@ class AI extends CraynerSystem
 {
     const VERSION = "1.0";
     const data = '/ai/';
+    const DEFAULT_TIMEZONE = "Asia/Jakarta";
 
     /**
      * Message in lower case
@@ -96,6 +97,21 @@ class AI extends CraynerSystem
             );
         file_put_contents($file, json_encode($data, 128));
     }
+    
+    /**
+     * Set timezone for AI
+     *
+     * @param   string  $timezone
+     */
+    public function set_timezone($timezone=null)
+    {
+        if ($timezone) {
+            date_default_timezone_set($timezone);
+        } else {
+            date_default_timezone_set(self::DEFAULT_TIMEZONE);
+        }
+    }
+
 
     /**
      * @param    string  $text
