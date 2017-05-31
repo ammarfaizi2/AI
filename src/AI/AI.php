@@ -5,10 +5,10 @@ defined('data') or die('Error : data not defined !');
 
 use AI\Chat;
 use AI\Command;
+use AI\Hub\AIProp;
 use AI\Hub\AIFace;
 use AI\RootCommand;
 use AI\Hub\ChatFace;
-use AI\Hub\AIProp;
 use AI\Hub\Singleton;
 use AI\CraynerSystem;
 
