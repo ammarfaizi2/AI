@@ -7,13 +7,13 @@ namespace AI;
 trait Chat
 {
     private $hari = array(
+            "Minggu",
             "Senin",
             "Selasa",
             "Rabu",
             "Kamis",
             "Jum'at",
-            "Sabtu",
-            "Minggu"
+            "Sabtu"
         );
     private $wl;
     private $timereply;
@@ -79,7 +79,7 @@ trait Chat
 "Halo juga kang ^@ :)",
 "Halo juga kang ^@, apa kabar?",
 "Halo juga kak ^@"
-),true,8,65,null,false        ),
+),true,8,65,null,false),
 
 "pa+kabar,pa+kbr,pa+kbar"=>array(
 1,array(
@@ -95,6 +95,15 @@ trait Chat
 "18-24"=>array("Sekarang jam #d(jam) malam")
 ),false,8,35,null,true),
 
+"besok+hari+apa"=>array(
+1,array(
+"besok hari #d(day+1day)"
+),false,8,35,null,false),
+
+"hari+apa"=>array(
+1,array(
+"sekarang hari #d(day)"
+),false,8,35,null,false),
 
 "pagi"=>array(
 1,array(
