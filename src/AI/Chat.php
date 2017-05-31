@@ -15,6 +15,20 @@ trait Chat
             "Jum'at",
             "Sabtu"
         );
+    private $bulan = array(
+            "Januari",
+            "Februari",
+            "Maret",
+            "April",
+            "Mei",
+            "Juni",
+            "Juli",
+            "Agustus",
+            "September",
+            "Oktober",
+            "November",
+            "Desember"
+        );
     private $wl;
     private $timereply;
     private function load_wordlist()
@@ -358,8 +372,8 @@ trait Chat
             case 'jam' :
                 $c = date("h:i:s",$c);
                 break;
-            case 'jam_sapa' :
-                $c = "#".date("H");
+            case 'bulan': case 'month' :
+                $c = $this->bulan[(int)date("m",$c)];
                 break;
         }
         $return = str_replace($replacer,$c,$pure);
