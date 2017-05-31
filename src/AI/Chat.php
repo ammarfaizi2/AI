@@ -100,6 +100,11 @@ trait Chat
 "besok hari #d(day+1day)"
 ),false,8,35,null,false),
 
+"kemarin+hari+apa"=>array(
+1,array(
+"besok hari #d(day-1day)"
+),false,8,35,null,false),
+
 "hari+apa"=>array(
 1,array(
 "sekarang hari #d(day)"
