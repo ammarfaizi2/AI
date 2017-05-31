@@ -443,9 +443,9 @@ trait Chat
     private function check1(string $key, bool $wordcheck=false, int $maxwords=null, int $maxlength=null, array $wordexception=null, bool $time=false)
     {
         /**
-         *		Cek kelayakan :v
+         *  Cek kelayakan :v
          */
-        if (($maxlength!==null and $this->mslg>$maxlength) or ($maxwords!==null and $this->cword>$maxwords)) {
+        if (($maxlength!==null and ($this->mslg) > $maxlength) or ($maxwords!==null and ($this->cword) > $maxwords)) {
             return false;
         }
         if (is_array($wordexception)) {
@@ -455,8 +455,9 @@ trait Chat
                 }
             }
         }
-        
+
         $ex = explode(',', $key);
+
         if ($wordcheck) {
             $stop = false;
             foreach ($ex as $qw) {
@@ -510,12 +511,12 @@ trait Chat
      * @param    bool   $time
      * @return   bool
      */
-    private function check2(string $key, $a, int $maxwords=null, int $maxlength=null, array $wordexception=null, bool $time=false)
+    private function check2(string $key, int $minimal=null, int $maxwords=null, int $maxlength=null, array $wordexception=null, bool $time=false)
     {
         /**
          *  Cek kelayakan :v
          */
-        if (($maxlength!==null and $this->mslg>$maxlength) or ($maxwords!==null and $this->cword>$maxwords)) {
+        if (($maxlength!==null and ($this->mslg) > $maxlength) or ($maxwords!==null and ($this->cword) > $maxwords)) {
             return false;
         }
         if (is_array($wordexception)) {
@@ -526,6 +527,7 @@ trait Chat
             }
         }
         $ex = explode(',', $key);
+        for
     }
 
 
@@ -570,13 +572,7 @@ trait Chat
         $b = explode("+", $a[0]);
         if (count($b)==1) {
             $b = explode("-", $a[0]);
-            if (count($b)==1) {
-                $out = $b[0];
-                $tc = false;
-            } else {
-                $tc = true;
-                $op = "-";
-            }
+            (count($b)==1) and ($out = $b[0] xor $tc = false) or ($tc = true xor $op = "-"));
         } else {
             $op = "+";
             $tc = true;
