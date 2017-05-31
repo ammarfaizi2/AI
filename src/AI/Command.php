@@ -64,7 +64,7 @@ trait Command
                 *   Show menu
                 */
                 case 'menu':
-                        $this->reply = "Menu : \n1. ask [spasi] pertanyaan : Untuk bertanya\n2. menu : Untuk menampilkan menu ini\n3. ctranslate [spasi] from [spasi] to [spasi] kalimat : Untuk translate dari berbagai bahasa\n4. translate[spasi]kalimat : Untuk translate dari bahasa apapun ke bahasa Indonesia\n5. whatanime [spasi] url_gambar : Untuk mencari judul anime berdasarkan gambar";
+                        $this->reply = "Menu : \n1. ask [spasi] pertanyaan : Untuk bertanya\n2. menu : Untuk menampilkan menu ini\n3. ctranslate [spasi] from [spasi] to [spasi] kalimat : Untuk translate dari berbagai bahasa\n4. translate [spasi] kalimat : Untuk translate dari bahasa apapun ke bahasa Indonesia\n5. whatanime [spasi] url_gambar : Untuk mencari judul anime berdasarkan gambar";
                     break;
 
                 /**
@@ -116,7 +116,7 @@ trait Command
                 */
                 case 'q_anime': case 'q_manga':
                         $search = (new MyAnimeList('ammarfaizi2', 'triosemut123'))->search($msg[1], $cmd);
-                        $this->reply = $search ? ($search)."\n\nUntuk mencari info anime ketik \"i_anime[spasi]id_anime\"\nContoh :\ni_anime 100" : "Mohon maaf anime \"".$msg[1]."\" tidak ditemukan !";
+                        $this->reply = $search ? ($search)."\n\nUntuk mencari info anime ketik \"i_anime [spasi] id_anime\"\nContoh :\ni_anime 100" : "Mohon maaf anime \"".$msg[1]."\" tidak ditemukan !";
                     break;
 
                 /**
