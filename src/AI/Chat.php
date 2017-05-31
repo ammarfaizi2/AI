@@ -65,7 +65,276 @@ trait Chat
     {
         $this->msg = strip_tags($this->msg);
         $this->wl = array(
+            "hai,hay,hi,hy"=>array(
+            1,array(
+                    "Hai juga ^@. Apa kabar?",
+                    "Hay juga ^@. Apa kabar?"
+                ),
+            true,5,25,null,false
+            ),
 
+            /**
+             *  
+             *  Say hello.
+             */
+            "halo,hallo,allo,helo,hola,alo,ello"=>array(
+            1,array(
+                    "Halo juga kang ^@ :)",
+                    "Halo juga kang ^@, apa kabar?",
+                    "Halo juga kak ^@"
+                ),
+            false,10,50,null,false),
+
+            /**
+             *  
+             *  Tanya kabar.
+             */
+            "pa+kabar,pa+kbr,pa+kbar"=>array(
+            1,array(
+                    "Kabar baik disini.",
+                    "Kabar baik, kang ^@ apa kabar?"
+                ),
+            false,10,50,null,false),
+
+
+            /**
+             *  
+             *  Menanyakan jam (Bahasa Inggris)
+             */
+            "what+time"=>array(
+            1,array(
+                    "Time #d(jam_pq)"
+                ),
+            false,10,50,null,false),
+
+            /**
+             *  
+             *  Menanyakan jam (Bahasa Indonesia)
+             */
+            "jam+ber,jam+brp,jam+pro,jam+piro"=>array(
+            1,array(
+                    "0-11"=>array("Sekarang jam #d(jam) pagi"),
+                    "11-14"=>array("Sekarang jam #d(jam) siang"),
+                    "14-18"=>array("Sekarang jam #d(jam) sore"),
+                    "18-24"=>array("Sekarang jam #d(jam) malam")
+                ),
+            false,10,50,null,false),
+
+            /**
+             *  
+             *  Menanyakan hari besok.
+             */
+            "besok+hari+apa"=>array(
+            1,array(
+                    "besok hari #d(day+1day)"
+                ),
+            false,10,50,null,false),
+
+            /**
+             *  
+             *  Menanyakan hari kemarin.
+             */
+            "kemarin+hari+apa"=>array(
+            1,array(
+                    "besok hari #d(day-1day)"
+                ),
+            false,10,50,null,false),
+
+            /**
+             *  
+             *  Menanyakan hari sekarang.
+             */
+            "hari+apa"=>array(
+            1,array(
+                    "sekarang hari #d(day)"
+                ),
+            false,10,50,null,false),
+
+            /**
+             *  
+             *  Menanyakan bulan sekarang.
+             */
+            "bulan+apa"=>array(
+            1,array(
+                    "sekarang bulan #d(bulan)"
+                ),
+            false,10,50,null,false),
+
+            /**
+             *
+             *  Menanyakan tanggal sekarang.
+             */
+            "tanggal+brp,tanggal+berapa,tgl+brp,tgl+berapa"=>array(
+            1,array(
+                    "sekarang tanggal #d(date_c)"
+                ),
+            false,10,50,null,false),
+            ),
+
+
+            /**
+             *  
+             *  Sapaan di pagi hari.
+             */
+            "pagi"=>array(
+            1,array(
+                    "1-10"=>array(
+                        "Selamat pagi kang ^@. Selamat beraktifitas."
+                    ),
+                    "11-14"=>array(
+                        "Ini udah siang kang ^@ 😌"
+                    ),
+                    "15-18"=>array(
+                        "Ini udah sore kang ^@ 😌"
+                    ),
+                    "19-23,0"=>array(
+                        "Ini sudah malem kang ^@ 😌"
+                    )
+                ),
+            false,8,35,null,true),
+
+            /**
+             *
+             *  Sapaan di siang hari.
+             */
+            "siang,ciang,siank"=>array(
+            1,array(
+                    "0-10"=>array(
+                        "Ini masih pagi lho kang ^@ 😌"
+                    ),
+                    "11-14"=>array(
+                        "Selamat siang kang ^@, selamat beraktifitas."
+                    ),
+                    "15-18"=>array(
+                        "Ini udah sore kang ^@ 😌"
+                    ),
+                    "19-24"=>array(
+                        "Ini udah malem kang ^@ 😌"
+                    )
+            ),
+            false,8,35,null,true),
+
+            /**
+             *
+             *  Sapaan di sore hari.
+             */
+            "sore"=>array(
+            1,array(
+                    "0-10"=>array(
+                        "Ini masih pagi lho kang ^@ 😌"
+                    ),
+                    "11-13"=>array(
+                        "Ini masih siang lho kang ^@"
+                    ),
+                    "14-18"=>array(
+                        "Selamat sore kang ^@, selamat beristirahat."
+                    ),
+                    "19-24"=>array(
+                        "Ini udah malem kang ^@ 😌"
+                    )
+            ),
+            true,8,35,null,true),
+
+
+            /**
+             *
+             *  Sapaan di malam hari.
+             */
+            "malem,malam"=>array(
+            1,array(
+                    "0-4"=>array(
+                        "Selamat pagi kang ^@."
+                    ),
+                    "5-10"=>array(
+                        "Ini masih pagi kang ^@"
+                    ),
+                    "11-14"=>array(
+                        "Ini masih siang kang ^@",
+                    ),
+                    "15-18"=>array(
+                        "Ini masih sore loh kang ^@"
+                    ),
+                    "19-24"=>array(
+                        "Selamat malam kang ^@, selamat beristirahat."
+                    )
+                ),
+            true,9,65,null,true),
+
+
+            /**
+             *
+             *  Sapaan di pagi hari.
+             */
+            "ohayo"=>array(
+            1,array(
+                    "0-9,24"=>array(
+                        "Ohayou kang ^@, selamat beraktiftas 😙"
+                    ),
+                    "10-11"=>array(
+                        "Selamat pagi menjelang siang ^@"
+                    ),
+                    "12-14"=>array(
+                        "Ini udah siang kang ^@ :v"
+                    ),
+                    "15-18"=>array(
+                        "Ini udah sore kang ^@"
+                    ),
+                    "19-23"=>array(
+                        "Ini udah malem kang ^@"
+                    )
+                ),
+            false,9,65,null,true),
+
+            /**
+             *
+             *  Sapaan di siang hari.
+             */
+            "koniciwa,konnichiwa,konichiwa,konniciwa"=>array(
+            1,array(
+                    "0-9,24"=>array(
+                        "Ini masih pagi kang ^@"
+                    ),
+                    "10-18"=>array(
+                        "Konnichiwa kang ^@, selamat beraktifitas"
+                    ),
+                    "19-23"=>array(
+                        "Ini udah malem kang ^@"
+                    )
+                ),
+            false,9,90,null,false),
+
+
+            /**
+             *
+             *  Sapaan di sore hari.
+             */
+            "konbawa,konbanwa"=>array(
+            1,array(
+                    "0-9,24"=>array(
+                        "ini masih pagi kang ^@"
+                    ),
+                    "10-23"=>array(
+                        "konbanwa kang ^@"
+                    )
+                ),
+            true,8,65,null,true),
+
+            /**
+             *
+             *  Tertawa.
+             */
+            "haha,hihi,wkwk,wkeke,hhh"=>array(
+            1,array(
+                    "Dilarang ketawa !\nhahaha",
+                    "Hahaha ketawa",
+                    "Sadess :v"
+                ),
+            false,10,75,null,false),
+
+            /**
+             *
+             *  Move on.
+             */
             "move+on"=>array(
             1,array(
                     "Move on adalah jalan terbaik kak ^@, kamu harus kuat :)",
@@ -73,7 +342,6 @@ trait Chat
                     "Selamat move on.\n\nUdah itu aja."
                 ),
             true,8,75,null,false),
-
 
             "jomblo"=>array(
             1,array(
@@ -115,205 +383,6 @@ trait Chat
                 ),
             false,10,75,null,true),
 
-
-            "hai,hay,hi,hy"=>array(
-            1,array(
-                    "Hai juga ^@. Apa kabar?",
-                    "Hay juga ^@. Apa kabar?"
-                ),
-            true,5,25,null,false
-            ),
-
-
-            "halo,hallo,allo,helo,hola,alo,ello"=>array(
-            1,array(
-                    "Halo juga kang ^@ :)",
-                    "Halo juga kang ^@, apa kabar?",
-                    "Halo juga kak ^@"
-                ),
-            true,8,65,null,false),
-
-
-            "pa+kabar,pa+kbr,pa+kbar"=>array(
-            1,array(
-                    "Kabar baik disini.",
-                    "Kabar baik, kang ^@ apa kabar?"
-                ),
-            false,8,35,null,false),
-
-
-
-            "what+time"=>array(
-            1,array(
-
-                ),
-            false,8,35,null,false),
-
-
-
-            "jam+ber,jam+brp,jam+pro,jam+piro"=>array(
-            1,array(
-                    "0-11"=>array("Sekarang jam #d(jam) pagi"),
-                    "11-14"=>array("Sekarang jam #d(jam) siang"),
-                    "14-18"=>array("Sekarang jam #d(jam) sore"),
-                    "18-24"=>array("Sekarang jam #d(jam) malam")
-                ),
-            false,8,35,null,true),
-
-
-            "besok+hari+apa"=>array(
-            1,array(
-                    "besok hari #d(day+1day)"
-                ),
-            false,8,35,null,false),
-
-
-            "kemarin+hari+apa"=>array(
-            1,array(
-                    "besok hari #d(day-1day)"
-                ),
-            false,8,35,null,false),
-
-
-            "hari+apa"=>array(
-            1,array(
-                    "sekarang hari #d(day)"
-                ),
-            false,8,35,null,false),
-
-
-            "bulan+apa"=>array(
-            1,array(
-                    "sekarang bulan #d(bulan)"
-                ),
-            false,8,35,null,false),
-
-            "pagi"=>array(
-            1,array(
-                    "1-10"=>array(
-                        "Selamat pagi kang ^@. Selamat beraktifitas."
-                    ),
-                    "11-14"=>array(
-                        "Ini udah siang kang ^@ 😌"
-                    ),
-                    "15-18"=>array(
-                        "Ini udah sore kang ^@ 😌"
-                    ),
-                    "19-23,0"=>array(
-                        "Ini sudah malem kang ^@ 😌"
-                    )
-                ),
-            false,8,35,null,true),
-
-
-            "siang,ciang,siank"=>array(
-            1,array(
-                    "0-10"=>array(
-                        "Ini masih pagi lho kang ^@ 😌"
-                    ),
-                    "11-14"=>array(
-                        "Selamat siang kang ^@, selamat beraktifitas."
-                    ),
-                    "15-18"=>array(
-                        "Ini udah sore kang ^@ 😌"
-                    ),
-                    "19-24"=>array(
-                        "Ini udah malem kang ^@ 😌"
-                    )
-            ),
-            false,8,35,null,true),
-
-
-            "sore"=>array(
-            1,array(
-                    "0-10"=>array(
-                        "Ini masih pagi lho kang ^@ 😌"
-                    ),
-                    "11-13"=>array(
-                        "Ini masih siang lho kang ^@"
-                    ),
-                    "14-18"=>array(
-                        "Selamat sore kang ^@, selamat beristirahat."
-                    ),
-                    "19-24"=>array(
-                        "Ini udah malem kang ^@ 😌"
-                    )
-            ),
-            true,8,35,null,true),
-
-
-            "malem,malam"=>array(
-            1,array(
-                    "0-4"=>array(
-                        "Selamat pagi kang ^@."
-                    ),
-                    "5-10"=>array(
-                        "Ini masih pagi kang ^@"
-                    ),
-                    "11-14"=>array(
-                        "Ini masih siang kang ^@",
-                    ),
-                    "15-18"=>array(
-                        "Ini masih sore loh kang ^@"
-                    ),
-                    "19-24"=>array(
-                        "Selamat malam kang ^@, selamat beristirahat."
-                    )
-                ),
-            true,9,65,null,true),
-
-            "ohayo"=>array(
-            1,array(
-                    "0-9,24"=>array(
-                        "Ohayou kang ^@, selamat beraktiftas 😙"
-                    ),
-                    "10-11"=>array(
-                        "Selamat pagi menjelang siang ^@"
-                    ),
-                    "12-14"=>array(
-                        "Ini udah siang kang ^@ :v"
-                    ),
-                    "15-18"=>array(
-                        "Ini udah sore kang ^@"
-                    ),
-                    "19-23"=>array(
-                        "Ini udah malem kang ^@"
-                    )
-                ),
-            false,9,65,null,true),
-
-            "koniciwa,konnichiwa,konichiwa,konniciwa"=>array(
-            1,array(
-                    "0-9,24"=>array(
-                        "Ini masih pagi kang ^@"
-                    ),
-                    "10-18"=>array(
-                        "Konnichiwa kang ^@, selamat beraktifitas"
-                    ),
-                    "19-23"=>array(
-                        "Ini udah malem kang ^@"
-                    )
-                ),
-            false,9,90,null,false),
-
-            "konbawa,konbanwa"=>array(
-            1,array(
-                    "0-9,24"=>array(
-                        "ini masih pagi kang ^@"
-                    ),
-                    "10-23"=>array(
-                        "konbanwa kang ^@"
-                    )
-                ),
-            true,8,65,null,true),
-
-            "haha,hihi,wkwk,wkeke,hhh"=>array(
-            1,array(
-                    "Dilarang ketawa !\nhahaha",
-                    "Hahaha ketawa",
-                    "Sadess :v"
-                ),
-            false,10,75,null,false),
 
         );
     }
