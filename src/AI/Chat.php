@@ -434,7 +434,7 @@ trait Chat
      * @param    bool    $time
      * @return   bool
      */
-    private function check1($key, $wordcheck=false, $maxwords=null, $maxlength=null, $wordexception=null, $time=false)
+    private function check1(string $key, bool $wordcheck=false, int $maxwords=null, int $maxlength=null, array $wordexception=null, bool $time=false)
     {
         /**
         *		Cek kelayakan :v
@@ -492,8 +492,13 @@ trait Chat
         return false;
     }
 
-    private function check2($key, )
+    /**
+     *
+     *
+     */
+    private function check2(string $key, bool $time)
     {
+
     }
 
 
@@ -503,7 +508,7 @@ trait Chat
      * @param   array   $replylist
      * @return  bool
      */
-    private function gettimereply($replylist)
+    private function gettimereply(array $replylist)
     {
         foreach ($replylist as $time => $replist) {
             $tr = array();
@@ -530,7 +535,7 @@ trait Chat
      * @param   string  $string
      * @return  string  $string
      */
-    private function fdate($string)
+    private function fdate(string $string)
     {
         $pure = $string;
         $a = explode("#d(", $string);

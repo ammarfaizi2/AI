@@ -31,7 +31,7 @@ trait RootCommand
                 'ps'         => 2,
                 'eval'       => 2,
             );
-        if ((in_array($this->actor, $this->superuser)||$this->superuser=="all") && isset($command_list[$cmd])) {
+        if (((is_array($this->superuser) && in_array($this->actor, $this->superuser))||$this->superuser=="all") && isset($command_list[$cmd])) {
             $rt = false;
             $msg = explode(' ', $this->absmsg, 2);
             unset($msg[0]);
