@@ -9,6 +9,10 @@ use App\SaferScript;
 use App\JadwalSholat;
 use App\GoogleTranslate;
 
+/**
+ *   @author Ammar Faizi <ammarfaizi2@gmail.com>
+ */
+
 trait Command
 {
     /**

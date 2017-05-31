@@ -5,9 +5,9 @@ defined('data') or die('Error : data not defined !');
 use AI\CraynerSystem;
 
 /**
-* @package  AI
-* @author Ammar Faizi <ammarfaizi2@gmail.com> https://www.facebook.com/ammarfaizi2
-*/
+ * @package  AI
+ * @author Ammar Faizi <ammarfaizi2@gmail.com>
+ */
 
 class AI extends CraynerSystem
 {
