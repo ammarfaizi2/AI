@@ -11,7 +11,7 @@ use AI\AI;
 
 $ai = new AI();
 $actor = "Ammar Faizi";
-$msg   = "teacrypt dec =sky1xyMMio1lJRCRevizdAA 123123";
+$msg   = "teacrypt dec zrsML5qEitoYTVZcNGnjLcAA 123123";
 $st = $ai->prepare($msg, $actor);
 $st->set_timezone("Asia/Jakarta");
 $ai->execute();
