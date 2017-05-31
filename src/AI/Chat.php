@@ -61,7 +61,7 @@ trait Chat
      *
      * @var float
      */
-    private $similarity_minimal;
+    private $similarity_minimal = 50.0;
 
     /**
      *
@@ -399,6 +399,16 @@ trait Chat
             false,10,75,null,true),
 
 
+
+
+
+
+
+            /**
+             *
+             * Check 2
+             */
+            "assalamualaikum"
         );
     }
 
@@ -541,7 +551,10 @@ trait Chat
             }
             $_similar_1[] = max($similar_0);
         }
-        $this->similar_word_temporary[$key] = array_sum($_similar_1) / count($ex);
+        $average = array_sum($_similar_1) / count($ex);
+        if ($average >= $this->similarity_minimal and ($minimal===null or $average >= $minimal)) {
+            $this->similar_word_temporary[$key] = $average;
+        }
         return false;
     }
 
