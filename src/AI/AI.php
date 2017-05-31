@@ -19,7 +19,7 @@ use AI\CraynerSystem;
 
 class AI extends CraynerSystem implements AIFace, AIProp
 {
-    const VERSION = "1.0";
+    const VERSION = "1.3";
     const data = '/ai/';
     const DEFAULT_TIMEZONE = "Asia/Jakarta";
 
