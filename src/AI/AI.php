@@ -2,7 +2,7 @@
 namespace AI;
 
 defined('data') or die('Error : data not defined !');
-use System\CraynerSystem;
+use AI\CraynerSystem;
 
 /**
 * @author Ammar Faizi <ammarfaizi2@gmail.com> https://www.facebook.com/ammarfaizi2
