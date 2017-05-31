@@ -1,5 +1,5 @@
 <?php
-namespace System;
+namespace AI;
 
 use App\Brainly;
 use App\ChitChat;
