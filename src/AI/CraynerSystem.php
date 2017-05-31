@@ -26,7 +26,7 @@ abstract class CraynerSystem
     {
     }
 
-    abstract public function set_timezone();
+    abstract public function set_timezone(string $timezone);
     abstract public function prepare(string $text);
     abstract public function execute();
     abstract public function fetch_reply();

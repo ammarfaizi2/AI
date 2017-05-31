@@ -71,6 +71,159 @@ class AI extends CraynerSystem implements AIFace, AIProp
     private $timezone;
 
     /**
+     *  Allowed Timezones
+     *
+     * @var string
+     */
+    public $allowed_timezones = array(
+
+                /**
+                 *
+                 *  Africa Timezones
+                 */
+                "Africa/Abidjan",
+                "Africa/Accra",
+                "Africa/Addis_Ababa",
+                "Africa/Algiers",
+                "Africa/Asmara",
+                "Africa/Bamako",
+                "Africa/Bangui",
+                "Africa/Banjul",
+                "Africa/Bissau",
+                "Africa/Blantyre",
+                "Africa/Brazzaville",
+                "Africa/Bujumbura",
+                "Africa/Cairo",
+                "Africa/Casablanca",
+                "Africa/Ceuta",
+                "Africa/Conakry",
+                "Africa/Dakar",
+                "Africa/Dar_es_Salaam",
+                "Africa/Djibouti",
+                "Africa/Douala",
+                "Africa/El_Aaiun",
+                "Africa/Freetown",
+                "Africa/Gaborone",
+                "Africa/Harare",
+                "Africa/Johannesburg",
+                "Africa/Juba",
+                "Africa/Kampala",
+                "Africa/Khartoum",
+                "Africa/Kigali",
+                "Africa/Kinshasa",
+                "Africa/Lagos",
+                "Africa/Libreville",
+                "Africa/Lome",
+                "Africa/Luanda",
+                "Africa/Lubumbashi",
+                "Africa/Lusaka",
+                "Africa/Malabo",
+                "Africa/Maputo",
+                "Africa/Maseru",
+                "Africa/Mbabane",
+                "Africa/Mogadishu",
+                "Africa/Monrovia",
+                "Africa/Nairobi",
+                "Africa/Ndjamena",
+                "Africa/Niamey",
+                "Africa/Nouakchott",
+                "Africa/Ouagadougou",
+                "Africa/Porto-Novo",
+                "Africa/Sao_Tome",
+                "Africa/Tripoli",
+                "Africa/Tunis",
+                "Africa/Windhoek",
+
+                /**
+                 *
+                 *  Asia Timezones
+                 */
+                "Asia/Aden",
+                "Asia/Almaty",
+                "Asia/Amman",
+                "Asia/Anadyr",
+                "Asia/Aqtau",
+                "Asia/Aqtobe",
+                "Asia/Ashgabat",
+                "Asia/Atyrau",
+                "Asia/Baghdad",
+                "Asia/Bahrain",
+                "Asia/Baku",
+                "Asia/Bangkok",
+                "Asia/Barnaul",
+                "Asia/Beirut",
+                "Asia/Bishkek",
+                "Asia/Brunei",
+                "Asia/Chita",
+                "Asia/Choibalsan",
+                "Asia/Colombo",
+                "Asia/Damascus",
+                "Asia/Dhaka",
+                "Asia/Dili",
+                "Asia/Dubai",
+                "Asia/Dushanbe",
+                "Asia/Famagusta",
+                "Asia/Gaza",
+                "Asia/Hebron",
+                "Asia/Ho_Chi_Minh",
+                "Asia/Hong_Kong",
+                "Asia/Hovd",
+                "Asia/Irkutsk",
+                "Asia/Jakarta",
+                "Asia/Jayapura",
+                "Asia/Jerusalem",
+                "Asia/Kabul",
+                "Asia/Kamchatka",
+                "Asia/Karachi",
+                "Asia/Kathmandu",
+                "Asia/Khandyga",
+                "Asia/Kolkata",
+                "Asia/Krasnoyarsk",
+                "Asia/Kuala_Lumpur",
+                "Asia/Kuching",
+                "Asia/Kuwait",
+                "Asia/Macau",
+                "Asia/Magadan",
+                "Asia/Makassar",
+                "Asia/Manila",
+                "Asia/Muscat",
+                "Asia/Nicosia",
+                "Asia/Novokuznetsk",
+                "Asia/Novosibirsk",
+                "Asia/Omsk",
+                "Asia/Oral",
+                "Asia/Phnom_Penh",
+                "Asia/Pontianak",
+                "Asia/Pyongyang",
+                "Asia/Qatar",
+                "Asia/Qyzylorda",
+                "Asia/Riyadh",
+                "Asia/Sakhalin",
+                "Asia/Samarkand",
+                "Asia/Seoul",
+                "Asia/Shanghai",
+                "Asia/Singapore",
+                "Asia/Srednekolymsk",
+                "Asia/Taipei",
+                "Asia/Tashkent",
+                "Asia/Tbilisi",
+                "Asia/Tehran",
+                "Asia/Thimphu",
+                "Asia/Tokyo",
+                "Asia/Tomsk",
+                "Asia/Ulaanbaatar",
+                "Asia/Urumqi",
+                "Asia/Ust-Nera",
+                "Asia/Vientiane",
+                "Asia/Vladivostok",
+                "Asia/Yakutsk",
+                "Asia/Yangon",
+                "Asia/Yekaterinburg",
+                "Asia/Yerevan",
+
+        );
+
+    /**
      * Load Traits
      */
     use RootCommand, Command, Chat, Singleton;
@@ -132,9 +285,12 @@ class AI extends CraynerSystem implements AIFace, AIProp
      */
     public function set_timezone(string $timezone)
     {
-        if ($timezone) {
+        if (in_array($timezone, $this->allowed_timezones)) {
             $this->timezone = $timezone;
             date_default_timezone_set($timezone);
+        } else {
+            throw new AIException("Not allowed timezone !", self::ERROR_EXCEPTION);
+            
         }
     }
 
@@ -158,7 +314,7 @@ class AI extends CraynerSystem implements AIFace, AIProp
     public function execute()
     {
         if (!isset($this->absmsg)) {
-            throw new AIException("Cannot access execute method directly, you must prepare a message first", );
+            throw new AIException("Cannot access execute method directly, you must prepared a message first", self::ERROR_EXCEPTION);
         }
 
         if (!isset($this->timezone)) {
