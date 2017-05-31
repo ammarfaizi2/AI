@@ -1,4 +1,4 @@
-# AI by Ammar Faizi
+# Crayner AI
 
 
 ### Installation
