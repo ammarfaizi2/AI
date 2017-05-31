@@ -11,7 +11,7 @@ use AI\AI;
 
 $ai = new AI();
 $actor = "Ammar Faizi";
-$msg   = "assalamuafasdfwerqwerlaikum asdf qmwekfm qkwemfr kqwmer mqweorm";
+$msg   = "assalamulaikum asdf qmwekfm qkwemfr kqwmer mqweorm";
 $st = $ai->prepare($msg, $actor);
 $st->execute();
 var_dump($st->fetch_reply());

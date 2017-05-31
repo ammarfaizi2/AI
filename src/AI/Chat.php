@@ -408,11 +408,11 @@ trait Chat
              *
              * Check 2
              */
-            "assalamualaikum"=>array(
+            "assalamualaikum,assalamualaikum"=>array(
             2,array(
                         "Waalaikumsalam"
                 ),
-            null,10,75,null,false),
+            80,10,75,null,false),
         );
     }
 
@@ -441,7 +441,6 @@ trait Chat
             }
         }
         if (count($this->similar_word_temporary)) {
-            print_r($this->similar_word_temporary);
             $max_key = array_search(max($this->similar_word_temporary), $this->similar_word_temporary);
             $this->reply = $this->wl[$max_key][1][rand(0, count($this->wl[$max_key][1])-1)];
         }
@@ -562,7 +561,6 @@ trait Chat
             $_different_1[] = array_sum($_different_0) / $count;
             $_similar_1[] = max($similar_0);
         }
-        var_dump($_different_1);
         $average = (array_sum($_similar_1) / count($ex) * max($similar_0) - array_sum($_different_1))/100;
         if ($average >= $this->similarity_minimal and ($minimal===null or $average >= $minimal)) {
             $this->similar_word_temporary[$key] = $average;
