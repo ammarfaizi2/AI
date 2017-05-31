@@ -413,7 +413,6 @@ trait Chat
         $this->cword = count($this->exms);
         $this->mslg = strlen($this->msg);
         foreach ($this->wl as $key => $val) {
-
             if ($this->{"check{$val[0]}"}($key, $val[2], $val[3], $val[4], $val[5], $val[6])) {
                 if ($this->timereply) {
                     if ($this->gettimereply($val[1])) {
