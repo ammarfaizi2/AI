@@ -129,10 +129,10 @@ trait Chat
             1,array(
                     "0-11"=>array("Sekarang jam #d(jam) pagi"),
                     "11-14"=>array("Sekarang jam #d(jam) siang"),
-                    "14-18"=>array("Sekarang jam #d(jam) sore"),
+                    "14-17"=>array("Sekarang jam #d(jam) sore"),
                     "18-24"=>array("Sekarang jam #d(jam) malam")
                 ),
-            false,10,50,null,false),
+            false,10,50,null,true),
 
             /**
              *
@@ -150,7 +150,7 @@ trait Chat
              */
             "kemarin+hari+apa"=>array(
             1,array(
-                    "besok hari #d(day-1day)"
+                    "kemarin hari #d(day-1day)"
                 ),
             false,10,50,null,false),
 
@@ -435,7 +435,7 @@ trait Chat
                     }
                 }
                 $act = explode(" ", $this->actor);
-                $this->reply = $this->fdate(str_replace("@", $this->actor, str_replace("^@", $act[0], $val[1][rand(0, count($val[1])-1)])));
+                $this->reply = $this->fdate(str_replace("@", $this->actor, str_replace("^@", $act[0], $val[1][rand(0, count($val[1])-1)])));     
                 return true;
             }
         }

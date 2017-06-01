@@ -76,13 +76,16 @@ trait Command
                         case 'sholat': case 'solat': case 'shalat':
                                 $st = new JadwalSholat();
                                 $get_kota = ucfirst(strtolower(trim($msg[1])));
-                                $jadwal = $st->get_jadwal($get_kota);
-                                $ret = "Jadwal Sholat untuk daerah {$get_kota} dan sekitarnya\nTanggal ".(date("d F Y"))."\n\n";
-                                $jadwal = array_merge(array('imsyak'=>(date("h:i", strtotime($jadwal['subuh'])-300))), $jadwal);
-                                foreach ($jadwal as $key => $jam) {
-                                    $ret .= ucfirst($key) . " : " . $jam . "\n";
+                                if($jadwal = $st->get_jadwal($get_kota)){
+                                    $ret = "Jadwal Sholat untuk daerah {$get_kota} dan sekitarnya\nTanggal ".(date("d F Y"))."\n\n";
+                                    $jadwal = array_merge(array('imsyak'=>(date("h:i", strtotime($jadwal['subuh'])-300))), $jadwal);
+                                    foreach ($jadwal as $key => $jam) {
+                                        $ret .= ucfirst($key) . " : " . $jam . "\n";
+                                    }
+                                    $this->reply = $ret;
+                                } else {
+                                    $this->reply = "Mohon maaf, jadwal sholat {$get_kota} tidak ditemukan.";
                                 }
-                                $this->reply = $ret;
                             break;
                         
                         default:
@@ -153,6 +156,7 @@ trait Command
                  */
                 case 'teacrypt':
                     $msg = explode(" ", $this->absmsg);
+                    var_dump($msg[3]);
                     if (strtolower($msg[1]) == "enc") {
                         if (!isset($msg[3]) or empty($msg[3])) {
                             $this->reply = "Key harus diisi !";

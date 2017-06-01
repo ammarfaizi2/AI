@@ -865,4 +865,14 @@ class AI extends AIFoundation implements AIFace, AIProp
     {
         return $this->reply;
     }
+
+    public function __toString()
+    {
+        return isset($this->reply) ? $this->reply : "Not Available";
+    }
+
+    public function __debugInfo()
+    {
+        return array("reply"=>$this->__toString());
+    }
 }

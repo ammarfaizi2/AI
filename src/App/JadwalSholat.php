@@ -37,7 +37,12 @@ class JadwalSholat extends AIFoundation
             $this->file = data.'/jadwal_sholat/'.$kota.'/'.$kota.'_'.$this->bulan.'.txt';
             if (file_exists($this->file)) {
                 $jadwal = json_decode(file_get_contents($this->file), 1);
-                $jadwal = $jadwal[date("d")];
+                if (!isset($jadwal[date("d")])) {
+                    unlink($this->file);
+                    return false;
+                } else {
+                    $jadwal = $jadwal[date("d")];
+                }
             } else {
                 $jadwal = $this->simpan_local($kota, date("d"));
             }
@@ -53,29 +58,32 @@ class JadwalSholat extends AIFoundation
     {
         $ch = new CMCurl('https://www.jadwalsholat.pkpu.or.id/monthly.php?id='.$this->list_kota[$kota]);
         $ch->set_useragent();
-        $source = $ch->execute();
-        $a = explode('<tr class="table_header" align="center">', $source, 2);
-        $a = explode('<tr class="table_block_title">', $a[1], 2);
-        $a = explode("\n", $a[0]);
-        $save = array();
-        foreach ($a as $val) {
-            preg_match("#align=\"center\"><td><b>(.*)</b>#", $val, $n);
-            if (isset($n[1]) and !empty($n[1])) {
-                $val = explode("<td>", $val);
-                if (count($val)==8) {
-                    $checkpoint = array();
-                    $ket = array(2=>'subuh','terbit','dzuhur','ashar','maghrib','isya');
-                    for ($i=2; $i < 8; $i++) {
-                        $checkpoint[$ket[$i]] = strip_tags($val[$i]);
+        if($source = $ch->execute()){
+            $a = explode('<tr class="table_header" align="center">', $source, 2);
+            $a = explode('<tr class="table_block_title">', $a[1], 2);
+            $a = explode("\n", $a[0]);
+            $save = array();
+            foreach ($a as $val) {
+                preg_match("#align=\"center\"><td><b>(.*)</b>#", $val, $n);
+                if (isset($n[1]) and !empty($n[1])) {
+                    $val = explode("<td>", $val);
+                    if (count($val)==8) {
+                        $checkpoint = array();
+                        $ket = array(2=>'subuh','terbit','dzuhur','ashar','maghrib','isya');
+                        for ($i=2; $i < 8; $i++) {
+                            $checkpoint[$ket[$i]] = strip_tags($val[$i]);
+                        }
                     }
+                    $save[(substr($n[1], 0, 1) == "0" ? substr($n[1], 1) : $n[1])] = $checkpoint;
                 }
-                $save[(substr($n[1], 0, 1) == "0" ? substr($n[1], 1) : $n[1])] = $checkpoint;
             }
+            $kota = $kota;
+            is_dir(data.'/jadwal_sholat/'.$kota) or mkdir(data.'/jadwal_sholat/'.$kota);
+            file_put_contents($this->file, json_encode($save, 128));
+            return isset($get) ? $save[(int)$get] : $save;
+        } else {
+            return false;
         }
-        $kota = $kota;
-        is_dir(data.'/jadwal_sholat/'.$kota) or mkdir(data.'/jadwal_sholat/'.$kota);
-        file_put_contents($this->file, json_encode($save, 128));
-        return isset($get) ? $save[$get] : $save;
     }
 
     private $list_kota = array(
