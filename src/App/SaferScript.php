@@ -1,11 +1,13 @@
 <?php
 namespace App;
 
+use AI\AIFoundation;
+
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
  */
 
-class SaferScript
+class SaferScript extends AIFoundation
 {
     private $source;
     private $allowedCalls;

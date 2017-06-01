@@ -4,12 +4,13 @@ namespace App;
 defined('data') or die('Error : data not defined !');
 
 use Curl\CMCurl;
+use AI\AIFoundation;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
  */
 
-class GoogleTranslate
+class GoogleTranslate extends AIFoundation
 {
     public $list_lang;
     private $err;

@@ -20,4 +20,4 @@ var_dump($st->fetch_reply());
 $finish = microtime(true);
 var_dump(array(
 		"execution time" => ($finish - $start)
-	));
+	),($ai."lapar"));

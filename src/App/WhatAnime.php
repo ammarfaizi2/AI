@@ -1,15 +1,16 @@
 <?php
 namespace App;
 
-use Curl\CMCurl;
-
 defined('data') or die("data not defined !");
+
+use Curl\CMCurl;
+use AI\AIFoundation;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
  */
 
-class WhatAnime
+class WhatAnime extends AIFoundation
 {
     public function __construct($in)
     {

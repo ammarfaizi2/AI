@@ -4,12 +4,13 @@ namespace App;
 defined('data') or die('Error : data not defined !');
 
 use Curl\CMCurl;
+use AI\AIFoundation;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
  */
 
-class Brainly
+class Brainly extends AIFoundation
 {
     private $text;
     private $limit;

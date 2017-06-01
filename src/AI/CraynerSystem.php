@@ -21,7 +21,7 @@ abstract class CraynerSystem
     private function command()
     {
     }
-
+    
     private function root_command()
     {
     }
@@ -29,5 +29,5 @@ abstract class CraynerSystem
     abstract public function set_timezone(string $timezone);
     abstract public function prepare(string $text);
     abstract public function execute();
-    abstract public function fetch_reply();
+    abstract public function fetch_reply();    
 }

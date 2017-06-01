@@ -4,11 +4,13 @@ namespace App;
 defined('data') or die('Error : data not defined !');
 
 use Curl\CMCurl;
+use AI\AIFoundation;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
  */
-class ChitChat
+
+class ChitChat extends AIFoundation
 {
     private $ai_name;
     private $msg;

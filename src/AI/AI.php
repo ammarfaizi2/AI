@@ -20,20 +20,18 @@ use AI\Exceptions\AIException;
  * @author  Ammar Faizi <ammarfaizi2@gmail.com>
  */
 
-class AI extends CraynerSystem implements AIFace, AIProp
+class AI extends AIFoundation implements AIFace, AIProp
 {
     const DATA              = '/ai/';
     const VERSION           = "2.0";
     const ERROR_INFO        = 4;
     const ERROR_EXCEPTION   = 402;
     const DEFAULT_TIMEZONE  = "Asia/Jakarta";
-    const FETCH_BOTH        = 1;
     const FETCH_ASSOC       = 2;
     const FETCH_NUM         = 3;
     const FETCH_BOTH        = 4;
     const FETCH_BOUND       = 5;
     const USER_AGENT        = "Mozilla/5.0 (X11; Crayner; Linux i686; rv:46.0) Crayner System AI Firefox/51.0";
-
 
     /**
      * Message in lower case
@@ -749,8 +747,6 @@ class AI extends CraynerSystem implements AIFace, AIProp
      * Load Traits
      */
     use RootCommand, Command, Chat, Singleton;
-
-
 
     /**
      * Constructor
