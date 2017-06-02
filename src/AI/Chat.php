@@ -280,7 +280,7 @@ trait Chat
             "malem,malam"=>array(
             1,array(
                     "0-4"=>array(
-                        "Selamat pagi kang ^@."
+                        "Ini udah pagi kang ^@, selamat pagi, selamat beraktifitas."
                     ),
                     "5-10"=>array(
                         "Ini masih pagi kang ^@"
@@ -291,7 +291,7 @@ trait Chat
                     "15-18"=>array(
                         "Ini masih sore loh kang ^@"
                     ),
-                    "19-24"=>array(
+                    "19-23"=>array(
                         "Selamat malam kang ^@, selamat beristirahat."
                     )
                 ),
@@ -421,6 +421,12 @@ trait Chat
             false,10,75,null,true),
 
 
+            "bot,"=>array(
+            1,array(
+                    "Ya, ada apa kang ^@?",
+                ),
+            true,2,5,null,true),
+            ),
 
 
 
