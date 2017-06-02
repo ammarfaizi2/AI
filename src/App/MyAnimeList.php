@@ -109,6 +109,5 @@ class MyAnimeList extends AIFoundation
 
     public function execute()
     {
-        
     }
 }

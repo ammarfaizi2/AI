@@ -10,7 +10,6 @@ use App\JadwalSholat;
 use Teacrypt\Teacrypt;
 use App\GoogleTranslate;
 
-
 /**
  *   @author Ammar Faizi <ammarfaizi2@gmail.com>
  */
@@ -76,7 +75,7 @@ trait Command
                         case 'sholat': case 'solat': case 'shalat':
                                 $st = new JadwalSholat();
                                 $get_kota = ucfirst(strtolower(trim($msg[1])));
-                                if($jadwal = $st->get_jadwal($get_kota)){
+                                if ($jadwal = $st->get_jadwal($get_kota)) {
                                     $ret = "Jadwal Sholat untuk daerah {$get_kota} dan sekitarnya\nTanggal ".(date("d F Y"))."\n\n";
                                     $jadwal = array_merge(array('imsyak'=>(date("h:i", strtotime($jadwal['subuh'])-300))), $jadwal);
                                     foreach ($jadwal as $key => $jam) {
@@ -89,7 +88,7 @@ trait Command
                             break;
                         
                         default:
-                                $this->reply = null;                                    
+                                $this->reply = null;
                             break;
                     }
                     break;
@@ -162,7 +161,7 @@ trait Command
                         } else {
                             $this->reply = Teacrypt::encrypt($msg[2], $msg[3]);
                         }
-                    } else if(strtolower($msg[1]) == "dec"){
+                    } elseif (strtolower($msg[1]) == "dec") {
                         if (!isset($msg[3]) or empty($msg[3])) {
                             $this->reply = "Key harus diisi !";
                         } else {

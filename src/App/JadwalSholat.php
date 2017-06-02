@@ -58,7 +58,7 @@ class JadwalSholat extends AIFoundation
     {
         $ch = new CMCurl('https://www.jadwalsholat.pkpu.or.id/monthly.php?id='.$this->list_kota[$kota]);
         $ch->set_useragent();
-        if($source = $ch->execute()){
+        if ($source = $ch->execute()) {
             $a = explode('<tr class="table_header" align="center">', $source, 2);
             $a = explode('<tr class="table_block_title">', $a[1], 2);
             $a = explode("\n", $a[0]);
@@ -88,7 +88,6 @@ class JadwalSholat extends AIFoundation
 
     public function execute()
     {
-        
     }
 
     private $list_kota = array(

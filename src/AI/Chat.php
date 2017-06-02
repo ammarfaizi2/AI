@@ -459,7 +459,7 @@ trait Chat
                     }
                 }
                 $act = explode(" ", $this->actor);
-                $this->reply = $this->fdate(str_replace("@", $this->actor, str_replace("^@", $act[0], $val[1][rand(0, count($val[1])-1)])));     
+                $this->reply = $this->fdate(str_replace("@", $this->actor, str_replace("^@", $act[0], $val[1][rand(0, count($val[1])-1)])));
                 return true;
             }
         }
