@@ -7,5 +7,5 @@ use AI\Hub\Singleton;
 abstract class AIFoundation
 {
 	use Singleton;
-	public $dataaa;
+	abstract public function execute();
 }

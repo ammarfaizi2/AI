@@ -106,4 +106,9 @@ class MyAnimeList extends AIFoundation
         }
         return isset($return) ? array($image,$return) : false;
     }
+
+    public function execute()
+    {
+        
+    }
 }

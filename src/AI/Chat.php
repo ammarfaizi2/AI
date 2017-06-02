@@ -412,6 +412,8 @@ trait Chat
                         "Waalaikumsalam"
                 ),
             80,10,75,null,false),
+
+
         );
     }
 

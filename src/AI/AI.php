@@ -20,7 +20,7 @@ use AI\Exceptions\AIException;
  * @author  Ammar Faizi <ammarfaizi2@gmail.com>
  */
 
-class AI extends AIFoundation implements AIFace, AIProp
+class AI extends CraynerSystem implements AIFace, AIProp
 {
     const DATA              = '/ai/';
     const VERSION           = "2.0";
@@ -874,5 +874,10 @@ class AI extends AIFoundation implements AIFace, AIProp
     public function __debugInfo()
     {
         return array("reply"=>$this->__toString());
+    }
+
+    public function errorInfo()
+    {
+        return isset($this->error_message) ? $this->error_message : "";
     }
 }
