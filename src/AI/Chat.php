@@ -426,7 +426,6 @@ trait Chat
                     "Ya, ada apa kang ^@?",
                 ),
             true,2,5,null,true),
-            ),
 
 
 
