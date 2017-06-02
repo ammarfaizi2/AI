@@ -880,4 +880,5 @@ class AI extends CraynerSystem implements AIFace, AIProp
     {
         return isset($this->error_message) ? $this->error_message : "";
     }
+    
 }
