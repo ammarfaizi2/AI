@@ -12,7 +12,7 @@ use AI\AI;
 $start = microtime(true);
 $ai = new AI();
 $actor = "Ammar Faizi";
-$msg   = "tanggal brp kemarin?";
+$msg   = "ctranslate id en apa kabar ?";
 $st = $ai->prepare($msg, $actor);
 $st->set_timezone("Asia/Jakarta");
 $ai->execute();
