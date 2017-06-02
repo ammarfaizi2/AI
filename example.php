@@ -12,7 +12,7 @@ use AI\AI;
 $start = microtime(true);
 $ai = new AI();
 $actor = "Ammar Faizi";
-$msg   = "jadwal sholat sragen";
+$msg   = "jadwal sholat surakarta";
 $st = $ai->prepare($msg, $actor);
 $st->set_timezone("Asia/Jakarta");
 $ai->execute();

@@ -89,7 +89,7 @@ trait Command
                             break;
                         
                         default:
-                            
+                                $this->reply = null;                                    
                             break;
                     }
                     break;
