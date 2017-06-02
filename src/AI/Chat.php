@@ -490,9 +490,6 @@ trait Chat
      */
     private function check1(string $key, bool $wordcheck=false, int $maxwords=null, int $maxlength=null, array $wordexception=null, bool $time=false)
     {
-        /**
-         *  Cek kelayakan :v
-         */
         if (($maxlength!==null and ($this->mslg) > $maxlength) or ($maxwords!==null and ($this->cword) > $maxwords)) {
             return false;
         }
@@ -561,9 +558,6 @@ trait Chat
      */
     private function check2(string $key, int $minimal=null, int $maxwords=null, int $maxlength=null, array $wordexception=null, bool $time=false)
     {
-        /**
-         *  Cek kelayakan :v
-         */
         if (($maxlength!==null and ($this->mslg) > $maxlength) or ($maxwords!==null and ($this->cword) > $maxwords)) {
             return false;
         }
