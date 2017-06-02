@@ -179,7 +179,7 @@ class GoogleTranslate extends AIFoundation
             return false;
         }
         $a = explode('<', $a[1], 2);
-        $this->result = html_entity_decode($a[0], ENT_QUOTES, 'UTF-8');
+        $this->result = html_entity_decode($a[0], ENT_QUOTES | ENT_IGNORE, 'UTF-8');
         return true;
     }
 

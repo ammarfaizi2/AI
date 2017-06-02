@@ -101,7 +101,7 @@ class MyAnimeList extends AIFoundation
             $image = $val['image'];
             unset($val['image']);
             foreach ($val as $key => $value) {
-                $return .= ucwords(str_replace("_", " ", $key))." : ".str_replace("<br />", "\n", html_entity_decode($value, ENT_QUOTES, 'UTF-8'))."\n";
+                $return .= ucwords(str_replace("_", " ", $key))." : ".str_replace("<br />", "\n", html_entity_decode($value, ENT_QUOTES | ENT_IGNORE, 'UTF-8'))."\n";
             }
         }
         return isset($return) ? array($image,$return) : false;

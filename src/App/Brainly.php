@@ -52,7 +52,7 @@ class Brainly extends AIFoundation
         }
         if (isset($a['data']['tasks']['items'])) {
             foreach ($a['data']['tasks']['items'] as $key => $val) {
-                $que = trim(strip_tags(html_entity_decode($val['task']['content'], ENT_QUOTES, 'UTF-8')));
+                $que = trim(strip_tags(html_entity_decode($val['task']['content'], ENT_QUOTES | ENT_IGNORE, 'UTF-8')));
                 similar_text($que, $this->text, $percent);
                 $sim[$key] = $percent;
             }
@@ -74,7 +74,7 @@ class Brainly extends AIFoundation
             $return = true;
         }
         if ($return) {
-            $this->result = array(trim(strip_tags(html_entity_decode($result['task']['content'], ENT_QUOTES, 'UTF-8'))),trim(strip_tags(html_entity_decode($ans))));
+            $this->result = array(trim(strip_tags(html_entity_decode($result['task']['content'], ENT_QUOTES | ENT_IGNORE, 'UTF-8'))),trim(strip_tags(html_entity_decode($ans))));
         }
         file_put_contents(data.'/brainly/data.txt', json_encode($this->data, 128));
         unset($this->data);
