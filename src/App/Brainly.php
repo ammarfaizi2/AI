@@ -28,7 +28,7 @@ class Brainly extends AIFoundation
     {
         $this->text = $text;
         $this->limit = (int) $limit;
-        $this->data = file_exists(data.'/brainly/data.txt') ? json_decode(data.'/brainly/data.txt') : array();
+        $this->data = file_exists(data.'/brainly/data.txt') ? json_decode(file_get_contents(data.'/brainly/data.txt')) : array();
         $this->data = $this->data===null ? array() : $this->data;
         $this->hash = md5($text);
         $this->file = data.'/brainly/query/'.($this->hash).'.txt';
