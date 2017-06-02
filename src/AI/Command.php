@@ -156,7 +156,6 @@ trait Command
                  */
                 case 'teacrypt':
                     $msg = explode(" ", $this->absmsg);
-                    var_dump($msg[3]);
                     if (strtolower($msg[1]) == "enc") {
                         if (!isset($msg[3]) or empty($msg[3])) {
                             $this->reply = "Key harus diisi !";
