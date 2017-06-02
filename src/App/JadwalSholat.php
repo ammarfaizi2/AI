@@ -37,11 +37,11 @@ class JadwalSholat extends AIFoundation
             $this->file = data.'/jadwal_sholat/'.$kota.'/'.$kota.'_'.$this->bulan.'.txt';
             if (file_exists($this->file)) {
                 $jadwal = json_decode(file_get_contents($this->file), 1);
-                if (!isset($jadwal[date("d")])) {
+                if (!isset($jadwal[(int)date("d")])) {
                     unlink($this->file);
                     return false;
                 } else {
-                    $jadwal = $jadwal[date("d")];
+                    $jadwal = $jadwal[(int)date("d")];
                 }
             } else {
                 $jadwal = $this->simpan_local($kota, date("d"));
