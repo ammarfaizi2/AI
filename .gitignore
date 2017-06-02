@@ -3,3 +3,4 @@
 /phpinfo.php
 *.tmp
 *.lock
+/test.py
