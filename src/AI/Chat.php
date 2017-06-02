@@ -654,7 +654,7 @@ trait Chat
              *  Untuk tanggal.
              */
             case 'date_c':
-                $c = $this->hari[date("w", $c)].", ".date("d", $c)." ".($this->bulan[date("m", $c)])." ".date("Y", $c);
+                $c = date("d", $c)." ".($this->bulan[(int)date("m", $c)])." ".date("Y", $c);
                 break;
 
             /**
