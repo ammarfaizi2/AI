@@ -176,15 +176,37 @@ trait Chat
 
             /**
              *
+             *  Menanyakan tanggal kemarin.
+             */
+            "kemarin+tanggal+brp,kemarin+tanggal+berapa,kemarin+tgl+brp,kemarin+tgl+berapa"=>array(
+            1,array(
+                    "Kemarin tanggal #d(date_c-1day)"
+                ),
+            false,10,50,null,false
+            ),
+
+            /**
+             *
+             *  Menanyakan tanggal besok.
+             */
+            "besok+tanggal+brp,besok+tanggal+berapa,besok+tgl+brp,besok+tgl+berapa"=>array(
+            1,array(
+                    "Besok tanggal #d(date_c+1day)"
+                ),
+            false,10,50,null,false
+            ),
+
+
+            /**
+             *
              *  Menanyakan tanggal sekarang.
              */
             "tanggal+brp,tanggal+berapa,tgl+brp,tgl+berapa"=>array(
             1,array(
-                    "sekarang tanggal #d(date_c)"
+                    "Sekarang tanggal #d(date_c)"
                 ),
             false,10,50,null,false
             ),
-            
 
 
             /**
