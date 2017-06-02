@@ -84,7 +84,7 @@ trait Command
                                     }
                                     $this->reply = $ret;
                                 } else {
-                                    $this->reply = "Mohon maaf, jadwal sholat {$get_kota} tidak ditemukan.";
+                                    $this->reply = "Mohon maaf, jadwal sholat kota \"{$get_kota}\" tidak ditemukan.";
                                 }
                             break;
                         

@@ -32,7 +32,7 @@ class JadwalSholat extends AIFoundation
     public function get_jadwal($kota)
     {
         if (!isset($this->list_kota[$kota])) {
-            return "Mohon maaf, jadwal untuk kota {$kota} tidak ditemukan !";
+            return false;
         } else {
             $this->file = data.'/jadwal_sholat/'.$kota.'/'.$kota.'_'.$this->bulan.'.txt';
             if (file_exists($this->file)) {
