@@ -28,6 +28,10 @@ abstract class CraynerSystem
     abstract public function prepare(string $text);
     abstract public function execute();
     abstract public function fetch_reply();
-
     abstract public function errorInfo();
+    
+    abstract public function __debugInfo();
+    
+    abstract public function __toString();
+    
 }

@@ -79,7 +79,7 @@ class AI extends CraynerSystem implements AIFace, AIProp
     /**
      *  Allowed Timezones
      *
-     * @var string
+     * @var array
      */
     public $allowed_timezones = array(
 
