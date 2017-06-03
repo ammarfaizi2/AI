@@ -770,7 +770,7 @@ class AI extends CraynerSystem implements AIFace, AIProp
 
         /**
          * ChitChat directory
-         * @deprecated
+         * @deprecated 
          */
         $this->chitchat = file_exists(data.self::DATA.'/status/chit_chat_on');
     }
@@ -824,7 +824,8 @@ class AI extends CraynerSystem implements AIFace, AIProp
     }
 
     /**
-     *   @return bool
+     * @throws AI\Exceptions\AIException
+     * @return bool
      */
     public function execute()
     {
@@ -859,7 +860,7 @@ class AI extends CraynerSystem implements AIFace, AIProp
     }
 
     /**
-     *   @return mixed
+     * @return mixed
      */
     public function fetch_reply()
     {
