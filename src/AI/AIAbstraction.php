@@ -8,7 +8,7 @@ use AI\Core\CraynerCore;
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
  */
 
-abstract class AIAbstraction extends CraynerCore
+abstract class AIAbstraction
 {
     abstract public function __construct();
     abstract public function set_timezone(string $timezone);
