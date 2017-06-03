@@ -17,9 +17,9 @@ use App\GoogleTranslate;
 trait Command
 {
     /**
-    *   @param string
-    *   @return boolean
-    */
+     *   @param string
+     *   @return boolean
+     */
     private function command($cmd)
     {
         $command_list = array(
@@ -60,15 +60,15 @@ trait Command
                     break;
                 
                 /**
-                *   Show menu
-                */
+                 *   Show menu
+                 */
                 case 'menu':
                         $this->reply = "Menu : \n1. ask [spasi] pertanyaan : Untuk bertanya\n2. menu : Untuk menampilkan menu ini\n3. ctranslate [spasi] from [spasi] to [spasi] kalimat : Untuk translate dari berbagai bahasa\n4. translate [spasi] kalimat : Untuk translate dari bahasa apapun ke bahasa Indonesia\n5. whatanime [spasi] url_gambar : Untuk mencari judul anime berdasarkan gambar";
                     break;
 
                 /**
-                *   Jadwal
-                */
+                 *   Jadwal
+                 */
                 case 'jadwal':
                     $msg = explode(" ", strtolower($msg[1]));
                     switch ($msg[0]) {
@@ -95,8 +95,8 @@ trait Command
 
 
                 /**
-                *   Hitung
-                */
+                 *   Hitung
+                 */
                 case 'hitung':
                         if (!isset($msg[1])) {
                             $this->reply = "Untuk menghitung, ketik 'hitung [spasi] perhitungan'\n\nContoh :\nhitung 100+100";
@@ -114,16 +114,16 @@ trait Command
                     break;
 
                 /**
-                *   Mencari ID Anime
-                */
+                 *   Mencari ID Anime
+                 */
                 case 'q_anime': case 'q_manga':
                         $search = (new MyAnimeList('ammarfaizi2', 'triosemut123'))->search($msg[1], $cmd);
                         $this->reply = $search ? ($search)."\n\nUntuk mencari info anime ketik \"i_anime [spasi] id_anime\"\nContoh :\ni_anime 100" : "Mohon maaf anime \"".$msg[1]."\" tidak ditemukan !";
                     break;
 
                 /**
-                *   Untuk mencari info anime
-                */
+                 *   Untuk mencari info anime
+                 */
                 case 'i_anime': case 'i_manga':
                         $msg[1] = trim($msg[1]);
                         if (is_numeric($msg[1])) {
@@ -135,8 +135,8 @@ trait Command
                     break;
 
                 /**
-                *   Untuk translate berbagai bahasa
-                */
+                 *   Untuk translate berbagai bahasa
+                 */
                 case 'ctranslate':
                         $t = explode(' ', $this->absmsg, 4);
                         $n = new GoogleTranslate();
@@ -173,8 +173,8 @@ trait Command
                     break;
 
                 /**
-                *   Untuk translate bahasa asing ke indonesia
-                */
+                 *   Untuk translate bahasa asing ke indonesia
+                 */
                 case 'translate':
                         $t = explode(' ', $this->absmsg, 2);
                         $n = new GoogleTranslate();
@@ -188,8 +188,8 @@ trait Command
                     break;
 
                 /**
-                *   Mencari judul anime dengan URL gambar
-                */
+                 *   Mencari judul anime dengan URL gambar
+                 */
                 case 'whatanime':
                         $t = new WhatAnime(trim($msg[1]));
                         $t->execute();
@@ -201,8 +201,8 @@ trait Command
                         $this->reply = $reply;
                     break;
                 /**
-                *   Command not found !
-                */
+                 *   Command not found !
+                 */
                 default:
                         $this->reply = "Error System !";
                     break;
