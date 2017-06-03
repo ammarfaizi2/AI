@@ -11,7 +11,7 @@ use AI\Hub\AIFace;
 use AI\RootCommand;
 use AI\Hub\ChatFace;
 use AI\Hub\Singleton;
-use AI\CraynerSystem;
+use AI\AIAbstraction;
 use AI\Exceptions\AIException;
 
 /**
@@ -20,7 +20,7 @@ use AI\Exceptions\AIException;
  * @author  Ammar Faizi <ammarfaizi2@gmail.com>
  */
 
-class AI extends CraynerSystem implements AIFace, AIProp
+class AI extends AIAbstraction implements AIFace, AIProp
 {
     const DATA              = '/ai/';
     const VERSION           = "2.0";
@@ -75,6 +75,13 @@ class AI extends CraynerSystem implements AIFace, AIProp
      * @var string
      */
     private $timezone;
+
+    /**
+     * Error Message
+     *
+     * @var string
+     */
+    private $error_message;    
 
     /**
      *  Allowed Timezones
@@ -880,5 +887,9 @@ class AI extends CraynerSystem implements AIFace, AIProp
     public function errorInfo()
     {
         return isset($this->error_message) ? $this->error_message : "";
+    }
+
+    public function __destruct()
+    {
     }
 }
