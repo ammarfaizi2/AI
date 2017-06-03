@@ -23,8 +23,4 @@ class AIException extends Exception
         file_put_contents($this->error_log, "\n[".date("Y m d h:i:s A")."]\t{$msg} in {$this->file} on line {$this->line}\n", FILE_APPEND | LOCK_EX);
         return $msg;
     }
-
-    private function log()
-    {
-    }
 }
