@@ -18,5 +18,5 @@ abstract class AIAbstraction
     abstract public function __debugInfo();
     abstract public function __toString();
     abstract public function errorInfo();
-    abstract public function __destruct();   
+    abstract public function __destruct();
 }

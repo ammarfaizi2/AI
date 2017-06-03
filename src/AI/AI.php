@@ -81,7 +81,7 @@ class AI extends AIAbstraction implements AIFace, AIProp
      *
      * @var string
      */
-    private $error_message;    
+    private $error_message;
 
     /**
      *  Allowed Timezones
@@ -777,7 +777,7 @@ class AI extends AIAbstraction implements AIFace, AIProp
 
         /**
          * ChitChat directory
-         * @deprecated 
+         * @deprecated
          */
         $this->chitchat = file_exists(data.self::DATA.'/status/chit_chat_on');
     }

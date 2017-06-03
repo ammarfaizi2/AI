@@ -49,16 +49,17 @@
         "\/act.php": 481582175,
         "\/src\/AI\/CraynerMachine.php": 1389943610,
         "\/src\/AI\/Chat.php": -1785649526,
-        "\/src\/AI\/Command.php": 292676148,
+        "\/src\/AI\/Command.php": -1826914445,
         "\/src\/AI\/CraynerSystem.php": -678581550,
         "\/src\/AI\/RootCommand.php": 1970848245,
-        "\/src\/AI\/AI.php": -1183477821,
+        "\/src\/AI\/AI.php": 584189312,
         "\/src\/AI\/Hub\/Singleton.php": -174557164,
         "\/src\/AI\/Hub\/AIFace.php": 1919265653,
         "\/src\/AI\/Hub\/AIProp.php": 116091141,
-        "\/example.php": 758248216,
+        "\/example.php": 1476918416,
         "\/phpinfo.php": 1594103484,
         "\/src\/AI\/Exceptions\/AIException.php": -654498442,
-        "\/src\/AI\/AIFoundation.php": -251810500
+        "\/src\/AI\/AIFoundation.php": -251810500,
+        "\/src\/AI\/AIAbstraction.php": 1741411313
     }
 }
