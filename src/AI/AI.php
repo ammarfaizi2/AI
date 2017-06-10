@@ -881,7 +881,7 @@ class AI extends AIAbstraction implements AIFace, AIProp
         foreach ($this->command_list as $key => $value) {
             $count_diff = levenshtein($this->cmd_e, $key);
             $lv[$key] = $count_diff;
-            if ($lv[$key] < 4 && !isset($pick_suggest)) {
+            if ($lv[$key] < 3 && !isset($pick_suggest)) {
                 $pick_suggest = true;
             }
         }
