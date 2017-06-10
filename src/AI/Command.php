@@ -86,7 +86,7 @@ trait Command
                                 if ($suggest_kota = self::jadwal_sholat_suggest($st->get_list_kota(), $get_kota)) {
                                     if (is_array($suggest_kota)) {
                                         if ($jadwal = $st->get_jadwal($suggest_kota[0])){
-                                            $ret = "Jadwal Sholat untuk daerah {$get_kota} dan sekitarnya\nTanggal ".(date("d F Y"))."\n\n";
+                                            $ret = "Jadwal Sholat untuk daerah {$suggest_kota[0]} dan sekitarnya\nTanggal ".(date("d F Y"))."\n\n";
                                             $jadwal = array_merge(array('imsyak'=>(date("h:i", strtotime($jadwal['subuh'])-300))), $jadwal);
                                             foreach ($jadwal as $key => $jam) {
                                                 $ret .= ucfirst($key) . " : " . $jam . "\n";
