@@ -878,10 +878,11 @@ class AI extends AIAbstraction implements AIFace, AIProp
     private function suggest()
     {
         $return = false;
+        $suggets_diff = 3;
         foreach ($this->command_list as $key => $value) {
             $count_diff = levenshtein($this->cmd_e, $key);
             $lv[$key] = $count_diff;
-            if ($count_diff < 3 && !isset($pick_suggest)) {
+            if ($count_diff < $suggets_diff && !isset($pick_suggest)) {
                 $pick_suggest = true;
             }
         }
@@ -893,7 +894,7 @@ class AI extends AIAbstraction implements AIFace, AIProp
                 foreach ($this->rootcommand_list as $key => $value) {
                     $count_diff = levenshtein($this->cmd_e, $key);
                     $lv[$key] = $count_diff;
-                    if ($count_diff < 3 && !isset($pick_suggest)) {
+                    if ($count_diff < $suggets_diff && !isset($pick_suggest)) {
                         $pick_suggest = true;
                     }
                 }
