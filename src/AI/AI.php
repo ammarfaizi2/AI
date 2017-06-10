@@ -15,7 +15,7 @@ use AI\AIAbstraction;
 use AI\Exceptions\AIException;
 
 /**
- * @version 2.0
+ * @version 2.2
  * @package AI
  * @author  Ammar Faizi <ammarfaizi2@gmail.com>
  */
