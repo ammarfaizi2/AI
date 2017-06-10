@@ -409,8 +409,8 @@ trait Chat
 
 
                 /**
-             * Check 2
-             */
+                 * Check 2
+                 */
                 "assalamualaikum"=>array(
                 2,array(
                         "Waalaikumsalam"
