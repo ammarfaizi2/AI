@@ -83,7 +83,11 @@ trait Command
                                 }
                                 $this->reply = $ret;
                             } else {
-                                $this->reply = "Mohon maaf, jadwal sholat kota \"{$get_kota}\" tidak ditemukan.";
+                                if ($suggest_kota = $this->jadwal_sholat_suggest($st->get_list_kota(), $get_kota)) {
+                                    $this->reply = "Mohon maaf, jadwal sholat kota \"{$get_kota}\" tidak ditemukan. Mungkin yang anda maksud adalah {$suggest_kota}";
+                                } else {
+                                    $this->reply = "Mohon maaf, jadwal sholat kota \"{$get_kota}\" tidak ditemukan.";
+                                }
                             }
                     break;
                         
@@ -208,5 +212,28 @@ trait Command
             }
             return isset($this->reply) ? true : false;
         }
+    }
+
+
+
+
+
+
+    /**
+     * Extend method
+     */
+    private function jadwal_sholat_suggest($list_jadwal, $kota_request)
+    {
+        foreach ($list_jadwal as $key => $value) {
+            $count_diff = levenshtein($key, $kota_request);
+            $list[$key] = $count_diff;
+            if ($count_diff < 4 && !isset($pick_suggest)) {
+                $pick_suggest = true;
+            }
+        }
+        if (isset($pick_suggest) && $pick_suggest) {
+            $get_kota_mirip = array_search(min($list), $list);
+        }
+        return isset($get_kota_mirip) ? $get_kota_mirip : false;
     }
 }

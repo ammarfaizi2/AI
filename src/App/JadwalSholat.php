@@ -90,6 +90,11 @@ class JadwalSholat extends AIFoundation
     {
     }
 
+    public function get_list_kota()
+    {
+        return $this->list_kota;
+    }
+
     private $list_kota = array(
         "Ambarawa" => 1,
         "Ambon" => 2,
