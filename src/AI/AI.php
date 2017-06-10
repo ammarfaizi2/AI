@@ -23,7 +23,7 @@ use AI\Exceptions\AIException;
 class AI extends AIAbstraction implements AIFace, AIProp
 {
     const DATA              = '/ai/';
-    const VERSION           = "2.0";
+    const VERSION           = "2.1";
     const ERROR_INFO        = 4;
     const ERROR_EXCEPTION   = 402;
     const DEFAULT_TIMEZONE  = "Asia/Jakarta";
