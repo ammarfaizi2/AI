@@ -15,7 +15,7 @@ class JadwalSholat extends AIFoundation
     /**
      * Bulan sekarang.
      *
-     * @var	string
+     * @var string
      */
     private $bulan;
 
@@ -26,8 +26,8 @@ class JadwalSholat extends AIFoundation
     }
 
     /**
-     * @param	string		$kota	Pilih kota
-     * @return	array|bool
+     * @param    string $kota Pilih kota
+     * @return    array|bool
      */
     public function get_jadwal($kota)
     {
@@ -51,7 +51,7 @@ class JadwalSholat extends AIFoundation
     }
 
     /**
-     * @param    string  $kota   Nama kota
+     * @param    string $kota Nama kota
      * @return   array
      */
     private function simpan_local($kota, $get=null)

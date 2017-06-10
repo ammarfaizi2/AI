@@ -39,36 +39,36 @@ trait RootCommand
                 /**
                  *   Shell Exec
                  */
-                case 'shexec': case 'shell_exec':
-                        $sh = shell_exec($msg[1]);
-                        $this->reply = empty($sh) ? "~" : $sh;
-                    break;
+            case 'shexec': case 'shell_exec':
+                    $sh = shell_exec($msg[1]);
+                    $this->reply = empty($sh) ? "~" : $sh;
+                break;
 
                 /**
                  *   ps
                  */
-                case 'ps':
-                        $sh = shell_exec('ps '.$msg[1]);
-                        $this->reply = empty($sh) ? "~" : $sh;
-                    break;
+            case 'ps':
+                    $sh = shell_exec('ps '.$msg[1]);
+                    $this->reply = empty($sh) ? "~" : $sh;
+                break;
 
                 /**
                  * Eval
                  */
-                case 'eval':
-                        $sh = new SaferScript($msg[1]);
-                        $sh->allowHarmlessCalls();
-                        $sh->parse();
-                        $ex = $sh->execute();
-                        $this->reply = (empty($ex)) ? '~' : $ex;
-                    break;
+            case 'eval':
+                    $sh = new SaferScript($msg[1]);
+                    $sh->allowHarmlessCalls();
+                    $sh->parse();
+                    $ex = $sh->execute();
+                    $this->reply = (empty($ex)) ? '~' : $ex;
+                break;
 
                 /**
                  *   Command not found !
                  */
-                default:
-                        $this->reply = "Error System !";
-                    break;
+            default:
+                    $this->reply = "Error System !";
+                break;
             }
             return isset($this->reply) ? true : false;
         }
@@ -77,7 +77,7 @@ trait RootCommand
     /**
      * Set super user
      *
-     * @param   string|array    $superuser
+     * @param string|array $superuser
      */
     public function set_superuser($superuser)
     {

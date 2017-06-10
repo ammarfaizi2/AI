@@ -31,9 +31,11 @@ class ChitChat extends AIFoundation
     public function execute()
     {
         $ch = new CMCurl("http://www.simsimi.com/getRealtimeReq?uuid=j5AgOtBpNvzg8B5pRWYPnQhl2qktGLYbTC9LxXNCDyj&lc=en&ft=1&reqText=".($this->msg)."&status=W");
-        $ch->set_header(array(
+        $ch->set_header(
+            array(
                 'Cookie: _ga=GA1.2.1766465947.1489671555; uuid=j5AgOtBpNvzg8B5pRWYPnQhl2qktGLYbTC9LxXNCDyj; currentChatCnt='.(++$this->cur).'; _gid=GA1.2.1282686541.1493896281; _gat=1'
-            ));
+            )
+        );
         file_put_contents($this->cur_file, $this->cur);
         $rt = json_decode($ch->execute(), true);
         if (is_array($rt)) {

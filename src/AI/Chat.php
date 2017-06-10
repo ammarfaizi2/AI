@@ -10,7 +10,7 @@ trait Chat
     /**
      * Nama hari dalam bahasa indonesia
      *
-     * @var  array
+     * @var array
      */
     private $hari = array(
             "Minggu",
@@ -25,7 +25,7 @@ trait Chat
     /**
      * Nama bulan dalam bahasa indonesia
      *
-     * @var  array
+     * @var array
      */
     private $bulan = array(
             "Januari",
@@ -72,8 +72,6 @@ trait Chat
 
     /**
     *   Wordlist loader
-    *
-    *
     */
     private function load_wordlist()
     {
@@ -88,7 +86,6 @@ trait Chat
             ),
 
             /**
-             *
              *  Say hello.
              */
             "halo,hallo,allo,helo,hola,alo,ello"=>array(
@@ -100,7 +97,6 @@ trait Chat
             false,10,50,null,false),
 
             /**
-             *
              *  Tanya kabar.
              */
             "pa+kabar,pa+kbr,pa+kbar"=>array(
@@ -112,7 +108,6 @@ trait Chat
 
 
             /**
-             *
              *  Menanyakan jam (Bahasa Inggris)
              */
             "what+time"=>array(
@@ -122,7 +117,6 @@ trait Chat
             false,10,50,null,false),
 
             /**
-             *
              *  Menanyakan jam (Bahasa Indonesia)
              */
             "jam+ber,jam+brp,jam+pro,jam+piro"=>array(
@@ -135,7 +129,6 @@ trait Chat
             false,10,50,null,true),
 
             /**
-             *
              *  Menanyakan hari besok.
              */
             "besok+hari+apa"=>array(
@@ -145,7 +138,6 @@ trait Chat
             false,10,50,null,false),
 
             /**
-             *
              *  Menanyakan hari kemarin.
              */
             "kemarin+hari+apa"=>array(
@@ -155,7 +147,6 @@ trait Chat
             false,10,50,null,false),
 
             /**
-             *
              *  Menanyakan hari sekarang.
              */
             "hari+apa"=>array(
@@ -165,7 +156,6 @@ trait Chat
             false,10,50,null,false),
 
             /**
-             *
              *  Menanyakan bulan sekarang.
              */
             "bulan+apa"=>array(
@@ -175,7 +165,6 @@ trait Chat
             false,10,50,null,false),
 
             /**
-             *
              *  Menanyakan tanggal kemarin.
              */
             "kemarin+tanggal+brp,kemarin+tanggal+berapa,kemarin+tgl+brp,kemarin+tgl+berapa"=>array(
@@ -186,7 +175,6 @@ trait Chat
             ),
 
             /**
-             *
              *  Menanyakan tanggal besok.
              */
             "besok+tanggal+brp,besok+tanggal+berapa,besok+tgl+brp,besok+tgl+berapa"=>array(
@@ -198,7 +186,6 @@ trait Chat
 
 
             /**
-             *
              *  Menanyakan tanggal sekarang.
              */
             "tanggal+brp,tanggal+berapa,tgl+brp,tgl+berapa"=>array(
@@ -210,7 +197,6 @@ trait Chat
 
 
             /**
-             *
              *  Sapaan di pagi hari.
              */
             "pagi"=>array(
@@ -231,7 +217,6 @@ trait Chat
             false,8,35,null,true),
 
             /**
-             *
              *  Sapaan di siang hari.
              */
             "siang,ciang,siank"=>array(
@@ -252,7 +237,6 @@ trait Chat
             false,8,35,null,true),
 
             /**
-             *
              *  Sapaan di sore hari.
              */
             "sore"=>array(
@@ -274,7 +258,6 @@ trait Chat
 
 
             /**
-             *
              *  Sapaan di malam hari.
              */
             "malem,malam"=>array(
@@ -299,7 +282,6 @@ trait Chat
 
 
             /**
-             *
              *  Sapaan di pagi hari.
              */
             "ohayo"=>array(
@@ -323,7 +305,6 @@ trait Chat
             false,9,65,null,true),
 
             /**
-             *
              *  Sapaan di siang hari.
              */
             "koniciwa,konnichiwa,konichiwa,konniciwa"=>array(
@@ -342,7 +323,6 @@ trait Chat
 
 
             /**
-             *
              *  Sapaan di sore hari.
              */
             "konbawa,konbanwa"=>array(
@@ -357,7 +337,6 @@ trait Chat
             true,8,65,null,true),
 
             /**
-             *
              *  Tertawa.
              */
             "haha,hihi,wkwk,wkeke,hhh"=>array(
@@ -369,7 +348,6 @@ trait Chat
             false,10,75,null,false),
 
             /**
-             *
              *  Move on.
              */
             "move+on"=>array(
@@ -394,11 +372,11 @@ trait Chat
                     "Wah ngelarang larang nih kang ^@ 😏",
                     "Kang ^@, mau dilarang?"
                 ),
-            false,7,45,null,false),
+                false,7,45,null,false),
 
 
-            "laper,lapar,lavar"=>array(
-            1,array(
+                "laper,lapar,lavar"=>array(
+                1,array(
                     "0-3"=>array(
                         "Segera sahur kang ^@",
                         "Sahur dulu kang ^@ 😊"
@@ -418,27 +396,26 @@ trait Chat
                         "Makan aeeh :v"
                     )
                 ),
-            false,10,75,null,true),
+                false,10,75,null,true),
 
 
-            "bot,"=>array(
-            1,array(
+                "bot,"=>array(
+                1,array(
                     "Ya, ada apa kang ^@?",
                 ),
-            true,2,5,null,true),
+                true,2,5,null,true),
 
 
 
 
-            /**
-             *
+                /**
              * Check 2
              */
-            "assalamualaikum"=>array(
-            2,array(
+                "assalamualaikum"=>array(
+                2,array(
                         "Waalaikumsalam"
                 ),
-            80,10,75,null,false),
+                80,10,75,null,false),
 
 
         );
@@ -446,7 +423,6 @@ trait Chat
 
     /**
      *  Chat action
-     *
      */
     private function chat()
     {
@@ -476,16 +452,15 @@ trait Chat
     }
         
     /**
-     *
      * Check chat
      *
-     * @param    string  $key
-     * @param    bool    $wordcheck
-     * @param    int     $maxwords
-     * @param    int     $maxlength
-     * @param    array   $wordexception
-     * @param    bool    $time
-     * @return   bool
+     * @param  string $key
+     * @param  bool   $wordcheck
+     * @param  int    $maxwords
+     * @param  int    $maxlength
+     * @param  array  $wordexception
+     * @param  bool   $time
+     * @return bool
      */
     private function check1(string $key, bool $wordcheck=false, int $maxwords=null, int $maxlength=null, array $wordexception=null, bool $time=false)
     {
@@ -544,16 +519,15 @@ trait Chat
     }
 
     /**
-     *
      * Check chat 2
      *
-     * @param    string $key
-     * @param    int    $minimal
-     * @param    int    $maxwords
-     * @param    int    $maxlength
-     * @param    array  $wordexception
-     * @param    bool   $time
-     * @return   bool
+     * @param  string $key
+     * @param  int    $minimal
+     * @param  int    $maxwords
+     * @param  int    $maxlength
+     * @param  array  $wordexception
+     * @param  bool   $time
+     * @return bool
      */
     private function check2(string $key, int $minimal=null, int $maxwords=null, int $maxlength=null, array $wordexception=null, bool $time=false)
     {
@@ -594,8 +568,8 @@ trait Chat
     /**
      * Get time reply
      *
-     * @param   array   $replylist
-     * @return  bool
+     * @param  array $replylist
+     * @return bool
      */
     private function gettimereply(array $replylist)
     {
@@ -621,8 +595,8 @@ trait Chat
     /**
      * Convert time character to absolute time
      *
-     * @param   string  $string
-     * @return  string  $string
+     * @param  string $string
+     * @return string  $string
      */
     private function fdate(string $string)
     {
@@ -653,37 +627,37 @@ trait Chat
             /**
              *  Untuk hari.
              */
-            case 'day': case 'days':
+        case 'day': case 'days':
                 $c = $this->hari[date("w", $c)];
-                break;
+            break;
 
             /**
              *  Untuk jam.
              */
-            case 'jam':
-                $c = date("h:i:s", $c);
-                break;
+        case 'jam':
+            $c = date("h:i:s", $c);
+            break;
 
             /**
              *  Untuk bulan.
              */
-            case 'bulan': case 'month':
+        case 'bulan': case 'month':
                 $c = $this->bulan[(int)date("m", $c)];
-                break;
+            break;
 
             /**
              *  Untuk tanggal.
              */
-            case 'date_c':
-                $c = date("d", $c)." ".($this->bulan[(int)date("m", $c)])." ".date("Y", $c);
-                break;
+        case 'date_c':
+            $c = date("d", $c)." ".($this->bulan[(int)date("m", $c)])." ".date("Y", $c);
+            break;
 
             /**
              *  Tidak dikenal.
              */
-            default:
-                $c = "unknown_param({$c})";
-                break;
+        default:
+            $c = "unknown_param({$c})";
+            break;
         }
         $return = str_replace($replacer, $c, $pure);
         !(strpos($return, "#d(")===false) and $return = $this->fdate($return);

@@ -6,7 +6,7 @@ use Exception;
 
 /**
  *
- * @author	Ammar Faizi	<ammarfaizi2@gmail.com>
+ * @author    Ammar Faizi    <ammarfaizi2@gmail.com>
  */
 
 class AIException extends Exception

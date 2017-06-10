@@ -39,13 +39,17 @@ class WhatAnime extends AIFoundation
         }
         $ch = new CMCurl("https://whatanime.ga/search");
         $ch->set_useragent();
-        $ch->set_optional(array(
+        $ch->set_optional(
+            array(
                     CURLOPT_REFERER=>"https://whatanime.ga/?url=".urlencode($this->input)
-                ));
-        $ch->set_header(array(
+                )
+        );
+        $ch->set_header(
+            array(
             "X-Requested-With: XMLHttpRequest",
             "Content-Type: application/x-www-form-urlencoded; charset=UTF-8"
-        ));
+            )
+        );
         $ch->set_post("data=data%3Aimage%2Fjpeg%3Bbase64%2C".urlencode($this->file));
         $this->result = $ch->execute();
         file_put_contents(data.'/ani/wa/results/'.$this->hash, json_encode(json_decode($this->result), 128));

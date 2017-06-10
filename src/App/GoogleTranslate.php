@@ -131,8 +131,8 @@ class GoogleTranslate extends AIFoundation
     }
 
     /**
-    *	@param string
-    *	@return boolean
+    *    @param string
+    *    @return boolean
     */
     private function check_lang($lang)
     {
@@ -140,8 +140,8 @@ class GoogleTranslate extends AIFoundation
     }
 
     /**
-    *	@param string,string
-    *	@return instance
+    *    @param string,string
+    *    @return instance
     */
     public function prepare($text, $lang='auto_id')
     {
@@ -164,7 +164,7 @@ class GoogleTranslate extends AIFoundation
     }
 
     /**
-    *	@return boolean
+    *    @return boolean
     */
     public function execute()
     {
@@ -184,7 +184,7 @@ class GoogleTranslate extends AIFoundation
     }
 
     /**
-    *	@return string
+    *    @return string
     */
     public function error()
     {
@@ -192,7 +192,7 @@ class GoogleTranslate extends AIFoundation
     }
 
     /**
-    *	@return mixed
+    *    @return mixed
     */
     public function fetch_result()
     {

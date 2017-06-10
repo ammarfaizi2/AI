@@ -85,17 +85,19 @@ class SaferScript extends AIFoundation
             if (is_array($token)) {
                 $id = $token[0];
                 switch ($id) {
-          case(T_VARIABLE): { $vcall .= 'v'; break; }
-          case(T_STRING): { $vcall .= 's'; }
-          case(T_REQUIRE_ONCE): case(T_REQUIRE): case(T_NEW): case(T_RETURN):
-          case(T_BREAK): case(T_CATCH): case(T_CLONE): case(T_EXIT):
-          case(T_PRINT): case(T_GLOBAL): case(T_ECHO): case(T_INCLUDE_ONCE):
-          case(T_INCLUDE): case(T_EVAL): case(T_FUNCTION): {
-            if (array_search($token[1], $this->allowedCalls) === false) {
-                $this->parseErrors[] = 'illegal call: '.$token[1];
-            }
-          }
-        }
+                case(T_VARIABLE): { $vcall .= 'v'; break; 
+                }
+                case(T_STRING): { $vcall .= 's'; 
+                }
+                case(T_REQUIRE_ONCE): case(T_REQUIRE): case(T_NEW): case(T_RETURN):
+                            case(T_BREAK): case(T_CATCH): case(T_CLONE): case(T_EXIT):
+                                        case(T_PRINT): case(T_GLOBAL): case(T_ECHO): case(T_INCLUDE_ONCE):
+                                                    case(T_INCLUDE): case(T_EVAL): case(T_FUNCTION): {
+                                                                if (array_search($token[1], $this->allowedCalls) === false) {
+                                                                    $this->parseErrors[] = 'illegal call: '.$token[1];
+                                                                }
+                                                    }
+                }
             } else {
                 $vcall .= $token;
             }
