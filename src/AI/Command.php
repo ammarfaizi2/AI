@@ -238,7 +238,7 @@ trait Command
         foreach ($list_jadwal as $key => $value) {
             $count_diff = levenshtein($key, $kota_request);
             $list[$key] = $count_diff;
-            if ($count_diff < 4 && !isset($pick_suggest)) {
+            if ($count_diff < 5 && !isset($pick_suggest)) {
                 $pick_suggest = true;
             }
         }
