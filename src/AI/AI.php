@@ -225,7 +225,9 @@ class AI extends AIAbstraction implements AIFace, AIProp
             }
         }
         if (isset($pick_suggest) && $pick_suggest) {
-            $this->reply = "Mungkin yang anda maksud adalah \"".array_search(min($lv), $lv)."\"";
+            $command = array_search(min($lv), $lv);
+            $p_msg = substr($this->absmsg, strlen($command));
+            $this->reply = "Mungkin yang anda maksud adalah \"".$command." {$p_msg}\"";
             $return      = true;
         } else {
             if (is_array($this->superuser) && in_array($this->actor, $this->superuser)) {
@@ -237,7 +239,9 @@ class AI extends AIAbstraction implements AIFace, AIProp
                     }
                 }
                 if (isset($pick_suggest) && $pick_suggest) {
-                    $this->reply = "Mungkin yang anda maksud adalah \"".array_search(min($lv), $lv)."\"";
+                    $command = array_search(min($lv), $lv);
+                    $p_msg = substr($this->absmsg, strlen($command));
+                    $this->reply = "Mungkin yang anda maksud adalah \"".$command." {$p_msg}\"";
                     $return      = true;
                 }
             }
