@@ -859,7 +859,19 @@ class AI extends AIAbstraction implements AIFace, AIProp
             $rt = $this->chat();
         }
         $this->clog();
+        if (!$rt) {
+            $rt = $this->suggest();        
+        }
         return $rt;
+    }
+
+    /**
+     * @return bool
+     */
+    private function suggest()
+    {
+        $this-
+        return false;
     }
 
     /**

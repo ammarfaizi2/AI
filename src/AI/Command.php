@@ -15,28 +15,28 @@ use App\GoogleTranslate;
  */
 
 trait Command
-{
+{   
+    private $command_list = array(
+        'ask'        => 2,
+        'menu'       => 2,
+        'jadwal'     => 2,
+        'hitung'     => 2,
+        'i_anime'    => 2,
+        'i_manga'    => 2,
+        'q_anime'    => 2,
+        'q_manga'    => 2,
+        'teacrypt'   => 2,
+        'translate'  => 2,
+        'whatanime'  => 2,
+        'ctranslate' => 3,
+    );
     /**
      *   @param string
      *   @return boolean
      */
     private function command($cmd)
     {
-        $command_list = array(
-                'ask'        => 2,
-                'menu'       => 2,
-                'jadwal'     => 2,
-                'hitung'     => 2,
-                'i_anime'    => 2,
-                'i_manga'    => 2,
-                'q_anime'    => 2,
-                'q_manga'    => 2,
-                'teacrypt'   => 2,
-                'translate'  => 2,
-                'whatanime'  => 2,
-                'ctranslate' => 3,
-            );
-        if (isset($command_list[$cmd])) {
+        if (isset($this->command_list[$cmd])) {
             $rt = false;
             $msg = explode(' ', $this->absmsg, 2);
             unset($msg[0]);
