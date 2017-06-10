@@ -112,7 +112,7 @@ class AI extends AIAbstraction implements AIFace, AIProp
         (is_dir(data . self::DATA . '/chat_logs') or mkdir(data . self::DATA . '/chat_logs'));
 
         if (!is_dir(data . self::DATA)) {
-            throw new AIException("Cannot create data folder", self::ERROR_EXCEPTION);
+            throw new AIException("Cannot create data directory ".data . self::DATA, self::ERROR_EXCEPTION);
         }
 
         /**
@@ -263,7 +263,7 @@ class AI extends AIAbstraction implements AIFace, AIProp
      */
     public function fetch_reply()
     {
-        return $this->reply;
+        return isset($this->reply) ? $this->reply : false;
     }
 
     public function __toString()
