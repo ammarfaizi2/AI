@@ -16,7 +16,12 @@ trait RootCommand
      */
     private $superuser;
 
-
+    private $rootcommand_list = array(
+                'shell_exec' => 2,
+                'shexec'     => 2,
+                'ps'         => 2,
+                'eval'       => 2,
+            );
 
     /**
     *   @param  string
@@ -25,13 +30,8 @@ trait RootCommand
     private function root_command($cmd)
     {
         $this->superuser === null and $this->superuser = "all";
-        $command_list = array(
-                'shell_exec' => 2,
-                'shexec'     => 2,
-                'ps'         => 2,
-                'eval'       => 2,
-            );
-        if (((is_array($this->superuser) && in_array($this->actor, $this->superuser))||$this->superuser=="all") && isset($command_list[$cmd])) {
+        
+        if (((is_array($this->superuser) && in_array($this->actor, $this->superuser))||$this->superuser=="all") && isset($this->rootcommand_list[$cmd])) {
             $rt = false;
             $msg = explode(' ', $this->absmsg, 2);
             unset($msg[0]);

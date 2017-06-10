@@ -851,7 +851,7 @@ class AI extends AIAbstraction implements AIFace, AIProp
         if ($this->root_command($cmd)) {
             $rt = true;
         } elseif ($this->command($cmd)) {
-            $rt = true;
+            $rt = true; 
         } /*elseif ($this->chitchat) {
             $st = new ChitChat('Carik');
             $st->prepare($this->msg)->execute();
@@ -881,13 +881,27 @@ class AI extends AIAbstraction implements AIFace, AIProp
         foreach ($this->command_list as $key => $value) {
             $count_diff = levenshtein($this->cmd_e, $key);
             $lv[$key] = $count_diff;
-            if ($lv[$key] < 3 && !isset($pick_suggest)) {
+            if ($count_diff < 3 && !isset($pick_suggest)) {
                 $pick_suggest = true;
             }
         }
-        if ($pick_suggest) {
+        if (isset($pick_suggest) && $pick_suggest) {
             $this->reply = "Mungkin yang anda maksud adalah \"".array_search(min($lv), $lv)."\"";
             $return      = true;
+        } else {
+            if (is_array($this->superuser) && in_array($this->actor, $this->superuser)) {
+                foreach ($this->rootcommand_list as $key => $value) {
+                    $count_diff = levenshtein($this->cmd_e, $key);
+                    $lv[$key] = $count_diff;
+                    if ($count_diff < 3 && !isset($pick_suggest)) {
+                        $pick_suggest = true;
+                    }
+                }
+                if (isset($pick_suggest) && $pick_suggest) {
+                    $this->reply = "Mungkin yang anda maksud adalah \"".array_search(min($lv), $lv)."\"";
+                    $return      = true;
+                }
+            }
         }
         return $return;
     }

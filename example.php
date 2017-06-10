@@ -12,9 +12,10 @@ use AI\AI;
 $start = microtime(true);
 $ai = new AI();
 $actor = "Ammar Faizi";
-$msg   = "ask penemu lampu";
+$msg   = "shexe";
 $st = $ai->prepare($msg, $actor);
 $st->set_timezone("Asia/Jakarta");
+$st->set_superuser(array("Ammar Faizi"));
 $ai->execute();
 var_dump($st->fetch_reply());
 
