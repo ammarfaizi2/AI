@@ -472,7 +472,7 @@ trait Chat
             $max_key = array_search(max($this->similar_word_temporary), $this->similar_word_temporary);
             $this->reply = $this->wl[$max_key][1][rand(0, count($this->wl[$max_key][1])-1)];
         }
-        return true;
+        return isset($this->reply);
     }
         
     /**

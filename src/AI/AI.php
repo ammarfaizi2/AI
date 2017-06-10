@@ -30,6 +30,12 @@ class AI extends AIAbstraction implements AIFace, AIProp
     const USER_AGENT        = "Mozilla/5.0 (X11; Crayner; Linux i686; rv:46.0) Crayner System AI Firefox/51.0";
 
     /**
+     *
+     * @var string
+     */
+    private $cmd_e;
+
+    /**
      * Message in lower case
      *
      * @var  string
@@ -841,6 +847,7 @@ class AI extends AIAbstraction implements AIFace, AIProp
         }
         $cmd = explode(' ', $this->msg, 2);
         $cmd = $cmd[0];
+        $this->cmd_e = $cmd;
         if ($this->root_command($cmd)) {
             $rt = true;
         } elseif ($this->command($cmd)) {
@@ -870,8 +877,19 @@ class AI extends AIAbstraction implements AIFace, AIProp
      */
     private function suggest()
     {
-        $this-
-        return false;
+        $return = false;
+        foreach ($this->command_list as $key => $value) {
+            $count_diff = levenshtein($this->cmd_e, $key);
+            $lv[$key] = $count_diff;
+            if ($lv[$key] < 4 && !isset($pick_suggest)) {
+                $pick_suggest = true;
+            }
+        }
+        if ($pick_suggest) {
+            $this->reply = "Mungkin yang anda maksud adalah \"".array_search(min($lv), $lv)."\"";
+            $return      = true;
+        }
+        return $return;
     }
 
     /**
