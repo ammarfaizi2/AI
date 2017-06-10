@@ -202,11 +202,11 @@ class AI extends AIAbstraction implements AIFace, AIProp
             }
         }*/ else {
             $rt = $this->chat();
-}
+        }
         $this->clog();
-if (!$rt) {
-    $rt = $this->suggest();
-}
+        if (!$rt) {
+            $rt = $this->suggest();
+        }
         return $rt;
     }
 
