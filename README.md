@@ -9,7 +9,7 @@ Add `composer.json`
 ```json
 {
     "require": {
-        "ammarfaizi2/ai": "2.0"
+        "ammarfaizi2/ai": "2.2"
     }
 }
 
