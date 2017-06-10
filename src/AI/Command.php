@@ -83,8 +83,19 @@ trait Command
                                 }
                                 $this->reply = $ret;
                             } else {
-                                if ($suggest_kota = $this->jadwal_sholat_suggest($st->get_list_kota(), $get_kota)) {
-                                    $this->reply = "Mohon maaf, jadwal sholat kota \"{$get_kota}\" tidak ditemukan. Mungkin yang anda maksud adalah {$suggest_kota}";
+                                if ($suggest_kota = self::jadwal_sholat_suggest($st->get_list_kota(), $get_kota)) {
+                                    if (is_array($suggest_kota)) {
+                                        if ($jadwal = $st->get_jadwal($suggest_kota[0])){
+                                            $ret = "Jadwal Sholat untuk daerah {$get_kota} dan sekitarnya\nTanggal ".(date("d F Y"))."\n\n";
+                                            $jadwal = array_merge(array('imsyak'=>(date("h:i", strtotime($jadwal['subuh'])-300))), $jadwal);
+                                            foreach ($jadwal as $key => $jam) {
+                                                $ret .= ucfirst($key) . " : " . $jam . "\n";
+                                            }
+                                            $this->reply = $ret;
+                                        }
+                                    } else {
+                                        $this->reply = "Mohon maaf, jadwal sholat kota \"{$get_kota}\" tidak ditemukan. Mungkin yang anda maksud adalah kota {$suggest_kota}";
+                                    }
                                 } else {
                                     $this->reply = "Mohon maaf, jadwal sholat kota \"{$get_kota}\" tidak ditemukan.";
                                 }
@@ -222,7 +233,7 @@ trait Command
     /**
      * Extend method
      */
-    private function jadwal_sholat_suggest($list_jadwal, $kota_request)
+    private static function jadwal_sholat_suggest($list_jadwal, $kota_request)
     {
         foreach ($list_jadwal as $key => $value) {
             $count_diff = levenshtein($key, $kota_request);
@@ -232,7 +243,9 @@ trait Command
             }
         }
         if (isset($pick_suggest) && $pick_suggest) {
-            $get_kota_mirip = array_search(min($list), $list);
+            $min = min($list);
+            $get_mirip = array_search($min, $list);
+            $get_kota_mirip = $min < 3 ? array($get_mirip) : $get_mirip;
         }
         return isset($get_kota_mirip) ? $get_kota_mirip : false;
     }
