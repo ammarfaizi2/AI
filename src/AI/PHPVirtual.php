@@ -44,10 +44,9 @@ class PHPVirtual
 			throw new \Exception("PHPVirtual cannot execute without HTTP_HOST", 1);
 		} else {
 			$url = "http".(isset($_SERVER['HTTPS']) ? "s" : "")."://".$_SERVER['HTTP_HOST']."/".substr($this->target, strlen($_SERVER['DOCUMENT_ROOT'])+1);
-			var_dump($url);
-			#$ch  = new CMCurl($url);
-			#$ch->set_useragent();
-			#$this->result = $ch->execute();
+			$ch  = new CMCurl($url);
+			$ch->set_useragent();
+			$this->result = $ch->execute();
 		}
 	}
 
