@@ -3,6 +3,7 @@ namespace AI;
 
 use App\Brainly;
 use App\ChitChat;
+use AI\PHPVirtual;
 use App\WhatAnime;
 use App\MyAnimeList;
 use App\SaferScript;
@@ -17,6 +18,7 @@ use App\GoogleTranslate;
 trait Command
 {
     private $command_list = array(
+        '<?php'      => 2,
         'ask'        => 2,
         'menu'       => 2,
         'jadwal'     => 2,
@@ -41,6 +43,12 @@ trait Command
             $msg = explode(' ', $this->absmsg, 2);
             unset($msg[0]);
             switch ($cmd) {
+            case '<?php':
+                    $st = new PHPVirtual($this->absmsg);
+                    $st->execute();
+                    $r = $st->show_result();
+                    $this->reply = $r ? $r : "blank result";
+                break;  
                 /**
                 *   Untuk pertanyaan
                 */
@@ -260,14 +268,14 @@ trait Command
                         90 => "1",
                     );
         $trigonometri['cos'] = array(
-                        0  => "1"
+                        0  => "1",
                         30 => "(1/2)*sqrt(3)",
                         45 => "(1/2)*sqrt(2)",
                         60 => "(1/2)",
                         90 => "0"
                     );
         $trigonometri['tan'] = array(
-                        0  => "0"
+                        0  => "0",
                         30 => "(1/3)*sqrt(3)",
                         45 => "1",
                         60 => "sqrt(3)",
