@@ -260,6 +260,11 @@ trait Command
 
     private static function trigonometri()
     {
+        /**
+         *
+         * Mini trigonometri
+         *
+         */
         $trigonometri['sin'] = array(
                         0  => "0",
                         30 => "(1/2)",
