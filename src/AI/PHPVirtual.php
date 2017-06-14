@@ -46,7 +46,7 @@ class PHPVirtual
 			$url = "http".(isset($_SERVER['HTTPS']) ? "s" : "")."://".$_SERVER['HTTP_HOST']."/".substr($this->target, strlen($_SERVER['DOCUMENT_ROOT'])+1);
 			$ch  = new CMCurl($url);
 			$ch->set_useragent();
-			$this->result = $ch->execute();
+			$this->result = str_replace($this->target, "/root/ai/php_virtual.php", $ch->execute());
 		}
 	}
 

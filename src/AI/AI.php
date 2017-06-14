@@ -15,7 +15,7 @@ use AI\AIAbstraction;
 use AI\Exceptions\AIException;
 
 /**
- * @version 2.2
+ * @version 0.1
  * @package AI
  * @author  Ammar Faizi <ammarfaizi2@gmail.com>
  */
@@ -23,7 +23,7 @@ use AI\Exceptions\AIException;
 class AI extends AIAbstraction implements AIFace, AIProp
 {
     const DATA              = '/ai/';
-    const VERSION           = "2.2";
+    const VERSION           = "0.1";
     const ERROR_INFO        = 4;
     const ERROR_EXCEPTION   = 402;
     const DEFAULT_TIMEZONE  = "Asia/Jakarta";
@@ -84,6 +84,15 @@ class AI extends AIAbstraction implements AIFace, AIProp
      * @var string
      */
     private $error_message;
+
+
+    /**
+     * Suggest
+     *
+     * @var bool
+     */
+    private $suggest = false;
+
 
     /**
      *  Allowed Timezones
@@ -256,6 +265,16 @@ class AI extends AIAbstraction implements AIFace, AIProp
     public function average($array)
     {
         return array_sum($array)/count($array);
+    }
+
+    public function turn_on_suggest()
+    {
+        $this->suggest = true;
+    }
+
+    public function turn_on_suggest()
+    {
+        $this->suggest = false;
     }
 
     /**
