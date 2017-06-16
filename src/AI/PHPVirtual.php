@@ -50,7 +50,7 @@ class PHPVirtual
 		}
 	}
 
-	public function show_result()
+	public function showResult()
 	{
 		return $this->result;
 	}

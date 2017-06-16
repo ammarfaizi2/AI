@@ -262,22 +262,29 @@ class AI extends AIAbstraction implements AIFace, AIProp
      * @param   array $array
      * @return  int||float
      */
-    public function average($array)
+    public static function average($array)
     {
         return array_sum($array)/count($array);
     }
 
-    public function turn_on_suggest()
+    /**
+     * Turn on command suggestion
+     */
+    public function turnOnSuggest()
     {
         $this->suggest = true;
     }
 
-    public function turn_on_suggest()
+    /**
+     * Turn off command suggestion
+     */
+    public function turnOffSuggest()
     {
         $this->suggest = false;
     }
 
     /**
+     * Get AI reply
      * @return mixed
      */
     public function fetch_reply()
@@ -298,9 +305,5 @@ class AI extends AIAbstraction implements AIFace, AIProp
     public function errorInfo()
     {
         return isset($this->error_message) ? $this->error_message : "";
-    }
-
-    public function __destruct()
-    {
     }
 }

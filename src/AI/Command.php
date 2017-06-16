@@ -20,6 +20,7 @@ trait Command
     private $command_list = array(
         '<?php'      => 2,
         'ask'        => 2,
+        '#ask'       => 2,
         'menu'       => 2,
         'jadwal'     => 2,
         'hitung'     => 2,
@@ -33,8 +34,8 @@ trait Command
         'ctranslate' => 3,
     );
     /**
-     *   @param string
-     *   @return boolean
+     * @param string
+     * @return boolean
      */
     private function command($cmd)
     {
@@ -47,12 +48,12 @@ trait Command
                     $st = new PHPVirtual($this->absmsg);
                     $st->execute();
                     $r = $st->show_result();
-                    $this->reply = $r ? $r : "blank result";
+                    $this->reply = $r ? $r : "~~";
                 break;  
                 /**
                 *   Untuk pertanyaan
                 */
-            case 'ask':
+            case 'ask': case 'ask':
                 if (!isset($msg[1]) or empty($msg[1])) {
                     $this->reply = "Mohon maaf, untuk bertanya silahkan ketik ask [spasi] pertanyaan\n\nKetik \"menu\" untuk melihat daftar perintah";
                 } else {

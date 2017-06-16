@@ -33,8 +33,11 @@ class MyAnimeList extends AIFoundation
         } else {
             $ch = new CMCurl("https://myanimelist.net/api/{$type}/search.xml?q=".urlencode($query));
             $ch->set_optional($this->option);
-            $result = json_encode(simplexml_load_string($ch->execute()), 128);
-            $result=='false' or file_put_contents(data.'/ani/myanimelist/results/'.$this->hash, $result);
+            if (function_exists("simplexml_load_string")) {
+                $result = json_encode(simplexml_load_string($ch->execute()), 128);
+                $result=='false' or file_put_contents(data.'/ani/myanimelist/results/'.$this->hash, $result);
+            }
+            $result = "Cannot load simplexml_load_string";
         }
 
         return $this->save_to_data(json_decode($result, true));

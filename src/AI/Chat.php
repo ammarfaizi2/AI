@@ -204,7 +204,10 @@ trait Chat
                     "1-10"=>array(
                         "Selamat pagi kang ^@. Selamat beraktifitas."
                     ),
-                    "11-14"=>array(
+                    "11-12"=>array(
+                        "Selamat pagi menjelang siang kang ^@"
+                    ),
+                    "13-14"=>array(
                         "Ini udah siang kang ^@ 😌"
                     ),
                     "15-18"=>array(
@@ -341,9 +344,7 @@ trait Chat
              */
             "haha,hihi,wkwk,wkeke,hhh"=>array(
             1,array(
-                    "Dilarang ketawa !\nhahaha",
-                    "Hahaha ketawa",
-                    "Sadess :v"
+                    "Dilarang ketawa !"
                 ),
             false,10,75,null,false),
 
