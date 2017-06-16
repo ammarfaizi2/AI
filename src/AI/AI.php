@@ -306,4 +306,9 @@ class AI extends AIAbstraction implements AIFace, AIProp
     {
         return isset($this->error_message) ? $this->error_message : "";
     }
+
+    public function __destruct()
+    {
+        
+    }
 }
