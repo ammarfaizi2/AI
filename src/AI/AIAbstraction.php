@@ -2,8 +2,6 @@
 
 namespace AI;
 
-use AI\Core\CraynerCore;
-
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
  */

@@ -1,4 +1,5 @@
 <?php
+
 namespace AI;
 
 use App\Brainly;
@@ -33,6 +34,7 @@ trait Command
         'whatanime'  => 2,
         'ctranslate' => 3,
     );
+
     /**
      * @param string
      * @return boolean
