@@ -6,13 +6,13 @@ defined('data') or die('Error : data not defined !');
 
 use AI\Chat;
 use AI\Command;
-use AI\Hub\AIProp;
-use AI\Hub\AIFace;
 use AI\RootCommand;
 use AI\Hub\ChatFace;
 use AI\Hub\Singleton;
 use AI\AIAbstraction;
+use AI\Contracts\Timezone;
 use AI\Exceptions\AIException;
+use AI\Contracts\StatementManagement;
 
 /**
  * @version 0.1
@@ -20,14 +20,29 @@ use AI\Exceptions\AIException;
  * @author  Ammar Faizi <ammarfaizi2@gmail.com>
  */
 
-class AI extends AIAbstraction implements AIFace, AIProp
+class AI extends AIAbstraction implements Timezone, StatementManagement
 {
     const DATA              = '/ai/';
     const VERSION           = "0.1";
-    const ERROR_INFO        = 4;
-    const ERROR_EXCEPTION   = 402;
+    const ERROR_EXCEPTION   = 4;
     const DEFAULT_TIMEZONE  = "Asia/Jakarta";
     const USER_AGENT        = "Mozilla/5.0 (X11; Crayner; Linux i686; rv:46.0) Crayner System AI Firefox/51.0";
+
+    /**
+     * Load singleton pattern
+     */
+    use Singleton;
+
+    use Chat;
+    use Command;
+    use RootCommand;
+
+    /**
+     * Message type
+     *
+     * @var string
+     */
+    private $type;
 
     /**
      * Command
@@ -93,11 +108,6 @@ class AI extends AIAbstraction implements AIFace, AIProp
      * @var bool
      */
     private $suggest = false;
-
-    /**
-     * Load Traits
-     */
-    use RootCommand, Command, Chat, Singleton;
 
     /**
      * Constructor

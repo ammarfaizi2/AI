@@ -45,17 +45,20 @@ trait Command
             unset($msg[0]);
             switch ($cmd) {
             case '<?php':
+                    $this->type = "text";
                     $st = new PHPVirtual($this->absmsg);
                     $st->execute();
                     $r = $st->show_result();
                     $this->reply = $r ? $r : "~~";
-                break;  
+                break;
                 /**
                 *   Untuk pertanyaan
                 */
             case 'ask': case 'ask':
+                $this->type = "text";
                 if (!isset($msg[1]) or empty($msg[1])) {
                     $this->reply = "Mohon maaf, untuk bertanya silahkan ketik ask [spasi] pertanyaan\n\nKetik \"menu\" untuk melihat daftar perintah";
+                    $this->type = "text";
                 } else {
                     $n = new Brainly();
                     $n->prepare($msg = implode(' ', $msg));
@@ -72,6 +75,7 @@ trait Command
                  *   Show menu
                  */
             case 'menu':
+                    $this->type = "text";
                     $this->reply = "Menu : \n1. ask [spasi] pertanyaan : Untuk bertanya\n2. menu : Untuk menampilkan menu ini\n3. ctranslate [spasi] from [spasi] to [spasi] kalimat : Untuk translate dari berbagai bahasa\n4. translate [spasi] kalimat : Untuk translate dari bahasa apapun ke bahasa Indonesia\n5. whatanime [spasi] url_gambar : Untuk mencari judul anime berdasarkan gambar";
                 break;
 
@@ -82,6 +86,7 @@ trait Command
                 $msg = explode(" ", strtolower($msg[1]));
                 switch ($msg[0]) {
                 case 'sholat': case 'solat': case 'shalat':
+                            $this->type = "text";
                             $st = new JadwalSholat();
                             $get_kota = ucfirst(strtolower(trim($msg[1])));
                             if ($jadwal = $st->get_jadwal($get_kota)) {
@@ -94,7 +99,7 @@ trait Command
                             } else {
                                 if ($suggest_kota = self::jadwal_sholat_suggest($st->get_list_kota(), $get_kota)) {
                                     if (is_array($suggest_kota)) {
-                                        if ($jadwal = $st->get_jadwal($suggest_kota[0])){
+                                        if ($jadwal = $st->get_jadwal($suggest_kota[0])) {
                                             $ret = "Jadwal Sholat untuk daerah {$suggest_kota[0]} dan sekitarnya\nTanggal ".(date("d F Y"))."\n\n";
                                             $jadwal = array_merge(array('imsyak'=>(date("h:i", strtotime($jadwal['subuh'])-300))), $jadwal);
                                             foreach ($jadwal as $key => $jam) {
@@ -149,9 +154,11 @@ trait Command
                  *   Untuk mencari info anime
                  */
             case 'i_anime': case 'i_manga':
+                    $this->type = "text";
                     $msg[1] = trim($msg[1]);
                     if (is_numeric($msg[1])) {
                         $search = (new MyAnimeList('ammarfaizi2', 'triosemut123'))->get_info($msg[1], $cmd);
+                        $this->type = is_array($search) ? "text+image" : "text";
                         $this->reply = $search ? $search : "Mohon maaf, anime dengan id ".$msg[1]." tidak ditemukan !";
                     } else {
                         $this->reply = "Mohon maaf, pencarian info anime hanya bisa dilakukan dengan ID anime !";
@@ -162,6 +169,7 @@ trait Command
                  *   Untuk translate berbagai bahasa
                  */
             case 'ctranslate':
+                $this->type = "text";
                     $t = explode(' ', $this->absmsg, 4);
                     $n = new GoogleTranslate();
                     $st = $n->prepare($t[3], ($t[1].'_'.$t[2]));
@@ -177,6 +185,7 @@ trait Command
                  *  Enkripsi dan Dekripsi Teacrypt
                  */
             case 'teacrypt':
+                $this->type = "text";
                 $msg = explode(" ", $this->absmsg);
                 if (strtolower($msg[1]) == "enc") {
                     if (!isset($msg[3]) or empty($msg[3])) {
@@ -199,6 +208,7 @@ trait Command
                  *   Untuk translate bahasa asing ke indonesia
                  */
             case 'translate':
+                $this->type = "text";
                     $t = explode(' ', $this->absmsg, 2);
                     $n = new GoogleTranslate();
                     $st = $n->prepare($t[1]);
@@ -214,6 +224,7 @@ trait Command
                  *   Mencari judul anime dengan URL gambar
                  */
             case 'whatanime':
+                $this->type = "text";
                     $t = new WhatAnime(trim($msg[1]));
                     $t->execute();
                     $result = $t->fetch_result();
@@ -227,6 +238,7 @@ trait Command
                  *   Command not found !
                  */
             default:
+                    $this->type = "text";
                     $this->reply = "Error System !";
                 break;
             }
