@@ -136,6 +136,9 @@ class AI extends AIAbstraction implements Timezone, StatementManagement
     }
     
     /**
+     *
+     * Prepare message to AI
+     *
      * @param    string $text
      * @param    string $actor
      * @return   object  AI Instance
@@ -149,18 +152,25 @@ class AI extends AIAbstraction implements Timezone, StatementManagement
     }
 
     /**
+     *
+     * Execute message to AI
+     *
      * @throws AI\Exceptions\AIException
      * @return bool
      */
     public function execute()
     {
         if (!isset($this->absmsg)) {
-            throw new AIException("Cannot access execute method directly, you must prepared a message first", self::ERROR_EXCEPTION);
+            throw new AIException("Cannot access execute method directly, you must prepared a message first!", self::ERROR_EXCEPTION);
+            
+            /*avoid try catch*/
+            die("Don't try catch AIException!");
         }
 
         if (!isset($this->timezone)) {
             $this->set_timezone(self::DEFAULT_TIMEZONE);
         }
+
         $cmd = explode(' ', $this->msg, 2);
         $cmd = $cmd[0];
         $this->cmd_e = $cmd;
@@ -168,7 +178,12 @@ class AI extends AIAbstraction implements Timezone, StatementManagement
             $rt = true;
         } elseif ($this->command($cmd)) {
             $rt = true;
-        }/*elseif ($this->chitchat) {
+        }
+
+        /**
+         * @deprecated
+         */
+        /*elseif ($this->chitchat) {
             $st = new ChitChat('Carik');
             $st->prepare($this->msg)->execute();
             if (true) {
@@ -178,7 +193,9 @@ class AI extends AIAbstraction implements Timezone, StatementManagement
             } else {
                 $rt = false;
             }
-        }*/else {
+        }*/
+
+        else {
             $rt = $this->chat();
         }
         $this->clog();
@@ -186,6 +203,17 @@ class AI extends AIAbstraction implements Timezone, StatementManagement
             $rt = $this->suggest_act();
         }
         return $rt;
+    }
+
+    /**
+     *
+     * Get AI response
+     *
+     * @return mixed
+     */
+    public function fetch_reply()
+    {
+        return isset($this->reply) ? $this->reply : false;
     }
 
     /**
@@ -228,29 +256,16 @@ class AI extends AIAbstraction implements Timezone, StatementManagement
     }
 
     /**
-     * Chat Log
+     * Error Log (future)
      */
-    private function clog()
-    {
-        $file = data.self::DATA.'/chat_logs/'.date('Y-m-d').'.txt';
-        $data = file_exists($file) ? json_decode(file_get_contents($file), true) : array();
-        $data = $data===null ? array() : $data;
-        $data[] = array(
-                'time'  => (date('Y-m-d H:i:s')),
-                'actor' => $this->actor,
-                'msg'   => $this->absmsg,
-                'reply' => $this->reply,
-            );
-        file_put_contents($file, json_encode($data, 128));
-    }
-
     private function errorLog($message, $errno = 1)
     {
         file_put_contents(data.self::DATA.'/error_log', "\nError : {$errno} {$message}\n\n", FILE_APPEND | LOCK_EX);
     }
     
     /**
-     * Set timezone for AI
+     *
+     * Set default timezone
      *
      * @param string $timezone
      */
@@ -263,8 +278,6 @@ class AI extends AIAbstraction implements Timezone, StatementManagement
             throw new AIException("Not allowed timezone !", self::ERROR_EXCEPTION);
         }
     }
-
-
 
     /**
      * Convert time character to absolute time
@@ -339,15 +352,6 @@ class AI extends AIAbstraction implements Timezone, StatementManagement
     }
 
     /**
-     * @param   array $array
-     * @return  int|float
-     */
-    public static function average($array)
-    {
-        return array_sum($array)/count($array);
-    }
-
-    /**
      * Turn on command suggestion
      */
     public function turnOnSuggest()
@@ -364,13 +368,31 @@ class AI extends AIAbstraction implements Timezone, StatementManagement
     }
 
     /**
-     * Get AI reply
-     * @return mixed
+     * Chat Log
      */
-    public function fetch_reply()
+    private function clog()
     {
-        return isset($this->reply) ? $this->reply : false;
+        $file = data.self::DATA.'/chat_logs/'.date('Y-m-d').'.txt';
+        $data = file_exists($file) ? json_decode(file_get_contents($file), true) : array();
+        $data = $data===null ? array() : $data;
+        $data[] = array(
+                'time'  => (date('Y-m-d H:i:s')),
+                'actor' => $this->actor,
+                'msg'   => $this->absmsg,
+                'reply' => $this->reply,
+            );
+        file_put_contents($file, json_encode($data, 128));
     }
+
+    /**
+     * @param   array $array
+     * @return  int|float
+     */
+    public static function average($array)
+    {
+        return array_sum($array)/count($array);
+    }
+
 
     /**
      * __toString()
