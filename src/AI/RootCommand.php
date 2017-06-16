@@ -66,14 +66,4 @@ trait RootCommand
             return isset($this->reply) ? true : false;
         }
     }
-
-    /**
-     * Set super user
-     *
-     * @param string|array $superuser
-     */
-    public function set_superuser($superuser)
-    {
-        $this->superuser = $superuser;
-    }
 }

@@ -1,10 +1,15 @@
 <?xml version="1.0"?>
 <todo version="0.1.20">
-    <note priority="medium" time="1497623545">
+    <note priority="medium" time="1497623545" done="1497625009">
         AI Test 1
+        <comment>
+            Fixed
+        </comment>
     </note>
-    <note priority="medium" time="1497623638">
+    <note priority="medium" time="1497623638" done="1497625029">
         Update AI.php
+        <comment>
+            Fixed
+        </comment>
     </note>
-    <link filename="src/AI/AI.php" priority="medium" time="1497623821"/>
 </todo>

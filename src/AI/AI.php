@@ -20,7 +20,7 @@ use AI\Contracts\StatementManagement;
  * @author  Ammar Faizi <ammarfaizi2@gmail.com>
  */
 
-class AI extends AIAbstraction implements Timezone, StatementManagement
+class AI extends AIAbstraction implements Timezone, StatementManagement, StringManagement
 {
     const DATA              = '/ai/';
     const VERSION           = "0.1";
@@ -293,6 +293,17 @@ class AI extends AIAbstraction implements Timezone, StatementManagement
             }
         }
         return $return;
+    }
+
+    /**
+     *
+     * Set super user
+     *
+     * @param string|array $superuser
+     */
+    public function set_superuser($superuser)
+    {
+        $this->superuser = $superuser;
     }
 
     /**
