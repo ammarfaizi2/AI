@@ -8,41 +8,6 @@ namespace AI;
 trait Chat
 {
     /**
-     * Nama hari dalam bahasa indonesia
-     *
-     * @var array
-     */
-    private $hari = array(
-            "Minggu",
-            "Senin",
-            "Selasa",
-            "Rabu",
-            "Kamis",
-            "Jum'at",
-            "Sabtu"
-        );
-
-    /**
-     * Nama bulan dalam bahasa indonesia
-     *
-     * @var array
-     */
-    private $bulan = array(
-            "Januari",
-            "Februari",
-            "Maret",
-            "April",
-            "Mei",
-            "Juni",
-            "Juli",
-            "Agustus",
-            "September",
-            "Oktober",
-            "November",
-            "Desember"
-        );
-
-    /**
      * Wordlist
      *
      * @var array

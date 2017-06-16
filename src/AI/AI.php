@@ -110,6 +110,41 @@ class AI extends AIAbstraction implements Timezone, StatementManagement
     private $suggest = false;
 
     /**
+     * Nama hari dalam bahasa indonesia
+     *
+     * @var array
+     */
+    private $hari = array(
+            "Minggu",
+            "Senin",
+            "Selasa",
+            "Rabu",
+            "Kamis",
+            "Jum'at",
+            "Sabtu"
+        );
+
+    /**
+     * Nama bulan dalam bahasa indonesia
+     *
+     * @var array
+     */
+    private $bulan = array(
+            "Januari",
+            "Februari",
+            "Maret",
+            "April",
+            "Mei",
+            "Juni",
+            "Juli",
+            "Agustus",
+            "September",
+            "Oktober",
+            "November",
+            "Desember"
+        );
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -198,10 +233,15 @@ class AI extends AIAbstraction implements Timezone, StatementManagement
         else {
             $rt = $this->chat();
         }
-        $this->clog();
+
+        /* reply a suggest message */
         if ($this->suggest && !$rt) {
             $rt = $this->suggest_act();
         }
+
+        /* save chat to log */
+        $this->clog();
+
         return $rt;
     }
 
@@ -369,6 +409,8 @@ class AI extends AIAbstraction implements Timezone, StatementManagement
 
     /**
      * Chat Log
+     *
+     * void
      */
     private function clog()
     {
@@ -385,6 +427,9 @@ class AI extends AIAbstraction implements Timezone, StatementManagement
     }
 
     /**
+     *
+     * Count average.
+     *
      * @param   array $array
      * @return  int|float
      */
@@ -393,6 +438,15 @@ class AI extends AIAbstraction implements Timezone, StatementManagement
         return array_sum($array)/count($array);
     }
 
+    /**
+     * Future
+     *
+     * @return string
+     */
+    public function errorInfo()
+    {
+        return isset($this->error_message) ? $this->error_message : "";
+    }
 
     /**
      * __toString()
@@ -408,14 +462,6 @@ class AI extends AIAbstraction implements Timezone, StatementManagement
     public function __debugInfo()
     {
         return array("reply"=>$this->__toString());
-    }
-
-    /**
-     * Future
-     */
-    public function errorInfo()
-    {
-        return isset($this->error_message) ? $this->error_message : "";
     }
 
     /**
