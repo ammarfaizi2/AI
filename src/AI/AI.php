@@ -30,6 +30,7 @@ class AI extends AIAbstraction implements AIFace, AIProp
     const USER_AGENT        = "Mozilla/5.0 (X11; Crayner; Linux i686; rv:46.0) Crayner System AI Firefox/51.0";
 
     /**
+     * Command
      *
      * @var string
      */
@@ -60,7 +61,7 @@ class AI extends AIAbstraction implements AIFace, AIProp
      * ChitChat string
      *
      * @deprecated
-     * @var        string
+     * @var string
      */
     private $chitchat;
 
@@ -106,19 +107,18 @@ class AI extends AIAbstraction implements AIFace, AIProp
         /**
          * Create directory for AI data
          */
-        (is_dir(data . self::DATA) or mkdir(data . self::DATA)) xor
-        (is_dir(data . self::DATA.'/logs') or mkdir(data . self::DATA . '/logs')) xor
-        (is_dir(data . self::DATA.'/status') or (mkdir(data . self::DATA . '/status') and
-        (file_put_contents(data.self::DATA . '/status/chit_chat_on', '1')))) xor
-        (is_dir(data . self::DATA . '/chat_logs') or mkdir(data . self::DATA . '/chat_logs'));
+        (is_dir(data.self::DATA) or mkdir(data.self::DATA)) xor
+        (is_dir(data.self::DATA.'/logs') or mkdir(data.self::DATA.'/logs')) xor
+        (is_dir(data.self::DATA.'/status') or (mkdir(data.self::DATA.'/status') and
+        (file_put_contents(data.self::DATA.'/status/chit_chat_on', '1')))) xor
+        (is_dir(data.self::DATA.'/chat_logs') or mkdir(data.self::DATA.'/chat_logs'));
 
-        if (!is_dir(data . self::DATA)) {
-            throw new AIException("Cannot create data directory ".data . self::DATA, self::ERROR_EXCEPTION);
+        if (!is_dir(data.self::DATA)) {
+            throw new AIException("Cannot create data directory ".data.self::DATA, self::ERROR_EXCEPTION);
         }
 
         /**
          * ChitChat directory
-         *
          * @deprecated
          */
         $this->chitchat = file_exists(data.self::DATA.'/status/chit_chat_on');
