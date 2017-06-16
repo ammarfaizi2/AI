@@ -76,7 +76,7 @@ class AI extends AIAbstraction implements Timezone, StatementManagement
      * ChitChat string
      *
      * @deprecated
-     * @var string
+     * @var        string
      */
     private $chitchat;
 
@@ -129,6 +129,7 @@ class AI extends AIAbstraction implements Timezone, StatementManagement
 
         /**
          * ChitChat directory
+         *
          * @deprecated
          */
         $this->chitchat = file_exists(data.self::DATA.'/status/chit_chat_on');
@@ -150,6 +151,11 @@ class AI extends AIAbstraction implements Timezone, StatementManagement
                 'reply' => $this->reply,
             );
         file_put_contents($file, json_encode($data, 128));
+    }
+
+    private function errorLog($message, $errno = 1)
+    {
+        file_put_contents(data.self::DATA.'/error_log', "\nError : {$errno} {$message}\n\n", FILE_APPEND | LOCK_EX);
     }
     
     /**
@@ -201,7 +207,7 @@ class AI extends AIAbstraction implements Timezone, StatementManagement
             $rt = true;
         } elseif ($this->command($cmd)) {
             $rt = true;
-        } /*elseif ($this->chitchat) {
+        }/*elseif ($this->chitchat) {
             $st = new ChitChat('Carik');
             $st->prepare($this->msg)->execute();
             if (true) {
@@ -211,7 +217,7 @@ class AI extends AIAbstraction implements Timezone, StatementManagement
             } else {
                 $rt = false;
             }
-        }*/ else {
+        }*/else {
             $rt = $this->chat();
         }
         $this->clog();
@@ -334,7 +340,7 @@ class AI extends AIAbstraction implements Timezone, StatementManagement
 
     /**
      * @param   array $array
-     * @return  int||float
+     * @return  int|float
      */
     public static function average($array)
     {

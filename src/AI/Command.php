@@ -55,20 +55,20 @@ trait Command
                 *   Untuk pertanyaan
                 */
             case 'ask': case 'ask':
-                $this->type = "text";
-                if (!isset($msg[1]) or empty($msg[1])) {
-                    $this->reply = "Mohon maaf, untuk bertanya silahkan ketik ask [spasi] pertanyaan\n\nKetik \"menu\" untuk melihat daftar perintah";
                     $this->type = "text";
-                } else {
-                    $n = new Brainly();
-                    $n->prepare($msg = implode(' ', $msg));
-                    if ($n->execute()) {
-                        $result = $n->fetch_result();
-                        $this->reply = "Hasil pencarian dari pertanyaan ".($this->actor)."\n\nPertanyaan yang mirip :\n".($result[0])."\n\nJawaban : \n".($result[1])."\n";
+                    if (!isset($msg[1]) or empty($msg[1])) {
+                        $this->reply = "Mohon maaf, untuk bertanya silahkan ketik ask [spasi] pertanyaan\n\nKetik \"menu\" untuk melihat daftar perintah";
+                        $this->type = "text";
                     } else {
-                        $this->reply = "Mohon maaf, saya tidak bisa menjawab pertanyaan \"".($msg)."\".";
+                        $n = new Brainly();
+                        $n->prepare($msg = implode(' ', $msg));
+                        if ($n->execute()) {
+                            $result = $n->fetch_result();
+                            $this->reply = "Hasil pencarian dari pertanyaan ".($this->actor)."\n\nPertanyaan yang mirip :\n".($result[0])."\n\nJawaban : \n".($result[1])."\n";
+                        } else {
+                            $this->reply = "Mohon maaf, saya tidak bisa menjawab pertanyaan \"".($msg)."\".";
+                        }
                     }
-                }
                 break;
                 
                 /**
@@ -274,9 +274,7 @@ trait Command
     private static function trigonometri()
     {
         /**
-         *
          * Mini trigonometri
-         *
          */
         $trigonometri['sin'] = array(
                         0  => "0",

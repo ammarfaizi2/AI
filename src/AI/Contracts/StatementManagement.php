@@ -7,7 +7,7 @@ interface StatementManagement
     /**
      * Prepare a statement
      *
-     * @param string 	  $text
+     * @param string      $text
      * @param string|null $actor
      */
     public function prepare(string $text, string $actor = null);

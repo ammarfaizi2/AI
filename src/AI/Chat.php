@@ -343,11 +343,11 @@ trait Chat
                 1,array(
                     "Wah ngelarang larang nih kang ^@ 😏",
                     "Kang ^@, mau dilarang?"
-            ),false,7,45,null,false),
+                ),false,7,45,null,false),
 
 
-            "laper,lapar,lavar"=>array(
-            1,array(
+                "laper,lapar,lavar"=>array(
+                1,array(
                 "0-3"=>array(
                     "Segera sahur kang ^@",
                     "Sahur dulu kang ^@ 😊"
@@ -366,25 +366,25 @@ trait Chat
                     "Makan tanah dong. *eeeehhh",
                     "Makan aeeh :v"
                 )
-            ),false,10,75,null,true),
+                ),false,10,75,null,true),
 
 
-            "bot,"=>array(
-            1,array(
+                "bot,"=>array(
+                1,array(
                     "Ya, ada apa kang ^@?",
-            ),true,2,5,null,true),
+                ),true,2,5,null,true),
 
 
 
 
-            /**
+                /**
              * Check 2
              */
-            "assalamualaikum,asalamualaikum"=>array(
-            2,array(
+                "assalamualaikum,asalamualaikum"=>array(
+                2,array(
                     "Waalaikumsalam"
-            ),
-            80,10,75,null,false),
+                ),
+                80,10,75,null,false),
 
 
         );

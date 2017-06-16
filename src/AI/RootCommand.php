@@ -19,14 +19,13 @@ trait RootCommand
     private $rootcommand_list = array(
                 'shell_exec' => 2,
                 'shexec'     => 2,
-                'ps'         => 2,
                 'eval'       => 2,
             );
 
     /**
-    *   @param  string
-    *   @return boolean
-    */
+     *   @param  string
+     *   @return boolean
+     */
     private function root_command($cmd)
     {
         $this->superuser === null and $this->superuser = "all";
@@ -37,18 +36,10 @@ trait RootCommand
             unset($msg[0]);
             switch ($cmd) {
                 /**
-                 *   Shell Exec
+                 * Shell Exec
                  */
             case 'shexec': case 'shell_exec':
                     $sh = shell_exec($msg[1]);
-                    $this->reply = empty($sh) ? "~" : $sh;
-                break;
-
-                /**
-                 *   ps
-                 */
-            case 'ps':
-                    $sh = shell_exec('ps '.$msg[1]);
                     $this->reply = empty($sh) ? "~" : $sh;
                 break;
 
@@ -64,10 +55,11 @@ trait RootCommand
                 break;
 
                 /**
-                 *   Command not found !
+                 * Command not found !
                  */
             default:
                     $this->reply = "Error System !";
+                    $this->errorLog("Error, \"{$cmd}\" is not RootCommand!", 1);
                 break;
             }
             return isset($this->reply) ? true : false;

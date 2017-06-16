@@ -23,10 +23,9 @@ class PHPVirtual
     private $storage;
 
     /**
-     *
      * Constructor.
      *
-     * @param	string	$phpCode
+     * @param string $phpCode
      */
     public function __construct(string $phpCode)
     {

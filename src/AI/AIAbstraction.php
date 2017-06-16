@@ -10,9 +10,9 @@ use AI\Core\CraynerCore;
 
 abstract class AIAbstraction
 {
-	protected function fdate(string $timechars)
-	{
-	}
+    protected function fdate(string $timechars)
+    {
+    }
 
     abstract public function __construct();
     abstract public function set_timezone(string $timezone);
