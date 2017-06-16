@@ -135,45 +135,6 @@ class AI extends AIAbstraction implements Timezone, StatementManagement
         $this->chitchat = file_exists(data.self::DATA.'/status/chit_chat_on');
     }
     
-
-    /**
-     * Chat Log
-     */
-    private function clog()
-    {
-        $file = data.self::DATA.'/chat_logs/'.date('Y-m-d').'.txt';
-        $data = file_exists($file) ? json_decode(file_get_contents($file), true) : array();
-        $data = $data===null ? array() : $data;
-        $data[] = array(
-                'time'  => (date('Y-m-d H:i:s')),
-                'actor' => $this->actor,
-                'msg'   => $this->absmsg,
-                'reply' => $this->reply,
-            );
-        file_put_contents($file, json_encode($data, 128));
-    }
-
-    private function errorLog($message, $errno = 1)
-    {
-        file_put_contents(data.self::DATA.'/error_log', "\nError : {$errno} {$message}\n\n", FILE_APPEND | LOCK_EX);
-    }
-    
-    /**
-     * Set timezone for AI
-     *
-     * @param string $timezone
-     */
-    public function set_timezone(string $timezone)
-    {
-        if (in_array($timezone, $this->allowed_timezones)) {
-            $this->timezone = $timezone;
-            date_default_timezone_set($timezone);
-        } else {
-            throw new AIException("Not allowed timezone !", self::ERROR_EXCEPTION);
-        }
-    }
-
-
     /**
      * @param    string $text
      * @param    string $actor
@@ -265,6 +226,45 @@ class AI extends AIAbstraction implements Timezone, StatementManagement
         }
         return $return;
     }
+
+    /**
+     * Chat Log
+     */
+    private function clog()
+    {
+        $file = data.self::DATA.'/chat_logs/'.date('Y-m-d').'.txt';
+        $data = file_exists($file) ? json_decode(file_get_contents($file), true) : array();
+        $data = $data===null ? array() : $data;
+        $data[] = array(
+                'time'  => (date('Y-m-d H:i:s')),
+                'actor' => $this->actor,
+                'msg'   => $this->absmsg,
+                'reply' => $this->reply,
+            );
+        file_put_contents($file, json_encode($data, 128));
+    }
+
+    private function errorLog($message, $errno = 1)
+    {
+        file_put_contents(data.self::DATA.'/error_log', "\nError : {$errno} {$message}\n\n", FILE_APPEND | LOCK_EX);
+    }
+    
+    /**
+     * Set timezone for AI
+     *
+     * @param string $timezone
+     */
+    public function set_timezone(string $timezone)
+    {
+        if (in_array($timezone, $this->allowed_timezones)) {
+            $this->timezone = $timezone;
+            date_default_timezone_set($timezone);
+        } else {
+            throw new AIException("Not allowed timezone !", self::ERROR_EXCEPTION);
+        }
+    }
+
+
 
     /**
      * Convert time character to absolute time
