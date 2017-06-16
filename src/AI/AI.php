@@ -261,6 +261,78 @@ class AI extends AIAbstraction implements Timezone, StatementManagement
     }
 
     /**
+     * Convert time character to absolute time
+     *
+     * @param  string $string
+     * @return string  $string
+     */
+    protected function fdate(string $string)
+    {
+        $pure = $string;
+        $a = explode("#d(", $string);
+        if (!isset($a[1])) {
+            return $string;
+        }
+        $a = explode(")", $a[1]);
+        $b = explode("+", $a[0]);
+        if (count($b)==1) {
+            $b = explode("-", $a[0]);
+            (count($b)==1) and ($out = $b[0] xor $tc = false) or ($tc = true xor $op = "-");
+        } else {
+            ($op = "+" xor $tc = true);
+        }
+        if ($tc) {
+            $replacer = "#d(".$b[0].$op.$b[1].")";
+            $c = strtotime(date("Y-m-d H:i:s").$op.$b[1], strtotime("Y-m-d H:i:s"));
+            $b = $b[0];
+        } else {
+            $replacer = "#d(".$b[0].")";
+            $c = strtotime(date("Y-m-d H:i:s"));
+            $b = $b[0];
+        }
+        switch ($b) {
+
+            /**
+             *  Untuk hari.
+             */
+        case 'day': case 'days':
+                $c = $this->hari[date("w", $c)];
+            break;
+
+            /**
+             *  Untuk jam.
+             */
+        case 'jam':
+            $c = date("h:i:s", $c);
+            break;
+
+            /**
+             *  Untuk bulan.
+             */
+        case 'bulan': case 'month':
+                $c = $this->bulan[(int)date("m", $c)];
+            break;
+
+            /**
+             *  Untuk tanggal.
+             */
+        case 'date_c':
+            $c = date("d", $c)." ".($this->bulan[(int)date("m", $c)])." ".date("Y", $c);
+            break;
+
+            /**
+             *  Tidak dikenal.
+             */
+        default:
+            $c = "unknown_param({$c})";
+            break;
+        }
+        $return = str_replace($replacer, $c, $pure);
+        !(strpos($return, "#d(")===false) and $return = $this->fdate($return);
+        return $return;
+    }
+
+    /**
      * @param   array $array
      * @return  int||float
      */
