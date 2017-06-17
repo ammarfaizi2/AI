@@ -468,17 +468,17 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
                 if (($dbpos!==false && ($dbpos < $sbpos)) || $sbpos === false) {
                     $strtmp = str_replace("\\\"", $unprintable_chars1, $strtmp);
                     $zx =  $get_db($strtmp);
-                    $_argv[] = $zx;
+                    !empty($zx) and $_argv[] = $zx;
                 } elseif(($sbpos!==false && ($sbpos < $dbpos)) || $dbpos === false) {
                     $strtmp = str_replace("\\\"", $unprintable_chars2, $strtmp);
                     $zx =  $get_sb($strtmp);
-                    $_argv[] = $zx;
+                    !empty($zx) and $_argv[] = $zx;
                 }
             } while ($strtmp!=="");
         } else {
             do {
                 $zx =  $get_db($strtmp);
-                $_argv[] = $zx;
+                !empty($zx) and $_argv[] = $zx;
             } while ($strtmp!=="");
         }
         return $_argv;
