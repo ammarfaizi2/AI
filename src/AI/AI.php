@@ -187,7 +187,8 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
      * @param  string $actor
      * @return object  AI Instance
      */
-    public function prepare(string $text, string $actor=null): self {
+    public function prepare(string $text, string $actor=null): self
+    {
         $this->msg      = trim(strtolower($text));
         $this->absmsg   = $text;
         $this->actor    = $actor;
@@ -200,7 +201,8 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
      * @throws AI\Exceptions\AIException
      * @return bool
      */
-    public function execute(): bool {
+    public function execute(): bool
+    {
         if (!isset($this->absmsg)) {
             throw new AIException("Cannot access execute method directly, you must prepared a message first!", self::ERROR_EXCEPTION);
             $this->die();
