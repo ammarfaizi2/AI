@@ -5,9 +5,9 @@ machine:
 dependencies:
   pre:
     - composer install
-    - php example.php
     - rm /opt/circleci/php/$(phpenv global)/etc/conf.d/xdebug.ini
 
 test:
   override:
     - php example.php
+    - cat data/ai/chat_logs/*
