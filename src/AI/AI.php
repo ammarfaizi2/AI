@@ -560,7 +560,7 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
     /**
      * var_dump return
      */
-    public function __debugInfo()
+    public function __debugInfo():array
     {
         return array("reply"=>$this->__toString());
     }
@@ -572,7 +572,7 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
     {
     }
 
-    private function die()
+    private function die():void
     {
         $this->__destruct();
         /*avoid try catch*/
@@ -607,9 +607,9 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
 
     /**
      * @param string
-     * @return boolean
+     * @return bool
      */
-    private function command($cmd)
+    private function command($cmd):bool
     {
         if (isset($this->command_list[$cmd])) {
             $rt = false;
@@ -822,7 +822,7 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
     /**
      * Extend method
      */
-    private static function jadwal_sholat_suggest($list_jadwal, $kota_request)
+    private static function jadwal_sholat_suggest($list_jadwal, $kota_request):bool
     {
         foreach ($list_jadwal as $key => $value) {
             $count_diff = levenshtein($key, $kota_request);
@@ -893,7 +893,7 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
      *   @param  string
      *   @return boolean
      */
-    private function root_command($cmd)
+    private function root_command($cmd):bool
     {
         $this->superuser === null and $this->superuser = "all";
         
@@ -929,8 +929,8 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
                     $this->errorLog("Error, \"{$cmd}\" is not RootCommand!", 1);
                 break;
             }
-            return isset($this->reply) ? true : false;
         }
+        return isset($this->reply) ? true : false;
     }
 
     /**
@@ -1293,7 +1293,7 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
     /**
      *  Chat action
      */
-    private function chat()
+    private function chat():bool
     {
         $this->load_wordlist();
         $this->exms = explode(' ', $this->msg);
@@ -1331,7 +1331,7 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
      * @param  bool   $time
      * @return bool
      */
-    private function check1(string $key, bool $wordcheck=false, int $maxwords=null, int $maxlength=null, array $wordexception=null, bool $time=false)
+    private function check1(string $key, bool $wordcheck=false, int $maxwords=null, int $maxlength=null, array $wordexception=null, bool $time=false):bool
     {
         if (($maxlength!==null and ($this->mslg) > $maxlength) or ($maxwords!==null and ($this->cword) > $maxwords)) {
             return false;
@@ -1398,7 +1398,7 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
      * @param  bool   $time
      * @return bool
      */
-    private function check2(string $key, int $minimal=null, int $maxwords=null, int $maxlength=null, array $wordexception=null, bool $time=false)
+    private function check2(string $key, int $minimal=null, int $maxwords=null, int $maxlength=null, array $wordexception=null, bool $time=false): bool
     {
         if (($maxlength!==null and ($this->mslg) > $maxlength) or ($maxwords!==null and ($this->cword) > $maxwords)) {
             return false;
@@ -1440,7 +1440,7 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
      * @param  array $replylist
      * @return bool
      */
-    private function gettimereply(array $replylist)
+    private function gettimereply(array $replylist): bool
     {
         foreach ($replylist as $time => $replist) {
             $tr = array();
