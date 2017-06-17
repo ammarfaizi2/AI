@@ -1,1 +1,58 @@
-{"php":"7.0.18-0ubuntu0.16.04.1","version":"2.3.1","rules":{"blank_line_after_namespace":true,"braces":true,"class_definition":true,"elseif":true,"function_declaration":true,"indentation_type":true,"line_ending":true,"lowercase_constants":true,"lowercase_keywords":true,"method_argument_space":true,"no_closing_tag":true,"no_spaces_after_function_name":true,"no_spaces_inside_parenthesis":true,"no_trailing_whitespace":true,"no_trailing_whitespace_in_comment":true,"single_blank_line_at_eof":true,"single_class_element_per_statement":{"elements":["property"]},"single_import_per_statement":true,"single_line_after_imports":true,"switch_case_semicolon_to_colon":true,"switch_case_space":true,"visibility_required":true,"encoding":true,"full_opening_tag":true},"hashes":{"\/index.php":-1418525806,"\/data\/ai\/php_virtual\/tmp\/192ab855e0ca96b8f711dd4c7b40d55612bed456.php":-507601323,"\/src\/AI\/Contracts\/Timezone.php":-121719609,"\/src\/AI\/Contracts\/StatementManagement.php":1300572294,"\/src\/AI\/Contracts\/StringManagement.php":-230623532,"\/src\/AI\/Hub\/Singleton.php":-174557164,"\/src\/AI\/PHPVirtual.php":1251589478,"\/src\/AI\/Chat.php":-1370451290,"\/src\/AI\/Command.php":-851511400,"\/src\/AI\/AIAbstraction.php":-1005708548,"\/src\/AI\/RootCommand.php":-934499800,"\/src\/AI\/Exceptions\/AIException.php":1285415605,"\/src\/AI\/AI.php":882688158,"\/src\/App\/GoogleTranslate.php":-2116256404,"\/src\/App\/WhatAnime.php":1186672312,"\/src\/App\/JadwalSholat.php":-1337192035,"\/src\/App\/Brainly.php":-1693019922,"\/src\/App\/ChitChat.php":711566798,"\/src\/App\/MyAnimeList.php":-463357783,"\/src\/App\/SaferScript.php":-1566091166,"\/phpinfo.php":1594103484,"\/example.php":861549301}}
+{
+    "php": "7.0.18-0ubuntu0.16.04.1",
+    "version": "2.3.1",
+    "rules": {
+        "blank_line_after_namespace": true,
+        "braces": true,
+        "class_definition": true,
+        "elseif": true,
+        "function_declaration": true,
+        "indentation_type": true,
+        "line_ending": true,
+        "lowercase_constants": true,
+        "lowercase_keywords": true,
+        "method_argument_space": true,
+        "no_closing_tag": true,
+        "no_spaces_after_function_name": true,
+        "no_spaces_inside_parenthesis": true,
+        "no_trailing_whitespace": true,
+        "no_trailing_whitespace_in_comment": true,
+        "single_blank_line_at_eof": true,
+        "single_class_element_per_statement": {
+            "elements": [
+                "property"
+            ]
+        },
+        "single_import_per_statement": true,
+        "single_line_after_imports": true,
+        "switch_case_semicolon_to_colon": true,
+        "switch_case_space": true,
+        "visibility_required": true,
+        "encoding": true,
+        "full_opening_tag": true
+    },
+    "hashes": {
+        "\/index.php": -1418525806,
+        "\/data\/ai\/php_virtual\/tmp\/192ab855e0ca96b8f711dd4c7b40d55612bed456.php": -507601323,
+        "\/src\/AI\/Contracts\/Timezone.php": -121719609,
+        "\/src\/AI\/Contracts\/StatementManagement.php": 1300572294,
+        "\/src\/AI\/Contracts\/StringManagement.php": -230623532,
+        "\/src\/AI\/Hub\/Singleton.php": -174557164,
+        "\/src\/AI\/PHPVirtual.php": 1251589478,
+        "\/src\/AI\/Chat.php": -1370451290,
+        "\/src\/AI\/Command.php": -851511400,
+        "\/src\/AI\/AIAbstraction.php": -1005708548,
+        "\/src\/AI\/RootCommand.php": -934499800,
+        "\/src\/AI\/Exceptions\/AIException.php": 1285415605,
+        "\/src\/AI\/AI.php": 882688158,
+        "\/src\/App\/GoogleTranslate.php": -2116256404,
+        "\/src\/App\/WhatAnime.php": 1186672312,
+        "\/src\/App\/JadwalSholat.php": -1337192035,
+        "\/src\/App\/Brainly.php": -1693019922,
+        "\/src\/App\/ChitChat.php": 711566798,
+        "\/src\/App\/MyAnimeList.php": -463357783,
+        "\/src\/App\/SaferScript.php": -1566091166,
+        "\/phpinfo.php": 1594103484,
+        "\/example.php": 861549301
+    }
+}
