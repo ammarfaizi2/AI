@@ -409,7 +409,7 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
      * @param string
      * @return array
      */
-    public static function getArgv(string &$string)
+    public static function getArgv(string $string)
     {
        $unprintable_chars1 = chr(0).chr(0);
        $unprintable_chars2 = chr(1).chr(1);
