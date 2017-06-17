@@ -14,4 +14,4 @@ test:
 
 general:
   artifacts:
-    - data/ai/chat_logs/* 
+    - data/ai/chat_logs/*
