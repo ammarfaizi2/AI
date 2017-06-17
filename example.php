@@ -8,13 +8,6 @@ defined('data') or define('data', __DIR__.'/data');
 is_dir(data) or mkdir(data);
 
 use AI\AI;
-
-$x = 'sudo apt-get install esteh ';
-$a = AI::getArgv($x);
-
-var_dump($a);
-
-die;
 $start = microtime(true);
 $ai = new AI();
 $actor = "Ammar Faizi";

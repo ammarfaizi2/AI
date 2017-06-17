@@ -411,8 +411,9 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
         $_argv = [];
         $strtmp = $string;
         /**
-        * db = double quotes
-        */
+         * db = double quotes
+         * sb = single quotes
+         */
         $get_db = function (&$strtmp) use ($unprintable_chars1) {
             $q = "";
             $x = strpos($strtmp, "\"");
@@ -435,12 +436,44 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
             $strtmp = substr($strtmp, $x+1);
             return str_replace($unprintable_chars1, "\"", $q);
         };
+
+        $get_sb = function (&$strtmp) use ($unprintable_chars2) {
+            $q = "";
+            $x = strpos($strtmp, "'");
+            $v = strpos($strtmp, " ");
+            if ($x === false || ($v!==false && $v < $x)) {
+                if ($v === false) {
+                    $tmp = $strtmp;
+                    $strtmp = "";
+                    return $tmp;
+                } else {
+                    $tmp = $strtmp;
+                    $strtmp = substr($strtmp, $v+1);
+                    return substr($tmp, 0, $v);
+                }
+            }
+            $x = strpos($strtmp, "\"", $x+1);
+            for ($i=1;$i<$x;$i++) {
+                $q.=$strtmp[$i];
+            }
+            $strtmp = substr($strtmp, $x+1);
+            return str_replace($unprintable_chars2, "\"", $q);
+        };
         $dbpos = strpos($string, "\"");
-        if ($dbpos!==false) {
-            $strtmp = str_replace("\\\"", $unprintable_chars1, $strtmp);
+        $sbpos = strpos($string, "'");
+        if ($dbpos!==false || $sbpos!==false) {
             do {
-                $zx =  $get_db($strtmp);
-                $_argv[] = $zx;
+                $dbpos = strpos($string, "\"");
+                $sbpos = strpos($string, "'");
+                if (($dbpos!==false && ($dbpos < $sbpos)) || $sbpos === false) {
+                    $strtmp = str_replace("\\\"", $unprintable_chars1, $strtmp);
+                    $zx =  $get_db($strtmp);
+                    $_argv[] = $zx;
+                } elseif(($sbpos!==false && ($sbpos < $dbpos)) || $dbpos === false) {
+                    $strtmp = str_replace("\\\"", $unprintable_chars2, $strtmp);
+                    $zx =  $get_sb($strtmp);
+                    $_argv[] = $zx;
+                }
             } while ($strtmp!=="");
         } else {
             do {
