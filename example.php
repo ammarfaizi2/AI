@@ -8,6 +8,7 @@ defined('data') or define('data', __DIR__.'/data');
 is_dir(data) or mkdir(data);
 
 use AI\AI;
+
 $start = microtime(true);
 $ai = new AI();
 $actor = "Ammar Faizi";
