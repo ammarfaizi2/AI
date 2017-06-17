@@ -305,7 +305,7 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
      *
      * @param string|array $superuser
      */
-    public function set_superuser($superuser)
+    public function set_superuser($superuser):void
     {
         if (!is_array($superuser) && is_string($superuser)) {
             throw new AIException("Set super user only can use with string or array type!", self::ERROR_EXCEPTION);
@@ -317,7 +317,7 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
     /**
      * Error Log (future)
      */
-    private function errorLog($message, $errno = 1)
+    private function errorLog($message, $errno = 1):void
     {
         file_put_contents(data.self::DATA.'/error_log', "\nError : {$errno} {$message}\n\n", FILE_APPEND | LOCK_EX);
     }
@@ -327,7 +327,7 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
      *
      * @param string $timezone
      */
-    public function set_timezone(string $timezone)
+    public function set_timezone(string $timezone):void
     {
         if (in_array($timezone, $this->allowed_timezones)) {
             $this->timezone = $timezone;
@@ -343,7 +343,7 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
      * @param  string $string
      * @return string  $string
      */
-    protected function fdate(string $string)
+    protected function fdate(string $string):string
     {
         $pure = $string;
         $a = explode("#d(", $string);
@@ -496,7 +496,7 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
     /**
      * Turn on command suggestion
      */
-    public function turnOnSuggest()
+    public function turnOnSuggest():void
     {
         $this->suggest = true;
     }
@@ -504,7 +504,7 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
     /**
      * Turn off command suggestion
      */
-    public function turnOffSuggest()
+    public function turnOffSuggest():void
     {
         $this->suggest = false;
     }
@@ -514,7 +514,7 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
      *
      * void
      */
-    private function clog()
+    private function clog():void
     {
         $file = data.self::DATA.'/chat_logs/'.date('Y-m-d').'.txt';
         $data = file_exists($file) ? json_decode(file_get_contents($file), true) : array();
@@ -552,7 +552,7 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
     /**
      * __toString()
      */
-    public function __toString()
+    public function __toString():string
     {
         return isset($this->reply) ? $this->reply : "Not Available";
     }
