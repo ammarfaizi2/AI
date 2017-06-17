@@ -172,12 +172,11 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
     }
     
     /**
-     *
      * Prepare message to AI
      *
-     * @param    string $text
-     * @param    string $actor
-     * @return   object  AI Instance
+     * @param  string $text
+     * @param  string $actor
+     * @return object  AI Instance
      */
     public function prepare(string $text, string $actor=null)
     {
@@ -188,7 +187,6 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
     }
 
     /**
-     *
      * Execute message to AI
      *
      * @throws AI\Exceptions\AIException
@@ -245,7 +243,6 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
     }
 
     /**
-     *
      * Get AI response
      *
      * @return mixed
@@ -295,7 +292,6 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
     }
 
     /**
-     *
      * Set super user
      *
      * @param string|array $superuser
@@ -318,7 +314,6 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
     }
     
     /**
-     *
      * Set default timezone
      *
      * @param string $timezone
@@ -411,15 +406,14 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
      */
     public static function getArgv(string $string)
     {
-       $unprintable_chars1 = chr(0).chr(0);
-       $unprintable_chars2 = chr(1).chr(1);
-       $_argv = [];
-       $strtmp = $string;
-       /**
+        $unprintable_chars1 = chr(0).chr(0);
+        $unprintable_chars2 = chr(1).chr(1);
+        $_argv = [];
+        $strtmp = $string;
+        /**
         * db = double quotes
         */
-       
-       $get_db = function(&$strtmp) use ($unprintable_chars1){
+        $get_db = function (&$strtmp) use ($unprintable_chars1) {
             $q = "";
             $x = strpos($strtmp, "\"");
             $v = strpos($strtmp, " ");
@@ -435,26 +429,26 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
                 }
             }
             $x = strpos($strtmp, "\"", $x+1);
-            for ($i=1;$i<$x;$i++) { 
-                   $q.=$strtmp[$i];
+            for ($i=1;$i<$x;$i++) {
+                $q.=$strtmp[$i];
             }
             $strtmp = substr($strtmp, $x+1);
             return str_replace($unprintable_chars1, "\"", $q);
         };
-       $dbpos = strpos($string, "\"");
-       if ($dbpos!==false) {
-           $strtmp = str_replace("\\\"", $unprintable_chars1, $strtmp);
-           do {
-            $zx =  $get_db($strtmp);
-            $_argv[] = $zx;
-           } while ($strtmp!=="");
-       } else {
+        $dbpos = strpos($string, "\"");
+        if ($dbpos!==false) {
+            $strtmp = str_replace("\\\"", $unprintable_chars1, $strtmp);
             do {
                 $zx =  $get_db($strtmp);
                 $_argv[] = $zx;
             } while ($strtmp!=="");
-       }
-       return $_argv;
+        } else {
+            do {
+                $zx =  $get_db($strtmp);
+                $_argv[] = $zx;
+            } while ($strtmp!=="");
+        }
+        return $_argv;
     }
 
     /**
@@ -493,11 +487,10 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
     }
 
     /**
-     *
      * Count average.
      *
-     * @param   array $array
-     * @return  int|float
+     * @param  array $array
+     * @return int|float
      */
     public static function average($array)
     {
