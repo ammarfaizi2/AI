@@ -11,3 +11,7 @@ test:
   override:
     - php example.php
     - cat data/ai/chat_logs/*
+
+general:
+  artifacts:
+    - data/ai/chat_logs/* 
