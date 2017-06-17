@@ -1,4 +1,5 @@
 <?php
+
 namespace AI;
 
 /**
@@ -7,41 +8,6 @@ namespace AI;
 
 trait Chat
 {
-    /**
-     * Nama hari dalam bahasa indonesia
-     *
-     * @var array
-     */
-    private $hari = array(
-            "Minggu",
-            "Senin",
-            "Selasa",
-            "Rabu",
-            "Kamis",
-            "Jum'at",
-            "Sabtu"
-        );
-
-    /**
-     * Nama bulan dalam bahasa indonesia
-     *
-     * @var array
-     */
-    private $bulan = array(
-            "Januari",
-            "Februari",
-            "Maret",
-            "April",
-            "Mei",
-            "Juni",
-            "Juli",
-            "Agustus",
-            "September",
-            "Oktober",
-            "November",
-            "Desember"
-        );
-
     /**
      * Wordlist
      *
@@ -77,24 +43,19 @@ trait Chat
     {
         $this->msg = strip_tags($this->msg);
         $this->wl = array(
+
             "hai,hay,hi,hy"=>array(
             1,array(
                     "Hai juga ^@. Apa kabar?",
                     "Hay juga ^@. Apa kabar?"
-                ),
-            true,5,25,null,false
-            ),
+            ),true,5,25,null,false),
 
-            /**
-             *  Say hello.
-             */
             "halo,hallo,allo,helo,hola,alo,ello"=>array(
             1,array(
                     "Halo juga kang ^@ :)",
-                    "Halo juga kang ^@, apa kabar?",
+                    "Halo juga kang ^@",
                     "Halo juga kak ^@"
-                ),
-            false,10,50,null,false),
+            ),false,10,50,null,false),
 
             /**
              *  Tanya kabar.
@@ -103,9 +64,7 @@ trait Chat
             1,array(
                     "Kabar baik disini.",
                     "Kabar baik, kang ^@ apa kabar?"
-                ),
-            false,10,50,null,false),
-
+            ),false,10,50,null,false),
 
             /**
              *  Menanyakan jam (Bahasa Inggris)
@@ -113,8 +72,7 @@ trait Chat
             "what+time"=>array(
             1,array(
                     "Time #d(jam_pq)"
-                ),
-            false,10,50,null,false),
+            ),false,10,50,null,false),
 
             /**
              *  Menanyakan jam (Bahasa Indonesia)
@@ -125,8 +83,7 @@ trait Chat
                     "11-14"=>array("Sekarang jam #d(jam) siang"),
                     "14-17"=>array("Sekarang jam #d(jam) sore"),
                     "18-24"=>array("Sekarang jam #d(jam) malam")
-                ),
-            false,10,50,null,true),
+            ),false,10,50,null,true),
 
             /**
              *  Menanyakan hari besok.
@@ -134,8 +91,7 @@ trait Chat
             "besok+hari+apa"=>array(
             1,array(
                     "besok hari #d(day+1day)"
-                ),
-            false,10,50,null,false),
+            ),false,10,50,null,false),
 
             /**
              *  Menanyakan hari kemarin.
@@ -143,8 +99,7 @@ trait Chat
             "kemarin+hari+apa"=>array(
             1,array(
                     "kemarin hari #d(day-1day)"
-                ),
-            false,10,50,null,false),
+            ),false,10,50,null,false),
 
             /**
              *  Menanyakan hari sekarang.
@@ -152,8 +107,7 @@ trait Chat
             "hari+apa"=>array(
             1,array(
                     "sekarang hari #d(day)"
-                ),
-            false,10,50,null,false),
+            ),false,10,50,null,false),
 
             /**
              *  Menanyakan bulan sekarang.
@@ -161,8 +115,7 @@ trait Chat
             "bulan+apa"=>array(
             1,array(
                     "sekarang bulan #d(bulan)"
-                ),
-            false,10,50,null,false),
+            ),false,10,50,null,false),
 
             /**
              *  Menanyakan tanggal kemarin.
@@ -170,9 +123,7 @@ trait Chat
             "kemarin+tanggal+brp,kemarin+tanggal+berapa,kemarin+tgl+brp,kemarin+tgl+berapa"=>array(
             1,array(
                     "Kemarin tanggal #d(date_c-1day)"
-                ),
-            false,10,50,null,false
-            ),
+            ),false,10,50,null,false),
 
             /**
              *  Menanyakan tanggal besok.
@@ -180,9 +131,7 @@ trait Chat
             "besok+tanggal+brp,besok+tanggal+berapa,besok+tgl+brp,besok+tgl+berapa"=>array(
             1,array(
                     "Besok tanggal #d(date_c+1day)"
-                ),
-            false,10,50,null,false
-            ),
+            ),false,10,50,null,false),
 
 
             /**
@@ -191,9 +140,7 @@ trait Chat
             "tanggal+brp,tanggal+berapa,tgl+brp,tgl+berapa"=>array(
             1,array(
                     "Sekarang tanggal #d(date_c)"
-                ),
-            false,10,50,null,false
-            ),
+            ),false,10,50,null,false),
 
 
             /**
@@ -216,8 +163,7 @@ trait Chat
                     "19-23,0"=>array(
                         "Ini sudah malem kang ^@ 😌"
                     )
-                ),
-            false,8,35,null,true),
+            ),false,8,35,null,true),
 
             /**
              *  Sapaan di siang hari.
@@ -236,8 +182,7 @@ trait Chat
                     "19-24"=>array(
                         "Ini udah malem kang ^@ 😌"
                     )
-            ),
-            false,8,35,null,true),
+            ),false,8,35,null,true),
 
             /**
              *  Sapaan di sore hari.
@@ -256,8 +201,7 @@ trait Chat
                     "19-24"=>array(
                         "Ini udah malem kang ^@ 😌"
                     )
-            ),
-            true,8,35,null,true),
+            ),true,8,35,null,true),
 
 
             /**
@@ -280,8 +224,7 @@ trait Chat
                     "19-23"=>array(
                         "Selamat malam kang ^@, selamat beristirahat."
                     )
-                ),
-            true,9,65,null,true),
+            ),true,9,65,null,true),
 
 
             /**
@@ -304,8 +247,7 @@ trait Chat
                     "19-23"=>array(
                         "Ini udah malem kang ^@"
                     )
-                ),
-            false,9,65,null,true),
+            ),false,9,65,null,true),
 
             /**
              *  Sapaan di siang hari.
@@ -321,8 +263,7 @@ trait Chat
                     "19-23"=>array(
                         "Ini udah malem kang ^@"
                     )
-                ),
-            false,9,90,null,false),
+            ),false,9,90,null,false),
 
 
             /**
@@ -336,8 +277,7 @@ trait Chat
                     "10-23"=>array(
                         "konbanwa kang ^@"
                     )
-                ),
-            true,8,65,null,true),
+            ),true,8,65,null,true),
 
             /**
              *  Tertawa.
@@ -345,8 +285,7 @@ trait Chat
             "haha,hihi,wkwk,wkeke,hhh"=>array(
             1,array(
                     "Dilarang ketawa !"
-                ),
-            false,10,75,null,false),
+            ),false,10,75,null,false),
 
             /**
              *  Move on.
@@ -356,65 +295,60 @@ trait Chat
                     "Move on adalah jalan terbaik kak ^@, kamu harus kuat :)",
                     "Jangan mudah percaya dengan orang lain, move on itu susah.",
                     "Selamat move on.\n\nUdah itu aja."
-                ),
-            true,8,75,null,false),
+            ),true,8,75,null,false),
 
             "jomblo"=>array(
             1,array(
                     "Ciyaah... @ jomblo nih 😂😂",
                     "Ciye jomblo :v",
                     "Ciye ^@ jomblo 😏"
-                ),
-            false,9,90,null,false),
+            ),false,9,90,null,false),
 
 
             "larang"=>array(
                 1,array(
                     "Wah ngelarang larang nih kang ^@ 😏",
                     "Kang ^@, mau dilarang?"
-                ),
-                false,7,45,null,false),
+                ),false,7,45,null,false),
 
 
                 "laper,lapar,lavar"=>array(
                 1,array(
-                    "0-3"=>array(
-                        "Segera sahur kang ^@",
-                        "Sahur dulu kang ^@ 😊"
-                    ),
-                    "4-15"=>array(
-                        "Sabar kang ^@, belum waktunya berbuka 😇",
-                        "Sabar ya kang ^@, kita tunggu sampai waktunya berbuka."
-                    ),
-                    "16-17"=>array(
-                        "Sabar kang ^@, bentar lagi magrib kok 😏",
-                        "Sabar aja ya kang ^@, sebentar lagi udah magrib 😋😏"
-                    ),
-                    "18-24"=>array(
-                        "Kalau laper ya makan 😊",
-                        "Makan gamping dong. *eeehhhh",
-                        "Makan tanah dong. *eeeehhh",
-                        "Makan aeeh :v"
-                    )
+                "0-3"=>array(
+                    "Segera sahur kang ^@",
+                    "Sahur dulu kang ^@ 😊"
                 ),
-                false,10,75,null,true),
+                "4-15"=>array(
+                    "Sabar kang ^@, belum waktunya berbuka 😇",
+                    "Sabar ya kang ^@, kita tunggu sampai waktunya berbuka."
+                ),
+                "16-17"=>array(
+                    "Sabar kang ^@, bentar lagi magrib kok 😏",
+                    "Sabar aja ya kang ^@, sebentar lagi udah magrib 😋😏"
+                ),
+                "18-24"=>array(
+                    "Kalau laper ya makan 😊",
+                    "Makan gamping dong. *eeehhhh",
+                    "Makan tanah dong. *eeeehhh",
+                    "Makan aeeh :v"
+                )
+                ),false,10,75,null,true),
 
 
                 "bot,"=>array(
                 1,array(
                     "Ya, ada apa kang ^@?",
-                ),
-                true,2,5,null,true),
+                ),true,2,5,null,true),
 
 
 
 
                 /**
-                 * Check 2
-                 */
-                "assalamualaikum"=>array(
+             * Check 2
+             */
+                "assalamualaikum,asalamualaikum"=>array(
                 2,array(
-                        "Waalaikumsalam"
+                    "Waalaikumsalam"
                 ),
                 80,10,75,null,false),
 
@@ -591,77 +525,5 @@ trait Chat
             }
         }
         return false;
-    }
-
-    /**
-     * Convert time character to absolute time
-     *
-     * @param  string $string
-     * @return string  $string
-     */
-    private function fdate(string $string)
-    {
-        $pure = $string;
-        $a = explode("#d(", $string);
-        if (!isset($a[1])) {
-            return $string;
-        }
-        $a = explode(")", $a[1]);
-        $b = explode("+", $a[0]);
-        if (count($b)==1) {
-            $b = explode("-", $a[0]);
-            (count($b)==1) and ($out = $b[0] xor $tc = false) or ($tc = true xor $op = "-");
-        } else {
-            ($op = "+" xor $tc = true);
-        }
-        if ($tc) {
-            $replacer = "#d(".$b[0].$op.$b[1].")";
-            $c = strtotime(date("Y-m-d H:i:s").$op.$b[1], strtotime("Y-m-d H:i:s"));
-            $b = $b[0];
-        } else {
-            $replacer = "#d(".$b[0].")";
-            $c = strtotime(date("Y-m-d H:i:s"));
-            $b = $b[0];
-        }
-        switch ($b) {
-
-            /**
-             *  Untuk hari.
-             */
-        case 'day': case 'days':
-                $c = $this->hari[date("w", $c)];
-            break;
-
-            /**
-             *  Untuk jam.
-             */
-        case 'jam':
-            $c = date("h:i:s", $c);
-            break;
-
-            /**
-             *  Untuk bulan.
-             */
-        case 'bulan': case 'month':
-                $c = $this->bulan[(int)date("m", $c)];
-            break;
-
-            /**
-             *  Untuk tanggal.
-             */
-        case 'date_c':
-            $c = date("d", $c)." ".($this->bulan[(int)date("m", $c)])." ".date("Y", $c);
-            break;
-
-            /**
-             *  Tidak dikenal.
-             */
-        default:
-            $c = "unknown_param({$c})";
-            break;
-        }
-        $return = str_replace($replacer, $c, $pure);
-        !(strpos($return, "#d(")===false) and $return = $this->fdate($return);
-        return $return;
     }
 }

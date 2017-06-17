@@ -1,13 +1,9 @@
 <?php
+
 namespace AI\Exceptions;
 
 use AI\AI;
 use Exception;
-
-/**
- *
- * @author    Ammar Faizi    <ammarfaizi2@gmail.com>
- */
 
 class AIException extends Exception
 {

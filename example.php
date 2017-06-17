@@ -8,11 +8,10 @@ defined('data') or define('data', __DIR__.'/data');
 is_dir(data) or mkdir(data);
 
 use AI\AI;
-
 $start = microtime(true);
 $ai = new AI();
 $actor = "Ammar Faizi";
-$msg   = "<?php print 1;";
+$msg   = 'teacrypt dec "=MHt0ocyPW78UITzVDBMKcNUyOLZjFAA"" 123123123';
 $st = $ai->prepare($msg, $actor);
 $st->set_timezone("Asia/Jakarta");
 $st->set_superuser(array("Ammar Faizi"));
