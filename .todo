@@ -12,4 +12,7 @@
             Fixed
         </comment>
     </note>
+    <note priority="high" time="1497625107">
+        Create get_argv method
+    </note>
 </todo>

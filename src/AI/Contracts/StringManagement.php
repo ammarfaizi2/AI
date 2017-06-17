@@ -8,5 +8,5 @@ interface StringManagement
 	 * @param string $string
 	 * @return array
 	 */
-	public function getArgv(string $string);
+	public static function getArgv(string &$string);
 }

@@ -12,6 +12,7 @@ use AI\Hub\Singleton;
 use AI\AIAbstraction;
 use AI\Contracts\Timezone;
 use AI\Exceptions\AIException;
+use AI\Contracts\StringManagement;
 use AI\Contracts\StatementManagement;
 
 /**
@@ -197,9 +198,7 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
     {
         if (!isset($this->absmsg)) {
             throw new AIException("Cannot access execute method directly, you must prepared a message first!", self::ERROR_EXCEPTION);
-            
-            /*avoid try catch*/
-            die("Don't try catch AIException!");
+            $this->die();
         }
 
         if (!isset($this->timezone)) {
@@ -303,6 +302,10 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
      */
     public function set_superuser($superuser)
     {
+        if (!is_array($superuser) && is_string($superuser)) {
+            throw new AIException("Set super user only can use with string or array type!", self::ERROR_EXCEPTION);
+            $this->die();
+        }
         $this->superuser = $superuser;
     }
 
@@ -403,6 +406,58 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
     }
 
     /**
+     * @param string
+     * @return array
+     */
+    public static function getArgv(string &$string)
+    {
+       $unprintable_chars1 = chr(0).chr(0);
+       $unprintable_chars2 = chr(1).chr(1);
+       $_argv = [];
+       $strtmp = $string;
+       /**
+        * db = double quotes
+        */
+       
+       $get_db = function(&$strtmp) use ($unprintable_chars1){
+            $q = "";
+            $x = strpos($strtmp, "\"");
+            $v = strpos($strtmp, " ");
+            if ($x === false || ($v!==false && $v < $x)) {
+                if ($v === false) {
+                    $tmp = $strtmp;
+                    $strtmp = "";
+                    return $tmp;
+                } else {
+                    $tmp = $strtmp;
+                    $strtmp = substr($strtmp, $v+1);
+                    return substr($tmp, 0, $v);
+                }
+            }
+            $x = strpos($strtmp, "\"", $x+1);
+            for ($i=1;$i<$x;$i++) { 
+                   $q.=$strtmp[$i];
+            }
+            $strtmp = substr($strtmp, $x+1);
+            return str_replace($unprintable_chars1, "\"", $q);
+        };
+       $dbpos = strpos($string, "\"");
+       if ($dbpos!==false) {
+           $strtmp = str_replace("\\\"", $unprintable_chars1, $strtmp);
+           do {
+            $zx =  $get_db($strtmp);
+            $_argv[] = $zx;
+           } while ($strtmp!=="");
+       } else {
+            do {
+                $zx =  $get_db($strtmp);
+                $_argv[] = $zx;
+            } while ($strtmp!=="");
+       }
+       return $_argv;
+    }
+
+    /**
      * Turn on command suggestion
      */
     public function turnOnSuggest()
@@ -480,6 +535,13 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
      */
     public function __destruct()
     {
+    }
+
+    private function die()
+    {
+        $this->__destruct();
+        /*avoid try catch*/
+        die("Don't try catch AIException!");
     }
 
     /**
