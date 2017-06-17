@@ -4,5 +4,5 @@ namespace AI;
 
 abstract class AIFoundation
 {
-	abstract public function execute();
+    abstract public function execute();
 }
