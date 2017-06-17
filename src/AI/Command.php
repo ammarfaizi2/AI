@@ -188,7 +188,7 @@ trait Command
                  */
             case 'teacrypt':
                 $this->type = "text";
-                $msg = explode(" ", $this->absmsg);
+                $msg = self::getArgb($this->absmsg);
                 if (strtolower($msg[1]) == "enc") {
                     if (!isset($msg[3]) or empty($msg[3])) {
                         $this->reply = "Key harus diisi !";
