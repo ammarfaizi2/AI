@@ -517,7 +517,7 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
     private function clog()
     {
         $file = data.self::DATA.'/chat_logs/'.date('Y-m-d').'.txt';
-        $data = file_exists($file) ? json_decode(file_get_contents($file), true) ();
+        $data = file_exists($file) ? json_decode(file_get_contents($file), true) : array();
         $data = $data===null ? array() : $data;
         $data[] = array(
                 'time'  => (date('Y-m-d H:i:s')),
