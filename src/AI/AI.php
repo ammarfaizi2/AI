@@ -187,8 +187,7 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
      * @param  string $actor
      * @return object  AI Instance
      */
-    public function prepare(string $text, string $actor=null)
-    {
+    public function prepare(string $text, string $actor=null): self {
         $this->msg      = trim(strtolower($text));
         $this->absmsg   = $text;
         $this->actor    = $actor;
@@ -201,8 +200,7 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
      * @throws AI\Exceptions\AIException
      * @return bool
      */
-    public function execute()
-    {
+    public function execute(): bool {
         if (!isset($this->absmsg)) {
             throw new AIException("Cannot access execute method directly, you must prepared a message first!", self::ERROR_EXCEPTION);
             $this->die();
@@ -264,7 +262,7 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
     /**
      * @return bool
      */
-    private function suggest_act()
+    private function suggest_act(): bool
     {
         $return = false;
         $suggets_diff = 3;
@@ -413,7 +411,7 @@ class AI extends AIAbstraction implements Timezone, StatementManagement, StringM
      * @param string
      * @return array
      */
-    public static function getArgv(string $string)
+    public static function getArgv(string $string): array
     {
         $unprintable_chars1 = chr(0).chr(0);
         $unprintable_chars2 = chr(1).chr(1);
