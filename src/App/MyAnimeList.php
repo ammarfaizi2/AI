@@ -36,10 +36,10 @@ class MyAnimeList extends AIFoundation
             if (function_exists("simplexml_load_string")) {
                 $result = json_encode(simplexml_load_string($ch->execute()), 128);
                 $result=='false' or file_put_contents(data.'/ani/myanimelist/results/'.$this->hash, $result);
+            } else {
+                $result = "Cannot load simplexml_load_string";
             }
-            $result = "Cannot load simplexml_load_string";
         }
-
         return $this->save_to_data(json_decode($result, true));
     }
     private function save_to_data($result)
