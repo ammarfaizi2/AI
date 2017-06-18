@@ -12,7 +12,7 @@ use AI\AI;
 $start = microtime(true);
 $ai = new AI();
 $actor = "Ammar Faizi";
-$msg   = 'q_anime ordinal scale';
+$msg   = 'i_anime 31765';
 $st = $ai->prepare($msg, $actor);
 $st->set_timezone("Asia/Jakarta");
 $st->set_superuser(array("Ammar Faizi"));
