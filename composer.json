@@ -8,10 +8,9 @@
             "email": "ammarfaizi2@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
-        "ammarfaizi2/ratools": "*",
-        "ammarfaizi2/teacrypt": "*"
+        "ammarfaizi2/ratools": "dev-master",
+        "ammarfaizi2/teacrypt": "dev-master"
     },
     "autoload": {
         "psr-0": {
