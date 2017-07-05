@@ -42,13 +42,19 @@ class AI implements AIContract
     private $lang = "id";
 
     /**
+     * @var object
+     */
+    private $invoke;
+
+    /**
      * Constructor.
      * @throws System\Exception\AIException
+     * @param object $invoke
      */
     public function __construct()
     {
         if(! (defined("data") and defined("logs") and defined("storage"))) {
-            $this->systatlog("Fatal Error", $error = $this->sysstr("error_constants"));
+            $this->syslog("Fatal Error", $error = $this->sysstr("error_constants"));
             throw new AIException($error, 1);
             die("Avoid catch AIException");
         }
@@ -58,6 +64,7 @@ class AI implements AIContract
         is_dir(data) or shell_exec("mkdir -p ".data);
         is_dir(logs) or shell_exec("mkdir -p ".logs);
         is_dir(storage) or shell_exec("mkdir -p ".storage);
+        $this->invoke = func_get_args();
     }
 
     /**
@@ -85,6 +92,20 @@ class AI implements AIContract
     public function set_lang($lang_id)
     {
         $this->lang = $lang_id;
+    }
+
+    /**
+     * @return bool
+     */
+    public function execute()
+    {
+        foreach ($this->invoke as $key => $inv) {
+            if (!is_object($inv)) {
+                $this->syslog("Fatal Error", $error = "__construct param is not fully object.");
+                throw new AIException($error, 1);
+                die("Avoid catch AIException");
+            }
+        }
     }
 
     /**
