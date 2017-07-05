@@ -16,7 +16,9 @@
     "autoload": {
         "psr-0": {
             "AI": "src/",
-            "App": "src/"
+            "App": "src/",
+            "Contracts": "src/",
+            "System": "src/"
         }
     },
     "scripts": {

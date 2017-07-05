@@ -4,25 +4,30 @@ namespace AI;
 
 defined('data') or die('Error : data not defined !');
 
-use AI\Chat;
-use AI\Command;
+
 use App\Brainly;
 use App\ChitChat;
 use AI\PHPVirtual;
 use App\WhatAnime;
-use AI\RootCommand;
-use App\MyAnimeList;
+
+use App\MyAnimeList\MyAnimeList;
 use App\SaferScript;
 use AI\Hub\ChatFace;
-use AI\AIAbstraction;
-use AI\Hub\Singleton;
+
+
 use App\JadwalSholat;
 use Teacrypt\Teacrypt;
 use App\GoogleTranslate;
-use AI\Contracts\Timezone;
 use AI\Exceptions\AIException;
 use AI\Contracts\StringManagement;
 use AI\Contracts\StatementManagement;
+
+use AI\Traits\Chat;
+use AI\Traits\Command;
+use AI\Traits\RootCommand;
+
+use System\Hub\Singleton;
+use AI\Abstraction\AIAbstraction;
 
 /**
  * @version 0.1
@@ -30,7 +35,7 @@ use AI\Contracts\StatementManagement;
  * @author  Ammar Faizi <ammarfaizi2@gmail.com>
  */
 
-class AI extends AIAbstraction implements Timezone, StatementManagement, StringManagement
+class AI extends AIAbstraction
 {
     const DATA              = '/ai/';
     const VERSION           = "0.1";
