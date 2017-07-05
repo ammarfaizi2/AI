@@ -1,5 +1,7 @@
 /vendor/
+/storage/
 /data/
+/logs/
 /phpinfo.php
 *.tmp
 *.lock

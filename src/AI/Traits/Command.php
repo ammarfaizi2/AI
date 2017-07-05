@@ -268,32 +268,4 @@ trait Command
         }
         return isset($get_kota_mirip) ? $get_kota_mirip : false;
     }
-
-    private static function trigonometri()
-    {
-        /**
-         * Mini trigonometri
-         */
-        $trigonometri['sin'] = array(
-                        0  => "0",
-                        30 => "(1/2)",
-                        45 => "(1/2)*sqrt(2)",
-                        60 => "(1/2)*sqrt(3)",
-                        90 => "1",
-                    );
-        $trigonometri['cos'] = array(
-                        0  => "1",
-                        30 => "(1/2)*sqrt(3)",
-                        45 => "(1/2)*sqrt(2)",
-                        60 => "(1/2)",
-                        90 => "0"
-                    );
-        $trigonometri['tan'] = array(
-                        0  => "0",
-                        30 => "(1/3)*sqrt(3)",
-                        45 => "1",
-                        60 => "sqrt(3)",
-                        90 => "~"
-                    );
-    }
 }
