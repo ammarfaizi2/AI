@@ -8,7 +8,9 @@
             "email": "ammarfaizi2@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "ammarfaizi2/curl": "dev-master"
+    },
     "autoload": {
         "psr-0": {
             "AI": "src/",
