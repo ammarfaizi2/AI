@@ -11,6 +11,6 @@ class id
 	public static $system = [
 		"error"     		=> "Terjadi masalah!",
 		"success"   		=> "Berhasil",
-		"error_constants"	=> "Constant yang dibutuhkan tidak terdefinisi secara lengkap",
+		"error_constants"	=> "Constant yang dibutuhkan tidak terdefinisi secara lengkap"
 	];
 }

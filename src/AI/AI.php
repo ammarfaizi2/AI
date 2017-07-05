@@ -13,7 +13,7 @@ use System\Exceptions\AIException;
  */
 
 class AI implements AIContract
-{	
+{
 	const VERSION = "0.0.2.1";
 
 	/**
@@ -48,7 +48,7 @@ class AI implements AIContract
 	public function __construct()
 	{
 		if(! (defined("data") and defined("logs") and defined("storage"))) {
-			$this->syslog("Fatal Error", $error = $this->sysstr("error_constants"));
+			$this->systatlog("Fatal Error", $error = $this->sysstr("error_constants"));
 			throw new AIException($error, 1);
 			die("Avoid catch AIException");
 		}
