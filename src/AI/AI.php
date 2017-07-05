@@ -95,4 +95,14 @@ class AI implements AIContract
 		$class = "\\AI\\Lang\\".$this->lang;
 		return $class::$system[$key];
 	}
+
+	/**
+	 * AI log
+	 */
+	private function log($action, $info = "")
+	{
+		$handle = fopen(logs."/AI.log", "w");
+		fwrite($handle, "[".date("Y-m-d H:i:s")."] ".$action." | ".$info);
+		fclose($handle);
+	}
 }
