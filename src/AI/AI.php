@@ -99,13 +99,24 @@ class AI implements AIContract
      */
     public function execute()
     {
+        $this->_prexecute();
         foreach ($this->invoke as $key => $inv) {
             if (!is_object($inv)) {
                 $this->syslog("Fatal Error", $error = "__construct param is not fully object.");
                 throw new AIException($error, 1);
                 die("Avoid catch AIException");
+            } else {
+                $inv($this);
             }
         }
+    }
+
+    /**
+     * Private execute.
+     */
+    private function _prexecute()
+    {
+
     }
 
     /**
