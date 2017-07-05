@@ -48,7 +48,8 @@ class AI implements AIContract
 	public function __construct()
 	{
 		if(! (defined("data") and defined("logs") and defined("storage"))) {
-			throw new AIException($this->sysstr("error_constants"), 1);
+			$this->syslog("Fatal Error", $error = $this->sysstr("error_constants"));
+			throw new AIException($error, 1);
 			die("Avoid catch AIException");
 		}
 		is_dir(data) or mkdir(data);		
@@ -99,10 +100,10 @@ class AI implements AIContract
 	/**
 	 * AI log
 	 */
-	private function log($action, $info = "")
+	private function syslog($action, $info = "")
 	{
-		$handle = fopen(logs."/AI.log", "w");
-		fwrite($handle, "[".date("Y-m-d H:i:s")."] ".$action." | ".$info);
+		$handle = fopen(logs."/sys.log", "w");
+		fwrite($handle, "[".date("Y-m-d H:i:s")."] ".$action." | ".$info."\n");
 		fclose($handle);
 	}
 }
