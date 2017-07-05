@@ -5,6 +5,11 @@ namespace AI;
 use AI\Abstraction\AIAbstraction;
 use System\Exceptions\AIException;
 
+/**
+ * @author Ammar Faizi <ammarfaizi2@gmail.com>
+ * @version 0.0.2.1
+ * @license BSD
+ */
 class AI extends AIAbstraction
 {	
 	/**
@@ -23,13 +28,23 @@ class AI extends AIAbstraction
 	private $actor;
 
 	/**
+	 * @var string
+	 */
+	private $timezone;
+
+	/**
+	 * @var string
+	 */
+	private $lang = "id";
+
+	/**
 	 * Constructor.
 	 * @throws System\Exception\AIException
 	 */
 	public function __construct()
 	{
 		if(! (defined("data") and defined("logs") and defined("storage"))) {
-			throw new AIException("Needed constants not defined completely!", 1);
+			throw new AIException($this->sysstr("error_constants"), 1);
 			die("Avoid catch AIException");
 		}
 		is_dir(data) or mkdir(data);		
@@ -51,5 +66,29 @@ class AI extends AIAbstraction
 		$this->abs_input = $input;
 	}
 
+	/**
+	 * @param string
+	 */
+	public function set_timezone($timezone)
+	{
+		$this->timezone = $timezone;
+	}
 
+	/**
+	 * @param string
+	 */
+	public function set_lang($lang_id)
+	{
+		$this->lang = $lang_id;
+	}
+
+	/**
+	 * @param string
+	 * @return string
+	 */
+	private function sysstr($key)
+	{
+		$class = "\\AI\\Lang\\".$this->lang;
+		return $class::$system[$key];
+	}
 }
