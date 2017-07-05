@@ -8,7 +8,7 @@ namespace AI\Traits;
 
 trait Chat
 {
-	/**
+    /**
      * Chat
      */
 

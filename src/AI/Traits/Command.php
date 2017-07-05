@@ -15,7 +15,7 @@ use App\GoogleTranslate\GoogleTranslate;
 
 trait Command
 {
-	 /**
+    /**
      * Command
      */
     private $command_list = array(

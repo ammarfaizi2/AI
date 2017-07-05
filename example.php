@@ -11,7 +11,7 @@ $input = "Halo";
 $start = microtime(true);
 $ai = new AI();
 $ai->input($input, $actor);
-#$ai->execute();
+// $ai->execute();
 
 
 
