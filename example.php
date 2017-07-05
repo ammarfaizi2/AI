@@ -1,11 +1,6 @@
 <?php
-require __DIR__ . '/vendor/autoload.php';
-
-/**
- * Define `data` constant and create folder for AI data
- */
-defined('data') or define('data', __DIR__.'/data');
-is_dir(data) or mkdir(data);
+require __DIR__.'/vendor/autoload.php';
+require __DIR__.'/config.php';
 
 use AI\AI;
 
