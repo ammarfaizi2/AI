@@ -8,15 +8,11 @@
             "email": "ammarfaizi2@gmail.com"
         }
     ],
-    "require": {
-        "ammarfaizi2/ratools": "dev-master",
-        "ammarfaizi2/teacrypt": "dev-master"
-    },
+    "require": {},
     "autoload": {
         "psr-0": {
             "AI": "src/",
             "App": "src/",
-            "Contracts": "src/",
             "System": "src/"
         }
     },
