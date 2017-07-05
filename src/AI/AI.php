@@ -102,7 +102,7 @@ class AI implements AIContract
 	 */
 	private function syslog($action, $info = "")
 	{
-		$handle = fopen(logs."/sys.log", "w");
+		$handle = fopen(logs."/sys.log", "a");
 		fwrite($handle, "[".date("Y-m-d H:i:s")."] ".$action." | ".$info."\n");
 		fclose($handle);
 	}
