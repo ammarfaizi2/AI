@@ -1,67 +1,61 @@
 <?php
-namespace App;
 
-defined('data') or die("data not defined !");
-
-use Curl\CMCurl;
-use AI\AIFoundation;
+namespace App\WhatAnime;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
+ * @package App\WhatAnime
+ * @since 0.0.1
  */
 
-class WhatAnime extends AIFoundation
+use IceTeaSystem\Curl;
+use App\WhatAnime\WhatAnimeContract;
+use App\WhatAnime\WhatAnimeException;
+
+defined("data") or die("Data not defined !\n");
+
+class WhatAnime implements WhatAnimeContract
 {
-    public function __construct($in)
-    {
-        is_dir(data.'/ani') or mkdir(data.'/ani');
-        is_dir(data.'/ani/wa') or mkdir(data.'/ani/wa');
-        is_dir(data.'/ani/wa/results') or mkdir(data.'/ani/wa/results');
-        is_dir(data.'/ani/wa/history') or mkdir(data.'/ani/wa/history');
-        $this->hash = md5($in);
-        $this->input = $in;
-    }
-    public function execute()
-    {
-        if (file_exists(data.'/ani/wa/results/'.$this->hash)) {
-            $this->result = file_get_contents(data.'/ani/wa/results/'.$this->hash);
-            return true;
-        } else {
-            if (file_exists(data.'/ani/wa/history/'.$this->hash)) {
-                $this->file = base64_encode(file_get_contents(data.'/ani/wa/history/'.$this->hash));
-            } else {
-                $ch = new CMCurl($this->input);
-                $ch->set_useragent();
-                $file = $ch->execute();
-                file_put_contents(data.'/ani/wa/history/'.$this->hash, $file);
-                $this->file = base64_encode($file);
-            }
-        }
-        $ch = new CMCurl("https://whatanime.ga/search");
-        $ch->set_useragent();
-        $ch->set_optional(
-            array(
-                    CURLOPT_REFERER=>"https://whatanime.ga/?url=".urlencode($this->input)
-                )
-        );
-        $ch->set_header(
-            array(
-            "X-Requested-With: XMLHttpRequest",
-            "Content-Type: application/x-www-form-urlencoded; charset=UTF-8"
-            )
-        );
-        $ch->set_post("data=data%3Aimage%2Fjpeg%3Bbase64%2C".urlencode($this->file));
-        $this->result = $ch->execute();
-        file_put_contents(data.'/ani/wa/results/'.$this->hash, json_encode(json_decode($this->result), 128));
-        $ch->close();
-        return true;
-    }
+    /**
+     * @var string
+     */
+    private $image;
 
     /**
-    *   @return array
-    */
-    public function fetch_result($array=true)
+     * Constructor.
+     *
+     * @param string
+     */
+    public function __construct($image, $type=null)
     {
-        return json_decode($this->result, $array);
+        if ($type=="real") {
+            $this->image = $image;
+        } elseif (filter_var($image, FILTER_VALIDATE_URL)) {
+            $ch = new Curl($image);
+            $this->image = $ch->exec();
+            // header("Content-Type:image/jpg");
+            // var_dump(base64_encode($this->image));die;
+        } else {
+            $this->image = $image;
+        }
+    }
+    
+    /**
+     * Execute search.
+     */
+    public function exec()
+    {
+        $ch = new Curl("https://whatanime.ga/search");
+        $ch->post("data=data%3Aimage%2Fjpeg%3Bbase64%2C".urlencode(base64_encode($this->image)));
+        $ch->set_opt(
+            array(
+                CURLOPT_REFERER    => "https://whatanime.ga/",
+                CURLOPT_HTTPHEADER => array(
+                    "X-Requested-With: XMLHttpRequest",
+                    "Content-Type: application/x-www-form-urlencoded; charset=UTF-8"
+                )
+            )
+        );
+        return $ch->exec();
     }
 }
