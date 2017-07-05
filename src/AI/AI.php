@@ -3,6 +3,7 @@
 namespace AI;
 
 use AI\Abstraction\AIAbstraction;
+use System\Exceptions\AIException;
 
 class AI extends AIAbstraction
 {	
@@ -23,15 +24,20 @@ class AI extends AIAbstraction
 
 	/**
 	 * Constructor.
+	 * @throws System\Exception\AIException
 	 */
 	public function __construct()
 	{
-		is_dir(data) or mkdir(data);
-		is_dir(storage) or mkdir(storage);
+		if(! (defined("data") and defined("logs") and defined("storage"))) {
+			throw new AIException("Needed constants not defined completely!", 1);
+			die("Avoid catch AIException");
+		}
+		is_dir(data) or mkdir(data);		
 		is_dir(logs) or mkdir(logs);
+		is_dir(storage) or mkdir(storage);
 		is_dir(data) or shell_exec("mkdir -p ".data);
-		is_dir(storage) or shell_exec("mkdir -p ".storage);
 		is_dir(logs) or shell_exec("mkdir -p ".logs);
+		is_dir(storage) or shell_exec("mkdir -p ".storage);
 	}
 
 	/**
