@@ -9,7 +9,9 @@ use System\Exceptions\AIException;
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
  * @version 0.0.2.1
  * @license BSD
+ * @package AI
  */
+
 class AI implements AIContract
 {	
 	/**
