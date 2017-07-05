@@ -59,7 +59,7 @@ class AI extends AIAbstraction
 	 * @param string $input
 	 * @param string $actor
 	 */
-	public function input($input, $actor)
+	public function input($input, $actor = "")
 	{
 		$this->actor     = $actor;
 		$this->input     = strtolower(trim($input));

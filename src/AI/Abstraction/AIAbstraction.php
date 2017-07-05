@@ -8,4 +8,13 @@ namespace AI\Abstraction;
 
 abstract class AIAbstraction
 {
+	/**
+	 * Constructor.
+	 */
+	abstract public function __construct();
+
+	/**
+	 * Input
+	 */
+	abstract public function input($input, $actor = "");
 }
