@@ -2,11 +2,10 @@
 
 namespace AI;
 
-use System\Hub\Singleton;
 use AI\Abstraction\AIAbstraction;
 
 class AI extends AIAbstraction
-{
+{	
 	/**
 	 * @var string
 	 */
@@ -27,7 +26,12 @@ class AI extends AIAbstraction
 	 */
 	public function __construct()
 	{
-
+		is_dir(data) or mkdir(data);
+		is_dir(storage) or mkdir(storage);
+		is_dir(logs) or mkdir(logs);
+		is_dir(data) or shell_exec("mkdir -p ".data);
+		is_dir(storage) or shell_exec("mkdir -p ".storage);
+		is_dir(logs) or shell_exec("mkdir -p ".logs);
 	}
 
 	/**
@@ -40,4 +44,6 @@ class AI extends AIAbstraction
 		$this->input     = strtolower(trim($input));
 		$this->abs_input = $input;
 	}
+
+
 }

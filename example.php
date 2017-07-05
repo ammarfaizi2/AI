@@ -4,15 +4,15 @@ require __DIR__.'/config.php';
 
 use AI\AI;
 
+$actor = "Ammar Faizi";
+$input = "Halo";
+
+
 $start = microtime(true);
 $ai = new AI();
-$actor = "Ammar Faizi";
-$msg   = 'i_anime 31765';
-$st = $ai->prepare($msg, $actor);
-$st->set_timezone("Asia/Jakarta");
-$st->set_superuser(array("Ammar Faizi"));
-$ai->execute();
-var_dump($st->fetch_reply());
+$ai->input($input, $actor);
+#$ai->execute();
+
 
 
 $finish = microtime(true);
