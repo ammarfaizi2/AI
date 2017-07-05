@@ -1,8 +1,8 @@
 <?php
 
-namespace AI;
+namespace System\Contracts;
 
-abstract class AIFoundation
+interface AppContract
 {
     abstract public function execute();
 }

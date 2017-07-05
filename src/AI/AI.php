@@ -2,7 +2,7 @@
 
 namespace AI;
 
-use AI\Abstraction\AIAbstraction;
+use System\Contracts\AIContract;
 use System\Exceptions\AIException;
 
 /**
@@ -10,7 +10,7 @@ use System\Exceptions\AIException;
  * @version 0.0.2.1
  * @license BSD
  */
-class AI extends AIAbstraction
+class AI implements AIContract
 {	
 	/**
 	 * @var string
