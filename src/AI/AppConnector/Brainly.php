@@ -9,6 +9,11 @@ namespace AI\AppConnector;
 class Brainly
 {
 	/**
+	 * @var array 
+	 */
+	private $return = array();
+
+	/**
 	 * @param string
 	 */
 	public function __construct($q)
@@ -35,7 +40,14 @@ class Brainly
 			$key = array_search(max($sim), $st);
 			$rt = array($fx($st[$key]['task']['content']), $fx($st[$key]['responses'][0]['content']));
 		}
-		var_dump($rt);
-		die;
+		$this->return = $rt;
+	}
+
+	/**
+	 * @return array
+	 */
+	public function get_result()
+	{
+		return $this->return;
 	}
 }
