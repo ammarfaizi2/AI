@@ -161,13 +161,14 @@ trait SimpleChat
             $c = strtotime(date("Y-m-d H:i:s"));
             $b = $b[0];
         }
+        $dcls = "\\AI\\Lang\\DateST\\".$this->lang;
         switch ($b) {
 
             /**
              *  Untuk hari.
              */
             case 'day': case 'days':
-                $c = \AI\Lang\Days\id::$day[date("w", $c)];
+                $c = $dcls::$day[date("w", $c)];
                 break;
 
             /**
@@ -181,7 +182,7 @@ trait SimpleChat
              *  Untuk bulan.
              */
             case 'month':
-                $c = $this->bulan[(int)date("m", $c)];
+                $c = $dcls::$month[(int)date("m", $c)];
                 break;
 
             /**
