@@ -25,6 +25,14 @@ trait SimpleCommand
             case 'ask':
                 if ($this->param) {
                     $st = new \AI\AppConnector\Brainly($this->param);
+                    $st = $st->get_result();
+                    if (count($st)) {
+                        $this->output = [
+                        "text" => [
+                            "Hasil pertanyaan yang mirip dari ".$this->actor." : \n".$st[0]."\n\nJawaban : \n".$st[1]
+                        ]
+                    ];
+                    }
                 } else {
                     $this->output = [
                         "text" => [
