@@ -20,6 +20,8 @@ $finish = microtime(true);
 
 var_dump(
     array(
+    	"errno" => $ai->errno(),
+    	"error" => $ai->error(),
     	"output" => $out,
         "execution time" => ($finish - $start)
     )

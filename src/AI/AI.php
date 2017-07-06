@@ -2,17 +2,17 @@
 
 namespace AI;
 
-use AI\Traits\Chat;
-use AI\Traits\SimpleCommand;
-use System\Contracts\AIContract;
-use System\Exceptions\AIException;
-
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
  * @version 0.0.2.1
  * @license BSD
  * @package AI
  */
+
+use AI\Traits\Chat;
+use AI\Traits\SimpleCommand;
+use System\Contracts\AIContract;
+use System\Exceptions\AIException;
 
 class AI implements AIContract
 {
@@ -39,7 +39,7 @@ class AI implements AIContract
      * @var string
      */
     private $input;
-    
+
     /**
      * @var string
      */
@@ -74,6 +74,21 @@ class AI implements AIContract
      * @var array
      */
     private $output = array();
+
+    /**
+     * @var bool
+     */
+    private $suggest = false;
+
+    /**
+     * @var string
+     */
+    private $error;
+
+    /**
+     * @var int
+     */
+    private $errno;
 
     /**
      * Constructor.
@@ -182,13 +197,52 @@ class AI implements AIContract
     }
 
     /**
+     * Turn on suggestion
+     */
+    public function suggest()
+    {
+        $this->suggest = true;
+    }
+
+    /**
      * @param string
      * @return string
      */
     private function sysstr($key)
     {
+        if (isset(\AI\Error\Error::$errno[$key])) {
+            $this->syserrno($key);
+        }
         $class = "\\AI\\Lang\\".$this->lang;
         return $class::$system[$key];
+    }
+
+    /**
+     * @param string
+     */
+    private function syserrno($key)
+    {
+        if (is_int($key)) {
+            $this->errno = $key;
+        } else {
+            $this->errno = \AI\Error\Error::$errno[$key];
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function error()
+    {
+        return $this->error;
+    }
+
+    /**
+     * @return int
+     */
+    public function errno()
+    {
+        return $this->errno;
     }
 
     /**

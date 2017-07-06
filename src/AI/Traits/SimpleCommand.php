@@ -2,6 +2,10 @@
 
 namespace AI\Traits;
 
+/**
+ * @author Ammar Faizi <ammarfaizi2@gmail.com>
+ */
+
 trait SimpleCommand
 {	
 	/**
@@ -18,7 +22,7 @@ trait SimpleCommand
 	{
 		if (isset($this->simple_command[$this->first_word])) {
 			switch ($this->first_word) {
-				case 'ask':
+				case 'askz':
 						if ($this->param) {
 							$st = new \AI\AppConector\Brainly($this->param);
 						} else {
@@ -31,10 +35,15 @@ trait SimpleCommand
 					break;
 				
 				default:
-					# code...
+						$this->output = [
+							"text" => [
+								$this->sysstr("error_simplecmd_not_found")
+							]
+						];
+						$this->error = $this->sysstr("error_simplecmd_not_found");
 					break;
 			}
 		}
-		return (bool)count($this->output);
+		return (bool) count($this->output);
 	}
 }
