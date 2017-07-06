@@ -1,6 +1,6 @@
 <?php
 
-namespace AI\AppConector;
+namespace AI\AppConnector;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
@@ -8,5 +8,15 @@ namespace AI\AppConector;
 
 class Brainly
 {
-
+	/**
+	 * @param string
+	 */
+	public function __construct($q)
+	{
+		$st = new \App\Brainly\Brainly($q);
+		$st->execute();
+		$st = $st->get_result();
+		var_dump($st);
+		die;
+	}
 }
