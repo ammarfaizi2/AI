@@ -99,16 +99,19 @@ class AI implements AIContract
      */
     public function execute()
     {
-        $this->_prexecute();
-        foreach ($this->invoke as $key => $inv) {
-            if (!is_object($inv)) {
-                $this->syslog("Fatal Error", $error = "__construct param is not fully object.");
-                throw new AIException($error, 1);
-                die("Avoid catch AIException");
-            } else {
-                $inv($this);
+        $a = $this->_prexecute();
+        if (!$a) {
+            foreach ($this->invoke as $key => $inv) {
+                if (!is_object($inv)) {
+                    $this->syslog("Fatal Error", $error = "__construct param is not fully object.");
+                    throw new AIException($error, 1);
+                    die("Avoid catch AIException");
+                } else {
+                    $inv($this);
+                }
             }
         }
+        return $a;
     }
 
     /**
@@ -116,7 +119,14 @@ class AI implements AIContract
      */
     private function _prexecute()
     {
-
+        if (!$this->simple_command()) {
+            if (!$this->simple_chat()) {
+                if (!$this->elastic_command()) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     /**
