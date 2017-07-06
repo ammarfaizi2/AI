@@ -23,7 +23,6 @@ class VGMdb implements VGMdbContract
      */
     public function __construct()
     {
-
     }
 
     /**
@@ -34,7 +33,9 @@ class VGMdb implements VGMdbContract
     {
         $ch = new Curl(self::API_URL."search/".urlencode($q));
         $ch->set_opt(
+            array(
             CURLOPT_HTTPHEADER => array("Accept: application/json")
+            )
         );
         $out = $ch->exec();
         return $out;

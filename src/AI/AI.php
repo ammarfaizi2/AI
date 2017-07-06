@@ -268,6 +268,6 @@ class AI implements AIContract
      */
     private function gentime()
     {
-    	return time();
+        return time();
     }
 }

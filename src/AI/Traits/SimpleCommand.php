@@ -31,7 +31,7 @@ trait SimpleCommand
                         "text" => [
                             "Hasil pertanyaan yang mirip dari ".$this->actor." : \n".$st[0]."\n\nJawaban : \n".$st[1]
                         ]
-                    ];
+                        ];
                     }
                 } else {
                     $this->output = [

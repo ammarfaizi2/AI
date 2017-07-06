@@ -12,7 +12,7 @@ defined("storage") or die("Storage not defined!");
 use Curl;
 
 class Brainly
-{   
+{
     /**
      * @var string
      */
@@ -39,7 +39,6 @@ class Brainly
     private $cache_data;
 
     /**
-     *
      * Constructor.
      *
      * @param string $query

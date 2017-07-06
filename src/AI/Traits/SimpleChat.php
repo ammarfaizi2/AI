@@ -167,37 +167,37 @@ trait SimpleChat
             /**
              *  Untuk hari.
              */
-            case 'day': case 'days':
+        case 'day': case 'days':
                 $c = $dcls::$day[date("w", $c)];
-                break;
+            break;
 
             /**
              *  Untuk jam.
              */
-            case 'jam':
-                $c = date("h:i:s", $c);
-                break;
+        case 'jam':
+            $c = date("h:i:s", $c);
+            break;
 
             /**
              *  Untuk bulan.
              */
-            case 'month':
-                $c = $dcls::$month[(int)date("m", $c)];
-                break;
+        case 'month':
+            $c = $dcls::$month[(int)date("m", $c)];
+            break;
 
             /**
              *  Untuk tanggal.
              */
-            case 'date_c':
-                $c = $this->hari[date("w", $c)].", ".date("d", $c)." ".($this->bulan[date("m", $c)])." ".date("Y", $c);
-                break;
+        case 'date_c':
+            $c = $this->hari[date("w", $c)].", ".date("d", $c)." ".($this->bulan[date("m", $c)])." ".date("Y", $c);
+            break;
 
             /**
              *  Tidak dikenal.
              */
-            default:
-                $c = "unknown_param({$c})";
-                break;
+        default:
+            $c = "unknown_param({$c})";
+            break;
         }
         $return = str_replace($replacer, $c, $pure);
         !(strpos($return, "#d(")===false) and $return = $this->fdate($return);
