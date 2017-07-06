@@ -1,6 +1,6 @@
 <?php
 
-namespace AI\CY\ChatST;
+namespace AI\Lang\ChatST;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>

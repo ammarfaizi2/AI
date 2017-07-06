@@ -24,7 +24,7 @@ trait SimpleCommand
             switch ($this->first_word) {
             case 'ask':
                 if ($this->param) {
-                    $st = new \AI\AppConector\Brainly($this->param);
+                    $st = new \AI\AppConnector\Brainly($this->param);
                 } else {
                     $this->output = [
                         "text" => [

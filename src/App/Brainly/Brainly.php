@@ -1,88 +1,124 @@
 <?php
-namespace App;
 
-defined('data') or die('Error : data not defined !');
-
-use Curl\CMCurl;
-use AI\AIFoundation;
+namespace App\Brainly;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
+ * @package App\Brainly
  */
 
-class Brainly extends AIFoundation
-{
-    private $text;
+defined("storage") or die("Storage not defined!");
+
+use Curl;
+
+class Brainly
+{   
+    /**
+     * @var string
+     */
+    private $q;
+
+    /**
+     * @var int
+     */
     private $limit;
-    private $data;
+
+    /**
+     * @var string
+     */
     private $hash;
-    private $file;
-    public function __construct()
+
+    /**
+     * @var array
+     */
+    private $search_result;
+
+    /**
+     * @var array
+     */
+    private $cache_data;
+
+    /**
+     *
+     * Constructor.
+     *
+     * @param string $query
+     * @param int    $limit
+     */
+    public function __construct($q, $limit = 100)
     {
-        is_dir(data.'/brainly') or mkdir(data.'/brainly');
-        is_dir(data.'/brainly/data') or mkdir(data.'/brainly/data');
-        is_dir(data.'/brainly/query') or mkdir(data.'/brainly/query');
-    }
-    
-    public function prepare($text, $limit=100)
-    {
-        $this->text = $text;
+        $this->q = $q;
         $this->limit = (int) $limit;
-        $this->data = file_exists(data.'/brainly/data.txt') ? json_decode(file_get_contents(data.'/brainly/data.txt')) : array();
-        $this->data = $this->data===null ? array() : $this->data;
-        $this->hash = md5($text);
-        $this->file = data.'/brainly/query/'.($this->hash).'.txt';
-        in_array($this->hash, $this->data) or $this->data[] = $this->hash;
-        return $this;
+        $this->hash = sha1($q.$limit);
+        is_dir(storage."/Brainly") or mkdir(storage."/Brainly");
+        is_dir(storage."/Brainly/cache") or mkdir(storage."/Brainly/cache");
     }
-    
+
+    /**
+     * Execute
+     */
     public function execute()
     {
-        if (file_exists($this->file)) {
-            $a = json_decode(file_get_contents($this->file), true);
-            if (!is_array($a)) {
-                $ch = new CMCurl('https://brainly.co.id/api/28/api_tasks/suggester?limit='.($this->limit).'&query='.urlencode($this->text));
-                $a = json_decode($ch->execute(), true);
-                file_put_contents($this->file, json_encode($a, 128));
-            }
+        if ($this->check_cache()) {
+            $this->search_result = file_get_contents(storage."/Brainly/cache/".$this->hash.".txt");
         } else {
-            $ch = new CMCurl('https://brainly.co.id/api/28/api_tasks/suggester?limit='.($this->limit).'&query='.urlencode($this->text));
-            $a = json_decode($ch->execute(), true);
-            file_put_contents($this->file, json_encode($a, 128));
+            $this->search_result = $this->online_search();
         }
-        if (isset($a['data']['tasks']['items'])) {
-            foreach ($a['data']['tasks']['items'] as $key => $val) {
-                $que = trim(strip_tags(html_entity_decode($val['task']['content'], ENT_QUOTES | ENT_IGNORE, 'UTF-8')));
-                similar_text($que, $this->text, $percent);
-                $sim[$key] = $percent;
-            }
-            if (isset($sim)) {
-                $result = $a['data']['tasks']['items'][array_search(max($sim), $sim)];
-                if (isset($result['presence']['solved'][0]['id'])) {
-                    foreach ($result['responses'] as $val) {
-                        if ($val['user_id']==$result['presence']['solved'][0]['id']) {
-                            $ans = $val['content'];
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-        if (!isset($ans)) {
-            $return = false;
-        } else {
-            $return = true;
-        }
-        if ($return) {
-            $this->result = array(trim(strip_tags(html_entity_decode($result['task']['content'], ENT_QUOTES | ENT_IGNORE, 'UTF-8'))),trim(strip_tags(html_entity_decode($ans))));
-        }
-        file_put_contents(data.'/brainly/data.txt', json_encode($this->data, 128));
-        unset($this->data);
-        return $return;
     }
-    
-    public function fetch_result()
+
+    /**
+     * @return array
+     */
+    public function get_result()
     {
-        return isset($this->result) ? $this->result : null;
+        return $this->search_result;
+    }
+
+    /**
+     * Load cache data.
+     */
+    private function load_cache_data()
+    {
+        if (file_exists(storage."/Brainly/cache_control.txt")) {
+            $this->cache_data = json_decode(file_get_contents(storage."/Brainly/cache_control.txt"), true);
+            $this->cache_data = is_array($this->cache_data) ? $this->cache_data : array();
+        } else {
+            $this->cache_data = array();
+        }
+    }
+
+    /**
+     * Check cache.
+     * @return bool
+     */
+    private function check_cache()
+    {
+        $this->load_cache_data();
+        if (isset($this->cache_data[$this->hash])) {
+            return ($this->cache_data[$this->hash] > time()) and file_exists(storage."/Brainly/cache/".$this->hash.".txt");
+        }
+        return false;
+    }
+
+    /**
+     * Save cache.
+     */
+    private function save_cache()
+    {
+        file_put_contents(storage."/Brainly/cache_control.txt", json_encode($this->cache_data, 128));
+    }
+
+    /**
+     * Online search.
+     * @return array
+     */
+    private function online_search()
+    {
+        $ch = new Curl("https://brainly.co.id/api/28/api_tasks/suggester?limit=".$this->limit."&query=".urlencode($this->q));
+        $out = json_decode($ch->exec(), true);
+        file_put_contents(storage."/Brainly/cache/".$this->hash.".txt", json_encode($out, 128), LOCK_EX);
+        $this->cache_data[$this->hash] = time()+1209600;
+        $this->save_cache();
+        return $out;
     }
 }

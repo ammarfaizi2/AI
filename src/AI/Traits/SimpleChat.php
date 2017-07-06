@@ -12,12 +12,12 @@ trait SimpleChat
     {
         if (is_array($this->lang)) {
             foreach ($this->lang as $lang) {
-                if ($this->chat_st("\\AI\\CY\\ChatST\\{$lang}")) {
+                if ($this->chat_st("\\AI\\Lang\\ChatST\\{$lang}")) {
                     return true;
                 }
             }
         } else {
-            return $this->chat_st("\\AI\\CY\\ChatST\\{$this->lang}");
+            return $this->chat_st("\\AI\\Lang\\ChatST\\{$this->lang}");
         }
         return false;
     }
