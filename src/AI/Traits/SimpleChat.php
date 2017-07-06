@@ -180,7 +180,7 @@ trait SimpleChat
             /**
              *  Untuk bulan.
              */
-            case 'bulan': case 'month':
+            case 'month':
                 $c = $this->bulan[(int)date("m", $c)];
                 break;
 

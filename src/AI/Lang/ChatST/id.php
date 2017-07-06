@@ -49,10 +49,16 @@ class id
                                 "t"=>[true, 30, 6, true]
                             ],
             "hari+apa,hr+apa" => [
-                                "r" => [
-                                    "Sekarang hari #d(day)"
+                                "r"=> [
+                                    "Sekarang hari #d(day)."
                                 ],
                                 "t"=>[true, 20, 6, false]
                             ],
+            "bulan+apa" => [
+                                "r"=>[
+                                    "Sekarang bulan #d(month)."
+                                ],
+                                "t"=>[true, 20, 6, false]
+            ]
     ];
 }
