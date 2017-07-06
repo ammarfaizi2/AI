@@ -8,5 +8,4 @@ namespace AI\AppConector;
 
 class Brainly
 {
-
 }
