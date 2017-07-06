@@ -79,6 +79,23 @@ trait SimpleChat
                 }
             }
             return $main_flag ? ($time_reply ? 2 : 1) : 0;
+        } else {
+            $main_flag = false;
+            foreach ($exploded_keys as $ke) {
+                $ck = explode("+", $ke);
+                $sub_flag = true;
+                foreach ($ck as $ck) {
+                    if (strpos($input, $ck) === false) {
+                        $sub_flag = false;
+                        break;
+                    }
+                }
+                if ($sub_flag) {
+                    $main_flag = true;
+                    break;
+                }
+            }
+            return $main_flag ? ($time_reply ? 2 : 1) : 0;
         }
     }
 
