@@ -78,7 +78,7 @@ trait SimpleChat
                     break;
                 }
             }
-            return  $main_flag ? (($time_reply ? 2 : 1)) : 0;
+            return $main_flag ? ($time_reply ? 2 : 1) : 0;
         }
     }
 
