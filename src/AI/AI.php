@@ -23,12 +23,32 @@ class AI implements AIContract
     /**
      * @var string
      */
-    private $input;
+    private $abs_input;
 
     /**
      * @var string
      */
-    private $abs_input;
+    private $abs_first_word;
+
+    /**
+     * @var string
+     */
+    private $abs_param;
+
+    /**
+     * @var string
+     */
+    private $input;
+    
+    /**
+     * @var string
+     */
+    private $first_word;
+
+    /**
+     * @var string
+     */
+    private $param;
 
     /**
      * @var string
@@ -54,16 +74,6 @@ class AI implements AIContract
      * @var array
      */
     private $output = array();
-
-    /**
-     * @var string
-     */
-    private $first_word;
-
-    /**
-     * @var string
-     */
-    private $param;
 
     /**
      * Constructor.
@@ -138,9 +148,20 @@ class AI implements AIContract
      */
     private function _prexecute()
     {
+        /**
+         * Fixed input
+         */
         $a = explode(" ", $this->input, 2);
         $this->first_word = trim($a[0]);
         $this->param = isset($a[1]) ? $a[1] : false;
+
+        /**
+         * Absolute input
+         */
+        $a = explode(" ", $this->abs_input, 2);
+        $this->abs_first_word = $a[0];
+        $this->abs_param = isset($a[1]) ? $a[1] : false;
+
         if (!$this->simple_command()) {
             if (!$this->simple_chat()) {
                 if (!$this->elastic_command()) {
