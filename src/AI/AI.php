@@ -84,12 +84,12 @@ class AI implements AIContract
     /**
      * @var string
      */
-    private $error;
+    private $error = "";
 
     /**
      * @var int
      */
-    private $errno;
+    private $errno = 0;
 
     /**
      * Constructor.
