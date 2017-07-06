@@ -64,7 +64,7 @@ class JavaVirtual implements JavaVirtualContract
      * Get class name
      */
     private function getClassName()
-    {    
+    {
         $a = explode("class", $this->java_code);
         if (isset($a[1])) {
             $a = explode("{", $a[1]);
@@ -100,7 +100,7 @@ class JavaVirtual implements JavaVirtualContract
 
     /**
      * Run java.
-     */    
+     */
     private function run()
     {
         if ($this->compile) {

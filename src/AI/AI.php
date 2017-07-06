@@ -2,6 +2,8 @@
 
 namespace AI;
 
+use AI\Traits\Chat;
+use AI\Traits\SimpleCommand;
 use System\Contracts\AIContract;
 use System\Exceptions\AIException;
 
@@ -14,6 +16,8 @@ use System\Exceptions\AIException;
 
 class AI implements AIContract
 {
+    use Chat, SimpleCommand;
+
     const VERSION = "0.0.2.1";
 
     /**
@@ -47,18 +51,33 @@ class AI implements AIContract
     private $invoke;
 
     /**
+     * @var array
+     */
+    private $output = array();
+
+    /**
+     * @var string
+     */
+    private $first_word;
+
+    /**
+     * @var string
+     */
+    private $param;
+
+    /**
      * Constructor.
      * @throws System\Exception\AIException
      * @param object $invoke
      */
     public function __construct()
     {
-        if(! (defined("data") and defined("logs") and defined("storage"))) {
+        if (! (defined("data") and defined("logs") and defined("storage"))) {
             $this->syslog("Fatal Error", $error = $this->sysstr("error_constants"));
             throw new AIException($error, 1);
             die("Avoid catch AIException");
         }
-        is_dir(data) or mkdir(data);        
+        is_dir(data) or mkdir(data);
         is_dir(logs) or mkdir(logs);
         is_dir(storage) or mkdir(storage);
         is_dir(data) or shell_exec("mkdir -p ".data);
@@ -119,6 +138,9 @@ class AI implements AIContract
      */
     private function _prexecute()
     {
+        $a = explode(" ", $this->input, 2);
+        $this->first_word = trim($a[0]);
+        $this->param = isset($a[1]) ? $a[1] : false;
         if (!$this->simple_command()) {
             if (!$this->simple_chat()) {
                 if (!$this->elastic_command()) {
@@ -127,6 +149,15 @@ class AI implements AIContract
             }
         }
         return true;
+    }
+
+    /**
+     * Output
+     * @return mixed
+     */
+    public function output()
+    {
+        return $this->output;
     }
 
     /**
