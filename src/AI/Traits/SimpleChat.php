@@ -167,7 +167,7 @@ trait SimpleChat
              *  Untuk hari.
              */
             case 'day': case 'days':
-                $c = $this->hari[date("w", $c)];
+                $c = \AI\Lang\Days\id::$day[date("w", $c)];
                 break;
 
             /**

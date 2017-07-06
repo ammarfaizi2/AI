@@ -48,5 +48,11 @@ class id
                                 ],
                                 "t"=>[true, 30, 6, true]
                             ],
+            "hari+apa,hr+apa" => [
+                                "r" => [
+                                    "Sekarang hari #d(day)"
+                                ],
+                                "t"=>[true, 20, 6, false]
+                            ],
     ];
 }
