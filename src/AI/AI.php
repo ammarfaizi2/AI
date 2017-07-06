@@ -59,6 +59,11 @@ class AI implements AIContract
     /**
      * @var string
      */
+    private $actor_call;
+
+    /**
+     * @var string
+     */
     private $timezone;
 
     /**
@@ -121,6 +126,8 @@ class AI implements AIContract
         $this->actor     = $actor;
         $this->input     = strtolower(trim($input));
         $this->abs_input = $input;
+        $a = explode(" ", $actor, 2);
+        $this->actor_call = $a[0];
     }
 
     /**

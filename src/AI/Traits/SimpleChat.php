@@ -40,10 +40,10 @@ trait SimpleChat
 	}
 
 	/**
-	 *
+	 * @return string
 	 */
-	private function response_fixer()
+	private function response_fixer($resp)
 	{
-		
+		return str_replace("@", $this->actor, str_replace("^@", $this->actor_call, $resp));
 	}
 }
