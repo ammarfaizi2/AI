@@ -2,9 +2,6 @@
 
 namespace AI;
 
-use System\Contracts\AIContract;
-use System\Exceptions\AIException;
-
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
  * @version 0.0.2.1
@@ -12,9 +9,31 @@ use System\Exceptions\AIException;
  * @package AI
  */
 
+use AI\Traits\Chat;
+use AI\Traits\SimpleCommand;
+use System\Contracts\AIContract;
+use System\Exceptions\AIException;
+
 class AI implements AIContract
 {
+    use Chat, SimpleCommand;
+
     const VERSION = "0.0.2.1";
+
+    /**
+     * @var string
+     */
+    private $abs_input;
+
+    /**
+     * @var string
+     */
+    private $abs_first_word;
+
+    /**
+     * @var string
+     */
+    private $abs_param;
 
     /**
      * @var string
@@ -24,7 +43,12 @@ class AI implements AIContract
     /**
      * @var string
      */
-    private $abs_input;
+    private $first_word;
+
+    /**
+     * @var string
+     */
+    private $param;
 
     /**
      * @var string
@@ -47,18 +71,38 @@ class AI implements AIContract
     private $invoke;
 
     /**
+     * @var array
+     */
+    private $output = array();
+
+    /**
+     * @var bool
+     */
+    private $suggest = false;
+
+    /**
+     * @var string
+     */
+    private $error;
+
+    /**
+     * @var int
+     */
+    private $errno;
+
+    /**
      * Constructor.
      * @throws System\Exception\AIException
      * @param object $invoke
      */
     public function __construct()
     {
-        if(! (defined("data") and defined("logs") and defined("storage"))) {
+        if (! (defined("data") and defined("logs") and defined("storage"))) {
             $this->syslog("Fatal Error", $error = $this->sysstr("error_constants"));
             throw new AIException($error, 1);
             die("Avoid catch AIException");
         }
-        is_dir(data) or mkdir(data);        
+        is_dir(data) or mkdir(data);
         is_dir(logs) or mkdir(logs);
         is_dir(storage) or mkdir(storage);
         is_dir(data) or shell_exec("mkdir -p ".data);
@@ -119,6 +163,20 @@ class AI implements AIContract
      */
     private function _prexecute()
     {
+        /**
+         * Fixed input
+         */
+        $a = explode(" ", $this->input, 2);
+        $this->first_word = trim($a[0]);
+        $this->param = isset($a[1]) ? $a[1] : false;
+
+        /**
+         * Absolute input
+         */
+        $a = explode(" ", $this->abs_input, 2);
+        $this->abs_first_word = $a[0];
+        $this->abs_param = isset($a[1]) ? $a[1] : false;
+
         if (!$this->simple_command()) {
             if (!$this->simple_chat()) {
                 if (!$this->elastic_command()) {
@@ -130,13 +188,61 @@ class AI implements AIContract
     }
 
     /**
+     * Output
+     * @return mixed
+     */
+    public function output()
+    {
+        return $this->output;
+    }
+
+    /**
+     * Turn on suggestion
+     */
+    public function suggest()
+    {
+        $this->suggest = true;
+    }
+
+    /**
      * @param string
      * @return string
      */
     private function sysstr($key)
     {
+        if (isset(\AI\Error\Error::$errno[$key])) {
+            $this->syserrno($key);
+        }
         $class = "\\AI\\Lang\\".$this->lang;
         return $class::$system[$key];
+    }
+
+    /**
+     * @param string
+     */
+    private function syserrno($key)
+    {
+        if (is_int($key)) {
+            $this->errno = $key;
+        } else {
+            $this->errno = \AI\Error\Error::$errno[$key];
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function error()
+    {
+        return $this->error;
+    }
+
+    /**
+     * @return int
+     */
+    public function errno()
+    {
+        return $this->errno;
     }
 
     /**
