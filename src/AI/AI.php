@@ -262,4 +262,12 @@ class AI implements AIContract
         fwrite($handle, "[".date("Y-m-d H:i:s")."] ".$action." | ".$info."\n");
         fclose($handle);
     }
+
+    /**
+     * Gen date.
+     */
+    private function gentime()
+    {
+    	return time();
+    }
 }
