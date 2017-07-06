@@ -15,7 +15,7 @@ class ChatST
 								"r"=>[
 									"Hai juga ^@",
 									"Hai juga ^@, apa kabar?"
-								]
+								],
 								"t"=>[true, 10, 3, false]
 							],
 	];
