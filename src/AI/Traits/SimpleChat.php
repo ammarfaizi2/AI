@@ -10,7 +10,22 @@ trait SimpleChat
 {
 	private function simple_chat()
 	{
-		foreach (\AI\CY\ChatST::$wordlist as $k => $v) {
+		if (is_array($this->lang)) {
+			foreach ($this->lang as $lang) {
+				if ($this->chat_st("\\AI\\CY\\ChatST\\{$lang}")) {
+					break;
+					return true;
+				}
+			}
+		} else {
+			return $this->chat_st("\\AI\\CY\\ChatST\\{$this->lang}");
+		}
+		return false;
+	}
+
+	private function chat_st($cst)
+	{
+		foreach ($cst::$wordlist as $k => $v) {
 			if ($st = $this->compare($this->input, $k, $v['t'][0], $v['t'][1], $v['t'][2], $v['t'][3])) {
 				if ($st == 1) {
 					$this->output = [
