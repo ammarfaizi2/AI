@@ -5,16 +5,15 @@ require __DIR__.'/config.php';
 use AI\AI;
 
 $actor = "Ammar Faizi";
-$input = "ask  ";
+$input = "ask";
 
 
 $start = microtime(true);
+
 $ai = new AI();
 $ai->input($input, $actor);
 $ai->execute();
 $out = $ai->output();
-
-
 
 $finish = microtime(true);
 

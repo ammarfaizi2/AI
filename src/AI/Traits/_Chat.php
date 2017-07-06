@@ -363,7 +363,7 @@ trait Chat
     /**
      *  Chat action
      */
-    private function chat()
+    private function simple_chat()
     {
         $this->load_wordlist();
         $this->exms = explode(' ', $this->msg);

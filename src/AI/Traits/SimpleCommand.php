@@ -22,7 +22,7 @@ trait SimpleCommand
 	{
 		if (isset($this->simple_command[$this->first_word])) {
 			switch ($this->first_word) {
-				case 'askz':
+				case 'ask':
 						if ($this->param) {
 							$st = new \AI\AppConector\Brainly($this->param);
 						} else {

@@ -10,13 +10,14 @@ namespace AI;
  */
 
 use AI\Traits\Chat;
+use AI\Traits\SimpleChat;
 use AI\Traits\SimpleCommand;
 use System\Contracts\AIContract;
 use System\Exceptions\AIException;
 
 class AI implements AIContract
 {
-    use Chat, SimpleCommand;
+    use SimpleChat, SimpleCommand;
 
     const VERSION = "0.0.2.1";
 
@@ -143,7 +144,7 @@ class AI implements AIContract
      */
     public function execute()
     {
-        $a = $this->_prexecute();
+        $a = $this->__pr_execute();
         if (!$a) {
             foreach ($this->invoke as $key => $inv) {
                 if (!is_object($inv)) {
@@ -161,7 +162,7 @@ class AI implements AIContract
     /**
      * Private execute.
      */
-    private function _prexecute()
+    private function __pr_execute()
     {
         /**
          * Fixed input
@@ -210,7 +211,7 @@ class AI implements AIContract
      */
     private function sysstr($key)
     {
-        if (isset(\AI\Error\Error::$errno[$key])) {
+        if (isset(\AI\CY\Error::$errno[$key])) {
             $this->syserrno($key);
         }
         $class = "\\AI\\Lang\\".$this->lang;
@@ -225,7 +226,7 @@ class AI implements AIContract
         if (is_int($key)) {
             $this->errno = $key;
         } else {
-            $this->errno = \AI\Error\Error::$errno[$key];
+            $this->errno = \AI\CY\Error::$errno[$key];
         }
     }
 
