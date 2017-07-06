@@ -5,7 +5,7 @@ require __DIR__.'/config.php';
 use AI\AI;
 
 $actor = "Ammar Faizi";
-$input = "halo, apa kabar?";
+$input = "jam brp skrng?";
 
 
 $start = microtime(true);

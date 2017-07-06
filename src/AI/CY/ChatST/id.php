@@ -26,7 +26,27 @@ class id
                                 "r"=>[
                                     "Kabar baik disini."
                                 ],
-                                "t"=>[false, 25, 4, false]
+                                "t"=>[false, 35, 7, false]
+                            ],
+            "jam+brp,jm+brp,jam+berapa,jm+berapa" => [
+                                "r"=>[
+                                    "0-3" => [
+                                        "Sekarang jam #d(jam) dini hari."
+                                    ],
+                                    "4-11" => [
+                                        "Sekarang jam #d(jam) pagi."
+                                    ],
+                                    "12-14" => [
+                                        "Sekarang jam #d(jam) siang."
+                                    ],
+                                    "15-18" => [
+                                        "Sekarang jam #d(jam) sore."
+                                    ],
+                                    "19-24" => [
+                                        "Sekarang jam #d(jam) malam."
+                                    ]
+                                ],
+                                "t"=>[true, 30, 6, true]
                             ],
     ];
 }
