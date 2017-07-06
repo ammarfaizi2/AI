@@ -13,7 +13,6 @@ trait SimpleChat
 		if (is_array($this->lang)) {
 			foreach ($this->lang as $lang) {
 				if ($this->chat_st("\\AI\\CY\\ChatST\\{$lang}")) {
-					break;
 					return true;
 				}
 			}
