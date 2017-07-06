@@ -15,5 +15,8 @@ class Brainly
 	{
 		$st = new \App\Brainly\Brainly($q);
 		$st->execute();
+		$st = $st->get_result();
+		var_dump($st);
+		die;
 	}
 }

@@ -60,7 +60,10 @@ class Brainly
     public function execute()
     {
         if ($this->check_cache()) {
-            $this->search_result = file_get_contents(storage."/Brainly/cache/".$this->hash.".txt");
+            $this->search_result = json_decode(file_get_contents(storage."/Brainly/cache/".$this->hash.".txt"), true);
+            if (!is_array($this->search_result)) {
+                $this->search_result = $this->online_search();
+            }
         } else {
             $this->search_result = $this->online_search();
         }
