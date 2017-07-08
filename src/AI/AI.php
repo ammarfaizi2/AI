@@ -97,6 +97,11 @@ class AI implements AIContract
     private $errno = 0;
 
     /**
+     * @var bool
+     */
+    private $elastic = false;
+
+    /**
      * Constructor.
      * @throws System\Exception\AIException
      * @param object $invoke
@@ -187,8 +192,12 @@ class AI implements AIContract
 
         if (!$this->simple_command()) {
             if (!$this->simple_chat()) {
-                if (!$this->elastic_command()) {
-                    return false;
+                if ($this->elastic) {
+                    if (!$this->elastic_command()) {
+                        if (!$this->elastic_chat()) {
+                            return false;
+                        }
+                    }
                 }
             }
         }
