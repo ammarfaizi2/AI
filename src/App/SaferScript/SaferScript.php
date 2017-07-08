@@ -1,13 +1,12 @@
 <?php
-namespace App;
 
-use AI\AIFoundation;
+namespace App\SaferScript;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
  */
 
-class SaferScript extends AIFoundation
+class SaferScript
 {
     private $source;
     private $allowedCalls;
@@ -118,11 +117,7 @@ class SaferScript extends AIFoundation
             } catch (Error $e) {
                 $q = "Error";
             }
-            if ($eval === false && $error = error_get_last()) {
-                return $error;
-            } else {
-                return isset($q) ? $q : "success !";
-            }
+            return $q;
         } else {
             return 'error';
         }
