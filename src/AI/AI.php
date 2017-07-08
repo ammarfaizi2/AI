@@ -11,13 +11,15 @@ namespace AI;
 
 use AI\Traits\Chat;
 use AI\Traits\SimpleChat;
+use AI\Traits\ElasticChat;
 use AI\Traits\SimpleCommand;
+use AI\Traits\ElasticCommand;
 use System\Contracts\AIContract;
 use System\Exceptions\AIException;
 
 class AI implements AIContract
 {
-    use SimpleChat, SimpleCommand;
+    use SimpleChat, SimpleCommand, ElasticChat, ElasticCommand;
 
     const VERSION = "0.0.2.1";
 
