@@ -1,11 +1,11 @@
 <?php
 
-namespace tests\App\Brainly;
+namespace tests\Command;
 
 use AI\AI;
 use PHPUnit\Framework\TestCase;
 
-class BrainlyTest extends TestCase
+class AskCommandTest extends TestCase
 {	
 	public function testCache()
     {
