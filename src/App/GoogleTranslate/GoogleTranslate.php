@@ -1,201 +1,108 @@
 <?php
-namespace App;
 
-defined('data') or die('Error : data not defined !');
+namespace App\GoogleTranslate;
 
-use Curl\CMCurl;
-use AI\AIFoundation;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
+ * @package App\GoogleTranslate
  */
 
-class GoogleTranslate extends AIFoundation
+use Curl;
+
+class GoogleTranslate
 {
-    public $list_lang;
-    private $err;
-    private $from;
-    private $to;
-    private $text;
-    private $result;
-    public function __construct()
-    {
-        is_dir(data.'/google/') or mkdir(data.'/google/');
-        is_dir(data.'/google/cookies/') or mkdir(data.'/google/cookies/');
-        $this->list_lang = array(
-            'jw' => 'Jawa',
-            'en' => 'Inggris',
-            'auto' => 'Auto',
-            'af' => 'Afrikans',
-            'sq' => 'Albania',
-            'am' => 'Amhara',
-            'ar' => 'Arab',
-            'hy' => 'Armenia',
-            'az' => 'Azerbaijan',
-            'eu' => 'Basque',
-            'nl' => 'Belanda',
-            'be' => 'Belarussia',
-            'bn' => 'Bengali',
-            'bs' => 'Bosnia',
-            'bg' => 'Bulgaria',
-            'my' => 'Burma',
-            'ceb' => 'Cebuano',
-            'cs' => 'Cek',
-            'ny' => 'Chichewa',
-            'zh-CN' => 'China',
-            'da' => 'Dansk',
-            'eo' => 'Esperanto',
-            'et' => 'Esti',
-            'fa' => 'Farsi',
-            'tl' => 'Filipino',
-            'fy' => 'Frisia',
-            'ga' => 'Gaelig',
-            'gd' => 'Gaelik Skotlandia',
-            'gl' => 'Galisia',
-            'ka' => 'Georgia',
-            'gu' => 'Gujarati',
-            'ha' => 'Hausa',
-            'haw' => 'Hawaii',
-            'hi' => 'Hindi',
-            'hmn' => 'Hmong',
-            'iw' => 'Ibrani',
-            'ig' => 'Igbo',
-            'id' => 'Indonesia',
-            'is' => 'Islan',
-            'it' => 'Italia',
-            'ja' => 'Jepang',
-            'de' => 'Jerman',
-            'kn' => 'Kannada',
-            'ca' => 'Katala',
-            'kk' => 'Kazak',
-            'km' => 'Khmer',
-            'ky' => 'Kirghiz',
-            'ko' => 'Korea',
-            'co' => 'Korsika',
-            'ht' => 'Kreol Haiti',
-            'hr' => 'Kroat',
-            'ku' => 'Kurdi',
-            'lo' => 'Laos',
-            'la' => 'Latin',
-            'lv' => 'Latvi',
-            'lt' => 'Lituavi',
-            'lb' => 'Luksemburg',
-            'hu' => 'Magyar',
-            'mk' => 'Makedonia',
-            'mg' => 'Malagasi',
-            'ml' => 'Malayalam',
-            'mt' => 'Malta',
-            'mi' => 'Maori',
-            'mr' => 'Marathi',
-            'ms' => 'Melayu',
-            'mn' => 'Mongol',
-            'ne' => 'Nepal',
-            'no' => 'Norsk',
-            'ps' => 'Pashto',
-            'pl' => 'Polski',
-            'pt' => 'Portugis',
-            'fr' => 'Prancis',
-            'pa' => 'Punjabi',
-            'ro' => 'Rumania',
-            'ru' => 'Rusia',
-            'sm' => 'Samoa',
-            'sr' => 'Serb',
-            'st' => 'Sesotho',
-            'sn' => 'Shona',
-            'sd' => 'Sindhi',
-            'si' => 'Sinhala',
-            'sk' => 'Slovak',
-            'sl' => 'Sloven',
-            'so' => 'Somali',
-            'es' => 'Spanyol',
-            'su' => 'Sunda',
-            'fi' => 'Suomi',
-            'sw' => 'Swahili',
-            'sv' => 'Swensk',
-            'tg' => 'Tajik',
-            'ta' => 'Tamil',
-            'te' => 'Telugu',
-            'th' => 'Thai',
-            'tr' => 'Turki',
-            'uk' => 'Ukraina',
-            'ur' => 'Urdu',
-            'uz' => 'Uzbek',
-            'vi' => 'Vietnam',
-            'cy' => 'Wales',
-            'xh' => 'Xhosa',
-            'yi' => 'Yiddi',
-            'yo' => 'Yoruba',
-            'el' => 'Yunani',
-            'zu' => 'Zulu',
-        );
-    }
+    /**
+     * @var string
+     */
+    private $a;
 
     /**
-    *    @param string
-    *    @return boolean
-    */
-    private function check_lang($lang)
-    {
-        return isset($this->list_lang[$lang]);
-    }
+     * @var string
+     */
+    private $b;
 
     /**
-    *    @param string,string
-    *    @return instance
-    */
-    public function prepare($text, $lang='auto_id')
+     * @var string
+     */
+    private $c;
+
+    /**
+     * @var string
+     */
+    private $hash;
+
+    /**
+     * @var array
+     */
+    private $cache;
+
+    /**
+     * @param string $a
+     * @param string $b
+     * @param string $c
+     */
+    public function __construct($a, $b = "en", $c = "id")
     {
-        $lang = $lang===null ? 'auto_id' : strtolower($lang);
-        $lang = explode("_", $lang);
-        $check1 = $this->check_lang($lang[0]);
-        $check2 = $this->check_lang($lang[1]);
-        if (!$check1 and $check2) {
-            $this->err = 'err_lang_1';
-        } elseif ($check1 and !$check2) {
-            $this->err = 'err_lang_2';
-        } elseif (!$check1 and !$check2) {
-            $this->err = 'err_lang_1-2';
+        $this->a = $a;
+        $this->b = $b;
+        $this->c = $c;
+        $this->hash = sha1($a.$b.$c);
+        is_dir(storage."/GoogleTranslate") or mkdir(storage."/GoogleTranslate");
+        is_dir(storage."/GoogleTranslate/cache") or mkdir(storage."/GoogleTranslate/cache");
+        is_dir(storage."/GoogleTranslate/cookie") or mkdir(storage."/GoogleTranslate/cookie");
+        $this->load_cache();
+    }
+
+    private function load_cache()
+    {
+        if (file_exists(storage."/GoogleTranslate/cache_control.txt")) {
+            $this->cache = json_decode(file_get_contents(storage."/GoogleTranslate/cache_control.txt"), true);
+            $this->cache = is_array($this->cache) ? $this->cache : array();
         } else {
-            $this->from = $lang[0];
-            $this->to = $lang[1];
-            $this->text = urlencode($text);
+            $this->cache = array();
         }
-        return $this;
     }
 
     /**
-    *    @return boolean
-    */
-    public function execute()
+     * @param string $_r
+     */
+    private function save_cache($_r)
     {
-        if (!isset($this->text)) {
-            return false;
+        if ($_r!==false) {
+            $this->cache[$this->hash] = 1;
+            file_put_contents(storage."/GoogleTranslate/cache_control.txt", json_encode($this->cache, 128));
+            file_put_contents(storage."/GoogleTranslate/cache/".$this->hash.".txt", $_r);
         }
-        $ch = new CMCurl("https://translate.google.com/m?hl=id&sl=".$this->from."&tl=".$this->to."&ie=UTF-8&q=".$this->text);
-        $ch->set_cookie(data.'/google/cookies/google.txt');
-        $a = explode('<div dir="ltr" class="t0">', $ch->execute(), 2);
-        if (!isset($a[1])) {
-            $this->err = "Error data !";
-            return false;
-        }
-        $a = explode('<', $a[1], 2);
-        $this->result = html_entity_decode($a[0], ENT_QUOTES | ENT_IGNORE, 'UTF-8');
-        return true;
     }
 
     /**
-    *    @return string
-    */
-    public function error()
+     * @return mixed
+     */
+    public function getResult()
     {
-        return (isset($this->err)) ? $this->err : false;
-    }
-
-    /**
-    *    @return mixed
-    */
-    public function fetch_result()
-    {
-        return $this->result;
+        if (!isset($this->cache[$this->hash])) {
+            $ch = new Curl("https://translate.google.com/m?hl=id&sl=".$this->b."&tl=".$this->c."&ie=UTF-8&prev=_m&q=".urlencode($this->a));
+            $ch->set_opt([
+                    CURLOPT_COOKIEJAR => storage."/GoogleTranslate/cookie/cookie_data",
+                    CURLOPT_COOKIEFILE => storage."/GoogleTranslate/cookie_data"
+                ]);
+            $src = $ch->exec();
+            $a = explode('<div dir="ltr" class="t0">', $src, 2);
+            if (isset($a[1])) {
+                $a = explode("<", $a[1], 2);
+                $_r = trim(html_entity_decode($a[0], ENT_QUOTES, 'UTF-8'));
+                $a = explode('<div dir="ltr" class="o1">', $src, 2);
+                if (isset($a[1])) {
+                    $a = explode("<", $a[1], 2);
+                    $_r2 = html_entity_decode($a[0], ENT_QUOTES, 'UTF-8');
+                    $_r.= " (".trim($_r2).")";
+                }
+            }
+            $this->save_cache($_r);
+        } else {
+            $_r = file_get_contents(storage."/GoogleTranslate/cache/".$this->hash.".txt");
+        }
+        return isset($_r) ? $_r : false;
     }
 }
