@@ -15,10 +15,28 @@ class id
      * ['t'][3] = bool $time_reply
      */
     public static $wordlist = [
+            "halo,hola" => [
+                                "r" => [
+                                    "1-10" => [
+                                        "Halo juga ^@, selamat pagi :D"
+                                    ],
+                                    "11-14" => [
+                                        "Halo juga ^@, selamat siang.."
+                                    ],
+                                    "15-18" => [
+                                        "Halo juga ^@, selamat sore.."
+                                    ],
+                                    "19-24" => [
+                                        "Halo juga ^@, selamat malam.."
+                                    ]
+                                ],
+                                "t" => [true, 15, 4, true]
+            ]
             'hi,hai,hay,hae' => [
                                 'r'=>[
                                     'Hai juga ^@',
-                                    'Hai juga ^@, apa kabar?'
+                                    'Hai juga ^@, apa kabar?',
+                                    'Hai juga ^@, apa kabar, sehat kan?'
                                 ],
                                 't'=>[true, 10, 3, false]
                             ],
@@ -33,9 +51,10 @@ class id
                                     '0-3' => [
                                         'Sekarang jam #d(jam) dini hari.'
                                     ],
-                                    '4-11' => [
+                                    '4-10' => [
                                         'Sekarang jam #d(jam) pagi.'
                                     ],
+
                                     '12-14' => [
                                         'Sekarang jam #d(jam) siang.'
                                     ],
@@ -154,6 +173,99 @@ class id
                                 "words_exception" => [
                                     "ini", "hari", "lain"
                                 ]
-                            ]
+                            ],
+            "ohayo" => [
+                                "r" => [
+                                    "1-11" => [
+                                        "Ohayou ^@, selamat beraktifitas!"
+                                    ],
+                                    "12-14" => [
+                                        "Ini sudah siang ^@, selamat beraktifitas!"
+                                    ],
+                                    "15-18" => [
+                                        "Ini sudah sore ^@, selamat beristirahat!"
+                                    ],
+                                    "19-24" => [
+                                        "Ini sudah malam ^@, selamat beraktifitas!"
+                                    ]
+                                ],
+                                "t"=>[false, 20, 6, true]
+                            ],
+            "koniciwa,konnichiwa,konniciwa,konichiwa" => [
+                                "r" => [
+                                    "1-9" => [
+                                        "Ini masih pagi ^@, selamat beraktifitas!"
+                                    ],
+                                    "10-14" => [
+                                        "Konniciwa ^@, selamat beraktifitas!"
+                                    ],
+                                    "15-18" => [
+                                        "Konniciwa ^@, selamat beristirahat!"
+                                    ],
+                                    "19-24" => [
+                                        "Ini udah malam ^@, selamat beristirahat!",
+                                    ]
+                                ],
+                                "t"=>[false, 20, 6, true],
+                            ],
+            "konbanwa,konbawa,kobawa" => [
+                                "r" => [
+                                    "1-3" => [
+                                        "Ini masih pagi ^@, selamat beraktifitas!"
+                                    ],
+                                    "4-10" => [
+                                        "Ini masih pagi ^@, selamat beraktifitas!"
+                                    ],
+                                    "11-14" => [
+                                        "Konbanwa ^@, selamat beraktifitas!"
+                                    ],
+                                    "15-24" => [
+                                        "Konbanwa ^@, selamat beristirahat!",
+                                    ]
+                                ],
+                                "t" => [false, 20, 6, true]
+                            ],
+            "sehat,baik" => [
+                                "r" => [
+                                    "Syukurlah.",
+                                    "Baguslah.",
+                                    "Senang mendengarnya."
+                                ],
+                                "t" => [true, 10, 3, false]
+            ],
+            "haha,wkwk,hihi,xixi,hhhh" => [
+                                "r" => [
+                                    "Hahaha, ketawa :v",
+                                    "Dilarang ketawa!"
+                                ],
+                                "t" => [false, 45, 10, false]
+                            ],
+            "makan+apa" => [
+                                "r" => [
+                                    "Makan gamping",
+                                    "Makan kamu",
+                                ]
+                                "t" => [false, 15, 10, false]
+            ]
+            "makan" => [
+                                "r" => [
+                                    "Yuk makan",
+                                    "Pernah makan gamping?"
+                                ],
+                                "t" => [false, 15, 10, false]
+            ],
+            "laravel" => [
+                                "r" => [
+                                    "Wah laravel, kok kayak nama framework yak."
+                                ],
+                                "t" => [true, 10, 3, false]
+            ],
+            "code,coding,ngoding" => [
+                                "r" => [
+                                    "Yuk ngoding",
+                                    "Ngoding emang asik"
+                                ],
+                                "t" => [true, 10, 3, false]
+            ]
     ];
 }
