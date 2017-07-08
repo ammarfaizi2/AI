@@ -150,7 +150,7 @@ class id
                                         "Selamat malam ^@, selamat beristirahat!"
                                     ]
                                 ],
-                                "t" =>[false, 20, 6, true],
+                                "t" => [false, 20, 6, true],
                                 "words_exception" => [
                                     "ini", "hari", "lain"
                                 ]
