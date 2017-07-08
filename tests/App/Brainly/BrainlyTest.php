@@ -12,8 +12,12 @@ class BrainlyTest extends TestCase
     	$ai = new AI();
     	$ai->input("ask penemu lampu?", "PHPUnit S.");
         $this->assertTrue($ai->execute());
-        $out = $ai->output();
-        return $out;
+        $out1 = $ai->output();
+        $ai = new AI();
+        $ai->input("ask penemu lampu?", "PHPUnit S.");
+        $this->assertTrue($ai->execute());
+        $out2 = $ai->output();
+        return [$out1, $out2];
     }
 
     public function testOnlineSearch()
