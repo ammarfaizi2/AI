@@ -141,7 +141,7 @@ class id
                                         "Ini masih pagi ^@, selamat beraktifitas!"
                                     ],
                                     "11-14" => [
-                                        "Ini udah siang ^@, selamat beraktifitas!"
+                                        "Ini masih siang ^@, selamat beraktifitas!"
                                     ],
                                     "15-18" => [
                                         "Ini masih sore ^@!",
