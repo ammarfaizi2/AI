@@ -15,9 +15,11 @@ class BrainlyTest extends TestCase
         return $ai->output();
     }
 
-    public function testProducerSecond()
+    public function testOnlineSearch()
     {
-        $this->assertTrue(true);
-        return 'second';
+        $ai = new AI();
+        $ai->input("ask aaaaaa".rand().rand(), "PHPUnit S.");
+        $this->assertTrue($ai->execute());
+        return $ai->output();
     }
 }
