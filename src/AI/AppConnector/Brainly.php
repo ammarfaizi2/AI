@@ -86,9 +86,13 @@ class Brainly
             $a[$this->hash] = ["content"=>$this->return, "expired"=>time()+(3600*24)];
             file_put_contents(storage."/Brainly/edge_cache.txt", json_encode($a, 128));
         } else {
-            file_put_contents(storage."/Brainly/edge_cache.txt", json_encode(array(
+            file_put_contents(
+                storage."/Brainly/edge_cache.txt", json_encode(
+                    array(
                     $this->hash => ["content"=>$this->return, "expired"=>time()+(3600*24)]
-                ), 128));
+                    ), 128
+                )
+            );
         }
     }
 }
