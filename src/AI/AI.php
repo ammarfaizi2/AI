@@ -201,6 +201,8 @@ class AI implements AIContract
                             return false;
                         }
                     }
+                } else {
+                    return false;
                 }
             }
         }

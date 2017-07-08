@@ -32,6 +32,12 @@ trait SimpleCommand
                             "Hasil pertanyaan yang mirip dari ".$this->actor." : \n".$st[0]."\n\nJawaban : \n".$st[1]
                         ]
                         ];
+                    } else {
+                        $this->output = [
+                        "text" => [
+                            "Mohon maaf, saya tidak bisa menjawab pertanyaan \"{$this->param}\""
+                        ]
+                    ];    
                     }
                 } else {
                     $this->output = [
