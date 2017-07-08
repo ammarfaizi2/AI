@@ -92,8 +92,3 @@ class Brainly
         }
     }
 }
-
-
-
-
-

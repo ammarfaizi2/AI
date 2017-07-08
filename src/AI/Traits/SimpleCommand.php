@@ -41,7 +41,7 @@ trait SimpleCommand
                         "text" => [
                             "Mohon maaf, saya tidak bisa menjawab pertanyaan \"{$this->param}\""
                         ]
-                    ];    
+                    ];
                     }
                 } else {
                     $this->output = [
@@ -60,7 +60,7 @@ trait SimpleCommand
                             $st->execute()
                         ]
                     ];
-                break;                
+                break;
             default:
                     $this->output = [
                         "text" => [

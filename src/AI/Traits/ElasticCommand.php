@@ -8,8 +8,7 @@ namespace AI\Traits;
 
 trait ElasticCommand
 {
-	public function elastic_command()
-	{
-
-	}
+    public function elastic_command()
+    {
+    }
 }

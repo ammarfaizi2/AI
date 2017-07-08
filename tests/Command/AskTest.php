@@ -6,11 +6,11 @@ use AI\AI;
 use PHPUnit\Framework\TestCase;
 
 class AskCommandTest extends TestCase
-{	
-	public function testCache()
+{
+    public function testCache()
     {
-    	$ai = new AI();
-    	$ai->input("ask penemu lampu?", "PHPUnit S.");
+        $ai = new AI();
+        $ai->input("ask penemu lampu?", "PHPUnit S.");
         $this->assertTrue($ai->execute());
         $out1 = $ai->output();
         $ai = new AI();
@@ -24,7 +24,7 @@ class AskCommandTest extends TestCase
     {
         $ai = new AI();
         $ai->input("ask aaaaaa ".rand().rand(), "PHPUnit S.");
-        $this->assertTrue($ai->execute());        
+        $this->assertTrue($ai->execute());
         return $ai->output();
     }
 }
