@@ -1,6 +1,6 @@
 <?php
 
-namespace AI\Lang;
+namespace AI\Lang\System;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>

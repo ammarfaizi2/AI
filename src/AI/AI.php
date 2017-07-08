@@ -221,7 +221,7 @@ class AI implements AIContract
         if (isset(\AI\CY\Error::$errno[$key])) {
             $this->syserrno($key);
         }
-        $class = "\\AI\\Lang\\".$this->lang;
+        $class = "\\AI\\Lang\\System\\".$this->lang;
         return $class::$system[$key];
     }
 

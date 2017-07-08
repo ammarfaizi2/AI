@@ -9,7 +9,8 @@
         }
     ],
     "require": {
-        "ammarfaizi2/curl": "dev-master"
+        "ammarfaizi2/curl": "dev-master",
+        "php-ai/php-ml": "^0.4.1"
     },
     "autoload": {
         "psr-0": {

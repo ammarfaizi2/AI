@@ -45,6 +45,7 @@ trait SimpleChat
                         ];
                     }
                 }
+                break;
             }
         }
         return (bool) count($this->output);
@@ -75,6 +76,7 @@ trait SimpleChat
                 $ck = explode("+", $ke);
                 $sub_flag = true;
                 foreach ($ck as $ck) {
+                    $ck = preg_replace("#[^a-zA-Z]#", "", $ck);
                     if (!in_array($ck, $exploded_input)) {
                         $sub_flag = false;
                         break;
@@ -144,6 +146,9 @@ trait SimpleChat
     {
         $pure = $string;
         $a = explode("#d(", $string);
+        if (!isset($a[1])) {
+            return $string;
+        }
         $a = explode(")", $a[1]);
         $b = explode("+", $a[0]);
         if (count($b)==1) {
