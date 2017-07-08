@@ -110,7 +110,8 @@ class AI implements AIContract
      */
     public function __construct()
     {
-        if (! (defined("data") and defined("logs") and defined("storage"))) {
+        defined("logs") or define("logs", ".");
+        if (! (defined("data") and defined("storage"))) {
             $this->syslog("Fatal Error", $error = $this->sysstr("error_constants"));
             throw new AIException($error, 1);
             die("Avoid catch AIException");
