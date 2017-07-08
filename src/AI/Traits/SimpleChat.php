@@ -55,8 +55,8 @@ trait SimpleChat
      * @param string $input
      * @param string $key
      * @param bool   $word_match
-     * @param int    $max_length Max length to response.
-     * @param int    $max_words  Max words to response.
+     * @param int    $max_length     Max length to response.
+     * @param int    $max_words      Max words to response.
      * @param bool   $time_reply
      * @param array  $word_exception
      */
