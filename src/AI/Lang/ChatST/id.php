@@ -15,7 +15,7 @@ class id
      * ['t'][3] = bool $time_reply
      */
     public static $wordlist = [
-            "hola,alo" => [
+            "4l0,4lo,hola,alo" => [
                                 "r" => [
                                     "1-10" => [
                                         "Halo juga ^@, selamat pagi :D"
