@@ -70,7 +70,7 @@ class id
                                 ],
                                 't'=>[true, 30, 6, true]
                             ],
-            "besok+hari,bsk+hari,besok+hri" => [
+            "besok+hari,bsk+hari,besok+hri,bsk+hri" => [
                                 "r" => [
                                     "Besok hari #d(day+1day)",
                                 ],
@@ -270,11 +270,17 @@ class id
                                 ],
                                 "t" => [true, 10, 3, false]
             ],
-            "presiden+ri" => [
+            "presiden+kita,presiden+ri" => [
                                 "r" => [
                                     "Joko Widodo"
                                 ],
                                 "t" => [true, 35, 5, false]
+            ],
+            "laper,lapar" => [
+                                "r" => [
+                                    "Kalau lapar ya makan :p"
+                                ],
+                                "t" => [true, 12, 3, false]
             ]
     ];
 }
