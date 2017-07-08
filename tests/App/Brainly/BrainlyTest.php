@@ -10,16 +10,17 @@ class BrainlyTest extends TestCase
 	public function testCache()
     {
     	$ai = new AI();
-    	$ai->input("ask siapakah penemu lampu?", "PHPUnit S.");
+    	$ai->input("ask penemu lampu?", "PHPUnit S.");
         $this->assertTrue($ai->execute());
-        return $ai->output();
+        $out = $ai->output();
+        return $out;
     }
 
     public function testOnlineSearch()
     {
         $ai = new AI();
-        $ai->input("ask aaaaaa".rand().rand(), "PHPUnit S.");
-        $this->assertTrue($ai->execute());
+        $ai->input("ask aaaaaa ".rand().rand(), "PHPUnit S.");
+        $this->assertTrue($ai->execute());        
         return $ai->output();
     }
 }
