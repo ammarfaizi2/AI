@@ -48,6 +48,7 @@ class Brainly
                 }
                 $this->return = $rt;
             }
+            $this->save_edge_cache();
         }
     }
 
@@ -62,16 +63,37 @@ class Brainly
     /**
      * @param string
      */
-    public function edge_cache($q)
+    private function edge_cache($q)
     {
         $this->hash = sha1($q);
         if (file_exists(storage."/Brainly/edge_cache.txt")) {
-            $a = json_decode(file_get_contents(storage."/Brainly/cache/edge_cache.txt"), true);
+            $a = json_decode(file_get_contents(storage."/Brainly/edge_cache.txt"), true);
             if (isset($a[$this->hash]) && $a[$this->hash]['expired'] > time()) {
-                $this->return = $a[$this->hash];
+                $this->return = $a[$this->hash]['content'];
                 return true;
             }
         }
         return false;
     }
+
+    /**
+     * Save edge cache
+     */
+    private function save_edge_cache()
+    {
+        if (file_exists(storage."/Brainly/edge_cache.txt")) {
+            $a = json_decode(file_get_contents(storage."/Brainly/edge_cache.txt"), true);
+            $a[$this->hash] = ["content"=>$this->return, "expired"=>time()+(3600*24)];
+            file_put_contents(storage."/Brainly/edge_cache.txt", json_encode($a, 128));
+        } else {
+            file_put_contents(storage."/Brainly/edge_cache.txt", json_encode(array(
+                    $this->hash => ["content"=>$this->return, "expired"=>time()+(3600*24)]
+                ), 128));
+        }
+    }
 }
+
+
+
+
+
