@@ -31,7 +31,7 @@ class id
                                     ]
                                 ],
                                 "t" => [true, 15, 4, true]
-            ]
+            ],
             'hi,hai,hay,hae' => [
                                 'r'=>[
                                     'Hai juga ^@',
@@ -244,9 +244,9 @@ class id
                                 "r" => [
                                     "Makan gamping",
                                     "Makan kamu",
-                                ]
+                                ],
                                 "t" => [false, 15, 10, false]
-            ]
+            ],
             "makan" => [
                                 "r" => [
                                     "Yuk makan",
