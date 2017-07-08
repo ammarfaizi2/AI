@@ -143,10 +143,10 @@ class id
                                         "Ini masih siang ^@, selamat beraktifitas!"
                                     ],
                                     "15-18" => [
-                                        "Selamat sore ^@, selamat beraktifitas!"
+                                        "Selamat sore ^@, selamat beristirahat!"
                                     ],
                                     "19-24" => [
-                                        "Ini udah malam ^@, selamat beraktifitas!"
+                                        "Ini udah malam ^@, selamat beristirahat!"
                                     ]
                                 ],
                                 "t" =>[false, 20, 6, true],
