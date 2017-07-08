@@ -72,7 +72,7 @@ class id
                                 ],
                                 't'=>[true, 20, 6, false]
                             ],
-            "mat+pagi,met+pagi,met+pagy,mat+pagy" => [
+            "pagi,pagy" => [
                                 "r" => [
                                     "1-11" => [
                                         "Selamat pagi ^@, selamat beraktifitas!"
@@ -87,9 +87,12 @@ class id
                                         "Ini sudah malam ^@, selamat beraktifitas!"
                                     ]
                                 ],
-                                "t"=>[false, 20, 6, true]
+                                "t"=>[false, 20, 6, true],
+                                "words_exception" => [
+                                    "ini", "hari", "lain"
+                                ]
                             ],
-            "mat+siang,met+siang,met+syang,mat+syang" => [
+            "siang,ciang,syang,siank" => [
                                 "r" => [
                                     "1-10" => [
                                         "Ini masih pagi ^@, selamat beraktifitas!"
@@ -104,9 +107,12 @@ class id
                                         "Ini udah malam ^@, selamat beristirahat!",
                                     ]
                                 ],
-                                "t"=>[false, 20, 6, true]
+                                "t"=>[false, 20, 6, true],
+                                "words_exception" => [
+                                    "ini", "hari", "lain"
+                                ]
                             ],
-            "mat+sore,met+sore" => [
+            "sore" => [
                                 "r" => [
                                     "1-10" => [
                                         "Ini masih pagi ^@, selamat beraktifitas!"
@@ -121,9 +127,12 @@ class id
                                         "Ini udah malam ^@, selamat beraktifitas!"
                                     ]
                                 ],
-                                "t" =>[false, 20, 6, true]
+                                "t" =>[false, 20, 6, true],
+                                "words_exception" => [
+                                    "ini", "hari", "lain"
+                                ]
                             ],
-            "mat+malam,met+malam,mat+malem,met+malem" => [
+            "malam,malem" => [
                                 "r" => [
                                     "1-3" => [
                                         "Ini udah pagi ^@, selamat beraktifitas!"
@@ -141,7 +150,10 @@ class id
                                         "Selamat malam ^@, selamat beristirahat!"
                                     ]
                                 ],
-                                "t" =>[false, 20, 6, true]
+                                "t" =>[false, 20, 6, true],
+                                "words_exception" => [
+                                    "ini", "hari", "lain"
+                                ]
                             ]
     ];
 }
