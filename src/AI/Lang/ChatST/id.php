@@ -108,9 +108,40 @@ class id
                             ],
             "mat+sore,met+sore" => [
                                 "r" => [
-                                    ""
+                                    "1-10" => [
+                                        "Ini masih pagi ^@, selamat beraktifitas!"
+                                    ],
+                                    "11-14" => [
+                                        "Ini masih siang ^@, selamat beraktifitas!"
+                                    ],
+                                    "15-18" => [
+                                        "Selamat sore ^@, selamat beraktifitas!"
+                                    ],
+                                    "19-24" => [
+                                        "Ini udah malam ^@, selamat beraktifitas!"
+                                    ]
                                 ],
-                                "t" =>[false, 20, 6,]
+                                "t" =>[false, 20, 6, true]
+                            ],
+            "mat+malam,met+malam,mat+malem,met+malem" => [
+                                "r" => [
+                                    "1-3" => [
+                                        "Ini udah pagi ^@, selamat beraktifitas!"
+                                    ],
+                                    "4-10" => [
+                                        "Ini masih pagi ^@, selamat beraktifitas!"
+                                    ],
+                                    "11-14" => [
+                                        "Ini udah siang ^@, selamat beraktifitas!"
+                                    ],
+                                    "15-18" => [
+                                        "Ini masih sore ^@!",
+                                    ],
+                                    "19-24" => [
+                                        "Selamat malam ^@, selamat beristirahat!"
+                                    ]
+                                ],
+                                "t" =>[false, 20, 6, true]
                             ]
     ];
 }
