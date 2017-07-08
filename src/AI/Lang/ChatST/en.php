@@ -6,7 +6,7 @@ namespace AI\CY\ChatST;
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
  */
 
-class id
+class en
 {
     /**
      * ['t'][0] = bool $word_match
