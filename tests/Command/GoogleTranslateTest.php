@@ -15,5 +15,19 @@ class GoogleTranslateTest extends TestCase
 		$out = $ai->output();
 		$cond = $exe && strpos(strtolower($out['text'][0]), "how are you")!==false;
 		$this->assertTrue($cond);
+
+		$ai = new AI();
+		$ai->input("ctranslate id en jam berapa sekarang?");
+		$exe = $ai->execute();
+		$out = $ai->output();
+		$cond = $exe && strpos(strtolower($out['text'][0]), "what time")!==false;
+		$this->assertTrue($cond);
+
+		$ai = new AI();
+		$ai->input("ctranslate id ja halo");
+		$exe = $ai->execute();
+		$out = $ai->output();
+		$cond = $exe && strpos(strtolower($out['text'][0]), "moshi")!==false;
+		$this->assertTrue($cond);
 	}
 }
