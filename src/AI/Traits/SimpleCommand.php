@@ -16,7 +16,7 @@ trait SimpleCommand
      */
     private $simple_command = [
                                 "ask" => 1,
-                                "hitung" => 1,
+                                "hitung" => 1
                             ];
 
     /**

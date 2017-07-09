@@ -9,10 +9,10 @@ namespace AI\Lang\ChatST;
 class id
 {
     /**
-     * ['t'][0] = bool $word_match
-     * ['t'][1] = int  $max_length
-     * ['t'][2] = int  $max_words
-     * ['t'][3] = bool $time_reply
+     * ["t"][0] = bool $word_match
+     * ["t"][1] = int  $max_length
+     * ["t"][2] = int  $max_words
+     * ["t"][3] = bool $time_reply
      */
     public static $wordlist = [
             "4l0,4lo,hola,alo" => [
@@ -35,40 +35,40 @@ class id
                                     "balon", "galon",
                                 ]
             ],
-            'hi,hai,hay,hae' => [
-                                'r'=>[
-                                    'Hai juga ^@',
-                                    'Hai juga ^@, apa kabar?',
-                                    'Hai juga ^@, apa kabar, sehat kan?'
+            "hy,hi,hai,hay,hae" => [
+                                "r"=>[
+                                    "Hai juga ^@",
+                                    "Hai juga ^@, apa kabar?",
+                                    "Hai juga ^@, apa kabar, sehat kan?"
                                 ],
-                                't'=>[true, 10, 3, false]
+                                "t"=>[true, 10, 3, false]
                             ],
-            'pa+kbr,pa+kabar,pa+kabr' => [
-                                'r'=>[
-                                    'Kabar baik disini.'
+            "pa+kbr,pa+kabar,pa+kabr" => [
+                                "r"=>[
+                                    "Kabar baik disini."
                                 ],
-                                't'=>[false, 35, 7, false]
+                                "t"=>[false, 35, 7, false]
                             ],
-            'jam+brp,jm+brp,jam+berapa,jm+berapa' => [
-                                'r'=>[
-                                    '0-3' => [
-                                        'Sekarang jam #d(jam) dini hari.'
+            "jam+brp,jm+brp,jam+berapa,jm+berapa" => [
+                                "r"=>[
+                                    "0-3" => [
+                                        "Sekarang jam #d(jam) dini hari."
                                     ],
-                                    '4-10' => [
-                                        'Sekarang jam #d(jam) pagi.'
+                                    "4-10" => [
+                                        "Sekarang jam #d(jam) pagi."
                                     ],
 
-                                    '12-14' => [
-                                        'Sekarang jam #d(jam) siang.'
+                                    "12-14" => [
+                                        "Sekarang jam #d(jam) siang."
                                     ],
-                                    '15-18' => [
-                                        'Sekarang jam #d(jam) sore.'
+                                    "15-18" => [
+                                        "Sekarang jam #d(jam) sore."
                                     ],
-                                    '19-24' => [
-                                        'Sekarang jam #d(jam) malam.'
+                                    "19-24" => [
+                                        "Sekarang jam #d(jam) malam."
                                     ]
                                 ],
-                                't'=>[true, 30, 6, true]
+                                "t"=>[true, 30, 6, true]
                             ],
             "besok+hari,bsk+hari,besok+hri,bsk+hri" => [
                                 "r" => [
@@ -82,17 +82,35 @@ class id
                                 ],
                                 "t" =>[false, 30, 6, false]
                             ],
-            'hari+apa,hr+apa' => [
-                                'r'=> [
-                                    'Sekarang hari #d(day).'
+            "hari+apa,hr+apa" => [
+                                "r"=> [
+                                    "Sekarang hari #d(day)."
                                 ],
-                                't'=>[true, 20, 6, false]
+                                "t"=>[true, 20, 6, false]
                             ],
-            'bulan+apa' => [
-                                'r'=>[
-                                    'Sekarang bulan #d(month).'
+            "bulan+apa,bln+apa," => [
+                                "r"=>[
+                                    "Sekarang bulan #d(month)."
                                 ],
-                                't'=>[true, 20, 6, false]
+                                "t"=>[true, 25, 5, false]
+                            ],
+            "tanggal+berapa+besok,tgl+brp+besok,tanggl+berapa+besok,tanggl+brp+besok,tnggl+berapa+besok,tnggl+brp+besok,tgl+berapa+besok,tanggal+berapa+bsk,tgl+brp+bsk,tanggl+berapa+bsk,tanggl+brp+bsk,tnggl+berapa+bsk,tnggl+brp+bsk,tgl+berapa+bsk" => [
+                                "r" => [
+                                    "Besok tanggal #d(tanggal_indo+1day)"
+                                ],
+                                "t" => [false, 35, 5, false]
+                            ],
+            "tanggal+berapa+kemarin,tgl+brp+kemarin,tanggl+berapa+kemarin,tanggl+brp+kemarin,tnggl+berapa+kemarin,tnggl+brp+kemarin,tgl+berapa+kemarin,tanggal+berapa+kmarin,tgl+brp+kmarin,tanggl+berapa+kmarin,tanggl+brp+kmarin,tnggl+berapa+kmarin,tnggl+brp+kmarin,tgl+berapa+kmarin" => [
+                                "r" => [
+                                    "Kemarin tanggal #d(tanggal_indo-1day)"
+                                ],
+                                "t" => [false, 35, 5, false]
+                            ],
+            "tanggal+berapa,tgl+brp,tanggl+berapa,tanggl+brp,tnggl+berapa,tnggl+brp,tgl+berapa" => [
+                                "r" => [
+                                    "Sekarang tanggal #d(tanggal_indo)"
+                                ],
+                                "t" => [false, 30, 4, false]
                             ],
             "pagi,pagy" => [
                                 "r" => [
