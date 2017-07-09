@@ -69,7 +69,7 @@ class AI implements AIContract
     private $timezone;
 
     /**
-     * @var string
+     * @var string|array
      */
     private $lang = "id";
 
