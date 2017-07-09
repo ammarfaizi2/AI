@@ -67,12 +67,18 @@ trait SimpleCommand
                 $a = explode(" ", $this->param, 3);
                 if (isset($a[2])) {
                     $st = new GoogleTranslate($a[2], $a[0], $a[1]);
-                    $this->output = [
+                    $out = $st->getResult();
+                    if ($out === false) {
+                        $out = "Terjadi masalah pada server!\n\nHubungi admin!";
+                    }
+                } else {
+                    $out = "Penulisan perintah ctranslate salah\n\nBerikut ini adalah penulisan yang benar.\nctranslate [from] [to] [string]\n\nContoh :\nctranslate id en halo, apa kabar?";
+                }
+                $this->output = [
                         "text" => [
-                            $st->getResult()
+                            $out
                         ]
                     ];
-                }
                 break;
             default:
                     $this->output = [

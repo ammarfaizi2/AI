@@ -40,7 +40,5 @@ class HitungTest extends TestCase
         $out = $ai->output();
         $cond = $exe && ($out['text'][0]==32);
         $this->assertTrue($cond);
-
-        return true;
     }
 }
