@@ -88,7 +88,6 @@ class GoogleTranslate
                     CURLOPT_REFERER => "https://translate.google.com/m"
                 ]);
             $src = $ch->exec();
-            var_dump($src);
             $a = explode('<div dir="ltr" class="t0">', $src, 2);
             if (isset($a[1])) {
                 $a = explode("<", $a[1], 2);
