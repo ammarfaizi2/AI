@@ -22,10 +22,7 @@
             "AI": "src/",
             "App": "src/",
             "System": "src/"
-        },
-        "files": [
-            "config.php"
-        ]
+        }
     },
     "scripts": {
         "post-install-cmd": [
