@@ -8,6 +8,7 @@ namespace AI\Traits;
 
 use AI\AppConnector\Brainly;
 use App\SaferScript\SaferScript;
+use App\GoogleTranslate\GoogleTranslate;
 
 trait SimpleCommand
 {
@@ -16,7 +17,8 @@ trait SimpleCommand
      */
     private $simple_command = [
                                 "ask" => 1,
-                                "hitung" => 1
+                                "hitung" => 1,
+                                "ctranslate" => 1
                             ];
 
     /**
@@ -60,6 +62,17 @@ trait SimpleCommand
                             $st->execute()
                         ]
                     ];
+                break;
+            case 'ctranslate':
+                $a = explode(" ", $this->param, 3);
+                if (isset($a[2])) {
+                    $st = new GoogleTranslate($a[2], $a[0], $a[1]);
+                    $this->output = [
+                        "text" => [
+                            $st->getResult()
+                        ]
+                    ];
+                }
                 break;
             default:
                     $this->output = [

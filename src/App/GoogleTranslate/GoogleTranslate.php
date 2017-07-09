@@ -44,8 +44,8 @@ class GoogleTranslate
     public function __construct($a, $b = "en", $c = "id")
     {
         $this->a = $a;
-        $this->b = $b;
-        $this->c = $c;
+        $this->b = trim($b);
+        $this->c = trim($c);
         $this->hash = sha1($a.$b.$c);
         is_dir(storage."/GoogleTranslate") or mkdir(storage."/GoogleTranslate");
         is_dir(storage."/GoogleTranslate/cache") or mkdir(storage."/GoogleTranslate/cache");
@@ -84,9 +84,11 @@ class GoogleTranslate
             $ch = new Curl("https://translate.google.com/m?hl=id&sl=".$this->b."&tl=".$this->c."&ie=UTF-8&prev=_m&q=".urlencode($this->a));
             $ch->set_opt([
                     CURLOPT_COOKIEJAR => storage."/GoogleTranslate/cookie/cookie_data",
-                    CURLOPT_COOKIEFILE => storage."/GoogleTranslate/cookie_data"
+                    CURLOPT_COOKIEFILE => storage."/GoogleTranslate/cookie_data",
+                    CURLOPT_REFERER => "https://translate.google.com/m"
                 ]);
             $src = $ch->exec();
+            var_dump($src);
             $a = explode('<div dir="ltr" class="t0">', $src, 2);
             if (isset($a[1])) {
                 $a = explode("<", $a[1], 2);
@@ -98,7 +100,7 @@ class GoogleTranslate
                     $_r.= " (".trim($_r2).")";
                 }
             }
-            $this->save_cache($_r);
+            isset($_r) and $this->save_cache($_r);
         } else {
             $_r = file_get_contents(storage."/GoogleTranslate/cache/".$this->hash.".txt");
         }

@@ -4,7 +4,7 @@ require __DIR__.'/config.php';
 use AI\AI;
 
 $actor = "Ammar Faizi";
-$input = "besok tanggal berapa?";
+$input = "ctranslate id en halo, selamat malam";
 
 
 $start = microtime(true);
