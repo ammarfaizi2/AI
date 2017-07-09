@@ -1,5 +1,5 @@
 {
-    "name": "ammarfaizi2\/ai",
+    "name": "ammarfaizi2/ai",
     "description": "AI",
     "keywords": [
         "Artificial Inteligence",
@@ -14,8 +14,8 @@
     ],
     "type": "library",
     "require": {
-        "ammarfaizi2/curl": "dev-master",
-        "php-ai/php-ml": "^0.4.1"
+        "php-ai/php-ml": "^0.4.1",
+        "ammarfaizi2/curl": "^0.0.1"
     },
     "autoload": {
         "psr-0": {
