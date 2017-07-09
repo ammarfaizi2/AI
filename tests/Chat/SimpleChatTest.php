@@ -57,5 +57,9 @@ class SimpleChatTest extends TestCase
         $ai = new AI();
         $ai->input("qqqqq", "PHPUnit S.");
         $this->assertTrue(!$ai->execute());
+
+        $ai = new AI();
+        $ai->input("akdsmfksmadlkfmaslkdfmiweomqimqwer", "PHPUnit S.");
+        $this->assertTrue(!$ai->execute());
     }
 }
