@@ -199,8 +199,8 @@ trait SimpleChat
             /**
              *  Untuk tanggal.
              */
-        case 'date_c':
-            $c = $this->hari[date("w", $c)].", ".date("d", $c)." ".($this->bulan[date("m", $c)])." ".date("Y", $c);
+        case 'tanggal_indo':
+            $c = date("d ",$c).$dcls::$month[(int)date("m", $c)]." ".date("Y", $c);
             break;
 
             /**
