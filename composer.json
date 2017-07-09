@@ -1,6 +1,10 @@
 {
-    "name": "ammarfaizi2/ai",
+    "name": "ammarfaizi2\/ai",
     "description": "AI",
+    "keywords": [
+        "Artificial Inteligence",
+        "AI"
+    ],
     "license": "BSD",
     "authors": [
         {
@@ -8,6 +12,7 @@
             "email": "ammarfaizi2@gmail.com"
         }
     ],
+    "type": "library",
     "require": {
         "ammarfaizi2/curl": "dev-master",
         "php-ai/php-ml": "^0.4.1"
