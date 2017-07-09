@@ -23,4 +23,12 @@ class SimpleChatTest extends TestCase
         $this->assertTrue(!$ai->execute());
         return $ai->output();
     }
+
+    public function testTanggal()
+    {
+        $ai = new AI();
+        $ai->input("qqqqq", "PHPUnit S.");
+        $this->assertTrue(!$ai->execute());
+        return $ai->output();
+    }
 }
