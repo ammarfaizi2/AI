@@ -200,7 +200,7 @@ trait SimpleChat
              *  Untuk tanggal.
              */
         case 'tanggal_indo':
-            $c = date("d ",$c).$dcls::$month[(int)date("m", $c)]." ".date("Y", $c);
+            $c = date("d ", $c).$dcls::$month[(int)date("m", $c)]." ".date("Y", $c);
             break;
 
             /**

@@ -2,7 +2,6 @@
 
 namespace App\GoogleTranslate;
 
-
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
  * @package App\GoogleTranslate
