@@ -13,7 +13,6 @@ class SimpleChatTest extends TestCase
         $ai->input("halo", "PHPUnit S.");
         $this->assertTrue($ai->execute());
         $out = $ai->output();
-        return $out;
     }
 
     public function testNoReply()
@@ -21,7 +20,6 @@ class SimpleChatTest extends TestCase
         $ai = new AI();
         $ai->input("qqqqq", "PHPUnit S.");
         $this->assertTrue(!$ai->execute());
-        return $ai->output();
     }
 
     public function testTanggal()
@@ -29,6 +27,5 @@ class SimpleChatTest extends TestCase
         $ai = new AI();
         $ai->input("qqqqq", "PHPUnit S.");
         $this->assertTrue(!$ai->execute());
-        return $ai->output();
     }
 }

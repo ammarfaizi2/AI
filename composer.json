@@ -24,6 +24,11 @@
             "System": "src/"
         }
     },
+    "autoload-dev":{
+        "files": [
+            "config.php"
+        ]
+    },
     "scripts": {
         "post-install-cmd": [
             "php -r \"file_put_contents('.php_cs.cache', json_encode(json_decode(file_get_contents('.php_cs.cache')),128));\""
