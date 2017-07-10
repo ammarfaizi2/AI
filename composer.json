@@ -22,7 +22,10 @@
             "AI": "src/",
             "App": "src/",
             "System": "src/"
-        }
+        },
+        "files": [
+            "src/Helper/LevenshteinDistance.php"
+        ]
     },
     "autoload-dev":{
         "files": [
