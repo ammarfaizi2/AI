@@ -32,7 +32,7 @@ class Brainly
                 $sim = $lev = [];
                 foreach ($st as $key => $val) {
                     $val = html_entity_decode(strip_tags($val['task']['content']), ENT_QUOTES, 'UTF-8');
-                    $lev[$key] = levenshtein($val, $q);
+                    $lev[$key] = LevenshteinDistance($val, $q);
                     similar_text($val, $q, $n);
                     $sim[$key] = $n;
                 }
