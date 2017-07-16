@@ -3,11 +3,9 @@
 /**
  * AI storage, data and logs.
  */
-if (!defined("data")) {
-    define("data", __DIR__."/data");
-    define("logs", __DIR__."/logs");
-    define("storage", __DIR__."/storage");
-}
+define("data", __DIR__."/data");
+define("logs", __DIR__."/logs");
+define("storage", __DIR__."/storage");
 
 /**
  * L Virtual.
