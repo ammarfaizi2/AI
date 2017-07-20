@@ -37,7 +37,7 @@ class Brainly
                     $sim[$key] = $n;
                 }
                 $fx = function ($str) {
-                    return html_entity_decode(str_replace("<br />", "\n", $str), ENT_QUOTES, 'UTF-8');
+                    return strip_tags(html_entity_decode(str_replace("<br />", "\n", $str), ENT_QUOTES, 'UTF-8'));
                 };
                 if (min($lev) <= 5) {
                     $key = array_search(min($lev), $st);
