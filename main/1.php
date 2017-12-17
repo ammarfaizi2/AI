@@ -8,6 +8,9 @@ define("AI_DIR", realpath("../ai_data"));
 
 require __DIR__ . "/../vendor/autoload.php";
 
-$ai = new AI();
+use AI\AI;
+
+$text = "Hai, apa kabar?";
+$ai = new AI($text);
 $ai->execute();
 print $ai->output();
