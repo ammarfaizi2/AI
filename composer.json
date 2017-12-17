@@ -12,5 +12,15 @@
     "minimum-stability": "dev",
     "require": {
         "ammarfaizi2/php-curl": "^0.0.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4":{
+            "Test\\": "tests/"
+        }
     }
 }
